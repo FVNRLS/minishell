@@ -22,7 +22,7 @@ int pwd(void)
     char    *path;
 
     path = NULL;
-    path = getcwd(path, 10);
+    path = getcwd(path, 0);
     if (!path || errno != 0)
         return (error("Error in pwd.c\n", errno));
     printf("path = %s\n", path);
