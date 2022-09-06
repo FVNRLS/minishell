@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:05:42 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/06 18:29:51 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/06 19:03:13 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,13 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <sys/errno.h>
+ #include <stdlib.h>
 
 //pwd.c
 int pwd(void);
+
+//cd.c
+int cd(char *path);
 
 //bin_utils.c
 int error(char *m, int error); 

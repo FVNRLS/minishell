@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 17:07:45 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/06 18:41:41 by jjesberg         ###   ########.fr       */
+/*   Created: 2022/09/06 18:42:02 by jjesberg          #+#    #+#             */
+/*   Updated: 2022/09/06 19:21:23 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
 
-int pwd(void)
+int cd(char *path)
 {
-    char    *path;
+    int ret;
 
-    path = NULL;
-    path = getcwd(path, 0);
-    if (!path || errno != 0)
-        return (error("Error in pwd.c\n", errno));
-    printf("path = %s\n", path);
-    free(path);
+    if (!path || !path[0])
+        return (error("Error in cd.c\n", 2));
+    ret = chdir(path);
+    if (ret != 0)
+        return (error("Error in cd.c\n", 2));
     return (0);
 }

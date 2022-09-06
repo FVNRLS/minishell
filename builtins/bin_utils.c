@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bin_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:14:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/06 17:58:27 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/06 19:16:56 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int error(char *m, int error)
 {
+    errno = error;
     printf("%s", m);
     perror(NULL);
     return (1);

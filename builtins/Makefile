@@ -2,6 +2,8 @@ NAME = cmd.a
 
 SRC =	pwd.c \
 		bin_utils.c \
+		cd.c \
+		
 
 OBJS = $(SRC:.c=.o)
 
