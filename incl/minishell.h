@@ -15,4 +15,8 @@
 
 #include "structs.h"
 
+void	init(t_info *info);
+
+
+
 #endif

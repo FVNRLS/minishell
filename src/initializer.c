@@ -1,42 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   initializer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
+/*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/09/06 19:34:46 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./incl/minishell.h"
+#include "../incl/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+static void	init_flags(t_data *data)
 {
-	t_data 	data;
+	data->exit_minishell = false;
+	data->status = 0;
+}
 
-	init(&data, envp);
+static void	init_pointers(t_data *data)
+{
 
-	while (data.exit_minishell != false)
-	{
-//		line = ft_readline();
-//		check_line();
-//		if (line == ok)
-//			addline_to_history;
-//		lexer();
-//		parser();
-//		exec();
-	}
-//	free_all_ressources();
+}
 
-	init();
+//init builtin names and functions
+static void	init_builtins(t_data *data)
+{
 
+}
+
+static void	init_envp(t_data *data)
+{
 
 }
 
 
-/*
- * 	//history maker
-
- * */
+void	init(t_data *data)
+{
+	init_flags(data);
+	init_pointers(data);
+	init_builtins(data);
+	init_envp(data);
+}
