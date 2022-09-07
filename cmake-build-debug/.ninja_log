@@ -37,3 +37,10 @@
 40	66	1662565660000000000	minishell	691528a837ca2095
 2	40	1662565776000000000	CMakeFiles/minishell.dir/src/destructor.c.o	ff5e873aad7be7f2
 40	72	1662565776000000000	minishell	691528a837ca2095
+1	87	1662566071000000000	CMakeFiles/minishell.dir/main.c.o	3251731473e8f75
+2	88	1662566071000000000	CMakeFiles/minishell.dir/src/tools/ft_lstclear.c.o	bed46b6d79ca5b32
+2	88	1662566071000000000	CMakeFiles/minishell.dir/src/destructor.c.o	ff5e873aad7be7f2
+88	133	1662566071000000000	minishell	691528a837ca2095
+2	60	1662566135000000000	CMakeFiles/minishell.dir/src/destructor.c.o	ff5e873aad7be7f2
+1	61	1662566135000000000	CMakeFiles/minishell.dir/src/tools/ft_lstclear.c.o	bed46b6d79ca5b32
+61	99	1662566135000000000	minishell	691528a837ca2095

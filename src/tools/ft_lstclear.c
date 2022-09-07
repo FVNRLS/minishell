@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:37:51 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/07 13:40:21 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:54:31 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_lstclear(t_envp **lst)
 	while (*lst)
 	{
 		tmp = (*lst)->next;
-		ft_lstdelone(*lst);
+		free(*lst);
 		*lst = tmp;
 	}
 	*lst = NULL;
