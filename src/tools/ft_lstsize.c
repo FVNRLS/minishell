@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initializer.c                                      :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/06 19:34:46 by rmazurit         ###   ########.fr       */
+/*   Created: 2022/09/07 13:40:56 by rmazurit          #+#    #+#             */
+/*   Updated: 2022/09/07 13:41:18 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/minishell.h"
+#include "../../incl/minishell.h"
 
-static void	init_flags(t_data *data)
+/* is the number of nodes in a list. lst: The beginning of the list.
+in the end add 1 to the size because of last element next=NULL
+The length of the list */
+
+int	ft_lstsize(t_envp *lst)
 {
-	data->exit_minishell = false;
-	data->status = 0;
-}
+	int	i;
 
-static void	init_pointers(t_data *data)
-{
-
-}
-
-//init builtin names and functions
-static void	init_builtins(t_data *data)
-{
-
-}
-
-static void	init_envp(t_data *data)
-{
-
-}
-
-
-void	init(t_data *data)
-{
-	init_flags(data);
-	init_pointers(data);
-	init_builtins(data);
-	init_envp(data);
+	i = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

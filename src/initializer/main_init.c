@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initializer.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
+/*   Updated: 2022/09/07 11:54:17 by rmazurit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../incl/minishell.h"
+
+static void	init_flags(t_data *data)
+{
+	data->exit_minishell = false;
+	data->error = false;
+	data->status = 0;
+}
+
+static void	init_containers(t_data *data)
+{
+	data->lst_cmd = NULL;
+}
+
+
+//init builtin names and functions
+static void	init_builtins(t_data *data)
+{
+
+}
+
+
+void	init_shell_env(t_data *data, char **envp)
+{
+	init_flags(data);
+	init_containers(data);
+	init_envp(data, envp);
+	init_builtins(data);
+}

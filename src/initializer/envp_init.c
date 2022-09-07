@@ -1,0 +1,109 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   envp_init.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/07 11:53:00 by rmazurit          #+#    #+#             */
+/*   Updated: 2022/09/07 17:41:44 by rmazurit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../incl/minishell.h"
+
+static	void free_all_nodes(t_data *data)
+{
+	ft_lstclear(&data->envp);
+	data->envp = NULL;
+}
+
+static char	*get_value(char *str)
+{
+	int		i;
+	int		offset;
+	int 	len;
+	char	*val;
+
+	val = NULL;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '=')
+			offset = i + 1;
+		i++;
+	}
+	len = i - offset;
+	val = ft_calloc(len + 1, sizeof(char));
+	if (!val)
+		return (NULL);
+	i = 0;
+	while (str[offset] != '\0')
+	{
+		val[i] = str[offset];
+		i++;
+		offset++;
+	}
+	val[i] = '\0';
+	return (val);
+}
+
+
+static char	*get_key(char *str)
+{
+	int		i;
+	char	*key;
+
+	key = NULL;
+	i = 0;
+	while (str[i] != '=')
+		i++;
+	key = ft_calloc(i + 1, sizeof(char));
+	if (!key)
+		return (NULL);
+	i = 0;
+	while (str[i] != '=')
+	{
+		key[i] = str[i];
+		i++;
+	}
+	key[i] = '\0';
+	return (key);
+}
+
+static void	get_envp(t_data *data, char *str, char **key, char **val)
+{
+	*key = get_key(str);
+	if (!*key)
+	{
+		free_all_nodes(data);
+		exit(EXIT_FAILURE);
+	}
+	*val = get_value(str);
+	if (!*val)
+	{
+		free(*key);
+		free_all_nodes(data);
+		exit(EXIT_FAILURE);
+	}
+}
+
+void	init_envp(t_data *data, char **env)
+{
+	t_envp 	*tmp;
+	int 	i;
+	char	*key;
+	char	*val;
+
+	tmp = NULL;
+	i= 0;
+	while (env[i] != NULL)
+	{
+		get_envp(data, env[i], &key, &val);
+		tmp = ft_new_node(key, val);
+//		printf("%s=%s\n", tmp->key, tmp->val);
+		ft_add_back(&data->envp, tmp);
+		i++;
+	}
+	print_envp(data);
+}
