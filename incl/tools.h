@@ -24,5 +24,7 @@ void	ft_lstclear(t_envp **lst);
 void	ft_lstdelone(t_envp *lst);
 t_envp	*ft_new_node(char *key, char *value);
 int		ft_lstsize(t_envp *lst);
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *s1);
 
 #endif

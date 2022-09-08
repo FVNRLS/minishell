@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initializer.c                                      :+:      :+:    :+:   */
+/*   main_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/07 11:54:17 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/08 13:41:24 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ static void	init_flags(t_data *data)
 static void	init_containers(t_data *data)
 {
 	data->lst_cmd = NULL;
+	data->tokens = NULL;
 }
-
 
 //init builtin names and functions
 static void	init_builtins(t_data *data)
 {
-
+	init_builtin_names(data);
+	init_builtin_functions(data);
 }
 
 

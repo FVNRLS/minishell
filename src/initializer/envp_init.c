@@ -6,17 +6,11 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 11:53:00 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/07 17:41:44 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:32:17 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
-
-static	void free_all_nodes(t_data *data)
-{
-	ft_lstclear(&data->envp);
-	data->envp = NULL;
-}
 
 static char	*get_value(char *str)
 {
@@ -39,11 +33,7 @@ static char	*get_value(char *str)
 		return (NULL);
 	i = 0;
 	while (str[offset] != '\0')
-	{
-		val[i] = str[offset];
-		i++;
-		offset++;
-	}
+		val[i++] = str[offset++];
 	val[i] = '\0';
 	return (val);
 }
@@ -76,14 +66,14 @@ static void	get_envp(t_data *data, char *str, char **key, char **val)
 	*key = get_key(str);
 	if (!*key)
 	{
-		free_all_nodes(data);
+		free_envp(data);
 		exit(EXIT_FAILURE);
 	}
 	*val = get_value(str);
 	if (!*val)
 	{
 		free(*key);
-		free_all_nodes(data);
+		free_envp(data);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -101,9 +91,12 @@ void	init_envp(t_data *data, char **env)
 	{
 		get_envp(data, env[i], &key, &val);
 		tmp = ft_new_node(key, val);
-//		printf("%s=%s\n", tmp->key, tmp->val);
+		if (!tmp)
+		{
+			free_envp(data);
+			exit(EXIT_FAILURE);
+		}
 		ft_add_back(&data->envp, tmp);
 		i++;
 	}
-	print_envp(data);
 }

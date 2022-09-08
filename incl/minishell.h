@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/07 12:35:46 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/08 13:17:02 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <termios.h>
 
 # include "structs.h"
+# include "builtins.h"
 # include "errors.h"
 # include "tools.h"
 
@@ -43,12 +44,12 @@
 //INITIALIZER:
 void	init_shell_env(t_data *data, char **envp);
 void	init_envp(t_data *data, char **envp);
+void	init_builtin_names(t_data *data);
+void	init_builtin_functions(t_data *data);
 
 //DESTRUCTOR:
+void	free_envp(t_data *data);
+void	free_builtins(t_data *data);
 void	free_all_ressources(t_data *data);
-
-//PRINTER
-void	print_envp(t_data *data);
-
 
 #endif

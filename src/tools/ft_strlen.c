@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printer.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 17:41:46 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/07 17:41:47 by rmazurit         ###   ########.fr       */
+/*   Created: 2022/09/07 19:08:32 by rmazurit          #+#    #+#             */
+/*   Updated: 2022/09/07 19:08:42 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/minishell.h"
+#include "../../incl/minishell.h"
 
-void	print_envp(t_data *data)
+/* The strlen() function takes a string as an argument and returns its length.
+The returned value is of type size_t (the unsigned integer type).*/
+
+size_t	ft_strlen(const char *s)
 {
-	t_envp	*tmp;
+	size_t	i;
 
-	tmp = data->envp;
-	while (tmp != NULL)
-	{
-		printf("%s=%s\n", tmp->key, tmp->val);
-		tmp = tmp->next;
-	}
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
+
