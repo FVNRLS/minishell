@@ -13,6 +13,8 @@
 #include "../../incl/minishell.h"
 
 
+//TODO: add a global var i counter?
+
 void	create_token(t_data *data, int start, int end)
 {
 
