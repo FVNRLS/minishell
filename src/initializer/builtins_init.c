@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 18:49:07 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/08 13:52:36 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/08 15:03:34 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	init_builtin_names(t_data *data)
 	}
 }
 
-//TODO: INiT LATER!
+//TODO: INiT LATER when Julian is finished with the builtins!
 //call like this: data->builtins->funcs[5](data);
 void	init_builtin_functions(t_data *data)
 {

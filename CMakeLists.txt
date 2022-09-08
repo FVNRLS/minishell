@@ -8,6 +8,7 @@ add_executable(minishell main.c
         #INITIALIZER/DESTRUCTOR:
         src/initializer/main_init.c
         src/initializer/envp_init.c
+        src/initializer/builtins_init.c
         src/destructor.c
 
 
@@ -19,9 +20,13 @@ add_executable(minishell main.c
         src/tools/ft_add_front.c
         src/tools/ft_lstclear.c
         src/tools/ft_lstsize.c
-
-        #PRINTER:
-        builtins/env.c
-        src/initializer/builtins_init.c
         src/tools/ft_strdup.c
-        src/tools/ft_strlen.c incl/builtins.h)
+        src/tools/ft_strlen.c
+
+        #BUILTINS:
+        builtins/env.c
+
+        #HISTORY
+        src/history_tracker.c
+
+        )

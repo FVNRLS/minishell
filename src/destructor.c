@@ -45,6 +45,6 @@ void	free_envp(t_data *data)
 
 void	free_all_ressources(t_data *data)
 {
-	free_envp(data);
 	free_builtins(data);
+	free_envp(data);
 }

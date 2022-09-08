@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/08 13:17:02 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/08 15:01:56 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 # include <sys/stat.h>
 # include <termios.h>
 
-# include "structs.h"
 # include "builtins.h"
 # include "errors.h"
+# include "structs.h"
 # include "tools.h"
 
 //TOKEN FLAGS:
@@ -51,5 +51,8 @@ void	init_builtin_functions(t_data *data);
 void	free_envp(t_data *data);
 void	free_builtins(t_data *data);
 void	free_all_ressources(t_data *data);
+
+//HISTORY TRACKER
+void	track_history(t_data *data);
 
 #endif

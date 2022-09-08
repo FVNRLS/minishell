@@ -67,6 +67,12 @@ build CMakeFiles/minishell.dir/src/initializer/envp_init.c.o: C_COMPILER__minish
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/initializer
 
+build CMakeFiles/minishell.dir/src/initializer/builtins_init.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/initializer/builtins_init.c || cmake_object_order_depends_target_minishell
+  DEP_FILE = CMakeFiles/minishell.dir/src/initializer/builtins_init.c.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
+  OBJECT_DIR = CMakeFiles/minishell.dir
+  OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/initializer
+
 build CMakeFiles/minishell.dir/src/destructor.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/destructor.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/destructor.c.o.d
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
@@ -115,18 +121,6 @@ build CMakeFiles/minishell.dir/src/tools/ft_lstsize.c.o: C_COMPILER__minishell_D
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
-build CMakeFiles/minishell.dir/builtins/env.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/builtins/env.c || cmake_object_order_depends_target_minishell
-  DEP_FILE = CMakeFiles/minishell.dir/builtins/env.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
-  OBJECT_DIR = CMakeFiles/minishell.dir
-  OBJECT_FILE_DIR = CMakeFiles/minishell.dir/builtins
-
-build CMakeFiles/minishell.dir/src/initializer/builtins_init.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/initializer/builtins_init.c || cmake_object_order_depends_target_minishell
-  DEP_FILE = CMakeFiles/minishell.dir/src/initializer/builtins_init.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
-  OBJECT_DIR = CMakeFiles/minishell.dir
-  OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/initializer
-
 build CMakeFiles/minishell.dir/src/tools/ft_strdup.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_strdup.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_strdup.c.o.d
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
@@ -139,6 +133,18 @@ build CMakeFiles/minishell.dir/src/tools/ft_strlen.c.o: C_COMPILER__minishell_De
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
+build CMakeFiles/minishell.dir/builtins/env.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/builtins/env.c || cmake_object_order_depends_target_minishell
+  DEP_FILE = CMakeFiles/minishell.dir/builtins/env.c.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
+  OBJECT_DIR = CMakeFiles/minishell.dir
+  OBJECT_FILE_DIR = CMakeFiles/minishell.dir/builtins
+
+build CMakeFiles/minishell.dir/src/history_tracker.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/history_tracker.c || cmake_object_order_depends_target_minishell
+  DEP_FILE = CMakeFiles/minishell.dir/src/history_tracker.c.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
+  OBJECT_DIR = CMakeFiles/minishell.dir
+  OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target minishell
@@ -147,7 +153,7 @@ build CMakeFiles/minishell.dir/src/tools/ft_strlen.c.o: C_COMPILER__minishell_De
 #############################################
 # Link the executable minishell
 
-build minishell: C_EXECUTABLE_LINKER__minishell_Debug CMakeFiles/minishell.dir/main.c.o CMakeFiles/minishell.dir/src/initializer/main_init.c.o CMakeFiles/minishell.dir/src/initializer/envp_init.c.o CMakeFiles/minishell.dir/src/destructor.c.o CMakeFiles/minishell.dir/src/tools/ft_calloc.c.o CMakeFiles/minishell.dir/src/tools/ft_bzero.c.o CMakeFiles/minishell.dir/src/tools/ft_new_node.c.o CMakeFiles/minishell.dir/src/tools/ft_add_back.c.o CMakeFiles/minishell.dir/src/tools/ft_add_front.c.o CMakeFiles/minishell.dir/src/tools/ft_lstclear.c.o CMakeFiles/minishell.dir/src/tools/ft_lstsize.c.o CMakeFiles/minishell.dir/builtins/env.c.o CMakeFiles/minishell.dir/src/initializer/builtins_init.c.o CMakeFiles/minishell.dir/src/tools/ft_strdup.c.o CMakeFiles/minishell.dir/src/tools/ft_strlen.c.o
+build minishell: C_EXECUTABLE_LINKER__minishell_Debug CMakeFiles/minishell.dir/main.c.o CMakeFiles/minishell.dir/src/initializer/main_init.c.o CMakeFiles/minishell.dir/src/initializer/envp_init.c.o CMakeFiles/minishell.dir/src/initializer/builtins_init.c.o CMakeFiles/minishell.dir/src/destructor.c.o CMakeFiles/minishell.dir/src/tools/ft_calloc.c.o CMakeFiles/minishell.dir/src/tools/ft_bzero.c.o CMakeFiles/minishell.dir/src/tools/ft_new_node.c.o CMakeFiles/minishell.dir/src/tools/ft_add_back.c.o CMakeFiles/minishell.dir/src/tools/ft_add_front.c.o CMakeFiles/minishell.dir/src/tools/ft_lstclear.c.o CMakeFiles/minishell.dir/src/tools/ft_lstsize.c.o CMakeFiles/minishell.dir/src/tools/ft_strdup.c.o CMakeFiles/minishell.dir/src/tools/ft_strlen.c.o CMakeFiles/minishell.dir/builtins/env.c.o CMakeFiles/minishell.dir/src/history_tracker.c.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk
   OBJECT_DIR = CMakeFiles/minishell.dir
   POST_BUILD = :

@@ -21,11 +21,11 @@ static void	init_flags(t_data *data)
 
 static void	init_containers(t_data *data)
 {
-	data->lst_cmd = NULL;
+	data->input = NULL;
 	data->tokens = NULL;
 }
 
-//init builtin names and functions
+//init builtin names and connect them to the builtin functions
 static void	init_builtins(t_data *data)
 {
 	init_builtin_names(data);

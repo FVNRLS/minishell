@@ -42,7 +42,7 @@ typedef struct s_builtins
 typedef struct s_data
 {
 	t_builtins	*builtins;
-	char 		*lst_cmd;
+	char 		*input;
 	t_envp		*envp; // linked list - contains all environments
 	t_tokens	*tokens; //linked list with tokens
 
