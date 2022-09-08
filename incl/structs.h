@@ -44,7 +44,7 @@ typedef struct s_data
 	t_builtins	*builtins;
 	char 		*input;
 	t_envp		*envp; // linked list - contains all environments
-	t_token	*token; //linked list with tokens
+	t_token		*tokens; //linked list with tokens
 
 	bool		error;
 	bool		exit_minishell;

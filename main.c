@@ -42,8 +42,3 @@ int	main(int argc, char **argv, char **envp)
 
 
 
-
-//TODO: free malloced objects:
-// 1) envps
-
-

@@ -13,33 +13,25 @@
 #include "../../incl/minishell.h"
 
 
-void	create_tokens(t_data *data)
+void	create_token(t_data *data, int start, int end)
 {
 
 
 }
 
-bool	check_quotes(t_data *data)
+int	find_closing_quote(t_data *data, int quote_start)
 {
-	int 	single_quotes;
-	int 	double_quotes;
 	int 	i;
-	char 	c;
+	char	c;
 
-	single_quotes = 0;
-	double_quotes = 0;
-	i = 0;
+	i = quote_start + 1;
 	while (data->input[i] != '\0')
 	{
 		c = data->input[i];
-		if (ft_strcmp(&c, "\'") == 0)
-			single_quotes++;
-		if (ft_strcmp(&c, "\"") == 0)
-			double_quotes++;
+		if (c == SINGLE_QUOTE)
+			return (i);
 	}
-	if (single_quotes % 2 != 0 || double_quotes % 2 != 0)
-		return (false);
-	return (true);
+	return (0);
 }
 
 //TODO : continue!
@@ -47,26 +39,32 @@ bool	check_quotes(t_data *data)
 void	lex_input(t_data *data)
 {
 	int 	i;
+	int 	quote_end;
 	char 	c;
-	bool	all_quotes_closed;
+	char 	*buf;
+	bool	quotes_closed;
 
-	all_quotes_closed = check_quotes(data);
-	if (all_quotes_closed == true)
+	buf = NULL;
+	i = 0;
+	while (data->input[i] != '\0')
 	{
-		i = 0;
-		while (data->input[i] != '\0')
+		quotes_closed = false;
+		c = data->input[i];
+		if (c == DELIMITER)
+			i++;
+		else if (c == SINGLE_QUOTE)
 		{
-			c = data->input[i];
-			if (ft_strcmp(&c, DELIMITER) == 0)
-				i++;
+			quote_end = find_closing_quote(data, i);
+			if (quote_end == 0)
+			{
+				free_all_ressources(data);
+				exit(EXIT_FAILURE);
+			}
+			create_token(data, i, quote_end);
+			i = quote_end;
 		}
-	}
-	else
-		exit(EXIT_FAILURE);
 
+	}
 	free(data->input);
 	data->input = NULL;
 }
-
-
-

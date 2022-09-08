@@ -14,7 +14,7 @@
 # define MINISHELL_H
 
 # include <stdio.h>
-# include "stdlib.h"
+# include <stdlib.h>
 # include <stdbool.h>
 # include <signal.h>
 # include <readline/readline.h>
@@ -30,7 +30,13 @@
 # include "structs.h"
 # include "tools.h"
 
-# define DELIMITER			" "
+# ifndef SIZE_MAX
+#  define SIZE_MAX __SIZE_MAX__
+# endif
+
+# define DELIMITER			' '
+# define SINGLE_QUOTE		'\''
+# define DOUBLE_QUOTE		'\"'
 
 //TOKEN FLAGS:
 //if TOKEN == WORD/FIELD/EXPANDABLE_FIELD -> expand!
@@ -48,6 +54,7 @@ void	init_builtin_names(t_data *data);
 void	init_builtin_functions(t_data *data);
 
 //DESTRUCTOR:
+void	free_tokens(t_data *data);
 void	free_envp(t_data *data);
 void	free_builtins(t_data *data);
 void	free_all_ressources(t_data *data);
