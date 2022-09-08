@@ -22,7 +22,7 @@ static void	init_flags(t_data *data)
 static void	init_containers(t_data *data)
 {
 	data->input = NULL;
-	data->token = NULL;
+	data->tokens = NULL;
 }
 
 //init builtin names and connect them to the builtin functions
