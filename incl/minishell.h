@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/08 15:01:56 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:25:36 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@
 # include "structs.h"
 # include "tools.h"
 
+# define DELIMITER			" "
+
 //TOKEN FLAGS:
 //if TOKEN == WORD/FIELD/EXPANDABLE_FIELD -> expand!
 # define WORD				1 // also commands: eg. echo, @, .
-# define FIELD				2 // single quotes
-# define EXPANDABLE_FIELD	3 // double quotes to split (?)
-# define REDIRECT_IN		4 // file <
-# define REDIRECT_OUT		5 // file >
-# define APPEND_IN			6 // file >
-# define REDIRECT_FROM_SRC	7 // read from here_doc file
-# define PIPE				8 // |
+# define REDIRECT_IN		2 // file <
+# define REDIRECT_OUT		3 // file >
+# define APPEND_IN			4 // file >
+# define REDIRECT_FROM_SRC	5 // read from here_doc file
+# define PIPE				6 // |
 
 //INITIALIZER:
 void	init_shell_env(t_data *data, char **envp);
@@ -54,5 +54,9 @@ void	free_all_ressources(t_data *data);
 
 //HISTORY TRACKER
 void	track_history(t_data *data);
+
+//LEXER:
+void	lex_input(t_data *data);
+
 
 #endif

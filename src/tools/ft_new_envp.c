@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   history_tracker.c                                  :+:      :+:    :+:   */
+/*   ft_new_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 15:07:45 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/08 19:25:36 by rmazurit         ###   ########.fr       */
+/*   Created: 2022/09/07 12:27:39 by rmazurit          #+#    #+#             */
+/*   Updated: 2022/09/08 18:36:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/minishell.h"
+#include "../../incl/minishell.h"
 
-void	track_history(t_data *data)
+t_envp	*ft_new_envp(char *key, char *value)
 {
-	data->input = readline("minishell % ");
-	add_history(data->input);
+	t_envp	*new;
+
+	new = malloc(sizeof(t_envp));
+	if (!new)
+		return (NULL);
+	new->key = key;
+	new->val = value;
+	new->next = NULL;
+	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:40:53 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/08 12:47:53 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/08 15:07:43 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_builtins(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < NUM_BUILTINS && data->builtins->names[i])
+	while (i < NUM_BUILTINS)
 	{
 		free(data->builtins->names[i]);
 		data->builtins->names[i] = NULL;

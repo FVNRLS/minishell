@@ -90,7 +90,7 @@ void	init_envp(t_data *data, char **env)
 	while (env[i] != NULL)
 	{
 		get_envp(data, env[i], &key, &val);
-		tmp = ft_new_node(key, val);
+		tmp = ft_new_envp(key, val);
 		if (!tmp)
 		{
 			free_envp(data);

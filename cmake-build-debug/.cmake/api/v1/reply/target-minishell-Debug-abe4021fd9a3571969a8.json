@@ -31,7 +31,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 36,
+				"line" : 39,
 				"parent" : 0
 			}
 		]
@@ -74,7 +74,10 @@
 				12,
 				13,
 				14,
-				15
+				15,
+				16,
+				17,
+				18
 			]
 		}
 	],
@@ -127,14 +130,10 @@
 				12,
 				13,
 				14,
-				15
-			]
-		},
-		{
-			"name" : "",
-			"sourceIndexes" : 
-			[
-				16
+				15,
+				16,
+				17,
+				18
 			]
 		}
 	],
@@ -185,7 +184,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/tools/ft_new_node.c",
+			"path" : "src/tools/ft_new_envp.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/tools/ft_new_token.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -227,6 +232,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "src/tools/ft_strcmp.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "builtins/env.c",
 			"sourceGroupIndex" : 0
 		},
@@ -238,8 +249,9 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src",
-			"sourceGroupIndex" : 1
+			"compileGroupIndex" : 0,
+			"path" : "src/lexer/lexer.c",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"

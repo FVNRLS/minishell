@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/08 17:10:05 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:27:39 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int	main(int argc, char **argv, char **envp)
 	while (data.exit_minishell == false)
 	{
 		track_history(&data);
-//		lexer();
+		lex_input(&data);
 //		parser();
 //		exec();
 //		data.exit_minishell = true; //del!
-		check_leaks();
+//		check_leaks();
 	}
 	free_all_ressources(&data);
 	atexit(check_leaks);

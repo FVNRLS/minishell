@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/08 13:13:42 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/08 18:22:18 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 # define NUM_BUILTINS	7
 
-typedef struct s_tokens //linked tokens
+typedef struct s_token //linked tokens
 {
-	char			*name;
+	char			*content;
 	int				flag; //?
-	struct s_tokens	*next;
-}		t_tokens;
+	struct s_token	*next;
+}		t_token;
 
 typedef struct s_envp
 {
@@ -44,7 +44,7 @@ typedef struct s_data
 	t_builtins	*builtins;
 	char 		*input;
 	t_envp		*envp; // linked list - contains all environments
-	t_tokens	*tokens; //linked list with tokens
+	t_token	*token; //linked list with tokens
 
 	bool		error;
 	bool		exit_minishell;

@@ -6,7 +6,7 @@
 #    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/08 16:41:16 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/09/08 18:40:17 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,12 @@ SRC 		= 	main.c 								\
 				src/destructor.c					\
 				builtins/env.c						\
 				src/history_tracker.c				\
+				src/lexer/lexer.c					\
 
 TOOLS_SRC	= 	src/tools/ft_calloc.c				\
 				src/tools/ft_bzero.c				\
-				src/tools/ft_new_node.c				\
+				src/tools/ft_new_envp.c				\
+				src/tools/ft_new_token.c			\
 				src/tools/ft_add_back.c				\
 				src/tools/ft_add_front.c			\
 				src/tools/ft_lstclear.c				\
