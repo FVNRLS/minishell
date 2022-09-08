@@ -3,6 +3,7 @@ project(minishell C)
 
 set(CMAKE_C_STANDARD 99)
 
+
 add_executable(minishell main.c
 
         #INITIALIZER/DESTRUCTOR:
@@ -29,4 +30,8 @@ add_executable(minishell main.c
         #HISTORY
         src/history_tracker.c
 
+        src/initializer/
         )
+
+target_link_libraries(minishell edit)
+

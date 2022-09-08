@@ -6,7 +6,7 @@
 #    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/08 16:01:33 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/09/08 16:41:16 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC 			= 	cc
 
 RM 			= 	rm -f
 
-FLAGS 		= 	-Wall -Wextra -Werror
+FLAGS 		= 	-Wall -Wextra -Werror -g
 
 SRC 		= 	main.c 								\
 				src/initializer/main_init.c			\

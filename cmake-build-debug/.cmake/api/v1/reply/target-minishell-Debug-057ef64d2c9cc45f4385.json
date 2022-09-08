@@ -10,7 +10,8 @@
 	{
 		"commands" : 
 		[
-			"add_executable"
+			"add_executable",
+			"target_link_libraries"
 		],
 		"files" : 
 		[
@@ -24,7 +25,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 36,
 				"parent" : 0
 			}
 		]
@@ -83,6 +90,11 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-ledit",
+				"role" : "libraries"
 			}
 		],
 		"language" : "C"
@@ -116,6 +128,13 @@
 				13,
 				14,
 				15
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				16
 			]
 		}
 	],
@@ -216,6 +235,11 @@
 			"compileGroupIndex" : 0,
 			"path" : "src/history_tracker.c",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"
