@@ -17,20 +17,17 @@ char	*ft_join_char(char *buf, char c)
 	int		i;
 	char	*join;
 
-	if (!buf)
-	{
-		buf = ft_calloc(1, sizeof(char));
-		if (!buf)
-			return (NULL);
-	}
 	join = malloc(sizeof(char) * (ft_strlen(buf) + 2));
 	if (!join)
 		return (NULL);
 	i = 0;
-	while (buf[i] != '\0')
+	if (buf != NULL)
 	{
-		join[i] = buf[i];
-		i++;
+		while (buf[i] != '\0')
+		{
+			join[i] = buf[i];
+			i++;
+		}
 	}
 	join[i] = c;
 	i++;

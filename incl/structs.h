@@ -44,6 +44,7 @@ typedef struct s_lex
 	int 		i;
 	char 		c;
 	char 		*buf;
+	int 		flag;
 }		t_lex;
 
 

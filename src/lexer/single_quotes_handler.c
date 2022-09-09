@@ -35,6 +35,7 @@ void	handle_single_quotes(t_data *data, t_lex *lex)
 	quote_closed = check_single_quotes(data, lex);
 	if (quote_closed == false)
 		exit_with_free(data);
+	lex->flag = WORD;
 	lex->i++;
 	while (data->input[lex->i] != SINGLE_QUOTE && data->input[lex->i] != '\0')
 	{

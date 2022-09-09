@@ -37,7 +37,6 @@
 # define DELIMITER			' '
 # define SINGLE_QUOTE		'\''
 # define DOUBLE_QUOTE		'\"'
-# define REDIRECTIONS		{"<",">","<<",">>","|"}
 
 //TOKEN FLAGS:
 //if TOKEN == WORD/FIELD/EXPANDABLE_FIELD -> expand!
@@ -67,8 +66,10 @@ void	track_history(t_data *data);
 //LEXER:
 void	lex_input(t_data *data);
 void	create_tokens(t_data *data, t_lex *lex);
+void	add_token(t_data *data, t_lex *lex);
 void	handle_single_quotes(t_data *data, t_lex *lex);
-
+bool	find_redirections(t_lex *lex);
+void	handle_redirections(t_data *data, t_lex *lex);
 
 
 //TODO: delete before submission!

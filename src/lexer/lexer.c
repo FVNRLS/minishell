@@ -20,6 +20,7 @@ void	init_lex(t_lex *lex)
 	lex->i = 0;
 	lex->c = 0;
 	lex->buf = NULL;
+	lex->flag = 0;
 }
 
 // lexical analyzer program. creates tokens list
