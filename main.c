@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/09 12:25:58 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/09 19:33:48 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ int	main(int argc, char **argv, char **envp)
 	{
 		track_history(&data);
 		lex_input(&data);
+		print_tokens(&data);
 //		parser();
 //		exec();
-//		data.exit_minishell = true; //del!
 //		check_leaks();
+		free_tokens(&data);
 	}
 	free_all_ressources(&data);
 	atexit(check_leaks);

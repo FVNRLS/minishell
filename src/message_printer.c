@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   message_printer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 13:33:54 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/07 13:34:08 by rmazurit         ###   ########.fr       */
+/*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
+/*   Updated: 2022/09/09 19:14:05 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incl/minishell.h"
+#include "../incl/minishell.h"
 
-/*
-	Add the node to the end of the stack.
-	If the list doesn't exist yet, initialize the list with the node,
-	so the node becomes the first element of the stack.
-*/
-void	ft_add_back(t_envp **lst, t_envp *new)
+//TODO: delete before submission!
+void	print_tokens(t_data *data)
 {
-	t_envp	*tmp;
+	t_token	*tmp;
+	int 	i;
 
-	if (!new)
-		return ;
-	if (!*lst)
+	tmp = data->tokens;
+	i = 1;
+	while (tmp != NULL)
 	{
-		*lst = new;
-		return ;
-	}
-	tmp = *lst;
-	while (tmp->next != NULL)
+		printf("Token: %d	| 	content: %s	|	flag: %d\n", i, tmp->content, tmp->flag);
 		tmp = tmp->next;
-	tmp->next = new;
+		i++;
+	}
 }

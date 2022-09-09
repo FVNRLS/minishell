@@ -17,14 +17,15 @@ add_executable(minishell main.c
         src/tools/ft_bzero.c
         src/tools/ft_new_envp.c
         src/tools/ft_new_token.c
-        src/tools/ft_add_back.c
-        src/tools/ft_add_front.c
+        src/tools/ft_add_envp_back.c
         src/tools/ft_lstclear.c
         src/tools/ft_lstsize.c
         src/tools/ft_strdup.c
         src/tools/ft_strlen.c
         src/tools/ft_strcmp.c
         src/tools/ft_join_char.c
+        src/tools/ft_strtrim.c
+        src/tools/ft_add_token_back.c
 
         #BUILTINS:
         builtins/env.c
@@ -34,7 +35,12 @@ add_executable(minishell main.c
 
         #LEXER
         src/lexer/lexer.c
-   )
+        src/lexer/tokenizer.c
+        src/lexer/single_quotes_handler.c
+
+        #MESSAGE PRINTER
+        src/message_printer.c
+        src/lexer/redirections_handler.c)
 
 target_link_libraries(minishell edit)
 

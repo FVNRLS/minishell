@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:40:53 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/08 15:07:43 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/09 19:17:27 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	free_tokens(t_data *data)
 		tmp->content = NULL;
 		tmp = tmp->next;
 	}
+	free(data->tokens);
+	data->tokens = NULL;
 }
 
 void	free_builtins(t_data *data)
@@ -61,4 +63,10 @@ void	free_all_ressources(t_data *data)
 	free_builtins(data);
 	free_envp(data);
 	free_tokens(data);
+}
+
+void	exit_with_free(t_data *data)
+{
+	free_all_ressources(data);
+	exit(EXIT_FAILURE);
 }

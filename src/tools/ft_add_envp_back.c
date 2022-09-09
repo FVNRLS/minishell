@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 13:36:14 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/07 13:36:18 by rmazurit         ###   ########.fr       */
+/*   Created: 2022/09/07 13:33:54 by rmazurit          #+#    #+#             */
+/*   Updated: 2022/09/07 13:34:08 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Adds the node ’new’ at the beginning of the list.
-lst: The address of a pointer to the first link of a list.
-new: The address of a pointer to the node to be added to the list.
-If there is no link lst to the list, then create one!
-new->next = *lst adds the 'new' node as the new element
-No return value */
-
 #include "../../incl/minishell.h"
 
-void	ft_add_front(t_envp **lst, t_envp *new)
+/*
+	Add the node to the end of the stack.
+	If the list doesn't exist yet, initialize the list with the node,
+	so the node becomes the first element of the stack.
+*/
+void	ft_add_envp_back(t_envp **lst, t_envp *new)
 {
+	t_envp	*tmp;
+
 	if (!new)
 		return ;
-	if (!lst)
+	if (!*lst)
 	{
 		*lst = new;
 		return ;
 	}
-	new->next = *lst;
-	*lst = new;
+	tmp = *lst;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = new;
 }
