@@ -26,7 +26,7 @@ add_executable(minishell main.c
         src/tools/ft_strlen.c
         src/tools/ft_strcmp.c
 
-#BUILTINS:
+        #BUILTINS:
         builtins/env.c
 
         #HISTORY
@@ -34,7 +34,7 @@ add_executable(minishell main.c
 
         #LEXER
         src/lexer/lexer.c
-      )
+        )
 
 target_link_libraries(minishell edit)
 
