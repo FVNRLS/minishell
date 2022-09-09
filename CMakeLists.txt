@@ -12,7 +12,6 @@ add_executable(minishell main.c
         src/initializer/builtins_init.c
         src/destructor.c
 
-
         #TOOLS:
         src/tools/ft_calloc.c
         src/tools/ft_bzero.c
@@ -25,6 +24,7 @@ add_executable(minishell main.c
         src/tools/ft_strdup.c
         src/tools/ft_strlen.c
         src/tools/ft_strcmp.c
+        src/tools/ft_join_char.c
 
         #BUILTINS:
         builtins/env.c
@@ -34,7 +34,7 @@ add_executable(minishell main.c
 
         #LEXER
         src/lexer/lexer.c
-        )
+   )
 
 target_link_libraries(minishell edit)
 

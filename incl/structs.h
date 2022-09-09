@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/08 18:22:18 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:34:51 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,20 @@ typedef struct s_builtins
 }		t_builtins;
 
 
+typedef struct s_lex
+{
+	int 		i;
+	char 		c;
+	char 		*buf;
+}		t_lex;
+
+
 typedef struct s_data
 {
 	t_builtins	*builtins;
 	char 		*input;
 	t_envp		*envp; // linked list - contains all environments
 	t_token		*tokens; //linked list with tokens
-
 	bool		error;
 	bool		exit_minishell;
 	int			status; //catch signal exit codes and process execution

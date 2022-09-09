@@ -1,13 +1,4 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S /Users/rmazurit/Documents/42_Projects/minishell -B /Users/rmazurit/Documents/42_Projects/minishell/cmake-build-debug
 -- Configuring done
-CMake Error at CMakeLists.txt:7 (add_executable):
-  Cannot find source file:
-
-    main.c
-
-
-CMake Error at CMakeLists.txt:7 (add_executable):
-  No SOURCES given to target: minishell
-
-
-CMake Generate step failed.  Build files cannot be regenerated correctly.
+-- Generating done
+-- Build files have been written to: /Users/rmazurit/Documents/42_Projects/minishell/cmake-build-debug

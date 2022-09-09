@@ -6,67 +6,82 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 18:32:05 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/08 19:57:36 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:28:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+//TODO : continue!
+// add expandable field processing with $
 
-//TODO: add a global var i counter?
-
-void	create_token(t_data *data, int start, int end)
+void	init_lex(t_lex *lex)
 {
-
-
+	lex->i = 0;
+	lex->c = 0;
+	lex->buf = NULL;
 }
 
-int	find_closing_quote(t_data *data, int quote_start)
+
+bool	check_single_quotes(t_data *data, t_lex *lex)
 {
 	int 	i;
 	char	c;
 
-	i = quote_start + 1;
+	i = lex->i + 1;
 	while (data->input[i] != '\0')
 	{
 		c = data->input[i];
 		if (c == SINGLE_QUOTE)
-			return (i);
+			return (true);
+		i++;
 	}
-	return (0);
+	return (false);
 }
 
-//TODO : continue!
+void	handle_single_quotes(t_data *data, t_lex *lex)
+{
+	bool	quote_closed;
+
+	quote_closed = check_single_quotes(data, lex);
+	if (quote_closed == false)
+	{
+		free_all_ressources(data);
+		exit(EXIT_FAILURE);
+	}
+	lex->i++;
+	while (data->input[lex->i] != SINGLE_QUOTE && data->input[lex->i] != '\0')
+	{
+		lex->c = data->input[lex->i];
+		lex->buf = ft_join_char(lex->buf, lex->c);
+		lex->i++;
+	}
+	lex->i++;
+}
+
+void	create_tokens(t_data *data, t_lex *lex)
+{
+	lex->c = data->input[lex->i];
+	if (data->input[lex->i] == DELIMITER)
+		lex->i++;
+	else if (lex->c != SINGLE_QUOTE && lex->c != DOUBLE_QUOTE)
+	{
+		lex->buf = ft_join_char(lex->buf, lex->c);
+		lex->i++;
+	}
+	else if (lex->c == SINGLE_QUOTE)
+		handle_single_quotes(data, lex);
+}
+
 // lexical analyzer program. creates tokens list
 void	lex_input(t_data *data)
 {
-	int 	i;
-	int 	quote_end;
-	char 	c;
-	char 	*buf;
-	bool	quotes_closed;
+	t_lex	lex;
 
-	buf = NULL;
-	i = 0;
-	while (data->input[i] != '\0')
-	{
-		quotes_closed = false;
-		c = data->input[i];
-		if (c == DELIMITER)
-			i++;
-		else if (c == SINGLE_QUOTE)
-		{
-			quote_end = find_closing_quote(data, i);
-			if (quote_end == 0)
-			{
-				free_all_ressources(data);
-				exit(EXIT_FAILURE);
-			}
-			create_token(data, i, quote_end);
-			i = quote_end;
-		}
-
-	}
+	init_lex(&lex);
+	while (data->input[lex.i] != '\0')
+		create_tokens(data, &lex);
+	printf("buffer: %s\n", lex.buf);
 	free(data->input);
 	data->input = NULL;
 }
