@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:54:52 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/09 19:56:23 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/10 14:23:50 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,7 @@ void	handle_redirections(t_data *data, t_lex *lex)
 		lex_redirect_out(data, lex);
 	else
 		lex_pipe(lex);
-	if (data->input[lex->i + 1] == DELIMITER)
-		return ;
-	else
-		add_token(data, lex);
+	add_token(data, lex);
 }
 
 bool	find_redirections(t_lex *lex)

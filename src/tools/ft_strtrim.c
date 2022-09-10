@@ -31,7 +31,7 @@ char	*ft_strtrim(char *str, char delim)
 	start = 0;
 	while ((str[start] != '\0') && (str[start] == delim))
 		start++;
-	end = ft_strlen(str);
+	end = (int)ft_strlen(str);
 	while ((end > start) && (str[end] == delim))
 		end--;
 	trim = malloc(sizeof(char) * (end - start + 1));

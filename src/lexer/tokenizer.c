@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/10 14:24:35 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/10 17:08:46 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ void	handle_words(t_data *data, t_lex *lex)
 	lex->buf = ft_join_char(lex->buf, lex->c);
 	lex->flag = WORD;
 	lex->i++;
+	lex->c = data->input[lex->i];
 	redirect_found = find_redirections(lex);
-	if (data->input[lex->i] == DELIMITER || redirect_found)
+	if (lex->c == DELIMITER || redirect_found == true || lex->c == '\0')
 		add_token(data, lex);
 }
 
@@ -32,12 +33,12 @@ void	add_token(t_data *data, t_lex *lex)
 	tmp = NULL;
 	content = ft_strdup(lex->buf);
 	if (!content)
-		exit(EXIT_FAILURE) ;
+		exit(EXIT_FAILURE);
+//	printf("content: %s\n", content);
 	tmp = ft_new_token(content, lex->flag);
 	ft_add_token_back(&data->tokens, tmp);
 	free(lex->buf);
 	lex->buf = NULL;
-	lex->i++;
 }
 
 void	create_tokens(t_data *data, t_lex *lex)
@@ -57,5 +58,4 @@ void	create_tokens(t_data *data, t_lex *lex)
 		else
 			handle_words(data, lex);
 	}
-	add_token(data, lex);
 }
