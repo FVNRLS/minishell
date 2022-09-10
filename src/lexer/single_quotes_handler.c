@@ -6,13 +6,23 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:57:50 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/09 18:58:45 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/10 19:54:46 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-bool	check_single_quotes(t_data *data, t_lex *lex)
+bool	check_quotes_content(t_data *data, t_lex *lex)
+{
+	char	c;
+
+	c = data->input[lex->i + 1];
+	if (c == SINGLE_QUOTE)
+		return (true);
+	return (false);
+}
+
+bool	check_open_quotes(t_data *data, t_lex *lex)
 {
 	int 	i;
 	char	c;
@@ -22,20 +32,30 @@ bool	check_single_quotes(t_data *data, t_lex *lex)
 	{
 		c = data->input[i];
 		if (c == SINGLE_QUOTE)
-			return (true);
+			return (false);
 		i++;
 	}
-	return (false);
+	return (true);
+}
+
+void 	stop_lexing(t_data *data, t_lex *lex)
+{
+	data->lex_error = true;
+	free(lex->buf);
+	lex->buf = NULL;
+	print_error(SINGLE_QUOTE_OPEN);
 }
 
 void	handle_single_quotes(t_data *data, t_lex *lex)
 {
-	bool	quote_closed;
+	bool	quote_open;
+	bool	no_content;
 	bool	redirect_found;
 
-	quote_closed = check_single_quotes(data, lex);
-	if (quote_closed == false)
-		exit_with_free(data);
+	quote_open = check_open_quotes(data, lex);
+	no_content = check_quotes_content(data, lex);
+	if (quote_open || no_content)
+		stop_lexing(data, lex);
 	lex->flag = WORD;
 	lex->i++;
 	while (data->input[lex->i] != SINGLE_QUOTE && data->input[lex->i] != '\0')

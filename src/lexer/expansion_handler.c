@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   expansion_handler.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 18:32:05 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/10 15:33:08 by rmazurit         ###   ########.fr       */
+/*   Created: 2022/09/10 17:49:28 by rmazurit          #+#    #+#             */
+/*   Updated: 2022/09/10 19:17:23 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-//TODO : continue!
-// add expandable field processing with $
-
-void	init_lex(t_lex *lex)
+void	expand_last_return(t_data *data, t_lex *lex)
 {
-	lex->i = 0;
-	lex->c = 0;
-	lex->buf = NULL;
-	lex->flag = 0;
+	return;
 }
 
-// lexical analyzer program. creates tokens list
-void	lex_input(t_data *data)
+void	handle_expansion(t_data *data, t_lex *lex)
 {
-	t_lex	lex;
-
-	init_lex(&lex);
-	data->lex_error = false;
-	data->input = ft_strtrim(data->input, DELIMITER);
-	if (!data->input)
-		exit_with_free(data);
-	create_tokens(data, &lex);
-	free(data->input);
-	data->input = NULL;
+	if (data->input[lex->i + 1] == '?')
+		expand_last_return(data, lex);
 }

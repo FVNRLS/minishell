@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/09 19:54:30 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/10 17:48:19 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define DELIMITER			' '
 # define SINGLE_QUOTE		'\''
 # define DOUBLE_QUOTE		'\"'
+# define EXPANSION			'$'
 
 //TOKEN FLAGS:
 //if TOKEN == WORD/FIELD/EXPANDABLE_FIELD -> expand!
@@ -46,6 +47,8 @@
 # define APPEND_IN			4 // file >>
 # define HEREDOC			5 // << file
 # define PIPE				6 // |
+
+int 	g_exit_code;
 
 //INITIALIZER:
 void	init_shell_env(t_data *data, char **envp);
@@ -70,6 +73,7 @@ void	add_token(t_data *data, t_lex *lex);
 void	handle_single_quotes(t_data *data, t_lex *lex);
 bool	find_redirections(t_lex *lex);
 void	handle_redirections(t_data *data, t_lex *lex);
+void	handle_expansion(t_data *data, t_lex *lex);
 
 
 //TODO: delete before submission!

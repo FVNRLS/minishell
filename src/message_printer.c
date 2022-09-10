@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/10 17:11:54 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/10 19:55:45 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,12 @@ void	print_tokens(t_data *data)
 		tmp = tmp->next;
 		i++;
 	}
+}
+
+void	print_error(int error)
+{
+	if (error == SINGLE_QUOTE_OPEN)
+		printf("Error. A single quote is not closed or there is no content between quotes.\n");
+	else if (error == DOUBLE_QUOTE_OPEN)
+		printf("Error. Double quote is not closed.\n");
 }

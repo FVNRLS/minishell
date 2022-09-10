@@ -15,7 +15,7 @@
 static void	init_flags(t_data *data)
 {
 	data->exit_minishell = false;
-	data->error = false;
+	data->lex_error = false;
 	data->status = 0;
 }
 
