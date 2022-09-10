@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:31:55 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/09 16:39:10 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:27:06 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		ft_strcmp(char *s1, char *s2);
 char	*ft_join_char(char *buf, char c);
 char	*ft_strtrim(char *str, char delim);
 void	ft_add_token_back(t_token **lst, t_token *new);
-
+char	*ft_itoa(int n);
+char	*ft_strjoin(char *buf, char *tmp);
 
 #endif
