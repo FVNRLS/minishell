@@ -22,6 +22,7 @@ static void	init_flags(t_data *data)
 static void	init_containers(t_data *data)
 {
 	data->input = NULL;
+	data->envp = NULL;
 	data->tokens = NULL;
 }
 

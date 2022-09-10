@@ -28,8 +28,6 @@ static void lex_redirect_out(t_data *data, t_lex *lex)
 	{
 		lex->flag = REDIRECT_OUT;
 		lex->buf = ft_join_char(lex->buf, lex->c);
-		printf("char: %c\n", lex->c);
-		printf("buffer: %s\n", lex->buf);
 		lex->i++;
 		lex->c = data->input[lex->i];
 		if (lex->c == '>')

@@ -21,7 +21,7 @@
 typedef struct s_token //linked tokens
 {
 	char			*content;
-	int				flag; //?
+	int				flag;
 	struct s_token	*next;
 }		t_token;
 

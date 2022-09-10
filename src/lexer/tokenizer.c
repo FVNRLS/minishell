@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/09 19:54:30 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/10 14:24:35 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	add_token(t_data *data, t_lex *lex)
 
 	tmp = NULL;
 	content = ft_strdup(lex->buf);
-	printf("content: %s\n", lex->buf);
 	if (!content)
 		exit(EXIT_FAILURE) ;
 	tmp = ft_new_token(content, lex->flag);
@@ -51,7 +50,7 @@ void	create_tokens(t_data *data, t_lex *lex)
 		redirect_found = find_redirections(lex);
 		if (redirect_found)
 			handle_redirections(data, lex);
-		else if (data->input[lex->i] == DELIMITER)
+		else if (lex->c == DELIMITER)
 			lex->i++;
 		else if (lex->c == SINGLE_QUOTE)
 			handle_single_quotes(data, lex);

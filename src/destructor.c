@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:40:53 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/09 19:17:27 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/10 14:53:53 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 void	free_tokens(t_data *data)
 {
 	t_token	*tmp;
+	t_token *head;
 
 	tmp = data->tokens;
 	while (tmp != NULL)
 	{
 		free(tmp->content);
 		tmp->content = NULL;
+		head = tmp;
 		tmp = tmp->next;
+		free(head);
+		head = NULL;
 	}
-	free(data->tokens);
 	data->tokens = NULL;
 }
 
