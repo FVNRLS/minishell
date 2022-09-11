@@ -12,16 +12,6 @@
 
 #include "../../incl/minishell.h"
 
-bool	check_quotes_content(t_data *data, t_lex *lex)
-{
-	char	c;
-
-	c = data->input[lex->i + 1];
-	if (c == SINGLE_QUOTE)
-		return (true);
-	return (false);
-}
-
 bool	check_open_quotes(t_data *data, t_lex *lex)
 {
 	int 	i;
@@ -48,13 +38,11 @@ void 	stop_lexing(t_data *data, t_lex *lex)
 
 void	handle_single_quotes(t_data *data, t_lex *lex)
 {
-	bool	quote_open;
-	bool	no_content;
+	bool	quote_not_closed;
 	bool	redirect_found;
 
-	quote_open = check_open_quotes(data, lex);
-	no_content = check_quotes_content(data, lex);
-	if (quote_open || no_content)
+	quote_not_closed = check_open_quotes(data, lex);
+	if (quote_not_closed)
 		stop_lexing(data, lex);
 	lex->flag = WORD;
 	lex->i++;

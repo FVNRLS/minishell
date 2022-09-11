@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:49:28 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/10 21:09:12 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/11 11:53:53 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,38 +22,71 @@ void	expand_last_return(t_lex *lex)
 	lex->buf = ft_strjoin(lex->buf, exit_code);
 }
 
-void	check_()
+bool	check_envp(t_data *data, t_lex *lex)
 {
 
 }
 
-void	expand(t_data *data, t_lex *lex)
+bool	expand_previous_part(t_data *data, t_lex *lex)
 {
-	char	*param;
-	char 	c;
+	t_envp	*tmp;
 
-	param = NULL;
-	while (data->input[lex->i] != DELIMITER && data->input[lex->i] != '\0')
+	tmp = data->envp;
+	while (tmp != NULL)
 	{
-		c = data->input[lex->i];
-		param = ft_join_char(param, c);
-		lex->i++;
+		if (ft_strcmp(lex->buf, data->envp->key) == 0)
+		{
+			free(lex->buf);
+			lex->buf = NULL;
+			lex->buf = ft_strjoin(lex->buf, data->envp->val);
+		}
+		tmp = tmp->next;
+
 	}
+
+}
+
+void	expand_expression(t_data *data, t_lex *lex)
+{
+	lex->c = data->input[lex->i];
+	while (lex->c == DELIMITER && lex->c == '\0')
+	{
+		lex->c = data->input[lex->i];
+		if (lex->c == '?' && data->input[lex->i - 1] == EXPANSION)
+		{
+			expand_last_return(lex);
+			lex->i++;
+		}
+		else if (lex->c == EXPANSION)
+			expand_previous_part(data, lex);
+		else
+		{
+			lex->buf = ft_join_char(lex->buf, lex->c);
+			lex->i++;
+		}
+	}
+	add_token(data, lex);
+	lex->i++;
 
 
 }
 
 void	handle_expansion(t_data *data, t_lex *lex)
 {
-	if (data->input[lex->i + 1] == '?')
-		expand_last_return(lex);
-	else if (data->input[lex->i + 1] == SINGLE_QUOTE)
-		lex->i++;
-	else if (data->input[lex->i + 1] == '\0')
+	char c;
+
+	c = data->input[lex->i + 1];
+
+	if (c == DELIMITER || c == '\0')
 	{
 		lex->buf = ft_join_char(lex->buf, lex->c);
 		add_token(data, lex);
 	}
+	else if (c == SINGLE_QUOTE)
+		lex->i++;
 	else
-		expand(data, lex);
+	{
+		lex->i++;
+		expand_expression(data, lex);
+	}
 }

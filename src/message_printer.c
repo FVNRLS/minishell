@@ -31,7 +31,7 @@ void	print_tokens(t_data *data)
 void	print_error(int error)
 {
 	if (error == SINGLE_QUOTE_OPEN)
-		printf("Error. A single quote is not closed or there is no content between quotes.\n");
+		printf("Syntax error. Missing '\n");
 	else if (error == DOUBLE_QUOTE_OPEN)
 		printf("Error. Double quote is not closed.\n");
 }
