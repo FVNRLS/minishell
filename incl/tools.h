@@ -32,5 +32,6 @@ char	*ft_strtrim(char *str, char delim);
 void	ft_add_token_back(t_token **lst, t_token *new);
 char	*ft_itoa(int n);
 char	*ft_strjoin(char *buf, char *tmp);
+char	**ft_split(char const *s, char c);
 
 #endif

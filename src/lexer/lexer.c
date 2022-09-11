@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 18:32:05 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/10 15:33:08 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/11 13:58:08 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	init_lex(t_lex *lex)
 	lex->i = 0;
 	lex->c = 0;
 	lex->buf = NULL;
+	lex->exp_items = NULL;
+	lex->prev_content = NULL;
+	lex->param = NULL;
 	lex->flag = 0;
 }
 

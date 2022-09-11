@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/10 17:48:19 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/11 16:12:18 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define DELIMITER			' '
 # define SINGLE_QUOTE		'\''
 # define DOUBLE_QUOTE		'\"'
-# define EXPANSION			'$'
+# define DOLLAR				'$'
 
 //TOKEN FLAGS:
 //if TOKEN == WORD/FIELD/EXPANDABLE_FIELD -> expand!
@@ -61,6 +61,7 @@ void	free_tokens(t_data *data);
 void	free_envp(t_data *data);
 void	free_builtins(t_data *data);
 void	free_all_ressources(t_data *data);
+void 	free_expandable_items(t_lex *lex);
 void	exit_with_free(t_data *data);
 
 //HISTORY TRACKER

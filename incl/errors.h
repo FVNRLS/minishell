@@ -15,8 +15,8 @@
 #ifndef ERRORS_H
 # define ERRORS_H
 
-# define SINGLE_QUOTE_OPEN		1
-# define DOUBLE_QUOTE_OPEN		2
+# define SINGLE_QUOTE_MISSING		1
+# define DOUBLE_QUOTE_MISSING		2
 
 
 void	print_error(int error);

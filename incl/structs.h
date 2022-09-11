@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/10 14:20:37 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/11 13:58:08 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ typedef struct s_lex
 	int 		i;
 	char 		c;
 	char 		*buf;
-	char 		*exp_buf;
+	char 		*prev_content;
+	char 		**exp_items;
+	char 		*param;
 	int 		flag;
 }		t_lex;
 

@@ -33,7 +33,7 @@ void 	stop_lexing(t_data *data, t_lex *lex)
 	data->lex_error = true;
 	free(lex->buf);
 	lex->buf = NULL;
-	print_error(SINGLE_QUOTE_OPEN);
+	print_error(SINGLE_QUOTE_MISSING);
 }
 
 void	handle_single_quotes(t_data *data, t_lex *lex)

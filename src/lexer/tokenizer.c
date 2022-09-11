@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/10 19:41:45 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/11 16:29:05 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	add_token(t_data *data, t_lex *lex)
 	content = ft_strdup(lex->buf);
 	if (!content)
 		return ;
-//	printf("content: %s\n", content);
 	tmp = ft_new_token(content, lex->flag);
 	ft_add_token_back(&data->tokens, tmp);
 	free(lex->buf);
@@ -55,7 +54,7 @@ void	create_tokens(t_data *data, t_lex *lex)
 			lex->i++;
 		else if (lex->c == SINGLE_QUOTE)
 			handle_single_quotes(data, lex);
-		else if (lex->c == EXPANSION)
+		else if (lex->c == DOLLAR)
 			handle_expansion(data, lex);
 		else
 			handle_words(data, lex);

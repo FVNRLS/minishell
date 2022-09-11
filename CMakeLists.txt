@@ -27,6 +27,7 @@ add_executable(minishell main.c
         src/tools/ft_strtrim.c
         src/tools/ft_add_token_back.c
         src/tools/ft_itoa.c
+        src/tools/ft_split.c
 
         #BUILTINS:
         builtins/env.c
@@ -43,7 +44,7 @@ add_executable(minishell main.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-        src/tools/ft_strjoin.c)
+        src/tools/ft_strjoin.c )
 
 target_link_libraries(minishell edit)
 

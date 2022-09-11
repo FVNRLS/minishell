@@ -6,11 +6,26 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:40:53 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/10 14:53:53 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/11 16:03:31 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
+
+void 	free_expandable_items(t_lex *lex)
+{
+	int i;
+
+	i = 0;
+	while (lex->exp_items[i] != NULL)
+	{
+		free(lex->exp_items[i]);
+		lex->exp_items[i] = NULL;
+		i++;
+	}
+	free(lex->exp_items);
+	lex->exp_items = NULL;
+}
 
 void	free_tokens(t_data *data)
 {
