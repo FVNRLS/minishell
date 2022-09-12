@@ -16,7 +16,7 @@ CC 			= 	cc
 
 RM 			= 	rm -f
 
-FLAGS 		= 	-Wall -Wextra -Werror -g
+FLAGS 		= 	-Wall -Wextra -Werror
 
 SRC 		= 	main.c 								\
 				src/initializer/main_init.c			\
@@ -26,17 +26,29 @@ SRC 		= 	main.c 								\
 				builtins/env.c						\
 				src/history_tracker.c				\
 				src/lexer/lexer.c					\
+				src/lexer/tokenizer.c				\
+				src/lexer/single_quotes_handler.c	\
+				src/lexer/redirections_handler.c	\
+				src/lexer/expansion_handler.c		\
+				src/lexer/double_quotes_handler.c	\
+				src/message_printer.c				\
 
-TOOLS_SRC	= 	src/tools/ft_calloc.c				\
+TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_bzero.c				\
 				src/tools/ft_new_envp.c				\
 				src/tools/ft_new_token.c			\
-				src/tools/ft_add_back.c				\
-				src/tools/ft_add_front.c			\
+				src/tools/ft_add_envp_back.c		\
 				src/tools/ft_lstclear.c				\
 				src/tools/ft_lstsize.c				\
 				src/tools/ft_strdup.c				\
 				src/tools/ft_strlen.c				\
+				src/tools/ft_strcmp.c				\
+				src/tools/ft_join_char.c			\
+				src/tools/ft_strtrim.c				\
+				src/tools/ft_add_token_back.c		\
+				src/tools/ft_itoa.c					\
+				src/tools/ft_split.c				\
+				src/tools/ft_strjoin.c				\
 
 
 OBJ 		= 	${SRC:.c=.o}

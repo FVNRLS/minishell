@@ -28,6 +28,7 @@ add_executable(minishell main.c
         src/tools/ft_add_token_back.c
         src/tools/ft_itoa.c
         src/tools/ft_split.c
+        src/tools/ft_strjoin.c
 
         #BUILTINS:
         builtins/env.c
@@ -41,10 +42,11 @@ add_executable(minishell main.c
         src/lexer/single_quotes_handler.c
         src/lexer/redirections_handler.c
         src/lexer/expansion_handler.c
+        src/lexer/double_quotes_handler.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-        src/tools/ft_strjoin.c )
+         )
 
 target_link_libraries(minishell edit)
 

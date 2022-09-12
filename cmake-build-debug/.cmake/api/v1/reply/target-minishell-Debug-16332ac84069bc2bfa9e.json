@@ -31,7 +31,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 49,
+				"line" : 51,
 				"parent" : 0
 			}
 		]
@@ -87,7 +87,8 @@
 				25,
 				26,
 				27,
-				28
+				28,
+				29
 			]
 		}
 	],
@@ -153,7 +154,8 @@
 				25,
 				26,
 				27,
-				28
+				28,
+				29
 			]
 		}
 	],
@@ -282,6 +284,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "src/tools/ft_strjoin.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "builtins/env.c",
 			"sourceGroupIndex" : 0
 		},
@@ -324,13 +332,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/message_printer.c",
+			"path" : "src/lexer/double_quotes_handler.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/tools/ft_strjoin.c",
+			"path" : "src/message_printer.c",
 			"sourceGroupIndex" : 0
 		}
 	],
