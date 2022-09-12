@@ -6,13 +6,13 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:40:53 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/11 16:03:31 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/12 10:36:30 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-void 	free_expandable_items(t_lex *lex)
+void 	free_exp_params(t_lex *lex)
 {
 	int i;
 

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:49:28 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/11 19:51:51 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:15:15 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 //TODO: continue here, check $? expansion
 // elim. leaks!!!!  $CWD $PWD $PWD --> call 3 times causes a leak and a stupid junk node is created!
-// something is wrong on processing winvalid expansion envps!
+// something is wrong on processing invalid expansion envps!
 void	expand_last_return(t_lex *lex)
 {
 	char	*exit_code;
@@ -33,15 +33,34 @@ void	expand_last_return(t_lex *lex)
 	}
 }
 
+void	join_prev_content(t_lex *lex)
+{
+	char *content;
+
+	content = NULL;
+	if (lex->buf == NULL)
+	{
+		lex->buf = ft_strjoin(lex->prev_content, lex->buf);
+		return ;
+	}
+	else
+	{
+		content = ft_strjoin(lex->prev_content, lex->buf);
+		free(lex->buf);
+		lex->buf = NULL;
+		lex->buf = ft_strjoin(lex->buf, content);
+	}
+}
+
 void	try_expansion(t_data *data, t_lex *lex)
 {
 	t_envp	*tmp;
 
-//	if (lex->param[0] == '?')
-//	{
-//		expand_last_return(lex);
-//		return ;
-//	}
+	if (lex->param[0] == '?')
+	{
+		expand_last_return(lex);
+		return ;
+	}
 	tmp = data->envp;
 	while (tmp != NULL)
 	{
@@ -52,8 +71,8 @@ void	try_expansion(t_data *data, t_lex *lex)
 		}
 		tmp = tmp->next;
 	}
-	lex->buf = ft_join_char(lex->buf, DOLLAR);
-	lex->buf = ft_strjoin(lex->buf, lex->param);
+	free(lex->buf);
+	lex->buf = NULL;
 }
 
 void	expand_params(t_data *data, t_lex *lex)
@@ -68,13 +87,9 @@ void	expand_params(t_data *data, t_lex *lex)
 		i++;
 	}
 	if (lex->prev_content != NULL)
-	{
-		lex->prev_content = ft_strjoin(lex->prev_content, lex->buf);
-		free(lex->buf);
-		lex->buf = NULL;
-		lex->buf = ft_strjoin(lex->buf, lex->prev_content);
-	}
+		join_prev_content(lex);
 	lex->flag = WORD;
+	printf("buffer:		%s\n", lex->buf);
 	add_token(data, lex);
 }
 
@@ -100,17 +115,15 @@ void	handle_expansion(t_data *data, t_lex *lex)
 	{
 		lex->buf = ft_join_char(lex->buf, DOLLAR);
 		add_token(data, lex);
-		lex->i++;
 		return ;
 	}
 	if (lex->buf != NULL)
 	{
-		lex->prev_content = ft_strjoin(lex->prev_content, lex->buf);
+		lex->prev_content = ft_strjoin(lex->buf, NULL);
 		free(lex->buf);
 		lex->buf = NULL;
 	}
 	split_to_exp_params(data, lex);
 	expand_params(data, lex);
-	free_expandable_items(lex);
-	lex->i++;
+	free_exp_params(lex);
 }

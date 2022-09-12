@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:30:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/10 20:30:51 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/12 12:08:36 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strjoin(char *buf, char *tmp)
 	int		j;
 	char	*join;
 
+	if (!tmp)
+		return (buf);
 	if (!buf)
 	{
 		buf = ft_calloc(1, sizeof(char));

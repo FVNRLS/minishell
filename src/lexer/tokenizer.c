@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/11 16:29:05 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:14:28 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,16 @@ void	handle_words(t_data *data, t_lex *lex)
 void	add_token(t_data *data, t_lex *lex)
 {
 	t_token	*tmp;
-	char	*content;
+	char 	*content;
 
+	printf("content:	%s\n", lex->buf);
+	if (!lex->buf)
+		return ;
 	tmp = NULL;
 	content = ft_strdup(lex->buf);
 	if (!content)
+		return ;
+	if (!lex->buf)
 		return ;
 	tmp = ft_new_token(content, lex->flag);
 	ft_add_token_back(&data->tokens, tmp);

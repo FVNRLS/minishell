@@ -17,7 +17,7 @@ If an error occurs, a null pointer is returned. */
 
 #include "../../incl/minishell.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(char *s1)
 {
 	char	*dup;
 	size_t	len;

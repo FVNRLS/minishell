@@ -25,7 +25,7 @@ t_envp	*ft_new_envp(char *key, char *value);
 t_token	*ft_new_token(char *content, int flag);
 int		ft_lstsize(t_envp *lst);
 size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s1);
+char	*ft_strdup(char *s1);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_join_char(char *buf, char c);
 char	*ft_strtrim(char *str, char delim);
