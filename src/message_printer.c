@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/11 19:33:01 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/12 17:02:31 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	print_tokens(t_data *data)
 	tmp = data->tokens;
 	i = 1;
 	printf("-----------------------------------------------------------------------------------------------------\n");
-	printf("Token:	|	Flag:	|	Content:\n");
+	printf("Token:	|	Flag:	|	Joinable:	|	Content:\n");
 	printf("-----------------------------------------------------------------------------------------------------\n");
 	while (tmp != NULL)
 	{
-		printf("%d	|	%d	| 	%s\n", i, tmp->flag, tmp->content);
+		printf("%d	|	%d	|	%d		| 	%s\n", i, tmp->flag, tmp->join, tmp->content);
 		tmp = tmp->next;
 		i++;
 	}

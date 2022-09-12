@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:49:28 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/12 15:15:15 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/12 17:49:51 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,35 @@ void	expand_params(t_data *data, t_lex *lex)
 	if (lex->prev_content != NULL)
 		join_prev_content(lex);
 	lex->flag = WORD;
-	printf("buffer:		%s\n", lex->buf);
+//	printf("buffer:		%s\n", lex->buf);
 	add_token(data, lex);
+}
+
+bool	check_sep(t_data *data, t_lex *lex)
+{
+	int i;
+
+	i = 0;
+	while (data->sep[i] != '\0')
+	{
+		if (lex->c == data->sep[i])
+			return (true);
+		i++;
+	}
+	return (false);
 }
 
 void	split_to_exp_params(t_data *data, t_lex *lex)
 {
-	while (lex->c != DELIMITER && lex->c != '\0')
+	bool	is_sep;
+
+	is_sep = check_sep(data, lex);
+	while (is_sep == false && lex->c != '\0')
 	{
 		lex->buf = ft_join_char(lex->buf, lex->c);
 		lex->i++;
 		lex->c = data->input[lex->i];
+		is_sep = check_sep(data, lex);
 	}
 	lex->exp_items = ft_split(lex->buf, DOLLAR);
 	free(lex->buf);
@@ -110,10 +128,13 @@ void	handle_expansion(t_data *data, t_lex *lex)
 {
 	char next_char;
 
+	lex->expansion = true;
 	next_char = data->input[lex->i + 1];
-	if (next_char == DELIMITER || next_char == '\0')
+	if (next_char == SPACE || next_char == DOLLAR || next_char == '\0')
 	{
 		lex->buf = ft_join_char(lex->buf, DOLLAR);
+		lex->i++;
+		lex->c = data->input[lex->i];
 		add_token(data, lex);
 		return ;
 	}
@@ -126,4 +147,5 @@ void	handle_expansion(t_data *data, t_lex *lex)
 	split_to_exp_params(data, lex);
 	expand_params(data, lex);
 	free_exp_params(lex);
+	lex->expansion = false;
 }

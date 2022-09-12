@@ -12,6 +12,23 @@
 
 #include "../../incl/minishell.h"
 
+static void	init_separators(t_data *data)
+{
+	data->sep = malloc(sizeof(char) * 10);
+	if (!data->sep)
+		exit(EXIT_FAILURE);
+	data->sep[0] = SPACE;
+	data->sep[1] = SINGLE_QUOTE;
+	data->sep[2] = DOUBLE_QUOTE;
+	data->sep[3] = WORD;
+	data->sep[4] = REDIRECT_IN;
+	data->sep[5] = REDIRECT_OUT;
+	data->sep[6] = APPEND_IN;
+	data->sep[7] = HEREDOC;
+	data->sep[8] = PIPE;
+	data->sep[9] = '\0';
+}
+
 static void	init_flags(t_data *data)
 {
 	data->exit_minishell = false;
@@ -36,6 +53,7 @@ static void	init_builtins(t_data *data)
 
 void	init_shell_env(t_data *data, char **envp)
 {
+	init_separators(data);
 	init_flags(data);
 	init_containers(data);
 	init_envp(data, envp);

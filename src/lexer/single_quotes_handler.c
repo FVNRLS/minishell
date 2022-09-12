@@ -55,6 +55,6 @@ void	handle_single_quotes(t_data *data, t_lex *lex)
 	lex->i++;
 	lex->c = data->input[lex->i];
 	redirect_found = find_redirections(lex);
-	if (lex->c == DELIMITER || redirect_found == true || lex->c == '\0')
+	if (lex->c == SPACE || redirect_found == true || lex->c == '\0')
 		add_token(data, lex);
 }

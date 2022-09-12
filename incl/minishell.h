@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/11 16:12:18 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:08:28 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 #  define SIZE_MAX __SIZE_MAX__
 # endif
 
-# define DELIMITER			' '
+# define SPACE				' '
 # define SINGLE_QUOTE		'\''
 # define DOUBLE_QUOTE		'\"'
 # define DOLLAR				'$'
