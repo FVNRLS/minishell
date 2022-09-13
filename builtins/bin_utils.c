@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   bin_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:14:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/06 19:16:56 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/13 15:32:24 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cmd.h"
+#include "../incl/minishell.h"
 
 int error(char *m, int error)
 {
     errno = error;
     printf("%s", m);
     perror(NULL);
-    return (1);
-    //exit(1); ??
+    return (EXIT_FAILURE);
 }

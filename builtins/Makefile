@@ -2,6 +2,7 @@ NAME = cmd.a
 
 SRC =	pwd.c \
 		bin_utils.c \
+		env.c \
 		cd.c \
 		
 
@@ -16,7 +17,7 @@ C_FLAGS = -c -Wall -Wextra #-Werror
 $(NAME): $(OBJS)
 	$(CC) $(C_FLAGS) $(SRC)
 	$(AR) $(NAME) $(OBJS)
-	rm -rf *.o
+	rm -f *.o
 
 all: $(NAME)
 
@@ -25,5 +26,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f *.out
 
 re: fclean all
