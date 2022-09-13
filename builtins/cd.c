@@ -14,12 +14,12 @@
 
 int cd(char *val)
 {
-    int ret;
+	int ret;
 
-    if (!val || !val[0])
-        return (error("Error in cd.c\n", 2));
-    ret = chdir(val);
-    if (ret != 0)
-        return (error("Error in cd.c\n", 2));
-    return (EXIT_SUCCESS);
+	if (!val || !val[0])
+		return (error("Error in cd.c\n", 2));
+	ret = chdir(val);
+	if (ret != 0)
+		return (error("Error in cd.c\n", 2));
+	return (EXIT_SUCCESS);
 }
