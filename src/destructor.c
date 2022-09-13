@@ -12,21 +12,6 @@
 
 #include "../incl/minishell.h"
 
-void 	free_exp_params(t_lex *lex)
-{
-	int i;
-
-	i = 0;
-	while (lex->exp_items[i] != NULL)
-	{
-		free(lex->exp_items[i]);
-		lex->exp_items[i] = NULL;
-		i++;
-	}
-	free(lex->exp_items);
-	lex->exp_items = NULL;
-}
-
 void	free_tokens(t_data *data)
 {
 	t_token	*tmp;

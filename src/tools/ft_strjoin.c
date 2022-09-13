@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:30:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/12 12:08:36 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/13 10:45:48 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,23 @@ char	*ft_strjoin(char *buf, char *tmp)
 
 	if (!tmp)
 		return (buf);
-	if (!buf)
-	{
-		buf = ft_calloc(1, sizeof(char));
-		if (!buf)
-			return (NULL);
-	}
 	join = malloc(sizeof(char) * ((ft_strlen(buf) + ft_strlen(tmp)) + 1));
 	if (!join)
 		return (NULL);
 	i = 0;
-	while (buf[i] != '\0')
+	if (buf != NULL)
 	{
-		join[i] = buf[i];
-		i++;
+		while (buf[i] != '\0')
+		{
+			join[i] = buf[i];
+			i++;
+		}
+		free(buf);
+		buf = NULL;
 	}
 	j = 0;
 	while (tmp[j] != '\0')
 		join[i++] = tmp[j++];
 	join[i] = '\0';
-	free(buf);
-	buf = NULL;
 	return (join);
 }

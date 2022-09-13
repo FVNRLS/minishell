@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:54:52 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/10 14:23:50 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/13 16:41:41 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void lex_pipe(t_lex *lex)
 {
 	if (lex->c == '|')
 	{
-		lex->flag = PIPE;
+		lex->flag = T_PIPE;
 		lex->buf = ft_join_char(lex->buf, lex->c);
 		lex->i++;
 	}
@@ -26,13 +26,13 @@ static void lex_redirect_out(t_data *data, t_lex *lex)
 {
 	if (lex->c == '>')
 	{
-		lex->flag = REDIRECT_OUT;
+		lex->flag = T_REDIRECT_OUT;
 		lex->buf = ft_join_char(lex->buf, lex->c);
 		lex->i++;
 		lex->c = data->input[lex->i];
 		if (lex->c == '>')
 		{
-			lex->flag = APPEND_IN;
+			lex->flag = T_APPEND_IN;
 			lex->buf = ft_join_char(lex->buf, lex->c);
 			lex->i++;
 		}
@@ -43,13 +43,13 @@ static void lex_redirect_in(t_data *data, t_lex *lex)
 {
 	if (lex->c == '<')
 	{
-		lex->flag = REDIRECT_IN;
+		lex->flag = T_REDIRECT_IN;
 		lex->buf = ft_join_char(lex->buf, lex->c);
 		lex->i++;
 		lex->c = data->input[lex->i];
 		if (lex->c == '<')
 		{
-			lex->flag = HEREDOC;
+			lex->flag = T_HEREDOC;
 			lex->buf = ft_join_char(lex->buf, lex->c);
 			lex->i++;
 		}

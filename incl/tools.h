@@ -20,7 +20,6 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_add_envp_back(t_envp **lst, t_envp *new);
 void	ft_lstclear(t_envp **lst);
-void	ft_lstdelone(t_envp *lst);
 t_envp	*ft_new_envp(char *key, char *value);
 t_token	*ft_new_token(char *content, int flag);
 int		ft_lstsize(t_envp *lst);

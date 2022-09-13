@@ -6,23 +6,17 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 18:32:05 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/12 15:49:31 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:34:47 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
-
-//TODO : continue!
-// add expandable field processing with $
 
 void	init_lex(t_lex *lex)
 {
 	lex->i = 0;
 	lex->c = 0;
 	lex->buf = NULL;
-	lex->exp_items = NULL;
-	lex->prev_content = NULL;
-	lex->param = NULL;
 	lex->flag = 0;
 	lex->expansion = false;
 }
@@ -38,6 +32,7 @@ void	lex_input(t_data *data)
 	if (!data->input)
 		exit_with_free(data);
 	create_tokens(data, &lex);
+	join_tokens(data);
 	free(data->input);
 	data->input = NULL;
 }

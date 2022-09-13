@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/12 19:32:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:06:10 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,18 @@
 # define SINGLE_QUOTE		'\''
 # define DOUBLE_QUOTE		'\"'
 # define DOLLAR				'$'
+# define REDIRECT_IN		'<'
+# define REDIRECT_OUT		'>'
+# define PIPE				'|'
 
 //TOKEN FLAGS:
 //if TOKEN == WORD/FIELD/EXPANDABLE_FIELD -> expand!
-# define WORD				1 // also commands: eg. echo, @, .
-# define REDIRECT_IN		2 // file <
-# define REDIRECT_OUT		3 // file >
-# define APPEND_IN			4 // file >>
-# define HEREDOC			5 // << file
-# define PIPE				6 // |
+# define T_WORD				1 // also commands: eg. echo, @, .
+# define T_REDIRECT_IN		2 // file <
+# define T_REDIRECT_OUT		3 // file >
+# define T_APPEND_IN		4 // file >>
+# define T_HEREDOC			5 // << file
+# define T_PIPE				6 // |
 
 int 	g_exit_code;
 
@@ -61,7 +64,6 @@ void	free_tokens(t_data *data);
 void	free_envp(t_data *data);
 void	free_builtins(t_data *data);
 void	free_all_ressources(t_data *data);
-void 	free_exp_params(t_lex *lex);
 void	exit_with_free(t_data *data);
 
 //HISTORY TRACKER
@@ -70,8 +72,9 @@ void	track_history(t_data *data);
 //LEXER:
 void	lex_input(t_data *data);
 void	create_tokens(t_data *data, t_lex *lex);
-bool	check_sep(t_data *data, t_lex *lex);
+bool	check_sep(t_data *data, char c);
 void	add_token(t_data *data, t_lex *lex);
+void	join_tokens(t_data *data);
 void	handle_redirections(t_data *data, t_lex *lex);
 void	handle_words(t_data *data, t_lex *lex);
 void	handle_single_quotes(t_data *data, t_lex *lex);

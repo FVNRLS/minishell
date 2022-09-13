@@ -20,13 +20,14 @@ void	handle_double_quotes(t_data *data, t_lex *lex)
 	quote_not_closed = check_open_quotes(data, lex);
 	if (quote_not_closed)
 		stop_lexing(data, lex);
-	lex->flag = WORD;
+	lex->flag = T_WORD;
 	lex->i++;
 	while (data->input[lex->i] != DOUBLE_QUOTE && data->input[lex->i] != '\0')
 	{
 		lex->c = data->input[lex->i];
 		if (lex->c == DOLLAR)
-			handle_expansion(data, lex);
+			while (lex->c != DOUBLE_QUOTE) //added recently - not sure!
+				handle_expansion(data, lex);
 		else
 		{
 			lex->buf = ft_join_char(lex->buf, lex->c);

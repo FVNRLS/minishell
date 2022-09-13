@@ -57,7 +57,7 @@ void	handle_single_quotes(t_data *data, t_lex *lex)
 	quote_not_closed = check_open_quotes(data, lex);
 	if (quote_not_closed)
 		stop_lexing(data, lex);
-	lex->flag = WORD;
+	lex->flag = T_WORD;
 	lex->i++;
 	while (data->input[lex->i] != SINGLE_QUOTE && data->input[lex->i] != '\0')
 	{

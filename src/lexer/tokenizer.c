@@ -6,21 +6,64 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/12 19:32:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:46:58 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
+void	join_tokens(t_data *data)
 {
-	bool	is_sep;
+	t_token	*tmp;
+	t_token	*del;
 
-	is_sep = check_sep(data, lex);
-	if (lex->expansion == true && is_sep == false && lex->c != '\0')
-		token->join = true;
-	else
-		token->join = false;
+	tmp = data->tokens;
+	if (!tmp)
+		return ;
+	del = NULL;
+	while (tmp->next != NULL)
+	{
+		if (tmp->join == true)
+		{
+			del = tmp->next;
+			tmp->content = ft_strjoin(tmp->content, del->content);
+			tmp->join = del->join;
+			tmp->next = del->next;
+			free(del->content);
+			del->content = NULL;
+			free(del);
+			del = NULL;
+		}
+		else
+			tmp = tmp->next;
+	}
+}
+
+bool	check_sep(t_data *data, char c)
+{
+	int i;
+
+	i = 0;
+	while (data->sep[i] != '\0')
+	{
+		if (c == data->sep[i])
+			return (true);
+		i++;
+	}
+	return (false);
+}
+
+static void	set_join_flag(t_lex *lex, t_token *token)
+{
+//	printf("char: %c\n", lex->c);
+
+	token->join = false;
+	if (lex->expansion == true)
+	{
+		if (lex->c == SINGLE_QUOTE || lex->c == DOUBLE_QUOTE || lex->c == DOLLAR)
+			token->join = true;
+	}
+	printf("char: %c	flag:	%d token:	%s\n", lex->c, token->join, token->content);
 }
 
 void	add_token(t_data *data, t_lex *lex)
@@ -35,7 +78,7 @@ void	add_token(t_data *data, t_lex *lex)
 	if (!content)
 		return ;
 	tmp = ft_new_token(content, lex->flag);
-	set_join_flag(data, lex, tmp);
+	set_join_flag(lex, tmp);
 	ft_add_token_back(&data->tokens, tmp);
 	free(lex->buf);
 	lex->buf = NULL;

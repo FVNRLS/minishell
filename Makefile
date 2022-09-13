@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/13 15:56:27 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/09/12 18:59:22 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= 	minishell
 
-CC 			= 	gcc
+CC 			= 	cc
 
 RM 			= 	rm -f
 
@@ -62,7 +62,7 @@ INCREADL 	=	-lreadline -L /Users/$(USER)/.brew/opt/readline/lib
 	${CC} ${FLAGS} ${INCREADH} -c $< -o ${<:.c=.o}
 
 $(NAME): $(OBJ) $(TOOLS_OBJ)
-	${CC} ${FLAGS} ${OBJ} ${TOOLS_OBJ} ${INCREADL} $(INCREADH) -o ${NAME}
+	${CC} ${FLAGS} ${OBJ} ${TOOLS_OBJ} ${INCREADL} -o ${NAME}
 
 all: $(NAME)
 

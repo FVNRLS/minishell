@@ -14,19 +14,17 @@
 
 static void	init_separators(t_data *data)
 {
-	data->sep = malloc(sizeof(char) * 10);
+	data->sep = malloc(sizeof(char) * 8);
 	if (!data->sep)
 		exit(EXIT_FAILURE);
 	data->sep[0] = SPACE;
 	data->sep[1] = SINGLE_QUOTE;
 	data->sep[2] = DOUBLE_QUOTE;
-	data->sep[3] = WORD;
-	data->sep[4] = REDIRECT_IN;
-	data->sep[5] = REDIRECT_OUT;
-	data->sep[6] = APPEND_IN;
-	data->sep[7] = HEREDOC;
-	data->sep[8] = PIPE;
-	data->sep[9] = '\0';
+	data->sep[3] = REDIRECT_IN;
+	data->sep[4] = REDIRECT_OUT;
+	data->sep[5] = PIPE;
+	data->sep[6] = DOLLAR;
+	data->sep[7] = '\0';
 }
 
 static void	init_flags(t_data *data)

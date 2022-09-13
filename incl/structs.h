@@ -45,9 +45,6 @@ typedef struct s_lex
 	int 		i;
 	char 		c;
 	char 		*buf;
-	char 		*prev_content;
-	char 		**exp_items;
-	char 		*param;
 	int 		flag;
 	bool		expansion;
 }		t_lex;
