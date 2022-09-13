@@ -1,77 +1,31 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/12 18:59:22 by rmazurit         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = cmd.a
 
-NAME 		= 	minishell
+SRC =	pwd.c \
+		bin_utils.c \
+		env.c \
+		cd.c \
+		
 
-CC 			= 	cc
+OBJS = $(SRC:.c=.o)
 
-RM 			= 	rm -f
+CC = gcc
 
-FLAGS 		= 	-Wall -Wextra -Werror
+AR = ar -r 
 
-SRC 		= 	main.c 								\
-				src/initializer/main_init.c			\
-				src/initializer/envp_init.c			\
-				src/initializer/builtins_init.c		\
-				src/destructor.c					\
-				builtins/env.c						\
-				src/history_tracker.c				\
-				src/lexer/lexer.c					\
-				src/lexer/tokenizer.c				\
-				src/lexer/single_quotes_handler.c	\
-				src/lexer/redirections_handler.c	\
-				src/lexer/expansion_handler.c		\
-				src/lexer/double_quotes_handler.c	\
-				src/message_printer.c				\
-				src/lexer/words_handler.c			\
+C_FLAGS = -c -Wall -Wextra #-Werror
 
-TOOLS_SRC	=	src/tools/ft_calloc.c				\
-				src/tools/ft_bzero.c				\
-				src/tools/ft_new_envp.c				\
-				src/tools/ft_new_token.c			\
-				src/tools/ft_add_envp_back.c		\
-				src/tools/ft_lstclear.c				\
-				src/tools/ft_lstsize.c				\
-				src/tools/ft_strdup.c				\
-				src/tools/ft_strlen.c				\
-				src/tools/ft_strcmp.c				\
-				src/tools/ft_join_char.c			\
-				src/tools/ft_strtrim.c				\
-				src/tools/ft_add_token_back.c		\
-				src/tools/ft_itoa.c					\
-				src/tools/ft_split.c				\
-				src/tools/ft_strjoin.c				\
-
-
-OBJ 		= 	${SRC:.c=.o}
-TOOLS_OBJ 	=	${TOOLS_SRC:.c=.o}
-
-INCREADH 	=	-I /Users/$(USER)/.brew/opt/readline/include
-INCREADL 	=	-lreadline -L /Users/$(USER)/.brew/opt/readline/lib
-
-.c.o:
-	${CC} ${FLAGS} ${INCREADH} -c $< -o ${<:.c=.o}
-
-$(NAME): $(OBJ) $(TOOLS_OBJ)
-	${CC} ${FLAGS} ${OBJ} ${TOOLS_OBJ} ${INCREADL} -o ${NAME}
+$(NAME): $(OBJS)
+	$(CC) $(C_FLAGS) $(SRC)
+	$(AR) $(NAME) $(OBJS)
+	rm -f *.o
 
 all: $(NAME)
 
 clean:
-	rm -f ${OBJ} ${TOOLS_OBJ}
+	rm -f $(OBJS)
 
-fclean:
-	rm -f ${OBJ} ${TOOLS_OBJ} ${NAME}
+fclean: clean
+	rm -f $(NAME)
+	rm -f *.out
 
 re: fclean all
-
-.PHONY: all clean fclean re
