@@ -5,6 +5,7 @@ SRC =	pwd.c \
 		env.c \
 		cd.c \
 		
+MAIN = main_tests.c
 
 OBJS = $(SRC:.c=.o)
 
@@ -18,6 +19,8 @@ $(NAME): $(OBJS)
 	$(CC) $(C_FLAGS) $(SRC)
 	$(AR) $(NAME) $(OBJS)
 	rm -f *.o
+	gcc $(NAME) $(MAIN)
+	./a.out
 
 all: $(NAME)
 
