@@ -86,7 +86,7 @@ void	handle_expansion(t_data *data, t_lex *lex)
 
 	else if (is_sep == true || lex->c == '\0')
 	{
-		if (lex->c != SINGLE_QUOTE && lex->c != DOUBLE_QUOTE)
+//		if (lex->c != SINGLE_QUOTE && lex->c != DOUBLE_QUOTE)
 			lex->buf = ft_join_char(lex->buf, DOLLAR);
 	}
 	else

@@ -12,7 +12,7 @@
 
 #include "../../incl/minishell.h"
 
-static char	*get_value(char *str)
+static char	*get_value(const char *str)
 {
 	int		i;
 	int		offset;
@@ -39,7 +39,7 @@ static char	*get_value(char *str)
 }
 
 
-static char	*get_key(char *str)
+static char	*get_key(const char *str)
 {
 	int		i;
 	char	*key;

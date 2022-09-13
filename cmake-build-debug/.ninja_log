@@ -31,3 +31,9 @@
 401	538	1663089341000000000	CMakeFiles/minishell.dir/src/lexer/words_handler.c.o	175c8a74657cac67
 339	547	1663089341000000000	CMakeFiles/minishell.dir/src/tools/ft_split.c.o	4a050524d0c8b2eb
 547	585	1663089342000000000	minishell	f2eaff72bb5e7ba5
+2	306	1663090343000000000	CMakeFiles/minishell.dir/src/lexer/double_quotes_handler.c.o	7e68b67b09bb17ba
+1	312	1663090343000000000	CMakeFiles/minishell.dir/src/initializer/envp_init.c.o	6c97f28832abfe32
+312	467	1663090343000000000	minishell	f2eaff72bb5e7ba5
+1	60	1663090676000000000	CMakeFiles/minishell.dir/src/lexer/expansion_handler.c.o	95ca2e76d02574c2
+1	60	1663090676000000000	CMakeFiles/minishell.dir/src/lexer/double_quotes_handler.c.o	7e68b67b09bb17ba
+61	87	1663090676000000000	minishell	f2eaff72bb5e7ba5
