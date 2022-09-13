@@ -1,32 +1,44 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
+#    Updated: 2022/09/13 15:56:27 by jjesberg         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME 		= 	minishell
 
-CC 			= 	cc
+CC 			= 	gcc
 
 RM 			= 	rm -f
 
 FLAGS 		= 	-Wall -Wextra -Werror
 
-SRC 		= 		main.c 						\
+SRC 		= 	main.c 								\
 				src/initializer/main_init.c			\
 				src/initializer/envp_init.c			\
-				src/initializer/builtins_init.c			\
-				src/destructor.c				\
-				builtins/env.c					\
+				src/initializer/builtins_init.c		\
+				src/destructor.c					\
+				builtins/env.c						\
 				src/history_tracker.c				\
-				src/lexer/lexer.c				\
+				src/lexer/lexer.c					\
 				src/lexer/tokenizer.c				\
-				src/lexer/single_quotes_handler.c		\
-				src/lexer/redirections_handler.c		\
-				src/lexer/expansion_handler.c			\
-				src/lexer/double_quotes_handler.c		\
+				src/lexer/single_quotes_handler.c	\
+				src/lexer/redirections_handler.c	\
+				src/lexer/expansion_handler.c		\
+				src/lexer/double_quotes_handler.c	\
 				src/message_printer.c				\
 				src/lexer/words_handler.c			\
 
-TOOLS_SRC	=		src/tools/ft_calloc.c				\
+TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_bzero.c				\
 				src/tools/ft_new_envp.c				\
 				src/tools/ft_new_token.c			\
-				src/tools/ft_add_envp_back.c			\
+				src/tools/ft_add_envp_back.c		\
 				src/tools/ft_lstclear.c				\
 				src/tools/ft_lstsize.c				\
 				src/tools/ft_strdup.c				\
@@ -34,8 +46,8 @@ TOOLS_SRC	=		src/tools/ft_calloc.c				\
 				src/tools/ft_strcmp.c				\
 				src/tools/ft_join_char.c			\
 				src/tools/ft_strtrim.c				\
-				src/tools/ft_add_token_back.c			\
-				src/tools/ft_itoa.c				\
+				src/tools/ft_add_token_back.c		\
+				src/tools/ft_itoa.c					\
 				src/tools/ft_split.c				\
 				src/tools/ft_strjoin.c				\
 
