@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:57:50 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/10 19:54:46 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:07:40 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,25 @@
 bool	check_open_quotes(t_data *data, t_lex *lex)
 {
 	int 	i;
-	char	c;
 
 	i = lex->i + 1;
-	while (data->input[i] != '\0')
+	if (lex->c == SINGLE_QUOTE)
 	{
-		c = data->input[i];
-		if (c == SINGLE_QUOTE)
-			return (false);
-		i++;
+		while (data->input[i] != '\0')
+		{
+			if (data->input[i] == SINGLE_QUOTE)
+				return (false);
+			i++;
+		}
+	}
+	else if (lex->c == DOUBLE_QUOTE)
+	{
+		while (data->input[i] != '\0')
+		{
+			if (data->input[i] == DOUBLE_QUOTE)
+				return (false);
+			i++;
+		}
 	}
 	return (true);
 }
@@ -33,7 +43,10 @@ void 	stop_lexing(t_data *data, t_lex *lex)
 	data->lex_error = true;
 	free(lex->buf);
 	lex->buf = NULL;
-	print_error(SINGLE_QUOTE_MISSING);
+	if (lex->c == SINGLE_QUOTE)
+		print_error(SINGLE_QUOTE_MISSING);
+	else if (lex->c == DOUBLE_QUOTE)
+		print_error(DOUBLE_QUOTE_MISSING);
 }
 
 void	handle_single_quotes(t_data *data, t_lex *lex)

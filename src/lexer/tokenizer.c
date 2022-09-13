@@ -6,23 +6,21 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/12 17:41:57 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:32:11 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-void	handle_words(t_data *data, t_lex *lex)
+static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 {
-	bool redirect_found;
+	bool	is_sep;
 
-	lex->buf = ft_join_char(lex->buf, lex->c);
-	lex->flag = WORD;
-	lex->i++;
-	lex->c = data->input[lex->i];
-	redirect_found = find_redirections(lex);
-	if (lex->c == SPACE || redirect_found == true || lex->c == '\0')
-		add_token(data, lex);
+	is_sep = check_sep(data, lex);
+	if (lex->expansion == true && is_sep == false && lex->c != '\0')
+		token->join = true;
+	else
+		token->join = false;
 }
 
 void	add_token(t_data *data, t_lex *lex)
@@ -37,10 +35,7 @@ void	add_token(t_data *data, t_lex *lex)
 	if (!content)
 		return ;
 	tmp = ft_new_token(content, lex->flag);
-	if (lex->expansion == true && lex->c != SPACE && lex->c != '\0')
-		tmp->join = true;
-	else
-		tmp->join = false;
+	set_join_flag(data, lex, tmp);
 	ft_add_token_back(&data->tokens, tmp);
 	free(lex->buf);
 	lex->buf = NULL;
@@ -62,6 +57,8 @@ void	create_tokens(t_data *data, t_lex *lex)
 			handle_single_quotes(data, lex);
 		else if (lex->c == DOLLAR)
 			handle_expansion(data, lex);
+		else if (lex->c == DOUBLE_QUOTE)
+			handle_double_quotes(data, lex);
 		else
 			handle_words(data, lex);
 	}

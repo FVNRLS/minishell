@@ -16,7 +16,7 @@ static void lex_pipe(t_lex *lex)
 {
 	if (lex->c == '|')
 	{
-		lex->flag = REDIRECT_OUT;
+		lex->flag = PIPE;
 		lex->buf = ft_join_char(lex->buf, lex->c);
 		lex->i++;
 	}

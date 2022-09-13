@@ -6,16 +6,13 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:49:28 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/12 17:49:51 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:47:37 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
 
-//TODO: continue here, check $? expansion
-// elim. leaks!!!!  $CWD $PWD $PWD --> call 3 times causes a leak and a stupid junk node is created!
-// something is wrong on processing invalid expansion envps!
 void	expand_last_return(t_lex *lex)
 {
 	char	*exit_code;

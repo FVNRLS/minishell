@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/12 15:08:28 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:32:11 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,16 @@ void	track_history(t_data *data);
 //LEXER:
 void	lex_input(t_data *data);
 void	create_tokens(t_data *data, t_lex *lex);
+bool	check_sep(t_data *data, t_lex *lex);
 void	add_token(t_data *data, t_lex *lex);
-void	handle_single_quotes(t_data *data, t_lex *lex);
-bool	find_redirections(t_lex *lex);
 void	handle_redirections(t_data *data, t_lex *lex);
+void	handle_words(t_data *data, t_lex *lex);
+void	handle_single_quotes(t_data *data, t_lex *lex);
+void	handle_double_quotes(t_data *data, t_lex *lex);
+bool	find_redirections(t_lex *lex);
 void	handle_expansion(t_data *data, t_lex *lex);
+bool	check_open_quotes(t_data *data, t_lex *lex);
+void 	stop_lexing(t_data *data, t_lex *lex);
 
 
 //TODO: delete before submission!

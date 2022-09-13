@@ -6,7 +6,7 @@
 #    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/08 18:40:17 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/09/12 18:59:22 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC 		= 	main.c 								\
 				src/lexer/expansion_handler.c		\
 				src/lexer/double_quotes_handler.c	\
 				src/message_printer.c				\
+				src/lexer/words_handler.c			\
 
 TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_bzero.c				\

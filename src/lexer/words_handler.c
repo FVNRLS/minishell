@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_quotes_handler.c                            :+:      :+:    :+:   */
+/*   words_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 18:55:19 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/12 19:20:13 by rmazurit         ###   ########.fr       */
+/*   Created: 2022/09/12 19:31:39 by rmazurit          #+#    #+#             */
+/*   Updated: 2022/09/12 19:31:39 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-void	handle_double_quotes(t_data *data, t_lex *lex)
+void	handle_words(t_data *data, t_lex *lex)
 {
-	bool	quote_not_closed;
-	bool	redirect_found;
+	bool redirect_found;
 
-	quote_not_closed = check_open_quotes(data, lex);
-	if (quote_not_closed)
-		stop_lexing(data, lex);
+	lex->buf = ft_join_char(lex->buf, lex->c);
 	lex->flag = WORD;
-	lex->i++;
-	while (data->input[lex->i] != DOUBLE_QUOTE && data->input[lex->i] != '\0')
-	{
-		lex->c = data->input[lex->i];
-		if (lex->c == DOLLAR)
-			handle_expansion(data, lex);
-		else
-		{
-			lex->buf = ft_join_char(lex->buf, lex->c);
-			lex->i++;
-		}
-	}
 	lex->i++;
 	lex->c = data->input[lex->i];
 	redirect_found = find_redirections(lex);

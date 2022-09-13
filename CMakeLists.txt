@@ -43,10 +43,11 @@ add_executable(minishell main.c
         src/lexer/redirections_handler.c
         src/lexer/expansion_handler.c
         src/lexer/double_quotes_handler.c
+        src/lexer/words_handler.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-         )
+        )
 
 target_link_libraries(minishell edit)
 
