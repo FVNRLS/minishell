@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 18:55:19 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/13 19:32:23 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/14 17:04:30 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	handle_double_quotes(t_data *data, t_lex *lex)
 	bool	quote_not_closed;
 	bool	redirect_found;
 
+	lex->double_quote_mode = true;
 	quote_not_closed = check_open_quotes(data, lex);
 	if (quote_not_closed)
 		stop_lexing(data, lex);
@@ -38,4 +39,5 @@ void	handle_double_quotes(t_data *data, t_lex *lex)
 	redirect_found = find_redirections(lex);
 	if (lex->c == SPACE || redirect_found == true || lex->c == '\0')
 		add_token(data, lex);
+	lex->double_quote_mode = false;
 }

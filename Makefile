@@ -29,10 +29,11 @@ SRC 		= 	main.c 								\
 				src/lexer/tokenizer.c				\
 				src/lexer/single_quotes_handler.c	\
 				src/lexer/redirections_handler.c	\
-				src/lexer/expansion_handler.c		\
 				src/lexer/double_quotes_handler.c	\
 				src/message_printer.c				\
 				src/lexer/words_handler.c			\
+				src/lexer/expander/expansion_handler.c \
+				src/lexer/expander/expansion_rules.c	\
 
 TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_bzero.c				\

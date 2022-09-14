@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 18:32:05 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/13 17:34:47 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:52:44 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	init_lex(t_lex *lex)
 	lex->buf = NULL;
 	lex->flag = 0;
 	lex->expansion = false;
+	lex->single_quote_mode = false;
+	lex->double_quote_mode = false;
 }
 
 // lexical analyzer program. creates tokens list

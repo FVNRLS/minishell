@@ -54,6 +54,7 @@ void	handle_single_quotes(t_data *data, t_lex *lex)
 	bool	quote_not_closed;
 	bool	redirect_found;
 
+	lex->single_quote_mode = true;
 	quote_not_closed = check_open_quotes(data, lex);
 	if (quote_not_closed)
 		stop_lexing(data, lex);
@@ -70,4 +71,5 @@ void	handle_single_quotes(t_data *data, t_lex *lex)
 	redirect_found = find_redirections(lex);
 	if (lex->c == SPACE || redirect_found == true || lex->c == '\0')
 		add_token(data, lex);
+	lex->single_quote_mode = false;
 }

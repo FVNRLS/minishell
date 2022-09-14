@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/13 13:06:10 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/14 17:25:42 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,13 @@ bool	find_redirections(t_lex *lex);
 void	handle_expansion(t_data *data, t_lex *lex);
 bool	check_open_quotes(t_data *data, t_lex *lex);
 void 	stop_lexing(t_data *data, t_lex *lex);
+void	expand_last_return(t_data *data, t_lex *lex);
+void	try_expansion(t_data *data, t_lex *lex);
+void	expand_parameter(t_data *data, t_lex *lex);
+void 	handle_multiple_dollars(t_data *data, t_lex *lex);
+void	handle_one_dollar(t_data *data, t_lex *lex);
+
+
 
 
 //TODO: delete before submission!

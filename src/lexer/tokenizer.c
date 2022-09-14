@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/13 17:46:58 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/14 17:09:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	join_tokens(t_data *data)
 		else
 			tmp = tmp->next;
 	}
+	if (tmp->next == NULL)
+		tmp->join = 0;
 }
 
 bool	check_sep(t_data *data, char c)
@@ -53,17 +55,31 @@ bool	check_sep(t_data *data, char c)
 	return (false);
 }
 
-static void	set_join_flag(t_lex *lex, t_token *token)
+static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 {
-//	printf("char: %c\n", lex->c);
+	char	next_char;
 
 	token->join = false;
+	next_char = data->input[lex->i + 1];
 	if (lex->expansion == true)
 	{
-		if (lex->c == SINGLE_QUOTE || lex->c == DOUBLE_QUOTE || lex->c == DOLLAR)
+		if (lex->double_quote_mode == true)
 			token->join = true;
+		if (lex->c == SINGLE_QUOTE || lex->c == DOUBLE_QUOTE || lex->c == DOLLAR)
+		{
+			if (lex->double_quote_mode == true)
+			{
+				if (next_char == SPACE || next_char == REDIRECT_OUT
+					|| next_char == REDIRECT_IN || next_char == PIPE
+					|| next_char == '\0')
+					return ;
+				else
+					token->join = true;
+			}
+			else
+				token->join = true;
+		}
 	}
-	printf("char: %c	flag:	%d token:	%s\n", lex->c, token->join, token->content);
 }
 
 void	add_token(t_data *data, t_lex *lex)
@@ -78,7 +94,7 @@ void	add_token(t_data *data, t_lex *lex)
 	if (!content)
 		return ;
 	tmp = ft_new_token(content, lex->flag);
-	set_join_flag(lex, tmp);
+	set_join_flag(data, lex, tmp);
 	ft_add_token_back(&data->tokens, tmp);
 	free(lex->buf);
 	lex->buf = NULL;

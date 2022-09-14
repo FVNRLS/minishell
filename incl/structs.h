@@ -46,6 +46,8 @@ typedef struct s_lex
 	char 		c;
 	char 		*buf;
 	int 		flag;
+	bool		single_quote_mode;
+	bool		double_quote_mode;
 	bool		expansion;
 }		t_lex;
 
