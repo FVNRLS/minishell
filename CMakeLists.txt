@@ -45,10 +45,12 @@ add_executable(minishell main.c
         src/lexer/words_handler.c
         src/lexer/expander/expansion_handler.c
         src/lexer/expander/expansion_rules.c
+        src/lexer/token_merger.c
+        src/lexer/checker.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-       )
+      )
 
 target_link_libraries(minishell edit)
 

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/12 17:02:31 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/14 19:45:37 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,13 @@ void	print_tokens(t_data *data)
 void	print_error(int error)
 {
 	if (error == SINGLE_QUOTE_MISSING)
-		printf("Syntax error. Missing '\n");
+		printf("minishell:	syntax error. Missing '\n");
 	else if (error == DOUBLE_QUOTE_MISSING)
-		printf("Syntax error. Missing \"\n");
+		printf("minishell:	syntax error. Missing \"\n");
+}
+
+void	print_token_error(int error, t_token *token)
+{
+	if (error == REDIRECTION_ERROR)
+		printf("minishell:	syntax error near unexpected token\n");
 }

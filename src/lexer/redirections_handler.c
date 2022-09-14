@@ -32,7 +32,7 @@ static void lex_redirect_out(t_data *data, t_lex *lex)
 		lex->c = data->input[lex->i];
 		if (lex->c == '>')
 		{
-			lex->flag = T_APPEND_IN;
+			lex->flag = T_APPEND;
 			lex->buf = ft_join_char(lex->buf, lex->c);
 			lex->i++;
 		}

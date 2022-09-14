@@ -6,54 +6,11 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 17:09:03 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/14 17:22:13 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
-
-void	join_tokens(t_data *data)
-{
-	t_token	*tmp;
-	t_token	*del;
-
-	tmp = data->tokens;
-	if (!tmp)
-		return ;
-	del = NULL;
-	while (tmp->next != NULL)
-	{
-		if (tmp->join == true)
-		{
-			del = tmp->next;
-			tmp->content = ft_strjoin(tmp->content, del->content);
-			tmp->join = del->join;
-			tmp->next = del->next;
-			free(del->content);
-			del->content = NULL;
-			free(del);
-			del = NULL;
-		}
-		else
-			tmp = tmp->next;
-	}
-	if (tmp->next == NULL)
-		tmp->join = 0;
-}
-
-bool	check_sep(t_data *data, char c)
-{
-	int i;
-
-	i = 0;
-	while (data->sep[i] != '\0')
-	{
-		if (c == data->sep[i])
-			return (true);
-		i++;
-	}
-	return (false);
-}
 
 static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 {

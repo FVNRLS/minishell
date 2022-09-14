@@ -68,6 +68,8 @@ void	free_all_ressources(t_data *data)
 	free_tokens(data);
 	free(data->sep);
 	data->sep = NULL;
+	free(data->redir);
+	data->redir = NULL;
 }
 
 void	exit_with_free(t_data *data)

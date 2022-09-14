@@ -31,7 +31,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 53,
+				"line" : 55,
 				"parent" : 0
 			}
 		]
@@ -90,7 +90,9 @@
 				28,
 				29,
 				30,
-				31
+				31,
+				32,
+				33
 			]
 		}
 	],
@@ -159,7 +161,9 @@
 				28,
 				29,
 				30,
-				31
+				31,
+				32,
+				33
 			]
 		}
 	],
@@ -349,6 +353,18 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/lexer/expander/expansion_rules.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/lexer/token_merger.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/lexer/checker.c",
 			"sourceGroupIndex" : 0
 		},
 		{

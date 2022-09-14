@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 17:25:42 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/14 19:37:29 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@
 # define PIPE				'|'
 
 //TOKEN FLAGS:
-//if TOKEN == WORD/FIELD/EXPANDABLE_FIELD -> expand!
 # define T_WORD				1 // also commands: eg. echo, @, .
 # define T_REDIRECT_IN		2 // file <
 # define T_REDIRECT_OUT		3 // file >
-# define T_APPEND_IN		4 // file >>
+# define T_APPEND			4 // file >>
 # define T_HEREDOC			5 // << file
 # define T_PIPE				6 // |
+
 
 int 	g_exit_code;
 
@@ -73,8 +73,9 @@ void	track_history(t_data *data);
 void	lex_input(t_data *data);
 void	create_tokens(t_data *data, t_lex *lex);
 bool	check_sep(t_data *data, char c);
+bool	check_redir(t_data *data, int flag);
+bool 	redir_syntax_error(t_data *data, t_token *token);
 void	add_token(t_data *data, t_lex *lex);
-void	join_tokens(t_data *data);
 void	handle_redirections(t_data *data, t_lex *lex);
 void	handle_words(t_data *data, t_lex *lex);
 void	handle_single_quotes(t_data *data, t_lex *lex);
@@ -88,6 +89,8 @@ void	try_expansion(t_data *data, t_lex *lex);
 void	expand_parameter(t_data *data, t_lex *lex);
 void 	handle_multiple_dollars(t_data *data, t_lex *lex);
 void	handle_one_dollar(t_data *data, t_lex *lex);
+void	merge_joinable_tokens(t_data *data);
+void	merge_redirections(t_data *data);
 
 
 

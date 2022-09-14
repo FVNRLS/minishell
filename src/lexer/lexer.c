@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 18:32:05 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 15:52:44 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/14 19:11:29 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	lex_input(t_data *data)
 	if (!data->input)
 		exit_with_free(data);
 	create_tokens(data, &lex);
-	join_tokens(data);
+	merge_joinable_tokens(data);
+	merge_redirections(data);
+	if (data->lex_error == true)
+		return;
 	free(data->input);
 	data->input = NULL;
 }
