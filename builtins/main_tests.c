@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:05:24 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/13 15:33:07 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:23:51 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,15 @@ t_data	*init_data_test(t_data *data)
 	data->envp->val = NULL;
 	data->envp->key = NULL;
 	data->envp->key = getenv("USER");
+	data->envp->next = NULL;
 	data->envp->val = getcwd(data->envp->val, 0);
-	data->builtins->funcs[0] = &echo;
-	data->builtins->funcs[1] = &cd;
-	data->builtins->funcs[2] = &pwd;
-	data->builtins->funcs[3] = &export;
-	data->builtins->funcs[4] = &unset;
-	data->builtins->funcs[5] = &env;
-	data->builtins->funcs[6] = &exit;
+	data->builtins->funcs[0] = (void *)&echo;
+	data->builtins->funcs[1] = (void *)&cd;
+	data->builtins->funcs[2] = (void *)&pwd;
+	data->builtins->funcs[3] = (void *)&export;
+	data->builtins->funcs[4] = (void *)&unset;
+	data->builtins->funcs[5] = (void *)&env;
+	data->builtins->funcs[6] = (void *)&exit;
 	data->exit_minishell = false;
 	data->envp->next = NULL;
 	data->input = NULL;
@@ -97,8 +98,14 @@ int main()
 {
 	t_data	*data;
 
+	data = NULL;
 	data = init_data_test(data);
-	data->builtins->funcs[5](data);
+	if (data->builtins->funcs[3](data))
+	{
+		free_main(&data);
+		printf("error1\n");
+		return (EXIT_FAILURE);
+	}
 	free_main(&data);
 	printf("fine\n");
     return (EXIT_SUCCESS);

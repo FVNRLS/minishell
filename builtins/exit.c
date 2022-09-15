@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unset.c                                            :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/15 15:45:30 by jjesberg         ###   ########.fr       */
+/*   Created: 2022/09/15 14:28:23 by jjesberg          #+#    #+#             */
+/*   Updated: 2022/09/15 15:53:37 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-int	unset(t_data *data)
+int	mini_exit(t_data *data)
 {
-	printf("test\ndata.envp = %s\n---------------\n", data->envp->key);
+	data->exit_minishell = true;
+	data->status = 815;
+	//unset Variables? 
+	//or more?
+	//freestuff;
+	printf("exit minishell\n");
 	return (EXIT_SUCCESS);
 }

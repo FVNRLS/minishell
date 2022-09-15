@@ -7,22 +7,21 @@ SRC =	pwd.c \
 		echo.c \
 		export.c \
 		unset.c \
-		mini_exit.c \
+		exit.c \
 		
 MAIN = main_tests.c
 
 OBJS = $(SRC:.c=.o)
 
-CC = gcc
+CC = @gcc
 
 AR = ar -r 
 
 C_FLAGS = -Wall -Wextra #-Werror
 
 $(NAME): $(OBJS)
-	$(CC) $(C_FLAGS) $(SRC) $(MAIN) -o $(NAME)
 	rm -f *.o
-	./cmd.a
+	$(CC) $(C_FLAGS) $(SRC) $(MAIN) -o $(NAME)
 
 all: $(NAME)
 
