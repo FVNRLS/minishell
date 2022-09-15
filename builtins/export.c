@@ -26,7 +26,7 @@ int	export(t_data *data)
 	while (tmp)
 	{
 		ptr = &tmp->val;
-		//change Val of getenv(save->key);
+		//change Val of getenv(tmp->key);
 		//(*ptr)[5] = '\n'; // we can change it but realloc maybe is better
 		printf("ptr = %s\n", (*ptr));
 		tmp = tmp->next;
