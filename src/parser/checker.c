@@ -6,11 +6,11 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:29:31 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 19:45:13 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/15 11:10:14 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incl/minishell.h"
+#include "../incl/minishell.h"
 
 bool	check_sep(t_data *data, char c)
 {
@@ -26,7 +26,6 @@ bool	check_sep(t_data *data, char c)
 	return (false);
 }
 
-//TODO: CONTINUE HERE - print error like in bash, also control the last token!
 bool redir_syntax_error(t_data *data, t_token *token)
 {
 	bool	is_redir;
