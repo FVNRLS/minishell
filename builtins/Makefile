@@ -7,7 +7,7 @@ SRC =	pwd.c \
 		echo.c \
 		export.c \
 		unset.c \
-		exit.c \
+		mini_exit.c \
 		
 MAIN = main_tests.c
 
