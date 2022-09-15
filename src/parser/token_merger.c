@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:14:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 19:37:29 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/15 11:47:36 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ void	merge_redirections(t_data *data)
 	tmp = data->tokens;
 	if (!tmp)
 		return ;
-	while (tmp->next != NULL)
+	while (tmp != NULL)
 	{
 		is_redir = check_redir(data, tmp->flag);
 		if (is_redir == true)
 		{
 			merge = tmp->next;
-			if (redir_syntax_error(data, tmp) == true)
+			if (check_redir_syntax_error(data, tmp) == true)
 				return ;
 			free(tmp->content);
 			tmp->content = NULL;

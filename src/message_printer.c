@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 19:45:37 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/15 11:42:55 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,16 @@ void	print_error(int error)
 
 void	print_token_error(int error, t_token *token)
 {
+	char *content;
+
+	if (token->next == NULL)
+		content = ft_strdup("newline");
+	else
+		content = ft_strdup(token->next->content);
+
 	if (error == REDIRECTION_ERROR)
-		printf("minishell:	syntax error near unexpected token\n");
+		printf("minishell: syntax error near unexpected token `%s'\n", content);
+
+	free(content);
+	content = NULL;
 }

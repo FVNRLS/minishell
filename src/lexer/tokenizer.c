@@ -12,6 +12,20 @@
 
 #include "../../incl/minishell.h"
 
+bool	check_sep(t_data *data, char c)
+{
+	int i;
+
+	i = 0;
+	while (data->sep[i] != '\0')
+	{
+		if (c == data->sep[i])
+			return (true);
+		i++;
+	}
+	return (false);
+}
+
 static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 {
 	char	next_char;

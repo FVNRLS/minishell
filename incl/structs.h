@@ -62,6 +62,7 @@ typedef struct s_data
 	t_envp		*envp; // linked list - contains all environments
 	t_token		*tokens; //linked list with tokens
 	bool		lex_error;
+	bool		parse_error;
 	bool		exit_minishell;
 	int			status; //catch signal exit codes and process execution
 }		t_data;

@@ -34,8 +34,6 @@ void	lex_input(t_data *data)
 	if (!data->input)
 		exit_with_free(data);
 	create_tokens(data, &lex);
-	merge_joinable_tokens(data);
-	merge_redirections(data);
 	if (data->lex_error == true)
 		return;
 	free(data->input);

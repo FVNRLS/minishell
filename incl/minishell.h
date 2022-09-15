@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 19:37:29 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/15 11:22:31 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	lex_input(t_data *data);
 void	create_tokens(t_data *data, t_lex *lex);
 bool	check_sep(t_data *data, char c);
 bool	check_redir(t_data *data, int flag);
-bool 	redir_syntax_error(t_data *data, t_token *token);
+bool 	check_redir_syntax_error(t_data *data, t_token *token);
 void	add_token(t_data *data, t_lex *lex);
 void	handle_redirections(t_data *data, t_lex *lex);
 void	handle_words(t_data *data, t_lex *lex);
@@ -91,6 +91,9 @@ void 	handle_multiple_dollars(t_data *data, t_lex *lex);
 void	handle_one_dollar(t_data *data, t_lex *lex);
 void	merge_joinable_tokens(t_data *data);
 void	merge_redirections(t_data *data);
+
+//PARSER
+void	parse_tokens(t_data *data);
 
 
 
