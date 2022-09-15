@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:14:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/15 11:47:36 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/15 13:56:26 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ void	merge_joinable_tokens(t_data *data)
 		else
 			tmp = tmp->next;
 	}
-	if (tmp->next == NULL)
-		tmp->join = 0;
+	tmp->join = 0;
 }
 
 void	merge_redirections(t_data *data)
@@ -66,5 +65,32 @@ void	merge_redirections(t_data *data)
 			merge = NULL;
 		}
 		tmp = tmp->next;
+	}
+}
+
+void	merge_words(t_data *data)
+{
+	t_token	*tmp;
+	t_token	*del;
+
+	tmp = data->tokens;
+	if (!tmp)
+		return ;
+	del = NULL;
+	while (tmp->next != NULL)
+	{
+		del = tmp->next;
+		if (tmp->flag == T_WORD && del->flag == T_WORD)
+		{
+			tmp->content = ft_join_char(tmp->content, SPACE);
+			tmp->content = ft_strjoin(tmp->content, del->content);
+			tmp->next = del->next;
+			free(del->content);
+			del->content = NULL;
+			free(del);
+			del = NULL;
+		}
+		else
+			tmp = tmp->next;
 	}
 }

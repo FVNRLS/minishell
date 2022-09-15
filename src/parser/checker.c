@@ -6,17 +6,43 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:29:31 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/15 11:36:05 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/15 13:39:05 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-bool check_redir_syntax_error(t_data *data, t_token *token)
+void	check_multiple_pipes(t_data *data)
+{
+	t_token	*tmp;
+
+	tmp = data->tokens;
+	while (tmp->next != NULL)
+	{
+		if (tmp->flag == T_PIPE)
+		{
+			if (tmp->next->flag == T_PIPE)
+			{
+				print_token_error(PIPE_SYNTAX_ERROR, tmp);
+				data->parse_error = true;
+				return ;
+			}
+		}
+		tmp = tmp->next;
+	}
+	if (tmp->flag == T_PIPE)
+	{
+		print_token_error(PIPE_SYNTAX_ERROR, tmp);
+		data->parse_error = true;
+		return ;
+	}
+}
+
+bool 	check_redir_syntax_error(t_data *data, t_token *token)
 {
 	if (token->next == NULL || token->next->flag != T_WORD)
 	{
-		print_token_error(REDIRECTION_ERROR, token);
+		print_token_error(REDIR_SYNTAX_ERROR, token);
 		data->parse_error = true;
 		return (true);
 	}
