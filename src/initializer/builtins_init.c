@@ -58,5 +58,5 @@ void	init_builtin_functions(t_data *data)
 	data->builtins->funcs[3] = (void *)&export;
 	data->builtins->funcs[4] = (void *)&unset;
 	data->builtins->funcs[5] = (void *)&env;
-	data->builtins->funcs[6] = (void *)&exit;
+	data->builtins->funcs[6] = (void *)&mini_exit;
 }
