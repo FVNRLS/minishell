@@ -66,6 +66,7 @@ typedef struct s_data
 	t_token		*tokens; //linked list with tokens
 	bool		lex_error;
 	bool		parse_error;
+	bool		exec_error;
 	bool		exit_minishell;
 	int			status; //catch signal exit codes and process execution
 }		t_data;
