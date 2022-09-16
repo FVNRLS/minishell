@@ -4,23 +4,24 @@ SRC =	pwd.c \
 		bin_utils.c \
 		env.c \
 		cd.c \
+		echo.c \
+		export.c \
+		unset.c \
+		exit.c \
 		
 MAIN = main_tests.c
 
 OBJS = $(SRC:.c=.o)
 
-CC = gcc
+CC = @gcc
 
 AR = ar -r 
 
-C_FLAGS = -c -Wall -Wextra #-Werror
+C_FLAGS = -Wall -Wextra #-Werror
 
 $(NAME): $(OBJS)
-	$(CC) $(C_FLAGS) $(SRC)
-	$(AR) $(NAME) $(OBJS)
 	rm -f *.o
-	gcc $(NAME) $(MAIN)
-	./a.out
+	$(CC) $(C_FLAGS) $(SRC) $(MAIN) -o $(NAME)
 
 all: $(NAME)
 
@@ -32,3 +33,4 @@ fclean: clean
 	rm -f *.out
 
 re: fclean all
+

@@ -52,5 +52,11 @@ void	init_builtin_names(t_data *data)
 //call like this: data->builtins->funcs[5](data);
 void	init_builtin_functions(t_data *data)
 {
-	data->builtins->funcs[5] = (int (*)(void *)) env;
+	data->builtins->funcs[0] = (void *)&echo;
+	data->builtins->funcs[1] = (void *)&cd;
+	data->builtins->funcs[2] = (void *)&pwd;
+	data->builtins->funcs[3] = (void *)&export;
+	data->builtins->funcs[4] = (void *)&unset;
+	data->builtins->funcs[5] = (void *)&env;
+	data->builtins->funcs[6] = (void *)&mini_exit;
 }

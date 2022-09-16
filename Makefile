@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/15 11:18:50 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/09/16 11:05:03 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,13 @@ SRC 		= 	main.c 								\
 				src/initializer/builtins_init.c		\
 				src/destructor.c					\
 				builtins/env.c						\
+				builtins/cd.c						\
+				builtins/bin_utils.c				\
+				builtins/echo.c						\
+				builtins/mini_exit.c				\
+				builtins/export.c					\
+				builtins/pwd.c						\
+				builtins/unset.c					\
 				src/history_tracker.c				\
 				src/lexer/lexer.c					\
 				src/lexer/tokenizer.c				\
