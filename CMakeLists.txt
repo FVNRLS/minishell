@@ -45,12 +45,26 @@ add_executable(minishell main.c
         src/lexer/words_handler.c
         src/lexer/expander/expansion_handler.c
         src/lexer/expander/expansion_rules.c
-        src/parser/token_merger.c
+
+        #PARSER
+        src/parser/parser.c
         src/parser/checker.c
+        src/parser/redirecter.c
+        src/parser/token_merger.c
+
+        #BUILTINS
+        builtins/bin_utils.c
+        builtins/cd.c
+        builtins/echo.c
+        builtins/env.c
+        builtins/export.c
+        builtins/mini_exit.c
+        builtins/pwd.c
+        builtins/unset.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-        src/parser/parser.c src/parser/redirecter.c)
+        )
 
 target_link_libraries(minishell edit)
 

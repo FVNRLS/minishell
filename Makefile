@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+         #
+#    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/16 11:05:03 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/09/16 12:03:50 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,11 @@ SRC 		= 	main.c 								\
 				src/lexer/expander/expansion_handler.c \
 				src/lexer/expander/expansion_rules.c	\
 				src/parser/token_merger.c			\
+				src/parser/parser.c				\
 				src/parser/checker.c				\
+				src/parser/redirecter.c
+
+
 
 TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_bzero.c				\

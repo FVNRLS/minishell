@@ -28,5 +28,4 @@ void	parse_tokens(t_data *data)
 //	resolve_redirections(data);
 	if (data->parse_error == true)
 		return ;
-
 }
