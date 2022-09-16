@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/15 13:21:03 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/15 16:18:13 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,21 @@ void	print_error(int error)
 
 void	print_token_error(int error, t_token *token)
 {
-	char *content;
+	char *redir;
 
 	if (token->next == NULL)
-		content = ft_strdup("newline");
+		redir = ft_strdup("newline");
 	else
-		content = ft_strdup(token->next->content);
+		redir = ft_strdup(token->next->content);
 
 	if (error == PIPE_SYNTAX_ERROR)
 		printf("minishell: syntax error near unexpected token `|'\n");
 	else if (error == REDIR_SYNTAX_ERROR)
-		printf("minishell: syntax error near unexpected token `%s'\n", content);
+		printf("minishell: syntax error near unexpected token `%s'\n", redir);
+	else if (error == OPEN_ERROR)
+		printf("minishell: %s: No such file or directory\n", token->content);
 
 
-	free(content);
-	content = NULL;
+	free(redir);
+	redir = NULL;
 }

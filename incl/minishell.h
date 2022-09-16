@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/15 13:21:03 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/15 16:28:18 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <stdbool.h>
 # include <signal.h>
 # include <readline/readline.h>
@@ -96,6 +97,9 @@ void	merge_words(t_data *data);
 void	merge_redirections(t_data *data);
 bool	check_redir(t_data *data, int flag);
 bool 	check_redir_syntax_error(t_data *data, t_token *token);
+void	check_open_error(t_data *data, t_token *token);
+void	resolve_redirections(t_data *data);
+
 
 
 //TODO: delete before submission!

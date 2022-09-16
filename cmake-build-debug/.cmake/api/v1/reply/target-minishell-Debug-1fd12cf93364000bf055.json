@@ -93,7 +93,8 @@
 				31,
 				32,
 				33,
-				34
+				34,
+				35
 			]
 		}
 	],
@@ -165,7 +166,8 @@
 				31,
 				32,
 				33,
-				34
+				34,
+				35
 			]
 		}
 	],
@@ -379,6 +381,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/parser/parser.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/parser/redirecter.c",
 			"sourceGroupIndex" : 0
 		}
 	],

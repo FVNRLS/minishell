@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 18:49:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/15 15:20:07 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define NUM_BUILTINS		7
 # define NUM_REDIRECTIONS	4
+# define RIGHTS				0644
 
 typedef struct s_token //linked tokens
 {
@@ -59,6 +60,8 @@ typedef struct s_data
 	char 		*input;
 	char		*sep;
 	int 		*redir;
+	int 		fd_in;
+	int 		fd_out;
 	t_envp		*envp; // linked list - contains all environments
 	t_token		*tokens; //linked list with tokens
 	bool		lex_error;

@@ -50,7 +50,7 @@ add_executable(minishell main.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-        src/parser/parser.c)
+        src/parser/parser.c src/parser/redirecter.c)
 
 target_link_libraries(minishell edit)
 

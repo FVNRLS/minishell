@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:43:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 19:38:57 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/15 13:21:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define DOUBLE_QUOTE_MISSING		2
 # define REDIR_SYNTAX_ERROR			3
 # define PIPE_SYNTAX_ERROR			4
+# define OPEN_ERROR					5
 
 void	print_error(int error);
 void	print_token_error(int error, t_token *token);
