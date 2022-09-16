@@ -34,10 +34,10 @@ int	main(int argc, char **argv, char **envp)
 			if (data.parse_error == false)
 			{
 				print_tokens(&data);
-	//			exec();
-				close(data.fd_in);
-				close(data.fd_out);
+				exec_commands(&data);
 			}
+			close(data.fd_in);
+			close(data.fd_out);
 		}
 		free_tokens(&data);
 //		check_leaks();

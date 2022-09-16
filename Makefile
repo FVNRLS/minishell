@@ -6,7 +6,7 @@
 #    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/16 12:03:50 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/09/16 12:25:04 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ SRC 		= 	main.c 								\
 				src/parser/token_merger.c			\
 				src/parser/parser.c				\
 				src/parser/checker.c				\
-				src/parser/redirecter.c
+				src/parser/redirecter.c				\
+				src/executer/executer.c				\
 
 
 

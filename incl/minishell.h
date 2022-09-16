@@ -101,6 +101,9 @@ void	check_open_error(t_data *data, t_token *token);
 void	resolve_redirections(t_data *data);
 
 
+//EXECUTER
+void	exec_commands(t_data *data);
+
 
 //TODO: delete before submission!
 void	print_tokens(t_data *data);

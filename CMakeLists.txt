@@ -52,6 +52,9 @@ add_executable(minishell main.c
         src/parser/redirecter.c
         src/parser/token_merger.c
 
+        #EXECUTER
+        src/executer/executer.c
+
         #BUILTINS
         builtins/bin_utils.c
         builtins/cd.c
