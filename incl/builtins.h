@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:42:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 11:06:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/16 11:06:29 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ if error occurs return 1
 int pwd(void);
 
 int	echo(char *s);
-int	export(char *s);
-int	mini_exit(char *s);
-int	unset(char *s);
+int	export(t_data *data);
+int	mini_exit(t_data *data);
+int	unset(t_data *data);
 
 #endif
