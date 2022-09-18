@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/18 14:32:12 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/18 19:42:03 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	print_error(int error)
 		printf("minishell:	syntax error. Missing \"\n");
 	else if (error == EXIT_ERROR)
 		printf("minishell: exit: Zu viele Argumente.\n");
+	else if (error == EXIT_ARG_ERROR)
+		printf("minishell: exit: d2: numeric argument required\n");
 	else if (error == CMD_ERROR)
 		printf("minishell: command not found:");
 }
