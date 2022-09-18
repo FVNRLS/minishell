@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_printer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/15 16:18:13 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:32:12 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	print_error(int error)
 		printf("minishell:	syntax error. Missing '\n");
 	else if (error == DOUBLE_QUOTE_MISSING)
 		printf("minishell:	syntax error. Missing \"\n");
+	else if (error == EXIT_ERROR)
+		printf("minishell: exit: Zu viele Argumente.\n");
+	else if (error == CMD_ERROR)
+		printf("minishell: command not found:");
 }
 
 void	print_token_error(int error, t_token *token)
@@ -54,8 +58,6 @@ void	print_token_error(int error, t_token *token)
 		printf("minishell: syntax error near unexpected token `%s'\n", redir);
 	else if (error == OPEN_ERROR)
 		printf("minishell: %s: No such file or directory\n", token->content);
-
-
 	free(redir);
 	redir = NULL;
 }
