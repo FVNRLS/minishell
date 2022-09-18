@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/15 16:28:18 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:34:05 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv, char **envp)
 	t_data 	data;
 	(void) argc;
 	(void) argv;
-	g_exit_code = 0;
+	//g_exit_code = 0;
 	init_shell_env(&data, envp);
 	while (data.exit_minishell == false)
 	{
@@ -36,14 +36,14 @@ int	main(int argc, char **argv, char **envp)
 				print_tokens(&data);
 				exec_commands(&data);
 			}
-			close(data.fd_in);
-			close(data.fd_out);
+			//close(data.fd_in);
+			//close(data.fd_out);
 		}
 		free_tokens(&data);
 //		check_leaks();
 	}
 	free_all_ressources(&data);
-	atexit(check_leaks);
+	//atexit(check_leaks);
 
 	return (EXIT_SUCCESS);
 }

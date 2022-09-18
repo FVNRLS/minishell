@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/16 12:25:04 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/09/18 14:41:59 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC 			= 	cc
 
 RM 			= 	rm -f
 
-FLAGS 		= 	-Wall -Wextra -Werror
+FLAGS 		= 	-Wall -Wextra #-Werror
 
 SRC 		= 	main.c 								\
 				src/initializer/main_init.c			\
@@ -65,7 +65,10 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_itoa.c					\
 				src/tools/ft_split.c				\
 				src/tools/ft_strjoin.c				\
-
+				src/tools/ft_has_pipe.c				\
+				src/tools/ft_isbuiltin.c			\
+				src/tools/ft_cleansplit.c			\
+				src/tools/ft_print_list.c			\
 
 OBJ 		= 	${SRC:.c=.o}
 TOOLS_OBJ 	=	${TOOLS_SRC:.c=.o}
