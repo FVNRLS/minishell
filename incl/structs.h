@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/15 15:20:07 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/17 21:57:44 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef struct s_builtins
 {
 	char		*names[NUM_BUILTINS]; //strcmp the tokens with reserved words and if match - call the builtins on the sam index
 	int 		(*funcs[NUM_BUILTINS])(void *); // builtin functions
+	char		**command;
+	int			pipe;
+	void		*ptr;
+	int			id;
+	char		**command_pipe;
+	char		*cmd_now;
 }		t_builtins;
 
 
