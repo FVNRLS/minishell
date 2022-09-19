@@ -38,6 +38,9 @@ int error(char *m, int error);
 
 /*
 print data.envp.key & data.envp.key till envp->next == NULL
+if cmd:
+env | echo n 
+cmd env will be ignored atm
 */
 int	env(t_data *data);
 
@@ -57,9 +60,25 @@ if error occurs return 1
 */
 int pwd(t_data *data);
 
+/*
+flag echo -n dont work atm
+*/
 int	echo(t_data *data);
+
+/*
+not finished yet
+*/
 int	export(t_data *data);
+
+/*
+exit minishell should be fine
+pls test exit against bugs
+*/
 int	mini_exit(t_data *data);
+
+/*
+not finished yet
+*/
 int	unset(t_data *data);
 
 #endif
