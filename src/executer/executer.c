@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/19 13:29:34 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/19 18:53:58 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,30 @@ void	*exec_loop(t_data *data, char *pip)
 	close(fd[1]);
 	return (NULL);
 }
+
+int	check_pipe(t_data *data)
+{
+	if (data->tokens->content[0] == '|' && data->tokens->next)
+	{
+		//printf("skip cmd its a pipe\n");
+		data->tokens = data->tokens->next;
+		return (0);
+	}
+	return (1);
+}
+
+int	mod_error(t_data *data)
+{
+	if (1 && check_pipe(data))
+	{
+		print_error(7);
+		//printf("%s\n", data->builtins->command[0]);
+		ft_cleansplit(data->builtins->command);
+		return (1);
+	}
+	return (0);	
+}
+
 /*
 errrors in message printer && define macros for error in errror.h
 */
@@ -40,9 +64,7 @@ void	exec_commands(t_data *data)
 	tmp = (t_token*)data->tokens;
 	while (data->tokens && data->exit_minishell != true)
 	{
-		if (data->tokens->content[0] == '|' && data->tokens->next)
-			data->tokens = data->tokens->next;
-		else if (data->tokens->content[0] == '|' && !data->tokens->next)
+		if (data->tokens->content[0] == '|' && !data->tokens->next)
 		{
 			/*
 			bash exit | exit 1 |
@@ -55,16 +77,14 @@ void	exec_commands(t_data *data)
 			exec_loop(data, data->tokens->content);
 		}
 		mod = ft_isbuiltin(data);
-		printf("mod = %i\n", mod);
-		if (mod == -1)
+		//printf("mod = %i\n", mod);
+		if (mod == -1 && mod_error(data))
+			break ;
+		if (mod != -1)
 		{
-			print_error(7);
-			printf("%s\n", data->builtins->command[0]);
-			ft_cleansplit(data->builtins->command);
-			return ;
+			data->builtins->funcs[mod - 1](data);
+			data->tokens = data->tokens->next;
 		}
-		data->builtins->funcs[mod - 1](data);
 		ft_cleansplit(data->builtins->command);
-		data->tokens = data->tokens->next;
 	}
 }

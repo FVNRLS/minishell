@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/19 13:13:51 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/19 19:06:04 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	print_error(int error)
 		printf("minishell: command not found:");
 	else if (error == INVALID_PATH)
 		printf("minishell: Invalid file or directory:");
+	else if (error == CD_ARG_ERROR)
+		printf("minishell: cd: Zu viele Argumente.\n");
 }
 
 void	print_token_error(int error, t_token *token)

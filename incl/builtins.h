@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:42:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/19 13:07:03 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/19 18:56:08 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int cd(t_data *data);
 print the pathname of current working directory
 if error occurs return 1
 */
-int pwd(void);
+int pwd(t_data *data);
 
 int	echo(t_data *data);
 int	export(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/19 13:22:46 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/19 18:08:57 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv, char **envp)
 			parse_tokens(&data);
 			if (data.parse_error == false)
 			{
-				print_tokens(&data);
+				//print_tokens(&data);
 				exec_commands(&data);
 			}
 			//close(data.fd_in);
