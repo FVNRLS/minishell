@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:42:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/17 21:00:53 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/19 13:07:03 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <errno.h>
 # include <unistd.h>
 # include <sys/types.h>
+
+//utils
+int	is_number(char *s);
+char **dl_first(char **s);
 
 /*
 error management of builtins uses perror / errno messages
@@ -45,7 +49,7 @@ export & unset env ?
 ARGS = ".."  & any path "Names"
 if error occurs return 1
 */
-int cd(char *val);
+int cd(t_data *data);
 
 /*
 print the pathname of current working directory

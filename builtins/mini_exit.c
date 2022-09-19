@@ -6,30 +6,11 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:28:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/18 19:45:23 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/19 00:22:53 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
-
-int		ft_isdigit(int c)
-{
-	return (c >= 48 && c <= 57);
-}
-
-int	is_number(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (!ft_isdigit(s[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 int	check_exit_args(t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/18 14:34:05 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/19 13:22:46 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv, char **envp)
 	t_data 	data;
 	(void) argc;
 	(void) argv;
+	signal(SIGINT, SIG_IGN); // Ctrl C dont work now
 	//g_exit_code = 0;
 	init_shell_env(&data, envp);
 	while (data.exit_minishell == false)
