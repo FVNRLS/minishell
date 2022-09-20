@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/19 18:08:57 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:38:21 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int	main(int argc, char **argv, char **envp)
 	t_data 	data;
 	(void) argc;
 	(void) argv;
-	signal(SIGINT, SIG_IGN); // Ctrl C dont work now
-	//g_exit_code = 0;
+	g_exit_code = 0;
 	init_shell_env(&data, envp);
 	while (data.exit_minishell == false)
 	{
@@ -34,17 +33,15 @@ int	main(int argc, char **argv, char **envp)
 			parse_tokens(&data);
 			if (data.parse_error == false)
 			{
-				//print_tokens(&data);
-				exec_commands(&data);
+				print_tokens(&data);
+//				exec_commands(&data);
 			}
-			//close(data.fd_in);
-			//close(data.fd_out);
 		}
 		free_tokens(&data);
 //		check_leaks();
 	}
 	free_all_ressources(&data);
-	//atexit(check_leaks);
+	atexit(check_leaks);
 
 	return (EXIT_SUCCESS);
 }

@@ -29,6 +29,8 @@ add_executable(minishell main.c
         src/tools/ft_itoa.c
         src/tools/ft_split.c
         src/tools/ft_strjoin.c
+        src/tools/ft_cleansplit.c
+        src/tools/ft_isbuiltin.c
 
         #BUILTINS:
         builtins/env.c

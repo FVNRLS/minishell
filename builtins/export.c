@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/19 14:35:24 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:52:43 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,22 @@ char	*get_val(char *s)
 	new = ft_strdup(s + i);
 	return (new);
 }
-
-void	change_env(char **env, char *key, char *val, int flag)
+//TODO:
+// sei vorsichtig mit meinem strjoin - der macht free vom ersten argument
+// (nur dass du dich nicht wunderst...)
+void	change_env(t_envp *env, char *key, char *val, int flag)
 {
 	if (flag == 0)
 	{
 		printf("create new var, dont work atm\n");
 		return ;
 	}
-	free(*env);
+	free(env);
 	if (val == NULL)
 		val = ft_strdup("");
-	env = ft_strjoin(key, val);
-	printf("ENV = %s\n", *env);
+	//TODO: ih habe die zeilen auskommentiert, weil sie nicht compilieren und ich nicht ganz sicher bin, was du machen mochtest..
+//	env = ft_strjoin(key, val);
+//	printf("ENV = %s\n", env);
 }
 
 int	export(t_data *data)
@@ -87,7 +90,7 @@ int	export(t_data *data)
 	//printf("key = %s\n", n_key);
 	//printf("val = %s\n", n_val);
 	if (!tmp || !tmp->key)
-	{	
+	{
 		printf("export.c Error empty data"); // just for debug
 		return (EXIT_FAILURE);
 	}
@@ -97,14 +100,14 @@ int	export(t_data *data)
 		if (ft_strcmp(tmp->key, n_key) == 0)
 		{
 			old_env = 1;
-			change_env(&tmp, n_key, n_val, old_env);
+			change_env(tmp, n_key, n_val, old_env);
 			//printf("key = %s\n", tmp->key);
 		}
 		tmp = tmp->next;
 	}
 	if (old_env == 0)
 	{
-		change_env(&tmp, n_key, n_val, old_env);
+		change_env(tmp, n_key, n_val, old_env);
 	}
 	free(n_key);
 	free(n_val);
