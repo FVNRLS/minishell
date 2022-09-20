@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:07:45 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/19 19:00:58 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:52:52 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int pwd(t_data *data)
     char    *path;
 
 	path = NULL;
-	if (data->tokens->next->content && data->tokens->next->content[0] == '|')
+
+	if (data->tokens->content && data->tokens->next && ft_strcmp(data->tokens->next->content, "|") == 0)
 		return (EXIT_SUCCESS);
     path = getcwd(path, 0);
     if (!path || errno != 0)

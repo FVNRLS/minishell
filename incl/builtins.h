@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:42:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/19 18:56:08 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/20 19:32:40 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <sys/types.h>
 
 //utils
-int	is_number(char *s);
-char **dl_first(char **s);
+int		is_number(char *s);
+int		get_splitlen(char **s);
 
 /*
 error management of builtins uses perror / errno messages

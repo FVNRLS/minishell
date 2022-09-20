@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:14:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/19 00:25:40 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/20 19:31:18 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,12 @@ int	is_number(char *s)
 	return (1);
 }
 
-char **dl_first(char **s)
+int	get_splitlen(char **s)
 {
-	char 	**new;
-	int		i;
-	int		j;
+	int	count;
 
-	i = 0;
-	j = 0;
-	while (s[i])
-		i++;
-	new = malloc(sizeof(char *) * (i));
-	while (s[j + 1])
-	{
-		new[j] = ft_strdup(s[j + 1]);
-		j++;
-	}
-	new[j] = NULL;
-	ft_cleansplit(s);
-	return (new);
+	count = 0;
+	while (s && s[count] && s[count][0])
+		count++;
+	return (count);
 }
