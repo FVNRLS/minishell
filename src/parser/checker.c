@@ -26,6 +26,8 @@ void	check_multiple_pipes(t_data *data)
 	t_token	*tmp;
 
 	tmp = data->tokens;
+	if (!tmp)
+		return ;
 	while (tmp->next != NULL)
 	{
 		if (tmp->flag == T_PIPE)
