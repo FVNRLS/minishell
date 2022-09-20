@@ -97,7 +97,8 @@ void	merge_words(t_data *data);
 void	merge_redirections(t_data *data);
 bool	check_redir(t_data *data, int flag);
 bool 	check_redir_syntax_error(t_data *data, t_token *token);
-void	check_open_error(t_data *data, t_token *token);
+void	check_read_error(t_data *data, t_token *token);
+void	check_create_error(t_data *data, t_token *token);
 void	resolve_redirections(t_data *data);
 
 

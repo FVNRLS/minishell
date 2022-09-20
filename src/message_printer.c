@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_printer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/19 19:06:04 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:13:28 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	print_token_error(int error, t_token *token)
 		printf("minishell: syntax error near unexpected token `|'\n");
 	else if (error == REDIR_SYNTAX_ERROR)
 		printf("minishell: syntax error near unexpected token `%s'\n", redir);
-	else if (error == OPEN_ERROR)
+	else if (error == OPEN_ERROR || error == CREATE_ERROR)
 		printf("minishell: %s: No such file or directory\n", token->content);
 	free(redir);
 	redir = NULL;

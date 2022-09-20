@@ -6,15 +6,25 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:29:31 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/15 13:40:16 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:06:56 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-void	check_open_error(t_data *data, t_token *token)
+void	check_read_error(t_data *data, t_token *token)
 {
-	if (data->fd_in < 0)
+	if (data->fd_in < 0 || access(token->content, F_OK < 0)
+		|| access(token->content, R_OK) < 0)
+	{
+		print_token_error(OPEN_ERROR, token);
+		data->parse_error = true;
+	}
+}
+
+void	check_create_error(t_data *data, t_token *token)
+{
+	if (data->fd_out < 0 || access(token->content, F_OK) < 0)
 	{
 		print_token_error(OPEN_ERROR, token);
 		data->parse_error = true;

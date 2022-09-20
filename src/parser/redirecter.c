@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/15 16:48:00 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:42:26 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,56 +17,69 @@
 void	redirect_in(t_data *data, t_token *token)
 {
 	data->fd_in = open(token->content, O_RDONLY);
-	check_open_error(data, token);
+	check_read_error(data, token);
 }
 
 void	redirect_from_heredoc(t_data *data, t_token *token)
 {
 	data->fd_in = open("/tmp/.tmp", O_CREAT | O_RDWR | O_TRUNC, RIGHTS);
-	check_open_error(data, token);
+	check_read_error(data, token);
+
+	//later: unlink "/tmp/.tmp"
 }
 
 void	redirect_out(t_data *data, t_token *token)
 {
-	data->fd_out = open(token->content, O_WRONLY);
-	check_open_error(data, token);
+	data->fd_out = open(token->content, O_CREAT | O_RDWR | O_TRUNC, RIGHTS);
+	check_create_error(data, token);
 }
 
 void	append(t_data *data, t_token *token)
 {
-	data->fd_out = open(token->content, O_CREAT | O_RDWR | O_TRUNC, RIGHTS);
-	check_open_error(data, token);
+	data->fd_out = open(token->content, O_CREAT | O_RDWR | O_APPEND, RIGHTS);
+	check_create_error(data, token);
+}
+
+void	redirect_del_token(t_data *data, t_token *token)
+{
+	if (token->flag == T_REDIRECT_IN)
+		redirect_in(data, token);
+	else if (token->flag == T_REDIRECT_OUT)
+		redirect_out(data, token);
+	else if (token->flag == T_HEREDOC)
+		redirect_from_heredoc(data, token);
+	else if (token->flag == T_APPEND)
+		append(data, token);
+	if (data->parse_error == true)
+		return ;
+	free(token->content);
+	token->content = NULL;
+	free(token);
+	token = NULL;
 }
 
 void	resolve_redirections(t_data *data)
 {
 	t_token	*tmp;
 	t_token *del;
+
 	bool	is_redir;
 
 	tmp = data->tokens;
-	del = NULL;
-	while (tmp->next != NULL && tmp->flag != T_PIPE)
+	while (tmp != NULL && tmp->flag != T_PIPE)
 	{
-		is_redir = check_redir(data, tmp->flag);
+		if (tmp->next != NULL)
+			del = tmp->next;
+		else
+			del = tmp;
+		is_redir = check_redir(data, del->flag);
 		if (is_redir == true)
 		{
-			if (tmp->flag == T_REDIRECT_IN)
-				redirect_in(data, tmp);
-			else if (tmp->flag == T_REDIRECT_OUT)
-				redirect_out(data, tmp);
-			else if (tmp->flag == T_HEREDOC)
-				redirect_from_heredoc(data, tmp);
-			else if (tmp->flag == T_APPEND)
-				append(data, tmp);
+			tmp->next = del->next;
+			tmp = del->next;
+			redirect_del_token(data, del);
 			if (data->parse_error == true)
 				return ;
-			del = tmp;
-			tmp = tmp->next;
-			free(del->content);
-			del->content = NULL;
-			free(del);
-			del = NULL;
 		}
 		else
 			tmp = tmp->next;

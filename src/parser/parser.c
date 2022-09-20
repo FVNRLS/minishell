@@ -25,7 +25,7 @@ void	parse_tokens(t_data *data)
 	merge_joinable_tokens(data);
 	merge_redirections(data);
 	merge_words(data);
-//	resolve_redirections(data);
+	resolve_redirections(data);
 	if (data->parse_error == true)
 		return ;
 }

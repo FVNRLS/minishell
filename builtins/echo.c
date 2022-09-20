@@ -38,7 +38,7 @@ int	echo(t_data *data)
 		return (EXIT_SUCCESS);
 	}
 	i = 5;
-	while (s[i] != NULL)
+	while (s[i] != '\0')
 	{
 		printf("%c", s[i++]);
 	}
