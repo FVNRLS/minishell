@@ -14,17 +14,17 @@
 
 void 	close_fd_in_out(t_data *data)
 {
-	if (data->fd_in != STDIN_FILENO)
+	if (data->fd->fd_in != STDIN_FILENO)
 	{
-		if (close(data->fd_in) < 0)
+		if (close(data->fd->fd_in) < 0)
 		{
 			perror(NULL);
 			data->parse_error = true;
 		}
 	}
-	if (data->fd_out != STDOUT_FILENO)
+	if (data->fd->fd_out != STDOUT_FILENO)
 	{
-		if (close(data->fd_out) < 0)
+		if (close(data->fd->fd_out) < 0)
 		{
 			perror(NULL);
 			data->parse_error = true;
@@ -34,9 +34,9 @@ void 	close_fd_in_out(t_data *data)
 
 void 	close_unused_fd_out(t_data *data)
 {
-	if (data->fd_out == STDOUT_FILENO)
+	if (data->fd->fd_out == STDOUT_FILENO)
 		return ;
-	else if (close(data->fd_out) < 0)
+	else if (close(data->fd->fd_out) < 0)
 	{
 		perror(NULL);
 		data->parse_error = true;
@@ -45,9 +45,9 @@ void 	close_unused_fd_out(t_data *data)
 
 void	close_unused_fd_in(t_data *data)
 {
-	if (data->fd_in == STDIN_FILENO)
+	if (data->fd->fd_in == STDIN_FILENO)
 		return ;
-	else if (close(data->fd_in) < 0)
+	else if (close(data->fd->fd_in) < 0)
 	{
 		perror(NULL);
 		data->parse_error = true;

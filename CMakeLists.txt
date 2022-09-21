@@ -54,6 +54,7 @@ add_executable(minishell main.c
         src/parser/token_merger.c
         src/parser/redirecter/redirecter.c
         src/parser/redirecter/fd_closer.c
+        src/parser/redirecter/heredoc_creater.c
 
         #EXECUTER
         src/executer/executer.c
@@ -70,7 +71,7 @@ add_executable(minishell main.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-        )
+        src/parser/redirecter/fd_opener.c)
 
 target_link_libraries(minishell edit)
 

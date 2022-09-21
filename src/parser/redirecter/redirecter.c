@@ -6,51 +6,11 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 11:43:44 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:29:56 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incl/minishell.h"
-
-//TODO: continue with redirects!
-
-void	redirect_in(t_data *data, t_token *token)
-{
-	close_unused_fd_in(data);
-	if (data->parse_error == true)
-		return ;
-	data->fd_in = open(token->content, O_RDONLY);
-	check_read_error(data, token);
-}
-
-void	redirect_from_heredoc(t_data *data, t_token *token)
-{
-	close_unused_fd_in(data);
-	if (data->parse_error == true)
-		return ;
-	data->fd_in = open("/tmp/.tmp", O_CREAT | O_RDWR | O_TRUNC, RIGHTS);
-	check_read_error(data, token);
-
-	//later: unlink "/tmp/.tmp"
-}
-
-void	redirect_out(t_data *data, t_token *token)
-{
-	close_unused_fd_out(data);
-	if (data->parse_error == true)
-		return ;
-	data->fd_out = open(token->content, O_CREAT | O_RDWR | O_TRUNC, RIGHTS);
-	check_create_error(data, token);
-}
-
-void	append(t_data *data, t_token *token)
-{
-	close_unused_fd_out(data);
-	if (data->parse_error == true)
-		return ;
-	data->fd_out = open(token->content, O_CREAT | O_RDWR | O_APPEND, RIGHTS);
-	check_create_error(data, token);
-}
 
 void	redirect_del_token(t_data *data, t_token *token)
 {
@@ -59,7 +19,10 @@ void	redirect_del_token(t_data *data, t_token *token)
 	else if (token->flag == T_REDIRECT_OUT)
 		redirect_out(data, token);
 	else if (token->flag == T_HEREDOC)
+	{
 		redirect_from_heredoc(data, token);
+		data->fd->hdoc_index++;
+	}
 	else if (token->flag == T_APPEND)
 		append(data, token);
 	free(token->content);
@@ -79,6 +42,8 @@ void	resolve_redirections(t_data *data)
 	if (!tmp)
 		return ;
 	prev = tmp;
+	create_heredoc_files(data);
+	data->fd->hdoc_index = 0;
 	while (tmp != NULL && tmp->flag != T_PIPE)
 	{
 		del = tmp;
@@ -98,5 +63,5 @@ void	resolve_redirections(t_data *data)
 			tmp = tmp->next;
 		}
 	}
-	printf("fd_in:	%d	fd_out:	%d\n", data->fd_in, data->fd_out);
+	printf("fd_in:	%d	fd_out:	%d\n", data->fd->fd_in, data->fd->fd_out);
 }

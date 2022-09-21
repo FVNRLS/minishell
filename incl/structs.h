@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/19 18:54:34 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:11:56 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_builtins
 	char		**command;
 }		t_builtins;
 
-
 typedef struct s_lex
 {
 	int 		i;
@@ -54,6 +53,14 @@ typedef struct s_lex
 	bool		expansion;
 }		t_lex;
 
+typedef struct s_fd
+{
+	int 		fd_in;
+	int 		fd_out;
+	char 		**hdoc;
+	int 		hdoc_index;
+}	t_fd;
+
 
 typedef struct s_data
 {
@@ -61,8 +68,7 @@ typedef struct s_data
 	char 		*input;
 	char		*sep;
 	int 		*redir;
-	int 		fd_in;
-	int 		fd_out;
+	t_fd 		*fd;
 	t_envp		*envp; // linked list - contains all environments
 	t_token		*tokens; //linked list with tokens
 	bool		lex_error;

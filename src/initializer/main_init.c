@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 18:49:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:44:29 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,16 @@ static void init_redirections(t_data *data)
 	data->redir[1] = T_REDIRECT_OUT;
 	data->redir[2] = T_HEREDOC;
 	data->redir[3] = T_APPEND;
-	data->fd_in = 0;
-	data->fd_out = 1;
+
+}
+
+static void init_fd(t_data *data)
+{
+	data->fd = malloc(sizeof(t_fd));
+	data->fd->hdoc = NULL;
+	data->fd->fd_in = 0;
+	data->fd->fd_out = 1;
+	data->fd->hdoc_index = 0;
 }
 
 static void	init_separators(t_data *data)
@@ -71,6 +79,7 @@ static void	init_builtins(t_data *data)
 
 void	init_shell_env(t_data *data, char **envp)
 {
+	init_fd(data);
 	init_flags(data);
 	init_containers(data);
 	init_redirections(data);
