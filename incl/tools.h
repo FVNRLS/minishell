@@ -35,6 +35,7 @@ char	*ft_strjoin(char *buf, char *tmp);
 char	**ft_split(char const *s, char c);
 void	ft_cleansplit(char **split);
 int		ft_isbuiltin(t_data *data);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 //for debuging
 int		print_list(t_token *data);

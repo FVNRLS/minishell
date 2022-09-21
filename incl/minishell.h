@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 13:34:41 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:42:34 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	init_shell_env(t_data *data, char **envp);
 void	init_envp(t_data *data, char **envp);
 void	init_builtin_names(t_data *data);
 void	init_builtin_functions(t_data *data);
+void 	init_fd(t_data *data);
+
 
 //DESTRUCTOR:
 void	free_tokens(t_data *data);
@@ -100,9 +102,8 @@ bool 	check_redir_syntax_error(t_data *data, t_token *token);
 void	check_read_error(t_data *data, t_token *token);
 void	check_create_error(t_data *data, t_token *token);
 void	resolve_redirections(t_data *data);
-void	create_heredoc_files(t_data *data);
+void	read_from_all_hdocs(t_data *data);
 void	redirect_in(t_data *data, t_token *token);
-void	redirect_from_heredoc(t_data *data, t_token *token);
 void	redirect_del_token(t_data *data, t_token *token);
 void	redirect_out(t_data *data, t_token *token);
 void	append(t_data *data, t_token *token);

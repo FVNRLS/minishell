@@ -41,9 +41,8 @@ static void init_redirections(t_data *data)
 
 }
 
-static void init_fd(t_data *data)
+void init_fd(t_data *data)
 {
-	data->fd = malloc(sizeof(t_fd));
 	data->fd->hdoc = NULL;
 	data->fd->fd_in = 0;
 	data->fd->fd_out = 1;
@@ -79,6 +78,7 @@ static void	init_builtins(t_data *data)
 
 void	init_shell_env(t_data *data, char **envp)
 {
+	data->fd = malloc(sizeof(t_fd));
 	init_fd(data);
 	init_flags(data);
 	init_containers(data);

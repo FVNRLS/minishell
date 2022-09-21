@@ -16,10 +16,8 @@ void	redirect_del_token(t_data *data, t_token *token)
 {
 	if (data->tokens == token)
 		data->tokens = token->next;
-	if (token->flag == T_REDIRECT_IN)
+	if (token->flag == T_REDIRECT_IN || token->flag == T_HEREDOC)
 		redirect_in(data, token);
-	else if (token->flag == T_HEREDOC)
-		redirect_from_heredoc(data, token);
 	else if (token->flag == T_REDIRECT_OUT)
 		redirect_out(data, token);
 	else if (token->flag == T_APPEND)
@@ -41,7 +39,6 @@ void	resolve_redirections(t_data *data)
 	if (!tmp)
 		return ;
 	prev = tmp;
-	create_heredoc_files(data);
 	data->fd->hdoc_index = 0;
 	while (tmp != NULL && tmp->flag != T_PIPE)
 	{

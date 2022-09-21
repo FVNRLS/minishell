@@ -6,14 +6,14 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:40:53 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 14:37:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:40:51 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
 //TODO: cont here!
-void 	unlink_free_hdocs(t_data *data)
+void 	destroy_hdocs(t_data *data)
 {
 	int	i;
 

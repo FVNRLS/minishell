@@ -72,6 +72,7 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_isbuiltin.c			\
 				src/tools/ft_cleansplit.c			\
 				src/tools/ft_print_list.c			\
+				src/tools/ft_strncmp.c				\
 
 OBJ 		= 	${SRC:.c=.o}
 TOOLS_OBJ 	=	${TOOLS_SRC:.c=.o}

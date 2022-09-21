@@ -1,7 +1,7 @@
 # ninja log v5
+373	461	1663666404000000000	CMakeFiles/minishell.dir/src/tools/ft_strcmp.c.o	3ac52390040a96b2
 830	974	1663764019000000000	CMakeFiles/minishell.dir/src/tools/ft_itoa.c.o	94e127b13bb79e3
 13	648	1663764019000000000	CMakeFiles/minishell.dir/src/executer/executer.c.o	6a5e167e03730a1a
-373	461	1663666404000000000	CMakeFiles/minishell.dir/src/tools/ft_strcmp.c.o	3ac52390040a96b2
 651	858	1663764019000000000	CMakeFiles/minishell.dir/src/initializer/envp_init.c.o	7a21410a9ed9d112
 652	826	1663764019000000000	CMakeFiles/minishell.dir/src/initializer/builtins_init.c.o	a517c594af8bbe1
 3	168	1663764051000000000	CMakeFiles/minishell.dir/src/history_tracker.c.o	6d850d40683e58c
@@ -37,16 +37,16 @@
 3	93	1663764051000000000	CMakeFiles/minishell.dir/builtins/env.c.o	1d34cc56ef520079
 3	141	1663764051000000000	CMakeFiles/minishell.dir/src/lexer/single_quotes_handler.c.o	a860cca5124352f9
 12	647	1663764019000000000	CMakeFiles/minishell.dir/src/parser/token_merger.c.o	211c8d23355204c6
-11	650	1663764019000000000	CMakeFiles/minishell.dir/src/lexer/expander/expansion_handler.c.o	3b0e7d43807ccb0d
-2	70	1663764051000000000	CMakeFiles/minishell.dir/src/destructor.c.o	70d1f084299db880
-649	756	1663764019000000000	CMakeFiles/minishell.dir/src/parser/redirecter/fd_opener.c.o	c3e941e01059456e
 13	657	1663764019000000000	CMakeFiles/minishell.dir/builtins/bin_utils.c.o	7c9bbfab696a6626
 905	1112	1663747718000000000	CMakeFiles/minishell.dir/src/parser/redirecter.c.o	c79bf7a0c97d0100
-766	922	1663764019000000000	CMakeFiles/minishell.dir/src/tools/ft_strdup.c.o	b93748c8a78f8475
+649	756	1663764019000000000	CMakeFiles/minishell.dir/src/parser/redirecter/fd_opener.c.o	c3e941e01059456e
+11	650	1663764019000000000	CMakeFiles/minishell.dir/src/lexer/expander/expansion_handler.c.o	3b0e7d43807ccb0d
+2	70	1663764051000000000	CMakeFiles/minishell.dir/src/destructor.c.o	70d1f084299db880
+2	118	1663764051000000000	CMakeFiles/minishell.dir/src/tools/ft_split.c.o	4a59617c30770f38
+645	894	1663764019000000000	CMakeFiles/minishell.dir/builtins/export.c.o	f0743c4e36e90438
+648	766	1663764019000000000	CMakeFiles/minishell.dir/builtins/unset.c.o	e52a8168697658c0
+12	648	1663764019000000000	CMakeFiles/minishell.dir/src/parser/redirecter/heredoc_creater.c.o	68df25beabe51f1f
 12	653	1663764019000000000	CMakeFiles/minishell.dir/src/parser/redirecter/fd_closer.c.o	5a7a48790fc8e46e
 12	647	1663764019000000000	CMakeFiles/minishell.dir/src/parser/redirecter/redirecter.c.o	ffb7013d80b321e6
-12	648	1663764019000000000	CMakeFiles/minishell.dir/src/parser/redirecter/heredoc_creater.c.o	68df25beabe51f1f
-648	766	1663764019000000000	CMakeFiles/minishell.dir/builtins/unset.c.o	e52a8168697658c0
-645	894	1663764019000000000	CMakeFiles/minishell.dir/builtins/export.c.o	f0743c4e36e90438
+766	922	1663764019000000000	CMakeFiles/minishell.dir/src/tools/ft_strdup.c.o	b93748c8a78f8475
 2	151	1663764051000000000	CMakeFiles/minishell.dir/src/tools/ft_strjoin.c.o	96d0fdd309072d55
-2	118	1663764051000000000	CMakeFiles/minishell.dir/src/tools/ft_split.c.o	4a59617c30770f38
