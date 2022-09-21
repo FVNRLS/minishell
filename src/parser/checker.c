@@ -14,7 +14,7 @@
 
 void	check_read_error(t_data *data, t_token *token)
 {
-	if (data->fd->fd_in < 0 || access(token->content, F_OK < 0)
+	if (data->fd->in < 0 || access(token->content, F_OK < 0)
 		|| access(token->content, R_OK) < 0)
 	{
 		print_token_error(OPEN_ERROR, token);
@@ -24,7 +24,7 @@ void	check_read_error(t_data *data, t_token *token)
 
 void	check_create_error(t_data *data, t_token *token)
 {
-	if (data->fd->fd_out < 0 || access(token->content, F_OK) < 0)
+	if (data->fd->out < 0 || access(token->content, F_OK) < 0)
 	{
 		perror(token->content);
 		data->parse_error = true;

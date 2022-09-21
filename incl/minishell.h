@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 15:42:34 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:02:48 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	free_envp(t_data *data);
 void	free_builtins(t_data *data);
 void	free_all_ressources(t_data *data);
 void	exit_with_free(t_data *data);
+void 	destroy_hdocs(t_data *data);
 
 //HISTORY TRACKER
 void	track_history(t_data *data);

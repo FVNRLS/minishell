@@ -55,8 +55,8 @@ typedef struct s_lex
 
 typedef struct s_fd
 {
-	int 		fd_in;
-	int 		fd_out;
+	int 		in;
+	int 		out;
 	char 		**hdoc;
 	int 		hdoc_index;
 }	t_fd;

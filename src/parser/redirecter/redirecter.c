@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 13:34:41 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:33:26 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	redirect_del_token(t_data *data, t_token *token)
 	token = NULL;
 }
 
-//TODO: close unused fd's! - resolve leak on "> 1 > 2 > 3"
 void	resolve_redirections(t_data *data)
 {
 	t_token	*tmp;
@@ -57,5 +56,6 @@ void	resolve_redirections(t_data *data)
 			tmp = tmp->next;
 		}
 	}
-	printf("fd_in:	%d	fd_out:	%d\n", data->fd->fd_in, data->fd->fd_out);
+	printf("fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
+	destroy_hdocs(data);
 }

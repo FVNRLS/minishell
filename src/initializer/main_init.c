@@ -44,8 +44,8 @@ static void init_redirections(t_data *data)
 void init_fd(t_data *data)
 {
 	data->fd->hdoc = NULL;
-	data->fd->fd_in = 0;
-	data->fd->fd_out = 1;
+	data->fd->in = 0;
+	data->fd->out = 1;
 	data->fd->hdoc_index = 0;
 }
 

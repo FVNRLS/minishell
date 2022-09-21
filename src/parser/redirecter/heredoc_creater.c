@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 16:12:06 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:27:59 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int count_hdoc_files(t_data *data)
 	return (i);
 }
 
-static void	read_from_hdoc(t_data *data, t_token *token)
+static void	read_to_hdoc(t_data *data, t_token *token)
 {
 	char	*input;
 	char	*limiter;
@@ -47,7 +47,7 @@ static void	read_from_hdoc(t_data *data, t_token *token)
 			break ;
 		if (ft_strncmp(input, limiter, lim_len) == 0)
 			limiter_found = true;
-		else if (write(data->fd->fd_in, input, ft_strlen(input)) < 0)
+		else if (write(data->fd->in, input, ft_strlen(input)) < 0)
 		{
 			print_token_error(OPEN_ERROR, token);
 			data->parse_error = true;
@@ -72,7 +72,7 @@ static void	create_hdoc(t_data *data, t_token *token)
 	free(index);
 	index = NULL;
 	data->fd->hdoc[data->fd->hdoc_index] = name;
-	data->fd->fd_in = open(data->fd->hdoc[data->fd->hdoc_index],
+	data->fd->in = open(data->fd->hdoc[data->fd->hdoc_index],
    		O_CREAT | O_RDWR | O_TRUNC, RIGHTS);
 	check_read_error(data, token);
 }
@@ -97,8 +97,8 @@ void	read_from_all_hdocs(t_data *data)
 		if (tmp->flag == T_HEREDOC)
 		{
 			create_hdoc(data, tmp);
-
-			read_from_hdoc(data, tmp);
+			read_to_hdoc(data, tmp);
+			close(data->fd->in);
 			data->fd->hdoc_index++;
 		}
 		tmp = tmp->next;

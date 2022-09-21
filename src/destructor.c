@@ -18,6 +18,14 @@ void 	destroy_hdocs(t_data *data)
 	int	i;
 
 	i = 0;
+	while (data->fd->hdoc[i] != NULL)
+	{
+		unlink(data->fd->hdoc[i]);
+		free(data->fd->hdoc[i]);
+		data->fd->hdoc[i] = NULL;
+		free(data->fd->hdoc);
+		data->fd->hdoc = NULL;
+	}
 }
 
 void	free_tokens(t_data *data)
