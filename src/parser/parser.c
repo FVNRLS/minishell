@@ -6,13 +6,13 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:20:38 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 16:55:29 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 19:57:06 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-//TODO: continue with resolve redirections!
+//TODO: continue with read_from_all_hdocs and resolve redirections!
 
 
 void	parse_tokens(t_data *data)

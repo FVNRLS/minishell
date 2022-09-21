@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 16:48:55 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:53:49 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ void	resolve_redirections(t_data *data)
 	t_token *del;
 	t_token *prev;
 
+	data->fd->hdoc_index = 0;
+	data->fd->in = 0;
 	tmp = data->tokens;
 	if (!tmp)
 		return ;
 	prev = tmp;
-	data->fd->hdoc_index = 0;
 	while (tmp != NULL && tmp->flag != T_PIPE)
 	{
 		del = tmp;

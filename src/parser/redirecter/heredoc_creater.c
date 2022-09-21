@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 17:58:05 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 19:50:06 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ static void	create_hdoc(t_data *data, t_token *token)
 	name = ft_strjoin(path, index);
 	free(index);
 	index = NULL;
-	data->fd->hdoc[data->fd->hdoc_index] = name;
-	data->fd->in = open(data->fd->hdoc[data->fd->hdoc_index],
-						O_CREAT | O_RDWR | O_TRUNC, RIGHTS);
-	check_read_error(data, token);
+	data->fd->hdoc[data->fd->hdoc_index] = ft_strdup(name);
+	data->fd->in = open(name, O_CREAT | O_RDWR | O_TRUNC, RIGHTS);
+	free(name);
+	name = NULL;
+//	check_read_error(data, token);
 }
 
 static void read_from_stdin(t_data *data, t_token *token)
@@ -54,8 +55,8 @@ static void read_from_stdin(t_data *data, t_token *token)
 	size_t 	lim_len;
 	bool	limiter_found;
 
-	limiter = ft_strjoin(ft_strdup(token->content), ft_strdup("\n"));
-	lim_len = ft_strlen(limiter) + 1;
+	limiter = ft_strdup(token->content);
+	lim_len = ft_strlen(limiter);
 	limiter_found = false;
 	while (limiter_found != true)
 	{
@@ -64,11 +65,15 @@ static void read_from_stdin(t_data *data, t_token *token)
 			break ;
 		if (ft_strncmp(input, limiter, lim_len) == 0)
 			limiter_found = true;
-		else if (write(data->fd->in, input, ft_strlen(input)) < 0)
+		else
 		{
-			print_token_error(OPEN_ERROR, token);
-			data->parse_error = true;
-			exit(EXIT_FAILURE);
+			input = ft_strjoin(input, "\n");
+			if (write(data->fd->in, input, ft_strlen(input)) < 0)
+			{
+				print_token_error(OPEN_ERROR, token);
+				data->parse_error = true;
+				exit(EXIT_FAILURE);
+			}
 		}
 		free(input);
 		input = NULL;
@@ -80,14 +85,19 @@ static void read_from_stdin(t_data *data, t_token *token)
 
 static void	read_to_hdoc(t_data *data, t_token *token)
 {
+	int	status;
+
 	data->pid = fork();
 	if (data->pid < 0)
 		perror(NULL);
 	else if (data->pid == 0)
 		read_from_stdin(data, token);
-	waitpid(data->pid, &g_exit_code, 0);
-	if (g_exit_code != 0)
-		exit(EXIT_FAILURE);
+	waitpid(data->pid, &status, 0);
+	if (WIFEXITED(status) != 0)
+	{
+		data->parse_error = true;
+		g_exit_code = EXIT_FAILURE;
+	}
 }
 
 void	read_from_all_hdocs(t_data *data)
@@ -113,6 +123,8 @@ void	read_from_all_hdocs(t_data *data)
 			create_hdoc(data, tmp);
 			printf("heredoc created: %s\n", data->fd->hdoc[data->fd->hdoc_index]);
 			read_to_hdoc(data, tmp);
+			if (data->parse_error == true)
+				return ;
 			close(data->fd->in);
 			data->fd->hdoc_index++;
 		}
