@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/17 20:08:34 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/21 10:55:42 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,9 @@ bool 	check_redir_syntax_error(t_data *data, t_token *token);
 void	check_read_error(t_data *data, t_token *token);
 void	check_create_error(t_data *data, t_token *token);
 void	resolve_redirections(t_data *data);
-
+void	close_unused_fd_in(t_data *data);
+void 	close_unused_fd_out(t_data *data);
+void 	close_fd_in_out(t_data *data);
 
 //EXECUTER
 void	exec_commands(t_data *data);

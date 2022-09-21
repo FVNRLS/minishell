@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:20:38 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/20 18:10:29 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:34:31 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 void	parse_tokens(t_data *data)
 {
 	data->parse_error = false;
+	data->fd_in = 0;
+	data->fd_out = 1;
 
 	check_multiple_pipes(data);
 	if (data->parse_error == true)
@@ -28,4 +30,8 @@ void	parse_tokens(t_data *data)
 	resolve_redirections(data);
 	if (data->parse_error == true)
 		return ;
+
+
+
+	close_fd_in_out(data); //perform in the end
 }

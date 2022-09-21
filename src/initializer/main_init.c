@@ -38,6 +38,8 @@ static void init_redirections(t_data *data)
 	data->redir[1] = T_REDIRECT_OUT;
 	data->redir[2] = T_HEREDOC;
 	data->redir[3] = T_APPEND;
+	data->fd_in = 0;
+	data->fd_out = 1;
 }
 
 static void	init_separators(t_data *data)
