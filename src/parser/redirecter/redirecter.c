@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 13:29:56 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:34:41 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 void	redirect_del_token(t_data *data, t_token *token)
 {
+	if (data->tokens == token)
+		data->tokens = token->next;
 	if (token->flag == T_REDIRECT_IN)
 		redirect_in(data, token);
+	else if (token->flag == T_HEREDOC)
+		redirect_from_heredoc(data, token);
 	else if (token->flag == T_REDIRECT_OUT)
 		redirect_out(data, token);
-	else if (token->flag == T_HEREDOC)
-	{
-		redirect_from_heredoc(data, token);
-		data->fd->hdoc_index++;
-	}
 	else if (token->flag == T_APPEND)
 		append(data, token);
 	free(token->content);
@@ -49,8 +48,6 @@ void	resolve_redirections(t_data *data)
 		del = tmp;
 		if (check_redir(data, del->flag) == true)
 		{
-			if (data->tokens == del)
-				data->tokens = del->next;
 			prev->next = del->next;
 			tmp = del->next;
 			redirect_del_token(data, del);

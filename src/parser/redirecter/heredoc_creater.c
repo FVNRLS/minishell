@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 13:11:56 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:37:11 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	add_heredoc(t_data *data, int i)
 	char 	*index;
 	char 	*name;
 
-	path = ft_strdup("/tmp/.");
+	path = ft_strdup("/tmp/");
 	index = ft_itoa(i);
 	name = ft_strjoin(path, index);
 	free(index);
@@ -54,7 +54,7 @@ void	create_heredoc_files(t_data *data)
 	if (cnt == 0)
 		return;
 	else
-		data->fd->hdoc = ft_calloc((cnt + 1), sizeof(char));
+		data->fd->hdoc = malloc(sizeof(char) * (cnt + 1));
 	i = 0;
 	tmp = data->tokens;
 	while (tmp != NULL && tmp->flag != T_PIPE)
@@ -62,6 +62,8 @@ void	create_heredoc_files(t_data *data)
 		if (tmp->flag == T_HEREDOC)
 		{
 			add_heredoc(data, i);
+			redirect_del_token(data, tmp);
+			data->fd->hdoc_index++;
 			i++;
 		}
 		tmp = tmp->next;

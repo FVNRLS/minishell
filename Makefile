@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/18 14:41:59 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/09/21 14:43:20 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,12 @@ SRC 		= 	main.c 								\
 				src/lexer/expander/expansion_handler.c \
 				src/lexer/expander/expansion_rules.c	\
 				src/parser/token_merger.c			\
-				src/parser/parser.c				\
+				src/parser/parser.c					\
 				src/parser/checker.c				\
-				src/parser/redirecter.c				\
+				src/parser/redirecter/redirecter.c	\
+				src/parser/redirecter/fd_closer.c	\
+                src/parser/redirecter/heredoc_creater.c	\
+                src/parser/redirecter/fd_opener.c	\
 				src/executer/executer.c				\
 
 
