@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/21 14:43:20 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/09/21 19:18:29 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,11 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_cleansplit.c			\
 				src/tools/ft_print_list.c			\
 				src/tools/ft_strncmp.c				\
+				src/tools/ft_splitlen.c				\
+				src/tools/ft_isnumber.c				\
+				src/tools/ft_isdigit.c				\
+				src/tools/ft_getenvp.c				\
+
 
 OBJ 		= 	${SRC:.c=.o}
 TOOLS_OBJ 	=	${TOOLS_SRC:.c=.o}
