@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:31:55 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/18 14:41:25 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/21 19:15:38 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,13 @@ char	*ft_itoa(int n);
 char	*ft_strjoin(char *buf, char *tmp);
 char	**ft_split(char const *s, char c);
 void	ft_cleansplit(char **split);
+
 int		ft_isbuiltin(t_data *data);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int     ft_isplitlen(char **s);
+int	    ft_isnumber(char *s);
+int		ft_isdigit(int c);
+char	*ft_getenvp(t_data *data, char *find);
 
 //for debuging
 int		print_list(t_token *data);
