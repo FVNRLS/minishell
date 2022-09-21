@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:20:38 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 15:42:34 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:55:29 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	parse_tokens(t_data *data)
 	if (data->parse_error == true)
 		return ;
 
-	resolve_redirections(data);
-	if (data->parse_error == true)
-		return ;
+//	resolve_redirections(data);
+//	if (data->parse_error == true)
+//		return ;
 
 
 	close_fd_in_out(data); //perform in the end

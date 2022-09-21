@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 14:40:18 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:11:48 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,14 @@ typedef struct s_fd
 	int 		out;
 	char 		**hdoc;
 	int 		hdoc_index;
+	bool		hdoc_used;
 }	t_fd;
 
 
 typedef struct s_data
 {
 	t_builtins	*builtins;
+	int 		pid;
 	char 		*input;
 	char		*sep;
 	int 		*redir;
@@ -75,7 +77,6 @@ typedef struct s_data
 	bool		parse_error;
 	bool		exec_error;
 	bool		exit_minishell;
-	int			status; //catch signal exit codes and process execution
 }		t_data;
 
 

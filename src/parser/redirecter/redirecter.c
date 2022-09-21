@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 16:35:47 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:48:55 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	redirect_del_token(t_data *data, t_token *token)
 	if (token->flag == T_REDIRECT_IN)
 		redirect_in(data, token);
 	else if (token->flag == T_HEREDOC)
+	{
 		redirect_from_hdoc(data, token);
+		data->fd->hdoc_index++;
+	}
 	else if (token->flag == T_REDIRECT_OUT)
 		redirect_out(data, token);
 	else if (token->flag == T_APPEND)

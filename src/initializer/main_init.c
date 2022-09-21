@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 13:44:29 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:53:49 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	init_flags(t_data *data)
 	data->exit_minishell = false;
 	data->lex_error = false;
 	data->parse_error = false;
-	data->status = 0;
 }
 
 static void	init_containers(t_data *data)
@@ -47,6 +46,7 @@ void init_fd(t_data *data)
 	data->fd->in = 0;
 	data->fd->out = 1;
 	data->fd->hdoc_index = 0;
+	data->fd->hdoc_used = false;
 }
 
 static void	init_separators(t_data *data)

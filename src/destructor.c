@@ -6,17 +6,18 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:40:53 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 14:40:51 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:53:49 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-//TODO: cont here!
 void 	destroy_hdocs(t_data *data)
 {
 	int	i;
 
+	if (data->fd->hdoc_used == false)
+		return;
 	i = 0;
 	while (data->fd->hdoc[i] != NULL)
 	{
