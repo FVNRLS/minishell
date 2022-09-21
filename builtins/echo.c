@@ -17,7 +17,8 @@ int	echo(t_data *data)
 	int		i;
 	int		splitlen;
 
-	splitlen = get_splitlen(data->builtins->command);
+	//hier erstmal auskommentiert, da die funktion nicht existiert...
+//	splitlen = get_splitlen(data->builtins->command);
 	if (splitlen == 1)
 	{
 		printf("\n");
