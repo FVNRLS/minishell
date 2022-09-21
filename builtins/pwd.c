@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:07:45 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/21 10:08:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:41:21 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@ int pwd(t_data *data)
 {
     char    *path;
 
-	path = NULL;
-
-	if (data->tokens->content && data->tokens->next && ft_strcmp(data->tokens->next->content, "|") == 0)
-		return (EXIT_SUCCESS);
+    path = NULL;
     path = getcwd(path, 0);
-    if (!path || errno != 0)
+    if (!path)
         return (error("Error in pwd.c\n", errno));
     printf("path = %s\n", path);
     free(path);
