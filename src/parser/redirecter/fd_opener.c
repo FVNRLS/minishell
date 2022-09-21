@@ -6,11 +6,20 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:29:57 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 13:34:41 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:35:47 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incl/minishell.h"
+
+void	redirect_from_hdoc(t_data *data, t_token *token)
+{
+	close_unused_fd_in(data);
+	if (data->parse_error == true)
+		return ;
+	data->fd->in = open(data->fd->hdoc[data->fd->hdoc_index], O_RDONLY);
+	check_read_error(data, token);
+}
 
 void	redirect_in(t_data *data, t_token *token)
 {

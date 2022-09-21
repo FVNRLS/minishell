@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 16:27:59 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:35:47 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ void	read_from_all_hdocs(t_data *data)
 		if (tmp->flag == T_HEREDOC)
 		{
 			create_hdoc(data, tmp);
-			read_to_hdoc(data, tmp);
+			printf("heredoc created: %s\n", data->fd->hdoc[data->fd->hdoc_index]);
+//			read_to_hdoc(data, tmp);
 			close(data->fd->in);
 			data->fd->hdoc_index++;
 		}
