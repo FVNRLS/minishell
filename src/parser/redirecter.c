@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/20 14:42:26 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:43:09 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,31 +58,36 @@ void	redirect_del_token(t_data *data, t_token *token)
 	token = NULL;
 }
 
+
+//TODO: close unused fd's! - resolve leak on "> 1 > 2 > 3"
 void	resolve_redirections(t_data *data)
 {
 	t_token	*tmp;
 	t_token *del;
-
-	bool	is_redir;
+	t_token *prev;
 
 	tmp = data->tokens;
+	if (!tmp)
+		return ;
+	prev = tmp;
 	while (tmp != NULL && tmp->flag != T_PIPE)
 	{
-		if (tmp->next != NULL)
-			del = tmp->next;
-		else
-			del = tmp;
-		is_redir = check_redir(data, del->flag);
-		if (is_redir == true)
+		del = tmp;
+		if (check_redir(data, del->flag) == true)
 		{
-			tmp->next = del->next;
+			if (data->tokens == del)
+				data->tokens = del->next;
+			prev->next = del->next;
 			tmp = del->next;
 			redirect_del_token(data, del);
 			if (data->parse_error == true)
 				return ;
 		}
 		else
+		{
+			prev = tmp;
 			tmp = tmp->next;
+		}
 	}
 	printf("fd_in:	%d	fd_out:	%d\n", data->fd_in, data->fd_out);
 }

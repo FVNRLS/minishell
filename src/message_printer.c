@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/20 13:13:28 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:15:07 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	print_error(int error)
 		printf("minishell: cd: Zu viele Argumente.\n");
 }
 
+//TODO: use perror() or own error printer?
+
 void	print_token_error(int error, t_token *token)
 {
 	char *redir;
@@ -62,7 +64,7 @@ void	print_token_error(int error, t_token *token)
 		printf("minishell: syntax error near unexpected token `|'\n");
 	else if (error == REDIR_SYNTAX_ERROR)
 		printf("minishell: syntax error near unexpected token `%s'\n", redir);
-	else if (error == OPEN_ERROR || error == CREATE_ERROR)
+	else if (error == OPEN_ERROR)
 		printf("minishell: %s: No such file or directory\n", token->content);
 	free(redir);
 	redir = NULL;

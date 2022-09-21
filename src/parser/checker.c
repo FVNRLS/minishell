@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:29:31 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/20 13:06:56 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:20:49 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_create_error(t_data *data, t_token *token)
 {
 	if (data->fd_out < 0 || access(token->content, F_OK) < 0)
 	{
-		print_token_error(OPEN_ERROR, token);
+		perror(token->content);
 		data->parse_error = true;
 	}
 }

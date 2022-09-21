@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:43:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/19 19:05:59 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:13:28 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,11 @@
 # define REDIR_SYNTAX_ERROR			3
 # define PIPE_SYNTAX_ERROR			4
 # define OPEN_ERROR					5
-# define CREATE_ERROR				6
-# define EXIT_ERROR					7
-# define CMD_ERROR					8
-# define EXIT_ARG_ERROR				9
-# define INVALID_PATH				10
-# define CD_ARG_ERROR				11
+# define EXIT_ERROR					6
+# define CMD_ERROR					7
+# define EXIT_ARG_ERROR				8
+# define INVALID_PATH				9
+# define CD_ARG_ERROR				10
 
 void	print_error(int error);
 void	print_token_error(int error, t_token *token);
