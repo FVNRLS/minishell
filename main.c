@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/20 17:16:50 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:45:12 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	main(int argc, char **argv, char **envp)
 			parse_tokens(&data);
 			if (data.parse_error == false)
 			{
-				print_tokens(&data);
-//				exec_commands(&data);
+				//print_tokens(&data);
+				exec_commands(&data);
 			}
 		}
 		free_tokens(&data);
-		check_leaks();
+//		check_leaks();
 	}
 	free_all_ressources(&data);
 	atexit(check_leaks);
