@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+         #
+#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/21 19:18:29 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/09/22 14:31:02 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_itoa.c					\
 				src/tools/ft_split.c				\
 				src/tools/ft_strjoin.c				\
-				src/tools/ft_has_pipe.c				\
+				src/tools/ft_haschar.c				\
 				src/tools/ft_isbuiltin.c			\
 				src/tools/ft_cleansplit.c			\
 				src/tools/ft_print_list.c			\
@@ -90,6 +90,7 @@ INCREADL 	=	-lreadline -L /Users/$(USER)/.brew/opt/readline/lib
 
 $(NAME): $(OBJ) $(TOOLS_OBJ)
 	${CC} ${FLAGS} ${OBJ} ${TOOLS_OBJ} ${INCREADL} -o ${NAME}
+	rm -rf ./builtins/*.o
 
 all: $(NAME)
 

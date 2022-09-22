@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 19:09:10 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/22 13:35:47 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	mod_error(t_data *data)
 	if (1)
 	{
 		print_error(7);
-		//printf("%s\n", data->builtins->command[0]);
+		printf("%s\n", data->builtins->command[0]);
 		ft_cleansplit(data->builtins->command);
 		return (1);
 	}
@@ -26,7 +26,7 @@ int	mod_error(t_data *data)
 }
 
 /*
-errrors in message printer && define macros for error in errror.h
+cmd exec
 */
 void	exec_commands(t_data *data)
 {

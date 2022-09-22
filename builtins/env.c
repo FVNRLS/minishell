@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:41:46 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 19:38:07 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/22 15:26:40 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	env(t_data *data)
 	tmp = data->envp;
 	while (tmp != NULL)
 	{
-		if (tmp->val[0])
+		if (tmp->key[0])
 			printf("%s=%s\n", tmp->key, tmp->val);
 		tmp = tmp->next;
 	}
