@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/22 16:13:50 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/22 21:14:52 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	add_keyval(char **split, t_data *data) //split[0] = key // split[1] = val
 /*
 add key to the end of envp list and val is empty
 */
-void	add_key(char *key, t_data *data)
+void	ft_addkey(char *key, t_data *data)
 {
 	t_envp *new;
 
@@ -110,7 +110,7 @@ int	export(t_data *data)
 		}
 		else
 		{
-			add_key(data->builtins->command[i], data);
+			ft_addkey(data->builtins->command[i], data);
 		}
 		ft_cleansplit(split);
 		i++;
