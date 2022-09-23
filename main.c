@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/23 15:42:40 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/23 16:18:22 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv, char **envp)
 			parse_tokens(&data);
 			if (data.parse_error == false)
 			{
-//				exec_commands(&data);
+				exec_commands(&data);
 				exec_bash_commands(&data);
 				print_tokens(&data);
 			}

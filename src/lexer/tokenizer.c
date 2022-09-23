@@ -31,6 +31,8 @@ static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 	char	next_char;
 
 	token->join = false;
+	if (data->input[lex->i] == '\0')
+		return ;
 	next_char = data->input[lex->i + 1];
 	if (lex->expansion == true)
 	{

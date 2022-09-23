@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:27:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/21 10:08:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/23 16:18:22 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	echo(t_data *data)
 	int		i;
 	int		splitlen;
 
-	//hier erstmal auskommentiert, da die funktion nicht existiert...
-//	splitlen = get_splitlen(data->builtins->command);
+	printf("data: %s\n", data->tokens->content);
+	splitlen = ft_splitlen(data->builtins->command);
 	if (splitlen == 1)
 	{
 		printf("\n");

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:42:02 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/23 15:22:31 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/23 16:39:49 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,19 @@
 //TODO: sorry, has to comment it - ft_getenvp argument may be wrong... - refactor please :)
 int cd(t_data *data)
 {
-	int ret;
+	int 	ret;
+	t_envp *tmp;
 
-//	if (!data->builtins->command[1])
-//	{
-//		ret = chdir(ft_getenvp(data, "HOME"));
-//		return (EXIT_SUCCESS);
-//	}
+	if (!data->builtins->command[1])
+	{
+		tmp = ft_getenvp(data, "HOME");
+		ret = chdir(tmp->key);
+		return (ret);
+	}
 	ret = chdir(data->builtins->command[1]);
 	if (ret != 0)
 	{
-		print_error(9);
+		print_error(CD_ARG_ERROR);
 		printf("%s\n", data->builtins->command[1]);
 		return (EXIT_FAILURE);
 	}
