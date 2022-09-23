@@ -113,9 +113,11 @@ void	close_unused_fd_in(t_data *data);
 void 	close_unused_fd_out(t_data *data);
 void 	close_fd_in_out(t_data *data);
 
-//EXECUTER
+//EXECUTER JULIAN
 void	exec_commands(t_data *data);
 
+//EXECUTER ROMAN (ONLY BASH)
+void	exec_bash_commands(t_data *data);
 
 //TODO: delete before submission!
 void	print_tokens(t_data *data);

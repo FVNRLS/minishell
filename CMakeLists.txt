@@ -64,8 +64,11 @@ add_executable(minishell main.c
         src/parser/redirecter/heredoc_creater.c
         src/parser/redirecter/fd_opener.c
 
-        #EXECUTER
+        #EXECUTER JULIAN
         src/executer/executer.c
+
+        #EXECUTER BASH
+        src/executer/bash_executer/bash_executer.c
 
         #BUILTINS
         builtins/bin_utils.c
