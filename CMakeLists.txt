@@ -69,6 +69,7 @@ add_executable(minishell main.c
 
         #EXECUTER BASH
         src/executer/bash_executer/bash_executer.c
+        src/executer/bash_executer/cmd_extractor.c
 
         #BUILTINS
         builtins/bin_utils.c
@@ -85,7 +86,7 @@ add_executable(minishell main.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-        )
+       )
 
 target_link_libraries(minishell edit)
 

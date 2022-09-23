@@ -22,6 +22,8 @@ void	ft_cleansplit(char **split)
 	while (i > 0)
 	{
 		free(split[--i]);
+		split[i] = NULL;
 	}
 	free(split);
+	split = NULL;
 }
