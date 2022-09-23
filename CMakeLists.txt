@@ -57,7 +57,7 @@ add_executable(minishell main.c
 
         #PARSER
         src/parser/parser.c
-        src/parser/checker.c
+        src/parser/parsing_checker.c
         src/parser/token_merger.c
         src/parser/redirecter/redirecter.c
         src/parser/redirecter/fd_closer.c

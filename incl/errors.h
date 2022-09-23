@@ -19,13 +19,13 @@
 # define DOUBLE_QUOTE_MISSING		2
 # define REDIR_SYNTAX_ERROR			3
 # define PIPE_SYNTAX_ERROR			4
-# define OPEN_ERROR					5
-# define EXIT_ERROR					6
-# define CMD_ERROR					7
-# define EXIT_ARG_ERROR				8
-# define INVALID_PATH				9
-# define CD_ARG_ERROR				10
-# define EXPORT_ERROR				11
+
+# define EXIT_ERROR					5
+# define CMD_ERROR					6
+# define EXIT_ARG_ERROR				7
+# define INVALID_PATH				8
+# define CD_ARG_ERROR				9
+# define EXPORT_ERROR				10
 
 void	print_error(int error);
 void	print_token_error(int error, t_token *token);

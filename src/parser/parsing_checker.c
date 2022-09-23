@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   parsing_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:29:31 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/20 13:20:49 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:16:29 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,24 @@
 
 void	check_read_error(t_data *data, t_token *token)
 {
-	if (data->fd->in < 0 || access(token->content, F_OK < 0)
-		|| access(token->content, R_OK) < 0)
+	char 	*file;
+
+	file = token->content;
+	if (data->fd->in < 0 || access(file, F_OK < 0) || access(file, R_OK) < 0)
 	{
-		print_token_error(OPEN_ERROR, token);
+		perror(file);
 		data->parse_error = true;
 	}
 }
 
 void	check_create_error(t_data *data, t_token *token)
 {
-	if (data->fd->out < 0 || access(token->content, F_OK) < 0)
+	char 	*file;
+
+	file = token->content;
+	if (data->fd->out < 0 || access(file, F_OK) || access(file, W_OK) < 0)
 	{
-		perror(token->content);
+		perror(file);
 		data->parse_error = true;
 	}
 }

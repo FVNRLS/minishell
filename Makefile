@@ -43,14 +43,12 @@ SRC 		= 	main.c 								\
 				src/lexer/expander/expansion_rules.c	\
 				src/parser/token_merger.c			\
 				src/parser/parser.c					\
-				src/parser/checker.c				\
+				src/parser/parsing_checker.c		\
 				src/parser/redirecter/redirecter.c	\
 				src/parser/redirecter/fd_closer.c	\
                 src/parser/redirecter/heredoc_creater.c	\
                 src/parser/redirecter/fd_opener.c	\
 				src/executer/executer.c				\
-
-
 
 TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_bzero.c				\

@@ -66,8 +66,6 @@ void	print_token_error(int error, t_token *token)
 		printf("minishell: syntax error near unexpected token `|'\n");
 	else if (error == REDIR_SYNTAX_ERROR)
 		printf("minishell: syntax error near unexpected token `%s'\n", redir);
-	else if (error == OPEN_ERROR)
-		printf("minishell: %s: No such file or directory\n", token->content);
 	free(redir);
 	redir = NULL;
 }
