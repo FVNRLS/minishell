@@ -6,7 +6,7 @@
 #    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/23 15:18:48 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/09/23 17:17:35 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC 		= 	main.c 								\
                 src/parser/redirecter/fd_opener.c	\
 				src/executer/executer.c				\
 				src/executer/bash_executer/bash_executer.c \
+				src/signals/signals.c				\
 
 TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_bzero.c				\

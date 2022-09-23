@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/23 12:43:00 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:41:18 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,9 @@ void	append(t_data *data, t_token *token);
 void	close_unused_fd_in(t_data *data);
 void 	close_unused_fd_out(t_data *data);
 void 	close_fd_in_out(t_data *data);
+
+//SIGNALS
+int 	catch_signals(t_data *data);
 
 //EXECUTER JULIAN
 void	exec_commands(t_data *data);
