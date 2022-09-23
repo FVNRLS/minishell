@@ -32,6 +32,12 @@ add_executable(minishell main.c
         src/tools/ft_cleansplit.c
         src/tools/ft_isbuiltin.c
         src/tools/ft_strncmp.c
+        src/tools/ft_getenvp.c
+        src/tools/ft_isnumber.c
+        src/tools/ft_isdigit.c
+        src/tools/ft_splitlen.c
+        src/tools/ft_haschar.c
+
 
         #BUILTINS:
         builtins/env.c
