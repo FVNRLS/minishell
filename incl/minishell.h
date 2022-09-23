@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 16:33:26 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/23 12:43:00 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ bool 	check_redir_syntax_error(t_data *data, t_token *token);
 void	check_read_error(t_data *data, t_token *token);
 void	check_create_error(t_data *data, t_token *token);
 void	resolve_redirections(t_data *data);
-void	read_from_all_hdocs(t_data *data);
+void	parse_hdocs(t_data *data);
 void	redirect_in(t_data *data, t_token *token);
-void	redirect_from_hdoc(t_data *data, t_token *token);
+void	redirect_from_hdoc(t_data *data);
 void	redirect_del_token(t_data *data, t_token *token);
 void	redirect_out(t_data *data, t_token *token);
 void	append(t_data *data, t_token *token);

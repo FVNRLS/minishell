@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:40:53 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 16:53:49 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:12:17 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ void 	destroy_hdocs(t_data *data)
 		unlink(data->fd->hdoc[i]);
 		free(data->fd->hdoc[i]);
 		data->fd->hdoc[i] = NULL;
-		free(data->fd->hdoc);
-		data->fd->hdoc = NULL;
+		i++;
 	}
+	free(data->fd->hdoc);
+	data->fd->hdoc = NULL;
 }
 
 void	free_tokens(t_data *data)

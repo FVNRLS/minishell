@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 16:53:49 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/23 12:57:21 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	redirect_del_token(t_data *data, t_token *token)
 		redirect_in(data, token);
 	else if (token->flag == T_HEREDOC)
 	{
-		redirect_from_hdoc(data, token);
+		redirect_from_hdoc(data);
 		data->fd->hdoc_index++;
 	}
 	else if (token->flag == T_REDIRECT_OUT)
@@ -40,7 +40,6 @@ void	resolve_redirections(t_data *data)
 	t_token *prev;
 
 	data->fd->hdoc_index = 0;
-	data->fd->in = 0;
 	tmp = data->tokens;
 	if (!tmp)
 		return ;
@@ -62,6 +61,4 @@ void	resolve_redirections(t_data *data)
 			tmp = tmp->next;
 		}
 	}
-	printf("fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
-	destroy_hdocs(data);
 }
