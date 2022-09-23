@@ -57,3 +57,5 @@
 365	513	1663922548000000000	CMakeFiles/minishell.dir/src/history_tracker.c.o	6d850d40683e58c
 230	386	1663922548000000000	CMakeFiles/minishell.dir/src/tools/ft_isbuiltin.c.o	a421ffb5e3221106
 255	417	1663922548000000000	CMakeFiles/minishell.dir/src/tools/ft_getenvp.c.o	5bbe92ebee9e359e
+2	205	1663922932000000000	CMakeFiles/minishell.dir/builtins/cd.c.o	7264dbd4748b2195
+205	459	1663922932000000000	minishell	f3de538c3e90e95a
