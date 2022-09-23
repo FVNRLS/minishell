@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:42:02 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/23 10:41:50 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:03:56 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 int cd(t_data *data)
 {
 	int ret;
+	t_envp *tmp;
 
-//	if (!data->builtins->command[1])
-//	{
-//		ret = chdir(ft_getenvp(data, "HOME"));
-//		return (EXIT_SUCCESS);
-//	}
+	if (!data->builtins->command[1])
+	{
+		tmp = ft_getenvp(data, "HOME");
+		ret = chdir(tmp->key);
+		return (EXIT_SUCCESS);
+	}
 	ret = chdir(data->builtins->command[1]);
 	if (ret != 0)
 	{
