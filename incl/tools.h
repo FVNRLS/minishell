@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:31:55 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/23 10:38:03 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:34:36 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		ft_isnumber(char *s);
 int		ft_isdigit(int c);
 int		ft_splitlen(char **s);
 int		ft_haschar(char *s, char c);
+int		ft_isprint(int c);
 
 
 //for debuging

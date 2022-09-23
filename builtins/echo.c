@@ -3,35 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:27:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/23 16:18:22 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/23 23:41:35 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
+/*
+	norminette...
+*/
+int	echo_pos_helper(int i, char *s, int *flag)
+{
+	while (s[i] && !ft_isprint(s[i]))
+	{
+		i++;
+		if (s[i] && s[i] == '-')
+		{
+			i++;
+			if (s[i] && s[i] == 'n' && (!s[i + 1] || !ft_isprint(s[i + 1])))
+			{
+				*flag = 1;
+				return (i + 2);
+			}
+			break ;
+		}
+	}
+	return (0);
+}
+
+/*
+	get start pos for echo string
+*/
+int	echo_pos(char *s, int *flag)
+{
+	int	tmp;
+	int	i;
+
+	i = 0;
+	while (s[i] && !ft_isprint(s[i]))
+		i++;
+	while (s[i])
+	{
+		if (!ft_isprint(s[i]))
+			break ;
+		i++;
+	}
+	tmp = echo_pos_helper(i, s, flag);
+	if (tmp == 0)
+		tmp = i + 1;
+	return (tmp);
+}
+
 int	echo(t_data *data)
 {
 	int		i;
-	int		splitlen;
+	int		flag;
 
-	printf("data: %s\n", data->tokens->content);
-	splitlen = ft_splitlen(data->builtins->command);
-	if (splitlen == 1)
-	{
-		printf("\n");
-		return (EXIT_SUCCESS);
-	}
-	i = 1;
-	if (data->builtins->command[1] \
-	&& ft_strcmp(data->builtins->command[1], "-n") == 0)
-		i = 2;
-	while (data->builtins->command[i])
-		printf("%s ", data->builtins->command[i++]);
-	if (data->builtins->command[1] \
-	&& ft_strcmp(data->builtins->command[1], "-n") != 0)
+	flag = 0;
+	i = echo_pos(data->tokens->content, &flag);
+	if (i && data->tokens->content \
+	&& i < ft_strlen(data->tokens->content))
+		printf("%s", (data->tokens->content + i));
+	if (!flag)
 		printf("\n");
 	return (EXIT_SUCCESS);
 }
