@@ -6,13 +6,16 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/23 10:17:28 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 00:02:25 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-
+/*
+always true, we`ĺl change later
+think execv could be here
+*/
 int	mod_error(t_data *data)
 {
 	if (1)
@@ -20,6 +23,7 @@ int	mod_error(t_data *data)
 		print_error(7);
 		printf("%s\n", data->builtins->command[0]);
 		ft_cleansplit(data->builtins->command);
+		ft_dl_token(&data);
 		return (1);
 	}
 	return (0);	
@@ -44,7 +48,7 @@ void	exec_commands(t_data *data)
 		if (mod != -1)
 		{
 			data->builtins->funcs[mod - 1](data);
-			data->tokens = data->tokens->next;
+			ft_dl_token(&data);
 		}
 		ft_cleansplit(data->builtins->command);
 	}

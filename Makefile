@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/23 22:35:04 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/09/24 00:00:42 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_isdigit.c				\
 				src/tools/ft_getenvp.c				\
 				src/tools/ft_isprint.c				\
+				src/tools/ft_dl_token.c				\
 
 
 OBJ 		= 	${SRC:.c=.o}
