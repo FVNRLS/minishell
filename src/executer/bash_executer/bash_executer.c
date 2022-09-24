@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 13:46:09 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 16:20:45 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void	fork_execution(t_data *data, t_token *token)
 	}
 	else if (data->pid == 0)
 	{
+		redirect_in_out(data, token);
 		if (execve(data->exec->path, data->exec->cmd, data->env) < 0)
 		{
 			perror(token->content);
@@ -60,25 +61,29 @@ void	execute_with_bash(t_data *data, t_token *token)
 	data->exec->path = NULL;
 }
 
+void	create_cmd_token(t_data *data, t_token *token)
+{
+	t_token	*tmp;
+
+	resolve_redirections(data);
+	merge_words(data);
+}
+
 void	exec_bash_commands(t_data *data)
 {
 	data->exec_error = false;
 	t_token	*tmp;
 
 	resolve_redirections(data);
-	if (data->parse_error == true)
-		return ;
-	tmp = data->tokens;
-	if (!tmp)
-		return ;
 	merge_words(data);
+	tmp = data->tokens;
 	if (tmp->flag == T_WORD)
 	{
 		execute_with_bash(data, tmp);
 		if (data->exec_error == true)
 			return ;
 	}
-
+	close_fd_in_out(data); // must be???
 
 	//printf("fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
 }

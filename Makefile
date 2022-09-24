@@ -51,6 +51,7 @@ SRC 		= 	main.c 								\
 				src/executer/executer.c				\
 				src/executer/bash_executer/bash_executer.c \
 				src/executer/bash_executer/cmd_extractor.c \
+				src/executer/bash_executer/fd_duplicator.c \
 				src/signals/signals.c				\
 
 TOOLS_SRC	=	src/tools/ft_calloc.c				\
