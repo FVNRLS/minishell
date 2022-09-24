@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 17:41:04 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 19:58:48 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	execute_with_bash(t_data *data, t_token *token)
 	data->exec->path = NULL;
 }
 
+
+//TODO: fix leak, exec commands after pipe
 void	exec_bash_commands(t_data *data)
 {
 	t_token	*tmp;
@@ -69,17 +71,24 @@ void	exec_bash_commands(t_data *data)
 	if (data->parse_error == true)
 		return ;
 
-	tmp = data->tokens;
-	resolve_redirections(data);
-	merge_words(data);
-	tmp = data->tokens;
-	if (tmp->flag == T_WORD)
+	while (data->tokens != NULL)
 	{
-		execute_with_bash(data, tmp);
-		if (data->exec_error == true)
-			return ;
-		close_fd_in_out(data); // must be???
-	}
-
-	//printf("fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
+		resolve_redirections(data);
+		merge_words(data);
+		tmp = data->tokens;
+		if (tmp->flag == T_WORD)
+		{
+			execute_with_bash(data, tmp);
+			if (data->exec_error == true)
+				return ;
+			close_fd_in_out(data);
+			init_fd(data);
+			free(tmp);
+		}
+		data->tokens = data->tokens->next;
+		if (!data->tokens)
+			break ;
+		if (data->tokens->flag == T_PIPE)
+			data->tokens = data->tokens->next;
+	}	//printf("fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
 }
