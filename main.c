@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/23 22:19:59 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/24 10:25:40 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv, char **envp)
 	while (data.exit_minishell == false)
 	{
 		track_history(&data);
-		//catch_signals(&data);
+		catch_signals(&data);
 		lex_input(&data);
 		if (data.lex_error == false)
 		{
@@ -36,7 +36,7 @@ int	main(int argc, char **argv, char **envp)
 			{
 				exec_commands(&data);
 				exec_bash_commands(&data);
-				//print_tokens(&data);
+				print_tokens(&data);
 			}
 		}
 		free_tokens(&data);
@@ -45,7 +45,7 @@ int	main(int argc, char **argv, char **envp)
 //		check_leaks();
 	}
 	free_all_ressources(&data);
-	//atexit(check_leaks);
+	atexit(check_leaks);
 	return (EXIT_SUCCESS);
 }
 

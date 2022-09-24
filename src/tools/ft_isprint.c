@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 22:34:13 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/23 22:52:14 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/24 10:32:40 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_isprint(int c)
 {
-	return ((c > 32 && c <= 126) ? c : 0);
+	if (c > 32 && c <= 126)
+		return (c);
+	else
+		return (0);
 }

@@ -37,6 +37,7 @@ add_executable(minishell main.c
         src/tools/ft_isdigit.c
         src/tools/ft_splitlen.c
         src/tools/ft_haschar.c
+        src/tools/ft_isprint.c
 
 
         #BUILTINS:

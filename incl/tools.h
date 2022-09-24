@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:31:55 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 00:00:06 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/24 10:26:04 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int		ft_isdigit(int c);
 int		ft_splitlen(char **s);
 int		ft_haschar(char *s, char c);
 int		ft_isprint(int c);
-void	ft_dl_token(t_data **data);
 
 
 //for debuging
