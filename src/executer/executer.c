@@ -3,31 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 13:11:23 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 17:53:45 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
 //TODO:
-// resolve problem: when token is not a builtin - there is exit error message:
-// example: try to exec. ls -l
-// > minishell: exit: d2: numeric argument required
-
+//export need rework
+//some error messages are wrong
+//and signals not done yet
 
 int	mod_error(t_data *data)
 {
-	if (1)
-	{
-		print_error(7);
-		printf("%s\n", data->builtins->command[0]);
-		ft_cleansplit(data->builtins->command);
-		return (1);
-	}
-	return (0);	
+	built_error(CMD_ERROR, data->builtins->command[0]);
+	ft_cleansplit(data->builtins->command);
+	data->exec_error = true;
+	return (1);
 }
 
 /*
@@ -40,7 +35,7 @@ void	exec_commands(t_data *data)
 
 	data->exec_error = false;
 	tmp = (t_token*)data->tokens;
-	while (data->tokens && data->exit_minishell != true)
+	while (data->tokens && !data->exit_minishell && !data->exec_error)
 	{
 		mod = ft_isbuiltin(data);
 		//printf("mod = %i\n", mod);

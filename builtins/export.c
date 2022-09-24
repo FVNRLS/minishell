@@ -6,17 +6,13 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/23 10:17:28 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 17:28:00 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-/*
-prints the envp only if it has (key + val)
-if (val = empty) its ignored
-*/
-int	true_env(t_data *data)
+void	true_env(t_data *data)
 {
 	t_envp *tmp;
 
@@ -27,93 +23,55 @@ int	true_env(t_data *data)
 			printf("declare -x %s=%s\n", tmp->key, tmp->val);
 		tmp = tmp->next;
 	}
+}
+
+int	check_new(char **s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i][0] == '=')
+		{
+			built_error(EXPORT_ERROR, s[i]);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	check_string(t_data **data, int *i)
+{
+	int		tmp;
+	char	*s;
+
+	s = (*data)->tokens->content;
+	tmp = 0;
+	if (ft_strlen(s) == 6)
+		return (EXIT_FAILURE);
+	while (ft_isprint(s[*i]))
+		(*i)++;
+	(*i)++;
+	ft_cleansplit((*data)->builtins->command);
+	(*data)->builtins->command = ft_split(s + (*i), ' ');
+	if (check_new((*data)->builtins->command))
+	{
+		i = 0;
+		return (EXIT_SUCCESS);
+	}
 	return (EXIT_SUCCESS);
 }
 
-/*
-add key and its val to the end of envp list
-*/
-void	add_keyval(char **split, t_data *data) //split[0] = key // split[1] = val
-{
-	t_envp	*new;
-	char	*val;
-
-	if (!split[1])
-		val = ft_strdup("");
-	else
-		val = ft_strdup(split[1]);
-	new = ft_getenvp(data, split[0]);
-	if (new == NULL)
-	{
-		new = ft_new_envp(ft_strdup(split[0]), val);
-		ft_add_envp_back(&data->envp, new);
-	}
-	else
-	{
-		free(new->val);
-		new->val = val;
-	}
-}
-
-/*
-add key to the end of envp list and val is empty
-*/
-void	ft_addkey(char *key, t_data *data)
-{
-	t_envp *new;
-
-	new = ft_getenvp(data, key);
-	if (new == NULL)
-	{
-		new = ft_new_envp(ft_strdup(key), ft_strdup(""));
-		ft_add_envp_back(&data->envp, new);
-	}
-	else
-	{
-		free(new->val);
-		new->val = ft_strdup("");
-	}
-}
-
-int	ex_helper(t_data *data, int len)
-{
-	if (len == 1)
-		return (true_env(data));
-	else
-	{	
-		print_error(11);
-		printf("»%s«\n", data->builtins->command[1]);
-		return (EXIT_FAILURE);
-	}
-}
-
-/*
-handle export command
-*/
 int	export(t_data *data)
 {
-	char	**split;
-	int		splitlen;
-	int		i;
+	int	i;
 
-	i = 1;
-	splitlen = ft_splitlen(data->builtins->command);
-	if (splitlen == 1 || data->builtins->command[i][0] == '=')
-		return(ex_helper(data, splitlen));
-	while (i < splitlen)
-	{
-		//printf("cmd = %s\n", data->builtins->command[i]);
-		split = ft_split(data->builtins->command[i], '=');
-		if (ft_haschar(data->builtins->command[i], '='))
-		{
-			add_keyval(split, data);
-		}
-		else
-		{
-			ft_addkey(data->builtins->command[i], data);
-		}
-		ft_cleansplit(split);
-		i++;
-	}
+	i = 0;
+	if (check_string(&data, &i))
+		true_env(data);
+	if (i == 0)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
