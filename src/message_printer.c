@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 17:28:38 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/24 17:49:35 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,6 @@ void	print_error(int error)
 		printf("minishell:	syntax error. Missing \"\n");
 	else if (error == EXIT_ERROR)
 		printf("minishell: exit: Zu viele Argumente.\n");
-	else if (error == EXIT_ARG_ERROR)
-		printf("minishell: exit: d2: numeric argument required\n");
-	else if (error == CMD_ERROR)
-		printf("minishell: command not found:");
 	else if (error == INVALID_PATH)
 		printf("minishell: Invalid file or directory:");
 	else if (error == CD_ARG_ERROR)
@@ -71,5 +67,9 @@ void	print_token_error(int error, t_token *token)
 void	built_error(int error, char *s)
 {
 	if (error == EXPORT_ERROR)
-		printf("minishell: export: »%s« invalid key\n");
+		printf("minishell: export: »%s«: invalid key\n");
+	else if (error == EXIT_ARG_ERROR)
+		printf("minishell: exit: »%s«: numeric argument required\n");
+	else if (error == CMD_ERROR)
+		printf("minishell: command: »%s«: not found\n");
 }
