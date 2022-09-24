@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 16:20:45 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 16:32:09 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,6 @@ void	execute_with_bash(t_data *data, t_token *token)
 	data->exec->path = NULL;
 }
 
-void	create_cmd_token(t_data *data, t_token *token)
-{
-	t_token	*tmp;
-
-	resolve_redirections(data);
-	merge_words(data);
-}
-
 void	exec_bash_commands(t_data *data)
 {
 	data->exec_error = false;
@@ -82,8 +74,8 @@ void	exec_bash_commands(t_data *data)
 		execute_with_bash(data, tmp);
 		if (data->exec_error == true)
 			return ;
+		close_fd_in_out(data); // must be???
 	}
-	close_fd_in_out(data); // must be???
 
 	//printf("fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
 }

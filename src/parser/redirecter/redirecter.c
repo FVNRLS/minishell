@@ -6,11 +6,13 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/23 12:57:21 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 16:29:57 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incl/minishell.h"
+
+
 
 void	redirect_del_token(t_data *data, t_token *token)
 {
