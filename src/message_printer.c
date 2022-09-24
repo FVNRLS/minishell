@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_printer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/23 10:20:25 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 17:28:38 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	print_error(int error)
 		printf("minishell: Invalid file or directory:");
 	else if (error == CD_ARG_ERROR)
 		printf("minishell: cd: Zu viele Argumente.\n");
-	else if (error == EXPORT_ERROR)
-		printf("minishell: export: Ist kein gültiger Bezeichner: ");
 }
 
 //TODO: use perror() or own error printer?
@@ -68,4 +66,10 @@ void	print_token_error(int error, t_token *token)
 		printf("minishell: syntax error near unexpected token `%s'\n", redir);
 	free(redir);
 	redir = NULL;
+}
+
+void	built_error(int error, char *s)
+{
+	if (error == EXPORT_ERROR)
+		printf("minishell: export: »%s« invalid key\n");
 }
