@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/23 10:17:25 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 11:12:49 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,25 @@ typedef struct s_fd
 	bool		hdoc_used;
 }	t_fd;
 
+typedef struct s_exec
+{
+	char	**cmd;
+	char	*path;
+}		t_exec;
+
 
 typedef struct s_data
 {
 	t_builtins	*builtins;
 	int 		pid;
+	char 		**env;
 	char 		*input;
 	char		*sep;
 	int 		*redir;
 	t_fd 		*fd;
 	t_envp		*envp; // linked list - contains all environments
 	t_token		*tokens; //linked list with tokens
+	t_exec 		*exec;
 	bool		lex_error;
 	bool		parse_error;
 	bool		exec_error;

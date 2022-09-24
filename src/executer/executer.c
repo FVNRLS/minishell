@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 10:25:41 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 13:11:23 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
+
+//TODO:
+// resolve problem: when token is not a builtin - there is exit error message:
+// example: try to exec. ls -l
+// > minishell: exit: d2: numeric argument required
 
 
 int	mod_error(t_data *data)

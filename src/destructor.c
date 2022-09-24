@@ -91,6 +91,7 @@ void	free_all_ressources(t_data *data)
 	free(data->redir);
 	data->redir = NULL;
 	free(data->fd);
+	free(data->exec);
 }
 
 void	exit_with_free(t_data *data)

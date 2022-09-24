@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:34:00 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/23 19:11:18 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 13:24:54 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,96 +19,109 @@
  	different paths and checking them for existence with the access() function.
 	If access() returns 0, it means that the path exists and can be returned.
 */
-//static char	*assign_path(char **paths, char *cmd)
-//{
-//	int		i;
-//	char	*path;
-//	char	*path_with_slash;
-//	char	*slash;
-//
-//	path = NULL;
-//	path_with_slash = NULL;
-//	slash = ft_strdup("/");
-//	i = 0;
-//	while (paths[i] != NULL)
-//	{
-//		path_with_slash = ft_strjoin(paths[i], slash);
-//		path = ft_strjoin(path_with_slash, cmd);
-//		free(path_with_slash);
-//		if (access(path, F_OK) == 0)
-//			break ;
-//		free(path);
-//		path = NULL;
-//		i++;
-//	}
-//	free(slash);
-//	slash = NULL;
-//	return (path);
-//}
+static char	*assign_path(char **paths, char *cmd)
+{
+	int		i;
+	char	*path;
+	char	*path_with_slash;
+	char	*slash;
+
+	path = NULL;
+	path_with_slash = NULL;
+	slash = ft_strdup("/");
+	i = 0;
+	while (paths[i] != NULL)
+	{
+		path = ft_strdup(paths[i]);
+		path_with_slash = ft_strjoin(path, slash);
+		path = ft_strjoin(path_with_slash, cmd);
+		if (access(path, F_OK) == 0)
+			break ;
+		free(path);
+		path = NULL;
+		i++;
+	}
+	free(slash);
+	return (path);
+}
 
 /*
 	Finds and returns all paths of the env var. 'PATH', separated by
  	the delimiter ':';
- 	Iterate through all available env vars and compare the first 5 character.
- 	If the first 5 chars are 'PATH=' - this env index contains the paths.
- 	Return the pointer to 6th position (char.) of the env var
- 	(the arg. 'PATH=' doesnt belong to the actual paths).
- 	If no env with 'PATH=' specified, set the path to CWD.
+ 	Iterates through all available env vars and compares the env key.
+ 	If env. list contains var. PATH - returns its value.
+ 	If no env with 'PATH' specified, set the path to CWD.
 */
-static char	**get_all_paths(t_data *data)
+static char	**get_valid_paths(t_data *data)
 {
 	t_envp	*envp;
-	char	*paths;
-	char 	**split_paths;
+	char	*path;
+	char 	**valid_paths;
 
 	envp = data->envp;
-	paths = NULL;
+	path = NULL;
 	while (envp != NULL)
 	{
 		if (ft_strcmp("PATH", envp->key) == 0)
 		{
-			paths = envp->val;
+			path = envp->val;
 			break;
 		}
 		envp = envp->next;
 	}
-	if (!paths)
-		return (NULL);
-	split_paths = ft_split(paths, DOUBLE_DOT);
-	if (!split_paths)
+	if (!path)
+		path = ft_strdup("./");
+	valid_paths = ft_split(path, ':');
+	if (ft_strcmp(path, "./") == 0)
 	{
-		perror(NULL);
-		data->exec_error = true;
-		return (NULL);
+		free(path);
+		path = NULL;
 	}
-	return (split_paths);
+	return (valid_paths);
 }
 
 /*
-	Gets a full path for the given command, received from argv.
+	Gets a full path to the given command (binary or executable).
 */
-char	*get_cmd(t_data *data, t_token *token)
+static char	*get_cmd_path(t_data *data)
 {
-	char 	**content;
-	char 	**all_paths;
 	char	*cmd;
+	char 	**valid_paths;
 	char	*cmd_path;
 
-	cmd_path = NULL;
-	content = ft_split(token->content, SPACE);
-	if (!content)
+	cmd = data->exec->cmd[0];
+	valid_paths = get_valid_paths(data);
+	if (!valid_paths)
 	{
 		perror(NULL);
 		data->exec_error = true;
 		return (NULL);
 	}
-	cmd = content[0];
-	all_paths = get_all_paths(data);
-	if (data->exec_error == false)
-	{
-//		cmd_path = assign_path(all_paths, cmd);
-		ft_cleansplit(all_paths);
-	}
-	ft_cleansplit(content);
+	cmd_path = assign_path(valid_paths, cmd);
+	ft_cleansplit(valid_paths);
 	return (cmd_path);
+}
+
+static char	**get_cmd(t_data *data, t_token *token)
+{
+	char **cmd;
+
+	cmd = ft_split(token->content, SPACE);
+	if (!cmd)
+	{
+		perror(NULL);
+		data->exec_error = true;
+		return (NULL);
+	}
+	return (cmd);
+}
+
+void	extract_cmd_and_path(t_data *data, t_token *token)
+{
+	data->exec->cmd = get_cmd(data, token);
+	if (data->exec_error == true)
+		return ;
+	data->exec->path = get_cmd_path(data);
+	if (data->exec_error == true)
+		return ;
 }

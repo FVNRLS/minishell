@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/23 19:00:29 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 13:30:25 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,11 @@ void	exec_commands(t_data *data);
 
 //EXECUTER ROMAN (ONLY BASH)
 void	exec_bash_commands(t_data *data);
-char	*get_cmd(t_data *data, t_token *token);
+void	extract_cmd_and_path(t_data *data, t_token *token);
+
 
 //TODO: delete before submission!
 void	print_tokens(t_data *data);
-
+void	check_leaks(void);
 
 #endif
