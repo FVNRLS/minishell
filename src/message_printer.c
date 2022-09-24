@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 17:49:35 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/24 19:25:34 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ void	print_token_error(int error, t_token *token)
 void	built_error(int error, char *s)
 {
 	if (error == EXPORT_ERROR)
-		printf("minishell: export: »%s«: invalid key\n");
+		printf("minishell: export: »%s«: invalid key\n", s);
 	else if (error == EXIT_ARG_ERROR)
-		printf("minishell: exit: »%s«: numeric argument required\n");
+		printf("minishell: exit: »%s«: numeric argument required\n", s);
 	else if (error == CMD_ERROR)
-		printf("minishell: command: »%s«: not found\n");
+		printf("minishell: command: »%s«: not found\n", s);
 }
