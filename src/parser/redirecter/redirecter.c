@@ -6,13 +6,11 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 16:29:57 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 17:41:04 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incl/minishell.h"
-
-
 
 void	redirect_del_token(t_data *data, t_token *token)
 {
@@ -40,6 +38,7 @@ void	resolve_redirections(t_data *data)
 	t_token	*tmp;
 	t_token *del;
 	t_token *prev;
+
 
 	data->fd->hdoc_index = 0;
 	tmp = data->tokens;

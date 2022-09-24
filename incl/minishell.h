@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 16:29:57 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 17:26:49 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	init_envp(t_data *data, char **envp);
 void	init_builtin_names(t_data *data);
 void	init_builtin_functions(t_data *data);
 void 	init_fd(t_data *data);
+void	init_exec(t_data *data);
 
 
 //DESTRUCTOR:

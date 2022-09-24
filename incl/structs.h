@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 11:12:49 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 17:25:12 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_exec
 {
 	char	**cmd;
 	char	*path;
+	int 	cmd_index;
 }		t_exec;
 
 

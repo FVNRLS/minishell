@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 16:32:09 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 17:41:04 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,13 @@ void	execute_with_bash(t_data *data, t_token *token)
 
 void	exec_bash_commands(t_data *data)
 {
-	data->exec_error = false;
 	t_token	*tmp;
 
+	data->exec_error = false;
+	if (data->parse_error == true)
+		return ;
+
+	tmp = data->tokens;
 	resolve_redirections(data);
 	merge_words(data);
 	tmp = data->tokens;

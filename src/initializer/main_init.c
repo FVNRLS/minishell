@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 11:43:00 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/24 17:23:25 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	init_exec(t_data *data)
 {
 	data->exec->cmd = NULL;
 	data->exec->path = NULL;
+	data->exec->cmd_index = 0;
 }
 
 void	init_fd(t_data *data)
