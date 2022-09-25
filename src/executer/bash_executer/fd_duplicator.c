@@ -30,6 +30,8 @@ void	redirect_in_out(t_data *data, t_token *token)
 {
 	if (!token)
 		return ;
-	if (token->next == NULL)
+//	if (token->next == NULL)
+//		dup_infile_to_outfile(data);
+	else
 		dup_infile_to_outfile(data);
 }

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 19:58:48 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 14:37:24 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,39 +56,49 @@ void	execute_with_bash(t_data *data, t_token *token)
 		return ;
 	fork_execution(data, token);
 	catch_exit_code(data);
+
 	ft_cleansplit(data->exec->cmd);
 	free(data->exec->path);
 	data->exec->path = NULL;
 }
 
 
-//TODO: fix leak, exec commands after pipe
+//TODO: exec commands after pipe
 void	exec_bash_commands(t_data *data)
 {
 	t_token	*tmp;
 
 	data->exec_error = false;
-	if (data->parse_error == true)
-		return ;
-
 	while (data->tokens != NULL)
 	{
 		resolve_redirections(data);
 		merge_words(data);
 		tmp = data->tokens;
+		printf("--------------------------------------------------\n");
+		printf("Before exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
 		if (tmp->flag == T_WORD)
 		{
+			printf("OUTPUT:\n");
 			execute_with_bash(data, tmp);
 			if (data->exec_error == true)
 				return ;
+
 			close_fd_in_out(data);
 			init_fd(data);
-			free(tmp);
+			printf("After exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
+			printf("--------------------------------------------------\n");
+
+			tmp = data->tokens->next;
+			ft_dl_token(&data);
+			data->tokens = tmp;
 		}
-		data->tokens = data->tokens->next;
 		if (!data->tokens)
 			break ;
 		if (data->tokens->flag == T_PIPE)
-			data->tokens = data->tokens->next;
-	}	//printf("fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
+		{
+			tmp = data->tokens->next;
+			ft_dl_token(&data);
+			data->tokens = tmp;
+		}
+	}
 }
