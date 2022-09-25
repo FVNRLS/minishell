@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:28:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/23 10:17:28 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/26 00:26:53 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	check_exit_args(t_data *data)
 {
-	t_token *tmp;
-	int i;
+	t_token	*tmp;
+	int		i;
 
 	tmp = data->tokens;
 	i = 0;
@@ -43,7 +43,7 @@ int	check_exit_args(t_data *data)
 
 int	mini_exit(t_data *data)
 {
-	if (!data->tokens->next && !check_exit_args(data)) //if no pipe and right syntax of exit
+	if (!data->tokens->next && !check_exit_args(data))
 	{
 		write(2, "exit minishell\n", 15);
 		data->exit_minishell = true;
