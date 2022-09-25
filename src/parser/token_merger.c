@@ -12,6 +12,19 @@
 
 #include "../../incl/minishell.h"
 
+void	refactor_join_flags(t_data *data)
+{
+	t_token *tmp;
+
+	tmp = data->tokens;
+	while (tmp->next != NULL)
+	{
+		if (tmp->join == 1 && tmp->next->flag != T_WORD)
+			tmp->join = 0;
+		tmp = tmp->next;
+	}
+}
+
 void	merge_joinable_tokens(t_data *data)
 {
 	t_token	*tmp;
@@ -20,6 +33,7 @@ void	merge_joinable_tokens(t_data *data)
 	tmp = data->tokens;
 	if (!tmp)
 		return ;
+	refactor_join_flags(data);
 	del = NULL;
 	while (tmp->next != NULL)
 	{
