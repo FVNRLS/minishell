@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:43:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 17:27:19 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/26 00:52:28 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define INVALID_PATH				8
 # define CD_ARG_ERROR				9
 # define EXPORT_ERROR				10
+# define CD_ARGS					11
 
 void	print_error(int error);
 void	print_token_error(int error, t_token *token);

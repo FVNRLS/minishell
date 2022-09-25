@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:42:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/21 10:08:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/26 00:25:36 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,10 @@
 # include <sys/types.h>
 
 //utils
-int	is_number(char *s);
-char **dl_first(char **s);
-
-/*
-error management of builtins uses perror / errno messages
-ARGS:	m = message of ur choice
-		error = errno 
-if errno is unset choose val for errno only occurs when no "real" error happens
-        1 Operation not permitted
-        2 No such file or directory
-        3 No such process
-        4 Interrupted system call
-        5 Input/output error
-		... look man errno | man perror gl
-*/
-int error(char *m, int error);
+int		is_number(char *s);
+char 	**dl_first(char **s);
+char	*make_key(char *s, int *i);
+void	true_env(t_data *data);
 
 /*
 print data.envp.key & data.envp.key till envp->next == NULL
