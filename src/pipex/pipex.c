@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 17:03:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 18:09:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 18:53:30 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,8 @@ void	create_pipe(t_data *data)
 
 void	close_all_pipe_ends(t_data *data)
 {
-	if (data->exec->pipe_used == true)
-	{
 		close(data->pipe[1]);
 		close(data->pipe[0]);
-	}
 }
 
 void	redirect_in_out(t_data *data, t_token *token)

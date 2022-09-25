@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 17:23:25 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 19:01:31 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	init_exec(t_data *data)
 {
 	data->exec->cmd = NULL;
 	data->exec->path = NULL;
-	data->exec->pipe_used = false;
 	data->exec->cmd_num = 0;
+	data->exec->last_cmd = 0;
 }
 
 void	init_fd(t_data *data)

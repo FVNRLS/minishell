@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 19:01:06 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 19:12:44 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,16 @@ void	execute_cmd(t_data *data, t_token *tmp)
 
 	if (data->tokens->next != NULL)
 	{
-		data->exec->pipe_used = true;
 		create_pipe(data);
 		if (data->exec_error == true)
 			return ;
 	}
-	else
-		data->exec->pipe_used = false;
 
 	printf("OUTPUT:\n");
 	execute_with_bash(data, tmp);
 	close_fd_in_out(data);
 	close_all_pipe_ends(data);
+	data->exec->cmd_num++;
 
 	if (data->exec_error == true)
 		return ;
@@ -98,7 +96,7 @@ void	exec_bash_commands(t_data *data)
 
 	data->exec_error = false;
 	init_exec(data);
-	data->exec->cmd_num = ft_get_num_cmds(data);
+	data->exec->last_cmd = ft_get_num_cmds(data);
 	while (data->tokens != NULL)
 	{
 		resolve_redirections(data);
@@ -111,4 +109,5 @@ void	exec_bash_commands(t_data *data)
 		ft_dl_token(&data);
 		data->tokens = tmp;
 	}
+	destroy_hdocs(data);
 }
