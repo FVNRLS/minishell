@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 19:58:48 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 15:28:19 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	main(int argc, char **argv, char **env)
 		if (data.lex_error == false)
 		{
 			parse_tokens(&data);
+			print_tokens(&data);
 			if (data.parse_error == false)
 			{
 //				exec_commands(&data);
 				exec_bash_commands(&data);
-				print_tokens(&data);
 			}
 		}
 		free_tokens(&data);

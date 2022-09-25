@@ -42,6 +42,7 @@ int		ft_isdigit(int c);
 int		ft_splitlen(char **s);
 int		ft_haschar(char *s, char c);
 int		ft_isprint(int c);
+void	ft_dl_token(t_data **data);
 
 
 //for debuging

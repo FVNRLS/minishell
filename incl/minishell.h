@@ -96,6 +96,7 @@ void	handle_one_dollar(t_data *data, t_lex *lex);
 //PARSER
 void	parse_tokens(t_data *data);
 void	check_multiple_pipes(t_data *data);
+void	refactor_join_flags(t_data *data);
 void	merge_joinable_tokens(t_data *data);
 void	merge_words(t_data *data);
 void	merge_redirections(t_data *data);

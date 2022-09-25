@@ -38,6 +38,7 @@ add_executable(minishell main.c
         src/tools/ft_splitlen.c
         src/tools/ft_haschar.c
         src/tools/ft_isprint.c
+        src/tools/ft_dl_token.c
 
 
         #BUILTINS:

@@ -66,7 +66,6 @@ typedef struct s_exec
 {
 	char	**cmd;
 	char	*path;
-	int 	cmd_index;
 }		t_exec;
 
 
