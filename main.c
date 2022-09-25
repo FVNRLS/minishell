@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 15:28:33 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 19:29:41 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv, char **env)
 	t_data 	data;
 	(void) argc;
 	(void) argv;
-	g_exit_code = 0;
 	init_shell_env(&data, env);
 	while (data.exit_minishell == false)
 	{
@@ -35,7 +34,7 @@ int	main(int argc, char **argv, char **env)
 			print_tokens(&data);
 			if (data.parse_error == false)
 			{
-//				exec_commands(&data);
+				exec_commands(&data);
 				exec_bash_commands(&data);
 			}
 		}

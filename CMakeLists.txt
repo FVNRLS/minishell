@@ -76,6 +76,7 @@ add_executable(minishell main.c
 
         #PIPEX
         src/pipex/pipex.c
+        src/pipex/pipe_processor.c
         src/pipex/fd_duplicator.c
 
         #BUILTINS
@@ -93,7 +94,7 @@ add_executable(minishell main.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-      )
+       )
 
 target_link_libraries(minishell edit)
 

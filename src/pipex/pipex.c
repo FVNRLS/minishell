@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 17:03:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 18:53:30 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 19:47:00 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,13 @@ void	redirect_in_out(t_data *data, t_token *token)
 {
 	if (!token)
 		return ;
-	dup_in_to_out(data);
+	if (data->exec->last_cmd == 1)
+		dup_in_to_out(data);
+
+	else if (data->exec->cmd_num == 1)
+		pipe_first_cmd(data);
+	else if (data->exec->cmd_num < data->exec->last_cmd)
+		pipe_inter_cmd(data);
+	else if (data->exec->cmd_num == data->exec->last_cmd)
+		pipe_last_cmd(data);
 }

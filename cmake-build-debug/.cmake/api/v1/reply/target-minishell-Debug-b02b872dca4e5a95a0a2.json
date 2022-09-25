@@ -31,7 +31,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 98,
+				"line" : 99,
 				"parent" : 0
 			}
 		]
@@ -121,7 +121,8 @@
 				59,
 				60,
 				61,
-				62
+				62,
+				63
 			]
 		}
 	],
@@ -221,7 +222,8 @@
 				59,
 				60,
 				61,
-				62
+				62,
+				63
 			]
 		}
 	],
@@ -543,6 +545,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/pipex/pipex.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/pipex/pipe_processor.c",
 			"sourceGroupIndex" : 0
 		},
 		{

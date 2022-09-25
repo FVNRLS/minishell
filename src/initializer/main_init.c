@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 19:01:31 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 19:29:41 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	init_exec(t_data *data)
 {
 	data->exec->cmd = NULL;
 	data->exec->path = NULL;
-	data->exec->cmd_num = 0;
+	data->exec->cmd_num = 1;
 	data->exec->last_cmd = 0;
 }
 
@@ -87,6 +87,7 @@ static void	init_builtins(t_data *data)
 
 void	init_shell_env(t_data *data, char **envp)
 {
+	g_exit_code = 0;
 	data->fd = malloc(sizeof(t_fd));
 	data->exec = malloc(sizeof(t_exec));
 	init_fd(data);
