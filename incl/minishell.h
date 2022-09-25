@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 17:26:49 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 17:16:28 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,13 @@ void	exec_commands(t_data *data);
 //EXECUTER ROMAN (ONLY BASH)
 void	exec_bash_commands(t_data *data);
 void	extract_cmd_and_path(t_data *data, t_token *token);
+
+//PIPEX
+void	create_pipe(t_data *data);
+void	close_all_pipe_ends(t_data *data);
 void	redirect_in_out(t_data *data, t_token *token);
+void	redirect_first_cmd(t_data *data);
+void	dup_in_to_out(t_data *data);
 
 //TODO: delete before submission!
 void	print_tokens(t_data *data);

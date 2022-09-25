@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 17:25:12 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 18:51:37 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ typedef struct s_exec
 {
 	char	**cmd;
 	char	*path;
+	int 	cmd_num;
+	bool	pipe_used;
 }		t_exec;
 
 
@@ -77,6 +79,7 @@ typedef struct s_data
 	char 		*input;
 	char		*sep;
 	int 		*redir;
+	int 		pipe[2];
 	t_fd 		*fd;
 	t_envp		*envp; // linked list - contains all environments
 	t_token		*tokens; //linked list with tokens

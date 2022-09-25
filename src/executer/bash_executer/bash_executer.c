@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 14:37:24 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 19:01:06 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,43 +62,53 @@ void	execute_with_bash(t_data *data, t_token *token)
 	data->exec->path = NULL;
 }
 
+void	execute_cmd(t_data *data, t_token *tmp)
+{
+	printf("--------------------------------------------------\n");
+	printf("Before exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
 
-//TODO: exec commands after pipe
+	if (data->tokens->next != NULL)
+	{
+		data->exec->pipe_used = true;
+		create_pipe(data);
+		if (data->exec_error == true)
+			return ;
+	}
+	else
+		data->exec->pipe_used = false;
+
+	printf("OUTPUT:\n");
+	execute_with_bash(data, tmp);
+	close_fd_in_out(data);
+	close_all_pipe_ends(data);
+
+	if (data->exec_error == true)
+		return ;
+
+	init_fd(data);
+	printf("After exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
+	printf("--------------------------------------------------\n");
+}
+
+
+//TODO: pipex
 void	exec_bash_commands(t_data *data)
 {
 	t_token	*tmp;
 
 	data->exec_error = false;
+	init_exec(data);
+	data->exec->cmd_num = ft_get_num_cmds(data);
 	while (data->tokens != NULL)
 	{
 		resolve_redirections(data);
 		merge_words(data);
+
 		tmp = data->tokens;
-		printf("--------------------------------------------------\n");
-		printf("Before exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
 		if (tmp->flag == T_WORD)
-		{
-			printf("OUTPUT:\n");
-			execute_with_bash(data, tmp);
-			if (data->exec_error == true)
-				return ;
-
-			close_fd_in_out(data);
-			init_fd(data);
-			printf("After exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
-			printf("--------------------------------------------------\n");
-
-			tmp = data->tokens->next;
-			ft_dl_token(&data);
-			data->tokens = tmp;
-		}
-		if (!data->tokens)
-			break ;
-		if (data->tokens->flag == T_PIPE)
-		{
-			tmp = data->tokens->next;
-			ft_dl_token(&data);
-			data->tokens = tmp;
-		}
+			execute_cmd(data, tmp);
+		tmp = data->tokens->next;
+		ft_dl_token(&data);
+		data->tokens = tmp;
 	}
 }

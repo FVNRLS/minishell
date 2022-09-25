@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/24 10:25:41 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/09/25 19:01:57 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ SRC 		= 	main.c 								\
 				src/executer/executer.c				\
 				src/executer/bash_executer/bash_executer.c \
 				src/executer/bash_executer/cmd_extractor.c \
-				src/executer/bash_executer/fd_duplicator.c \
+				src/pipex/fd_duplicator.c 			\
+		        src/pipex/pipex.c					\
 				src/signals/signals.c				\
 
 TOOLS_SRC	=	src/tools/ft_calloc.c				\
@@ -81,6 +82,7 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_getenvp.c				\
 				src/tools/ft_isprint.c				\
 				src/tools/ft_dl_token.c				\
+				src/tools/ft_get_num_cmds.c			\
 
 
 OBJ 		= 	${SRC:.c=.o}

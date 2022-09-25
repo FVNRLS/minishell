@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fd_duplicator.c                                    :+:      :+:    :+:   */
+/*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 14:38:26 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 17:26:15 by rmazurit         ###   ########.fr       */
+/*   Created: 2022/09/25 17:03:16 by rmazurit          #+#    #+#             */
+/*   Updated: 2022/09/25 18:09:11 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../incl/minishell.h"
+#include "../../incl/minishell.h"
 
-void	dup_infile_to_outfile(t_data *data)
+void	create_pipe(t_data *data)
 {
-	if (data->fd->in != STDIN_FILENO)
+	if (pipe(data->pipe) < 0)
 	{
-		dup2(data->fd->in, STDIN_FILENO);
-		close(data->fd->in);
+		perror(NULL);
+		data->exec_error = true;
+		return ;
 	}
-	if (data->fd->out != STDOUT_FILENO)
+}
+
+void	close_all_pipe_ends(t_data *data)
+{
+	if (data->exec->pipe_used == true)
 	{
-		dup2(data->fd->out, STDOUT_FILENO);
-		close(data->fd->out);
+		close(data->pipe[1]);
+		close(data->pipe[0]);
 	}
 }
 
@@ -30,8 +35,5 @@ void	redirect_in_out(t_data *data, t_token *token)
 {
 	if (!token)
 		return ;
-//	if (token->next == NULL)
-//		dup_infile_to_outfile(data);
-	else
-		dup_infile_to_outfile(data);
+	dup_in_to_out(data);
 }

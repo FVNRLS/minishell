@@ -39,6 +39,7 @@ add_executable(minishell main.c
         src/tools/ft_haschar.c
         src/tools/ft_isprint.c
         src/tools/ft_dl_token.c
+        src/tools/ft_get_num_cmds.c
 
 
         #BUILTINS:
@@ -72,7 +73,10 @@ add_executable(minishell main.c
         #EXECUTER BASH
         src/executer/bash_executer/bash_executer.c
         src/executer/bash_executer/cmd_extractor.c
-        src/executer/bash_executer/fd_duplicator.c
+
+        #PIPEX
+        src/pipex/pipex.c
+        src/pipex/fd_duplicator.c
 
         #BUILTINS
         builtins/bin_utils.c
@@ -89,7 +93,7 @@ add_executable(minishell main.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-        )
+      )
 
 target_link_libraries(minishell edit)
 

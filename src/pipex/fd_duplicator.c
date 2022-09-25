@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   fd_duplicator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 11:20:38 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 17:26:44 by rmazurit         ###   ########.fr       */
+/*   Created: 2022/09/24 14:38:26 by rmazurit          #+#    #+#             */
+/*   Updated: 2022/09/25 18:40:13 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-void	parse_tokens(t_data *data)
+void	dup_in_to_out(t_data *data)
 {
-	data->parse_error = false;
-	init_fd(data);
-	check_multiple_pipes(data);
-	if (data->parse_error == true)
-		return ;
-	merge_joinable_tokens(data);
-	merge_redirections(data);
-	merge_words(data);
-	parse_hdocs(data);
-	if (data->parse_error == true)
-		return ;
+	if (data->fd->in != STDIN_FILENO)
+	{
+		dup2(data->fd->in, STDIN_FILENO);
+		close(data->fd->in);
+	}
+	if (data->fd->out != STDOUT_FILENO)
+	{
+		dup2(data->fd->out, STDOUT_FILENO);
+		close(data->fd->out);
+	}
 }

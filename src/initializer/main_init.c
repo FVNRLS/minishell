@@ -45,6 +45,8 @@ void	init_exec(t_data *data)
 {
 	data->exec->cmd = NULL;
 	data->exec->path = NULL;
+	data->exec->pipe_used = false;
+	data->exec->cmd_num = 0;
 }
 
 void	init_fd(t_data *data)

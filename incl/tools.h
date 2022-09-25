@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:31:55 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 10:26:04 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 13:24:16 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		ft_splitlen(char **s);
 int		ft_haschar(char *s, char c);
 int		ft_isprint(int c);
 void	ft_dl_token(t_data **data);
+int 	ft_get_num_cmds(t_data *data);
 
 
 //for debuging
