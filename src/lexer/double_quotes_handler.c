@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 18:55:19 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 17:04:30 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/25 14:51:59 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	handle_double_quotes(t_data *data, t_lex *lex)
 		stop_lexing(data, lex);
 	lex->flag = T_WORD;
 	lex->i++;
-	while (data->input[lex->i] != DOUBLE_QUOTE && data->input[lex->i] != '\0')
+	while (data->input[lex->i] != DOUBLE_QUOTE)
 	{
 		lex->c = data->input[lex->i];
 		if (lex->c == DOLLAR)
