@@ -38,11 +38,9 @@ void	print_error(int error)
 	else if (error == DOUBLE_QUOTE_MISSING)
 		printf("minishell:	syntax error. Missing \"\n");
 	else if (error == EXIT_ERROR)
-		printf("minishell: exit: Zu viele Argumente.\n");
+		printf("minishell: exit: Too much arguments.\n");
 	else if (error == INVALID_PATH)
 		printf("minishell: Invalid file or directory:");
-	else if (error == CD_ARG_ERROR)
-		printf("minishell: cd: Zu viele Argumente.\n");
 }
 
 void	print_token_error(int error, t_token *token)
@@ -70,4 +68,8 @@ void	built_error(int error, char *s)
 		printf("minishell: exit: »%s«: numeric argument required\n", s);
 	else if (error == CMD_ERROR)
 		printf("minishell: command: »%s«: not found\n", s);
+	else if (error == CD_ARG_ERROR)
+		printf("minishell: »%s«: Invalid file or path.\n");
+	else if (error == CD_ARGS)
+		printf("%s: cd: Too much arguments\n");
 }
