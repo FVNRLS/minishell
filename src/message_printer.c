@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_printer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 19:25:34 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:51:01 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	built_error(int error, char *s)
 	else if (error == CMD_ERROR)
 		printf("minishell: command: »%s«: not found\n", s);
 	else if (error == CD_ARG_ERROR)
-		printf("minishell: »%s«: Invalid file or path.\n");
+		printf("minishell: »%s«: Invalid file or path.\n", s);
 	else if (error == CD_ARGS)
-		printf("%s: cd: Too much arguments\n");
+		printf("%s: cd: Too much arguments\n", s);
 }
