@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/26 16:15:54 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/26 16:16:14 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv, char **env)
 			}
 		}
 		free_tokens(&data);
-//		check_leaks();
+		check_leaks();
 	}
 	free_all_ressources(&data);
 	atexit(check_leaks);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:07:45 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/26 14:23:43 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/26 16:33:13 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 
 //TODO: error handling... no error funtion error
-int	pwd(void)
+int	pwd(t_data *data)
 {
 	char	*path;
 
 	path = NULL;
 	path = getcwd(path, 0);
-	if (!path)
-	{
-		perror(NULL);
-		return (1);
-	}
+//	if (!path)
+//		return (error("Error in pwd.c\n", errno));
 	printf("path = %s\n", path);
 	free(path);
 	return (EXIT_SUCCESS);

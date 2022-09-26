@@ -154,3 +154,13 @@
 51	121	1664201754000000000	minishell	5fdcb3ad904ce446
 2	50	1664201774000000000	CMakeFiles/minishell.dir/main.c.o	f8b39df7ce17921b
 50	122	1664201774000000000	minishell	5fdcb3ad904ce446
+2	449	1664203622000000000	CMakeFiles/minishell.dir/builtins/env.c.o	1d34cc56ef520079
+2	449	1664203622000000000	CMakeFiles/minishell.dir/builtins/bin_utils.c.o	7c9bbfab696a6626
+3	449	1664203622000000000	CMakeFiles/minishell.dir/builtins/echo.c.o	f27b2498dae63bea
+3	449	1664203622000000000	CMakeFiles/minishell.dir/builtins/export.c.o	f0743c4e36e90438
+4	449	1664203622000000000	CMakeFiles/minishell.dir/builtins/mini_exit.c.o	66137182aea196ca
+4	449	1664203622000000000	CMakeFiles/minishell.dir/builtins/unset.c.o	e52a8168697658c0
+2	450	1664203622000000000	CMakeFiles/minishell.dir/main.c.o	f8b39df7ce17921b
+3	450	1664203622000000000	CMakeFiles/minishell.dir/builtins/cd.c.o	7264dbd4748b2195
+4	450	1664203622000000000	CMakeFiles/minishell.dir/builtins/pwd.c.o	f58e783c7ccf2fd7
+450	680	1664203622000000000	minishell	5fdcb3ad904ce446
