@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/26 00:25:19 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/26 16:22:42 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-int	check_new(char **s, t_data **data)
+int	check_new(char **s)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ int	check_string(t_data **data, int *i)
 	(*i)++;
 	ft_cleansplit((*data)->builtins->command);
 	(*data)->builtins->command = ft_split(s + (*i), ' ');
-	if (check_new((*data)->builtins->command, data))
+	if (check_new((*data)->builtins->command))
 	{
 		i = 0;
 		return (EXIT_SUCCESS);
@@ -65,8 +65,13 @@ void	make_envp(char *s, t_data **data)
 		val = ft_strdup("");
 	if (new != NULL)
 	{
-		free(new->val);
-		new->val = val;
+		if (ft_strlen(val) != 0)
+		{
+			free(new->val);
+			new->val = val;
+		}
+		else
+			free(val);
 	}
 	else
 	{
@@ -82,8 +87,7 @@ void	key_export(t_data **data)
 	i = 0;
 	while ((*data)->builtins->command[i])
 	{
-		if ((*data)->builtins->command[i][0] == '=' \
-		|| !ft_haschar((*data)->builtins->command[i], '='))
+		if ((*data)->builtins->command[i][0] == '=')
 			i++;
 		else if ((*data)->builtins->command[i])
 		{
