@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:27:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/24 10:25:41 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:40:14 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	echo(t_data *data)
 	flag = 0;
 	i = echo_pos(data->tokens->content, &flag);
 	if (i && data->tokens->content \
-	&& i < ft_strlen(data->tokens->content))
+	&& i < (int)ft_strlen(data->tokens->content))
 		printf("%s", (data->tokens->content + i));
 	if (!flag)
 		printf("\n");
