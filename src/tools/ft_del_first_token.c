@@ -16,12 +16,13 @@
 deletes current token 
 data.token = next
 */
-void	ft_dl_token(t_data **data)
+void	ft_del_first_token(t_data **data)
 {
 	t_token *tmp;
 
 	tmp = (*data)->tokens;
 	(*data)->tokens = (*data)->tokens->next;
 	free(tmp->content);
+	tmp->content = NULL;
 	free(tmp);
 }

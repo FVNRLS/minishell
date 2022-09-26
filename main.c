@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/26 16:16:14 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:54:36 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ int	main(int argc, char **argv, char **env)
 			parse_tokens(&data);
 			print_tokens(&data);
 			if (data.parse_error == false)
-			{
-//				exec_commands(&data);
-				exec_bash_commands(&data);
-			}
+				exec_cmd(&data);
 		}
 		free_tokens(&data);
 //		check_leaks();
@@ -45,6 +42,3 @@ int	main(int argc, char **argv, char **env)
 	atexit(check_leaks);
 	return (EXIT_SUCCESS);
 }
-
-
-

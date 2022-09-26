@@ -30,7 +30,7 @@ add_executable(minishell main.c
         src/tools/ft_split.c
         src/tools/ft_strjoin.c
         src/tools/ft_cleansplit.c
-        src/tools/ft_isbuiltin.c
+        src/tools/ft_get_builtin.c
         src/tools/ft_strncmp.c
         src/tools/ft_getenvp.c
         src/tools/ft_isnumber.c
@@ -38,7 +38,7 @@ add_executable(minishell main.c
         src/tools/ft_splitlen.c
         src/tools/ft_haschar.c
         src/tools/ft_isprint.c
-        src/tools/ft_dl_token.c
+        src/tools/ft_del_first_token.c
         src/tools/ft_get_num_cmds.c
 
 
@@ -71,8 +71,8 @@ add_executable(minishell main.c
         src/executer/executer.c
 
         #EXECUTER BASH
-        src/executer/bash_executer/bash_executer.c
-        src/executer/bash_executer/cmd_extractor.c
+        src/executer/bash_executer.c
+        src/executer/cmd_extractor.c
 
         #PIPEX
         src/pipex/pipex.c

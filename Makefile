@@ -6,7 +6,7 @@
 #    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/25 19:01:57 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/09/26 17:32:21 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_split.c				\
 				src/tools/ft_strjoin.c				\
 				src/tools/ft_haschar.c				\
-				src/tools/ft_isbuiltin.c			\
+				src/tools/ft_get_builtin.c			\
 				src/tools/ft_cleansplit.c			\
 				src/tools/ft_print_list.c			\
 				src/tools/ft_strncmp.c				\
@@ -82,7 +82,7 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_isdigit.c				\
 				src/tools/ft_getenvp.c				\
 				src/tools/ft_isprint.c				\
-				src/tools/ft_dl_token.c				\
+        		src/tools/ft_del_first_token.c		\
 				src/tools/ft_get_num_cmds.c			\
 
 

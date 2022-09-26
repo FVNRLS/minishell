@@ -3,49 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 17:53:45 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:51:56 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-//TODO:
-//export need rework
-//some error messages are wrong
-//and signals not done yet
-
-int	mod_error(t_data *data)
+static void try_exec_builtin(t_data *data, int builtin)
 {
-	built_error(CMD_ERROR, data->builtins->command[0]);
+	data->builtins->funcs[builtin](data);
 	ft_cleansplit(data->builtins->command);
-	data->exec_error = true;
-	return (1);
+	data->builtins->command = NULL;
 }
 
-/*
-cmd exec
-*/
-void	exec_commands(t_data *data)
+
+//TODO: exec builtin via execve if next is pipe - else --> only builtin via array
+void	exec_cmd(t_data *data)
 {
-	t_token *tmp;
-	int		mod;
+	t_token	*tmp;
+	int		builtin;
 
 	data->exec_error = false;
-	tmp = (t_token*)data->tokens;
-	while (data->tokens && !data->exit_minishell && !data->exec_error)
+	init_exec(data);
+	data->exec->last_cmd = ft_get_num_cmds(data);
+	while (data->tokens != NULL)
 	{
-		mod = ft_isbuiltin(data);
-		//printf("mod = %i\n", mod);
-		if (mod == -1 && mod_error(data))
+		resolve_redirections(data);
+		merge_words(data);
+		tmp = data->tokens;
+		if (!tmp)
 			break ;
-		if (mod != -1)
+		if (tmp->flag == T_WORD)
 		{
-			data->builtins->funcs[mod - 1](data);
-			data->tokens = data->tokens->next;
+			builtin = ft_get_builtin(data);
+			if (builtin >= 0)
+				try_exec_builtin(data, builtin);
+			else
+				exec_bash_cmd(data, tmp);
 		}
-		ft_cleansplit(data->builtins->command);
+		ft_del_first_token(&data);
 	}
+	destroy_hdocs(data);
 }

@@ -12,7 +12,7 @@
 
 //TODO: cont here - try to exec!
 
-#include "../../../incl/minishell.h"
+#include "../../incl/minishell.h"
 
 /*
 	Checks the existing command for validity by trying to combine it with

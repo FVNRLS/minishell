@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/26 14:07:48 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/26 19:02:55 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,5 @@ void	built_error(int error, char *s)
 	else if (error == CMD_ERROR)
 		printf("minishell: command: »%s«: not found\n", s);
 	else if (error == CD_ARG_ERROR)
-		printf("minishell: »%s«: Invalid file or path.\n", s);
-	else if (error == CD_ARGS)
-		printf("%s: cd: Too much arguments\n", s);
+		printf("minishell: cd: %s: No such file or directory\n", s);
 }

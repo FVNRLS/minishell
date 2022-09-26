@@ -364,7 +364,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/tools/ft_isbuiltin.c",
+			"path" : "src/tools/ft_get_builtin.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -412,7 +412,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/tools/ft_dl_token.c",
+			"path" : "src/tools/ft_del_first_token.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -532,13 +532,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/executer/bash_executer/bash_executer.c",
+			"path" : "src/executer/bash_executer.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/executer/bash_executer/cmd_extractor.c",
+			"path" : "src/executer/cmd_extractor.c",
 			"sourceGroupIndex" : 0
 		},
 		{

@@ -122,7 +122,8 @@ int 	catch_signals(t_data *data);
 void	exec_commands(t_data *data);
 
 //EXECUTER ROMAN (ONLY BASH)
-void	exec_bash_commands(t_data *data);
+void	exec_bash_cmd(t_data *data, t_token *tmp);
+void	exec_cmd(t_data *data);
 void	extract_cmd_and_path(t_data *data, t_token *token);
 
 //PIPEX

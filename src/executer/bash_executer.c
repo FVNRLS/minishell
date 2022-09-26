@@ -6,11 +6,11 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/26 15:37:21 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:01:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../incl/minishell.h"
+#include "../../incl/minishell.h"
 
 static void catch_exit_code(t_data *data)
 {
@@ -62,7 +62,7 @@ void	execute_with_bash(t_data *data, t_token *token)
 	data->exec->path = NULL;
 }
 
-void	execute_cmd(t_data *data, t_token *tmp)
+void	exec_bash_cmd(t_data *data, t_token *tmp)
 {
 //	printf("--------------------------------------------------\n");
 //	printf("Before exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
@@ -87,28 +87,4 @@ void	execute_cmd(t_data *data, t_token *tmp)
 	data->fd->out = STDOUT_FILENO;
 //	printf("After exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
 //	printf("--------------------------------------------------\n");
-}
-
-void	exec_bash_commands(t_data *data)
-{
-	t_token	*tmp;
-
-	data->exec_error = false;
-	init_exec(data);
-	data->exec->last_cmd = ft_get_num_cmds(data);
-	while (data->tokens != NULL)
-	{
-		resolve_redirections(data);
-		merge_words(data);
-
-		tmp = data->tokens;
-		if (!tmp)
-			break ;
-		if (tmp->flag == T_WORD)
-			execute_cmd(data, tmp);
-		tmp = data->tokens->next;
-		ft_dl_token(&data);
-		data->tokens = tmp;
-	}
-	destroy_hdocs(data);
 }

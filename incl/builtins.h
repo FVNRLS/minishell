@@ -19,8 +19,6 @@
 # include <sys/types.h>
 
 //utils
-int		is_number(char *s);
-char 	**dl_first(char **s);
 char	*make_key(char *s, int *i);
 void	true_env(t_data *data);
 
