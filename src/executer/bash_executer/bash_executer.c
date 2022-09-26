@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 19:12:44 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:37:21 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	execute_with_bash(t_data *data, t_token *token)
 
 void	execute_cmd(t_data *data, t_token *tmp)
 {
-	printf("--------------------------------------------------\n");
-	printf("Before exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
+//	printf("--------------------------------------------------\n");
+//	printf("Before exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
 
 	if (data->tokens->next != NULL)
 	{
@@ -74,7 +74,7 @@ void	execute_cmd(t_data *data, t_token *tmp)
 			return ;
 	}
 
-	printf("OUTPUT:\n");
+//	printf("OUTPUT:\n");
 	execute_with_bash(data, tmp);
 	close_fd_in_out(data);
 	close_all_pipe_ends(data);
@@ -83,13 +83,12 @@ void	execute_cmd(t_data *data, t_token *tmp)
 	if (data->exec_error == true)
 		return ;
 
-	init_fd(data);
-	printf("After exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
-	printf("--------------------------------------------------\n");
+	data->fd->in = STDIN_FILENO;
+	data->fd->out = STDOUT_FILENO;
+//	printf("After exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
+//	printf("--------------------------------------------------\n");
 }
 
-
-//TODO: pipex
 void	exec_bash_commands(t_data *data)
 {
 	t_token	*tmp;
@@ -103,6 +102,8 @@ void	exec_bash_commands(t_data *data)
 		merge_words(data);
 
 		tmp = data->tokens;
+		if (!tmp)
+			break ;
 		if (tmp->flag == T_WORD)
 			execute_cmd(data, tmp);
 		tmp = data->tokens->next;
