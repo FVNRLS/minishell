@@ -30,7 +30,7 @@ if cmd:
 env | echo n 
 cmd env will be ignored atm
 */
-int	env(void);
+int	env(t_data *data);
 
 /*
 data->envp->val = start path? or updated? 
@@ -46,7 +46,7 @@ int cd(t_data *data);
 print the pathname of current working directory
 if error occurs return 1
 */
-int pwd(t_data *data);
+int pwd(void);
 
 /*
 flag echo -n dont work atm
