@@ -39,7 +39,7 @@ int	main(int argc, char **argv, char **env)
 			}
 		}
 		free_tokens(&data);
-		check_leaks();
+//		check_leaks();
 	}
 	free_all_ressources(&data);
 	atexit(check_leaks);
