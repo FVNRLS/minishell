@@ -30,7 +30,7 @@ if cmd:
 env | echo n 
 cmd env will be ignored atm
 */
-int	env(t_data *data);
+int	env(void);
 
 /*
 data->envp->val = start path? or updated? 
