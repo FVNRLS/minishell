@@ -89,6 +89,8 @@ static void	init_builtins(t_data *data)
 void	init_shell_env(t_data *data, char **envp)
 {
 	g_exit_code = 0;
+	data->pipe[0] = -1;
+	data->pipe[1] = -1;
 	data->fd = malloc(sizeof(t_fd));
 	data->exec = malloc(sizeof(t_exec));
 	init_fd(data);

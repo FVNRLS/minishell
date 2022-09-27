@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/26 17:51:56 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/27 11:22:40 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,16 @@ static void try_exec_builtin(t_data *data, int builtin)
 	data->builtins->command = NULL;
 }
 
-
-//TODO: exec builtin via execve if next is pipe - else --> only builtin via array
 void	exec_cmd(t_data *data)
 {
 	t_token	*tmp;
 	int		builtin;
 
-	data->exec_error = false;
 	init_exec(data);
 	data->exec->last_cmd = ft_get_num_cmds(data);
 	while (data->tokens != NULL)
 	{
+		data->exec_error = false;
 		resolve_redirections(data);
 		merge_words(data);
 		tmp = data->tokens;
@@ -39,7 +37,7 @@ void	exec_cmd(t_data *data)
 		if (tmp->flag == T_WORD)
 		{
 			builtin = ft_get_builtin(data);
-			if (builtin >= 0)
+			if (builtin >= 0 && tmp->next == NULL)
 				try_exec_builtin(data, builtin);
 			else
 				exec_bash_cmd(data, tmp);

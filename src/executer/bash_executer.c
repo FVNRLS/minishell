@@ -6,13 +6,31 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/26 17:01:03 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/27 19:28:22 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-static void catch_exit_code(t_data *data)
+static void	exec_without_pipe(t_data *data, t_token *token)
+{
+	extract_cmd_and_path(data, token);
+	if (data->exec_error == true)
+		return ;
+	fork_execution(data, token);
+	if (dup_stdin_to_in(data) < 0)
+		return ;
+	if (dup_stdout_to_out(data) < 0)
+		return ;
+	catch_exit_code(data);
+	ft_cleansplit(data->exec->cmd);
+	free(data->exec->path);
+	data->exec->path = NULL;
+	close(data->fd->in);
+	close(data->fd->out);
+}
+
+void catch_exit_code(t_data *data)
 {
 	int	status;
 
@@ -28,7 +46,7 @@ static void catch_exit_code(t_data *data)
 	}
 }
 
-static void	fork_execution(t_data *data, t_token *token)
+void	fork_execution(t_data *data, t_token *token)
 {
 	data->pid = fork();
 	if (data->pid < 0)
@@ -39,7 +57,6 @@ static void	fork_execution(t_data *data, t_token *token)
 	}
 	else if (data->pid == 0)
 	{
-		redirect_in_out(data, token);
 		if (execve(data->exec->path, data->exec->cmd, data->env) < 0)
 		{
 			perror(token->content);
@@ -49,35 +66,22 @@ static void	fork_execution(t_data *data, t_token *token)
 	}
 }
 
-void	execute_with_bash(t_data *data, t_token *token)
-{
-	extract_cmd_and_path(data, token);
-	if (data->exec_error == true)
-		return ;
-	fork_execution(data, token);
-	catch_exit_code(data);
-
-	ft_cleansplit(data->exec->cmd);
-	free(data->exec->path);
-	data->exec->path = NULL;
-}
-
-void	exec_bash_cmd(t_data *data, t_token *tmp)
+void	exec_bash_cmd(t_data *data, t_token *token)
 {
 //	printf("--------------------------------------------------\n");
 //	printf("Before exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
-
-	if (data->tokens->next != NULL)
-	{
-		create_pipe(data);
-		if (data->exec_error == true)
-			return ;
-	}
-
 //	printf("OUTPUT:\n");
-	execute_with_bash(data, tmp);
-	close_fd_in_out(data);
-	close_all_pipe_ends(data);
+	if (data->exec->last_cmd == 1)
+		exec_without_pipe(data, token);
+	else
+	{
+		if (data->exec->cmd_num == 1)
+			pipe_first_cmd(data, token);
+		else if (data->exec->cmd_num < data->exec->last_cmd)
+			pipe_inter_cmd(data, token);
+		else if (data->exec->cmd_num == data->exec->last_cmd)
+			pipe_last_cmd(data, token);
+	}
 	data->exec->cmd_num++;
 
 	if (data->exec_error == true)

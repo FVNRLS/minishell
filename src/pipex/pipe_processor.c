@@ -6,11 +6,38 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 19:47:00 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/27 19:29:42 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
+
+int	dup_stdin_to_in(t_data *data)
+{
+	if (dup2(data->fd->in, STDIN_FILENO) < 0)
+	{
+		perror(NULL);
+		data->exec_error = true;
+		return (-1);
+	}
+	close(data->fd->in);
+	return (0);
+}
+
+int	dup_stdout_to_out(t_data *data)
+{
+	if (data->fd->out != STDOUT_FILENO)
+	{
+		if (dup2(data->fd->out, STDOUT_FILENO) == 0)
+		{
+			perror(NULL);
+			data->exec_error = true;
+			return (-1);
+		}
+		close(data->fd->out);
+	}
+	return (0);
+}
 
 /*
 	Replaces stdin with infile and passes the output via to the first command
@@ -22,52 +49,77 @@
  	If the status is not 0, it means the command failed -> exit the program!
 	The unused ends of the pipe are closed and the output of the command becomes
  	the new input for the next command.
+
+ 	Exec.:
+	<Child process>
+	Takes the input from the input file (be it her_doc or the infile) and passes
+	it as output to the first end of the opened pipe.
+
+ 	Closes unused pipe end before passing and used - after passing.
+ 	Closes the duplicated fd after using.
+	Executes the command with execve().
+	If the command fails - prints the appropriate error message and exits the
+ 	child process with status != 0
+ 	--> will be handled from parent process as signal to exit the program.
 */
-void	pipe_first_cmd(t_data *data)
+void	pipe_first_cmd(t_data *data, t_token *token)
 {
-//	int	status;
-//
-//	if (pipe(pipex->pipe) < 0)
-//		exit_with_error(pipex, PIPE_ERROR);
-//	get_cmd(env, pipex, i);
-//	pipex->pid = fork();
-//	if (pipex->pid < 0)
-//		exit_with_error(pipex, FORK_ERROR);
-//	else if (pipex->pid == 0)
-//		exec_first_cmd(env, pipex);
-//	waitpid(pipex->pid, &status, 0);
-//	if (status != 0)
-//		exit(EXIT_FAILURE);
-//	free_cmd(pipex);
-//	close(pipex->fd_in);
-//	close(pipex->pipe[1]);
-//	dup2(pipex->pipe[0], STDIN_FILENO);
-//	close(pipex->pipe[0]);
+	if (pipe(data->pipe) < 0)
+	{
+		perror(NULL);
+		return ;
+	}
+	close(data->pipe[0]);
+
+	extract_cmd_and_path(data, token);
+	if (data->exec_error == true)
+		return ;
+
+	fork_execution(data, token);
+	redirect_first_cmd(data);
+	catch_exit_code(data);
+	ft_cleansplit(data->exec->cmd);
+	free(data->exec->path);
+	data->exec->path = NULL;
+
+	close(data->fd->in);
+	close(data->fd->out);
+	if (data->fd->out != STDOUT_FILENO)
+		dup2(data->pipe[0], STDIN_FILENO);
+	close(data->pipe[0]);
 }
 
+
+//TODO: CONT here!
 /*
 	Takes the output of the previous command and transfers it to next command.
 	Basic behaviour is the same as in pipe_infile().
+
+ 	Exec.:
+	<Child process>
+	Takes the output from the previous command via the last end of the pipe and
+ 	passes it to the next end of the pipe.
+
+	Closes unused pipe end before passing and used - after passing.
+  	Closes the duplicated fd after using.
+	Executes the command with execve().
+	If the command fails - prints the appropriate error message and exits the
+ 	child process with status != 0
+ 	--> will be handled from parent process as signal to exit the program.
 */
-void	pipe_inter_cmd(t_data *data)
+void	pipe_inter_cmd(t_data *data, t_token *token)
 {
-//	int	status;
-//
-//	if (pipe(pipex->pipe) < 0)
-//		exit_with_error(pipex, PIPE_ERROR);
-//	get_cmd(env, pipex, i);
-//	pipex->pid = fork();
-//	if (pipex->pid < 0)
-//		exit_with_error(pipex, FORK_ERROR);
-//	if (pipex->pid == 0)
-//		exec_inter_cmd(env, pipex);
-//	waitpid(pipex->pid, &status, 0);
-//	if (status != 0)
-//		exit(EXIT_FAILURE);
-//	free_cmd(pipex);
-//	close(pipex->pipe[1]);
-//	dup2(pipex->pipe[0], STDIN_FILENO);
-//	close(pipex->pipe[0]);
+	if (pipe(data->pipe) < 0)
+	{
+		perror(NULL);
+		return ;
+	}
+
+	redirect_inter_cmd(data);
+	catch_exit_code(data);
+	ft_cleansplit(data->exec->cmd);
+	free(data->exec->path);
+	data->exec->path = NULL;
 }
 
 /*
@@ -75,19 +127,23 @@ void	pipe_inter_cmd(t_data *data)
 	Basic behaviour is the same as in pipe_infile(), with only one difference:
  	here is no pipe needed anymore, because the output can just be duplicated
  	to outfile with dup2().
+
+ 	Exec.:
+ 	<Child process>
+	Takes the output from the last command and passes it as output to outfile.
+	Executes the command with execve().
+
+	Closes the duplicated fd after using.
+	If the command fails - prints the appropriate error message and exits the
+ 	child process with status != 0
+ 	--> will be handled from parent process as signal to exit the program.
 */
-void	pipe_last_cmd(t_data *data)
+void	pipe_last_cmd(t_data *data, t_token *token)
 {
-//	int	status;
-//
-//	get_cmd(env, pipex, i);
-//	pipex->pid = fork();
-//	if (pipex->pid < 0)
-//		exit_with_error(pipex, FORK_ERROR);
-//	if (pipex->pid == 0)
-//		exec_last_cmd(env, pipex);
-//	waitpid(pipex->pid, &status, 0);
-//	if (status != 0)
-//		exit(EXIT_FAILURE);
-//	free_cmd(pipex);
+	int		fd;
+
+	fd = data->fd->out;
+	dup2(fd, STDOUT_FILENO);
+	close(fd);
+//	execute_cmd(data, token);
 }
