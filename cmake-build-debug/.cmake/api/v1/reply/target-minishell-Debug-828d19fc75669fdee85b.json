@@ -556,7 +556,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/pipex/fd_duplicator.c",
+			"path" : "src/pipex/cmd_in_out_redirecter.c",
 			"sourceGroupIndex" : 0
 		},
 		{

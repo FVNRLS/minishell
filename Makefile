@@ -6,7 +6,7 @@
 #    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/26 17:32:21 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/09/27 19:38:44 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,11 @@ SRC 		= 	main.c 								\
                 src/parser/redirecter/heredoc_creater.c	\
                 src/parser/redirecter/fd_opener.c	\
 				src/executer/executer.c				\
-				src/executer/bash_executer/bash_executer.c \
-				src/executer/bash_executer/cmd_extractor.c \
+				src/executer/cmd_extractor.c 		\
+				src/executer/bash_executer.c 		\
 		        src/pipex/pipex.c					\
-		         src/pipex/pipe_processor.c			\
-				src/pipex/fd_duplicator.c 			\
+		        src/pipex/pipe_processor.c			\
+		        src/pipex/cmd_in_out_redirecter.c	\
 				src/signals/signals.c				\
 
 TOOLS_SRC	=	src/tools/ft_calloc.c				\

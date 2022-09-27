@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 18:40:13 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/27 15:51:23 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,27 +113,26 @@ void	redirect_out(t_data *data, t_token *token);
 void	append(t_data *data, t_token *token);
 void	close_unused_fd_in(t_data *data);
 void 	close_unused_fd_out(t_data *data);
-void 	close_fd_in_out(t_data *data);
 
 //SIGNALS
 int 	catch_signals(t_data *data);
 
-//EXECUTER JULIAN
-void	exec_commands(t_data *data);
-
-//EXECUTER ROMAN (ONLY BASH)
-void	exec_bash_cmd(t_data *data, t_token *tmp);
+//EXECUTER
+void	exec_bash_cmd(t_data *data, t_token *token);
 void	exec_cmd(t_data *data);
 void	extract_cmd_and_path(t_data *data, t_token *token);
+void	fork_execution(t_data *data, t_token *token);
+void 	catch_exit_code(t_data *data);
 
 //PIPEX
-void	create_pipe(t_data *data);
-void	close_all_pipe_ends(t_data *data);
-void	redirect_in_out(t_data *data, t_token *token);
-void	pipe_first_cmd(t_data *data);
-void	pipe_inter_cmd(t_data *data);
-void	pipe_last_cmd(t_data *data);
-void	dup_in_to_out(t_data *data);
+void	pipe_first_cmd(t_data *data, t_token *token);
+void	pipe_inter_cmd(t_data *data, t_token *token);
+void	pipe_last_cmd(t_data *data, t_token *token);
+int		dup_stdin_to_in(t_data *data);
+int		dup_stdout_to_out(t_data *data);
+void	redirect_first_cmd(t_data *data);
+void	redirect_inter_cmd(t_data *data);
+void	redirect_last_cmd(t_data *data);
 
 //TODO: delete before submission!
 void	print_tokens(t_data *data);
