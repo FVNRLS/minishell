@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bin_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:14:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/26 15:57:30 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:37:11 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*make_key(char *s, int *i)
 		(*i)++;
 	}
 	key = malloc(sizeof(char) * ((*i) + 1));
-	key[(*i) + 1] = '\0';
+	key[(*i)] = '\0';
 	*i = 0;
 	while (s[(*i)])
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/26 16:22:42 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:35:05 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ int	check_new(char **s)
 
 int	check_string(t_data **data, int *i)
 {
-	int		tmp;
 	char	*s;
 
 	s = (*data)->tokens->content;
-	tmp = 0;
 	if (ft_strlen(s) == 6)
 		return (EXIT_FAILURE);
 	while (ft_isprint(s[*i]))
