@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/27 11:22:40 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:35:47 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	exec_cmd(t_data *data)
 				try_exec_builtin(data, builtin);
 			else
 				exec_bash_cmd(data, tmp);
+			data->exec->cmd_num++;
 		}
 		ft_del_first_token(&data);
 	}

@@ -6,38 +6,11 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/27 19:29:42 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:21:23 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
-
-int	dup_stdin_to_in(t_data *data)
-{
-	if (dup2(data->fd->in, STDIN_FILENO) < 0)
-	{
-		perror(NULL);
-		data->exec_error = true;
-		return (-1);
-	}
-	close(data->fd->in);
-	return (0);
-}
-
-int	dup_stdout_to_out(t_data *data)
-{
-	if (data->fd->out != STDOUT_FILENO)
-	{
-		if (dup2(data->fd->out, STDOUT_FILENO) == 0)
-		{
-			perror(NULL);
-			data->exec_error = true;
-			return (-1);
-		}
-		close(data->fd->out);
-	}
-	return (0);
-}
 
 /*
 	Replaces stdin with infile and passes the output via to the first command
@@ -75,22 +48,20 @@ void	pipe_first_cmd(t_data *data, t_token *token)
 	if (data->exec_error == true)
 		return ;
 
-	fork_execution(data, token);
+//	fork_execution(data, token);
 	redirect_first_cmd(data);
 	catch_exit_code(data);
 	ft_cleansplit(data->exec->cmd);
 	free(data->exec->path);
 	data->exec->path = NULL;
 
-	close(data->fd->in);
-	close(data->fd->out);
 	if (data->fd->out != STDOUT_FILENO)
 		dup2(data->pipe[0], STDIN_FILENO);
 	close(data->pipe[0]);
+	close(data->fd->in);
+	close(data->fd->out);
 }
 
-
-//TODO: CONT here!
 /*
 	Takes the output of the previous command and transfers it to next command.
 	Basic behaviour is the same as in pipe_infile().
@@ -115,11 +86,23 @@ void	pipe_inter_cmd(t_data *data, t_token *token)
 		return ;
 	}
 
+	extract_cmd_and_path(data, token);
+	if (data->exec_error == true)
+		return ;
+
+//	fork_execution(data, token);
 	redirect_inter_cmd(data);
 	catch_exit_code(data);
 	ft_cleansplit(data->exec->cmd);
 	free(data->exec->path);
 	data->exec->path = NULL;
+
+	close(data->pipe[1]);
+	if (data->fd->out != STDOUT_FILENO)
+		dup2(data->pipe[0], STDIN_FILENO);
+	close(data->pipe[0]);
+	close(data->fd->in);
+	close(data->fd->out);
 }
 
 /*
@@ -140,10 +123,20 @@ void	pipe_inter_cmd(t_data *data, t_token *token)
 */
 void	pipe_last_cmd(t_data *data, t_token *token)
 {
-	int		fd;
 
-	fd = data->fd->out;
-	dup2(fd, STDOUT_FILENO);
-	close(fd);
+	extract_cmd_and_path(data, token);
+	if (data->exec_error == true)
+		return ;
+//	fork_execution(data, token);
+	redirect_last_cmd(data);
+	catch_exit_code(data);
+	ft_cleansplit(data->exec->cmd);
+	free(data->exec->path);
+	data->exec->path = NULL;
+
+	if (data->fd->out != STDOUT_FILENO)
+		dup2(data->fd->out, STDOUT_FILENO);
+	close(data->fd->in);
+	close(data->fd->out);
 //	execute_cmd(data, token);
 }

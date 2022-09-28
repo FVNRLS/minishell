@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/27 15:51:23 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:25:19 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,15 +121,13 @@ int 	catch_signals(t_data *data);
 void	exec_bash_cmd(t_data *data, t_token *token);
 void	exec_cmd(t_data *data);
 void	extract_cmd_and_path(t_data *data, t_token *token);
-void	fork_execution(t_data *data, t_token *token);
 void 	catch_exit_code(t_data *data);
 
 //PIPEX
 void	pipe_first_cmd(t_data *data, t_token *token);
 void	pipe_inter_cmd(t_data *data, t_token *token);
 void	pipe_last_cmd(t_data *data, t_token *token);
-int		dup_stdin_to_in(t_data *data);
-int		dup_stdout_to_out(t_data *data);
+void	redirect_single_cmd(t_data *data);
 void	redirect_first_cmd(t_data *data);
 void	redirect_inter_cmd(t_data *data);
 void	redirect_last_cmd(t_data *data);
