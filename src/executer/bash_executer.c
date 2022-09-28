@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/28 17:25:19 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/28 18:33:40 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,11 @@ static void	exec_without_pipe(t_data *data, t_token *token)
 	if (data->pid < 0)
 	{
 		perror(NULL);
-		data->exec_error = true;
-		return ;
+		free_cmd_and_path(data);
+		return;
 	}
 	else if (data->pid == 0)
-	{
-		redirect_single_cmd(data);
-		if (execve(data->exec->path, data->exec->cmd, data->env) < 0)
-		{
-			perror(token->content);
-			exit(EXIT_FAILURE);
-		}
-		exit(EXIT_SUCCESS);
-	}
+		exec_single_cmd(data, token);
 	catch_exit_code(data);
 	free_cmd_and_path(data);
 }

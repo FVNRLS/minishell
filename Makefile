@@ -51,9 +51,8 @@ SRC 		= 	main.c 								\
 				src/executer/executer.c				\
 				src/executer/cmd_extractor.c 		\
 				src/executer/bash_executer.c 		\
-		        src/pipex/pipex.c					\
 		        src/pipex/pipe_processor.c			\
-		        src/pipex/cmd_in_out_redirecter.c	\
+		        src/pipex/cmd_exec_redirecter.c		\
 				src/signals/signals.c				\
 
 TOOLS_SRC	=	src/tools/ft_calloc.c				\
