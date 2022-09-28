@@ -61,7 +61,7 @@ void	print_token_error(int error, t_token *token)
 	redir = NULL;
 }
 
-void	built_error(int error, char *s)
+int	built_error(int error, char *s)
 {
 	if (error == EXPORT_ERROR)
 		printf("minishell: export: »%s«: invalid key\n", s);
@@ -71,4 +71,6 @@ void	built_error(int error, char *s)
 		printf("minishell: command: »%s«: not found\n", s);
 	else if (error == CD_ARG_ERROR)
 		printf("minishell: cd: %s: No such file or directory\n", s);
+	return (1);
 }
+
