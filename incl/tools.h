@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:31:55 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/26 17:49:03 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:46:59 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_cleansplit(char **split);
 int		ft_get_builtin(t_data *data);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 t_envp	*ft_getenvp(t_data *data, char *find);
-int		ft_isnumber(char *s);
+int		ft_isnumber(char *s, long long sum, int i);
 int		ft_isdigit(int c);
 int		ft_splitlen(char **s);
 int		ft_haschar(char *s, char c);
