@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/26 14:55:57 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:34:08 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	unset(t_data *data)
 {
 	t_envp	*tmp;
 	int		i;
-	int		j;
 
 	i = 1;
 	tmp = NULL;
@@ -43,7 +42,6 @@ int	unset(t_data *data)
 		return (EXIT_SUCCESS);
 	while (data->builtins->command[i])
 	{
-		j = 0;
 		tmp = ft_getenvp(data, data->builtins->command[i]);
 		if (tmp != NULL)
 			dl_node(&data, tmp);
