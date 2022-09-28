@@ -29,6 +29,6 @@
 
 void	print_error(int error);
 void	print_token_error(int error, t_token *token);
-void	built_error(int error, char *s);
+int 	built_error(int error, char *s);
 
 #endif
