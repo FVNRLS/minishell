@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/28 17:25:19 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:26:09 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	free_builtins(t_data *data);
 void	free_all_ressources(t_data *data);
 void	exit_with_free(t_data *data);
 void 	destroy_hdocs(t_data *data);
+void	free_cmd_and_path(t_data *data);
 
 //HISTORY TRACKER
 void	track_history(t_data *data);

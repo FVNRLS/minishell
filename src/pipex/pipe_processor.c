@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/28 16:21:23 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:26:09 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,7 @@ void	pipe_first_cmd(t_data *data, t_token *token)
 //	fork_execution(data, token);
 	redirect_first_cmd(data);
 	catch_exit_code(data);
-	ft_cleansplit(data->exec->cmd);
-	free(data->exec->path);
-	data->exec->path = NULL;
-
+	free_cmd_and_path(data);
 	if (data->fd->out != STDOUT_FILENO)
 		dup2(data->pipe[0], STDIN_FILENO);
 	close(data->pipe[0]);
@@ -93,10 +90,7 @@ void	pipe_inter_cmd(t_data *data, t_token *token)
 //	fork_execution(data, token);
 	redirect_inter_cmd(data);
 	catch_exit_code(data);
-	ft_cleansplit(data->exec->cmd);
-	free(data->exec->path);
-	data->exec->path = NULL;
-
+	free_cmd_and_path(data);
 	close(data->pipe[1]);
 	if (data->fd->out != STDOUT_FILENO)
 		dup2(data->pipe[0], STDIN_FILENO);
@@ -130,9 +124,7 @@ void	pipe_last_cmd(t_data *data, t_token *token)
 //	fork_execution(data, token);
 	redirect_last_cmd(data);
 	catch_exit_code(data);
-	ft_cleansplit(data->exec->cmd);
-	free(data->exec->path);
-	data->exec->path = NULL;
+	free_cmd_and_path(data);
 
 	if (data->fd->out != STDOUT_FILENO)
 		dup2(data->fd->out, STDOUT_FILENO);

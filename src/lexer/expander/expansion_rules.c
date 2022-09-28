@@ -57,7 +57,8 @@ void	expand_last_return(t_data *data, t_lex *lex)
 
 	exit_code = ft_itoa(g_exit_code);
 	lex->buf = ft_strjoin(lex->buf, exit_code);
-
+	free(exit_code);
+	exit_code = NULL;
 	lex->i++;
 	lex->c = data->input[lex->i];
 	is_sep = check_sep(data, lex->c);

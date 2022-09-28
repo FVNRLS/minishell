@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/28 17:17:08 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:25:19 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,10 @@ static void	exec_without_pipe(t_data *data, t_token *token)
 		exit(EXIT_SUCCESS);
 	}
 	catch_exit_code(data);
-	ft_cleansplit(data->exec->cmd);
-	data->exec->cmd = NULL;
-	free(data->exec->path);
-	data->exec->path = NULL;
+	free_cmd_and_path(data);
 }
 
+//TODO: edit and check the global
 void catch_exit_code(t_data *data)
 {
 	int	status;

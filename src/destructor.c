@@ -12,6 +12,14 @@
 
 #include "../incl/minishell.h"
 
+void	free_cmd_and_path(t_data *data)
+{
+	ft_cleansplit(data->exec->cmd);
+	data->exec->cmd = NULL;
+	free(data->exec->path);
+	data->exec->path = NULL;
+}
+
 void 	destroy_hdocs(t_data *data)
 {
 	int	i;
