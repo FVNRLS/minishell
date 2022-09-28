@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/28 18:43:44 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/28 19:40:34 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,13 @@ void	pipe_first_cmd(t_data *data, t_token *token)
 		return ;
 	if (create_fork(data) < 0)
 		return ;
-	close(data->pipe[0]);
-	if (data->pid == 0)
+	else if (data->pid == 0)
 		exec_first_cmd(data, token);
 	catch_exit_code(data);
 	free_cmd_and_path(data);
 
 	close(data->pipe[1]);
-	dup2(data->pipe[0], STDIN_FILENO);
+	dup2(data->pipe[0], STDIN_FILENO); //don't understand why!!!
 	close(data->pipe[0]);
 }
 
@@ -96,27 +95,20 @@ void	pipe_first_cmd(t_data *data, t_token *token)
 */
 void	pipe_inter_cmd(t_data *data, t_token *token)
 {
-	if (create_pipe(data) < 0)
-		return ;
-
 	extract_cmd_and_path(data, token);
 	if (data->exec_error == true)
 		return ;
-
-	data->pid = fork();
-	if (data->pid < 0)
-	{
-		perror(NULL);
-		free_cmd_and_path(data);
-		return;
-	}
+	if (create_pipe(data) < 0)
+		return ;
+	if (create_fork(data) < 0)
+		return ;
 	else if (data->pid == 0)
 		exec_inter_cmd(data, token);
 	catch_exit_code(data);
 	free_cmd_and_path(data);
+
 	close(data->pipe[1]);
-	if (data->fd->out != STDOUT_FILENO)
-		dup2(data->pipe[0], STDIN_FILENO);
+	dup2(data->pipe[0], STDIN_FILENO);
 	close(data->pipe[0]);
 }
 
@@ -149,7 +141,4 @@ void	pipe_last_cmd(t_data *data, t_token *token)
 		exec_last_cmd(data, token);
 	catch_exit_code(data);
 	free_cmd_and_path(data);
-
-	if (data->fd->out != STDOUT_FILENO)
-		dup2(data->fd->out, STDOUT_FILENO);
 }

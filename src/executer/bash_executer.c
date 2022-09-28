@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/28 18:33:40 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/28 18:53:05 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void catch_exit_code(t_data *data)
 
 void	exec_bash_cmd(t_data *data, t_token *token)
 {
-	printf("--------------------------------------------------\n");
-	printf("Before exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
-	printf("OUTPUT:\n");
+//	printf("--------------------------------------------------\n");
+//	printf("Before exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
+//	printf("OUTPUT:\n");
 	if (data->exec->last_cmd == 1)
 		exec_without_pipe(data, token);
 	else
@@ -63,6 +63,6 @@ void	exec_bash_cmd(t_data *data, t_token *token)
 		close(data->fd->out);
 	data->fd->in = STDIN_FILENO;
 	data->fd->out = STDOUT_FILENO;
-	printf("After exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
-	printf("--------------------------------------------------\n");
+//	printf("After exec:	fd_in:	%d	fd_out:	%d\n", data->fd->in, data->fd->out);
+//	printf("--------------------------------------------------\n");
 }
