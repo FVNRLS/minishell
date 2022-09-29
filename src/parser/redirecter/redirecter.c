@@ -39,7 +39,6 @@ void	resolve_redirections(t_data *data)
 	t_token *del;
 	t_token *prev;
 
-
 	data->fd->hdoc_index = 0;
 	tmp = data->tokens;
 	if (!tmp)

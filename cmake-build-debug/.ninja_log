@@ -69,3 +69,8 @@
 82	178	1664472767000000000	minishell	d49f7a8fba3d9ab8
 2	71	1664473280000000000	CMakeFiles/minishell.dir/src/pipex/cmd_exec_redirecter.c.o	96376eff9f0020f0
 72	339	1664473280000000000	minishell	d49f7a8fba3d9ab8
+3	70	1664473987000000000	CMakeFiles/minishell.dir/src/executer/executer.c.o	6a5e167e03730a1a
+3	80	1664473987000000000	CMakeFiles/minishell.dir/src/parser/redirecter/redirecter.c.o	ffb7013d80b321e6
+80	342	1664473987000000000	minishell	d49f7a8fba3d9ab8
+1	51	1664474202000000000	CMakeFiles/minishell.dir/src/tools/ft_del_first_token.c.o	fb65277018512beb
+52	105	1664474202000000000	minishell	d49f7a8fba3d9ab8
