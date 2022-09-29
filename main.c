@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/29 19:08:02 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/29 21:36:20 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	main(int argc, char **argv, char **env)
 	init_shell_env(&data, env);
 	while (data.exit_minishell == false)
 	{
-		track_history(&data);
 		signal(SIGINT, catch_signals);
 		signal(SIGQUIT, SIG_IGN);
+		track_history(&data);
 		lex_input(&data);
 		if (data.lex_error == false)
 		{
