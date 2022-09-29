@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 19:29:41 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/29 12:57:45 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ void	init_fd(t_data *data)
 	data->fd->out = STDOUT_FILENO;
 	data->fd->hdoc_index = 0;
 	data->fd->hdoc_used = false;
+	data->fd->std_in = dup(STDIN_FILENO);
+	if (!data->fd->std_in)
+	{
+		free(data->fd);
+		exit(EXIT_FAILURE);
+	}
 }
 
 static void	init_separators(t_data *data)
@@ -92,8 +98,10 @@ void	init_shell_env(t_data *data, char **envp)
 	data->pipe[0] = -1;
 	data->pipe[1] = -1;
 	data->fd = malloc(sizeof(t_fd));
-	data->exec = malloc(sizeof(t_exec));
+	if (!data->fd)
+		return;
 	init_fd(data);
+	data->exec = malloc(sizeof(t_exec));
 	init_exec(data);
 	init_flags(data);
 	init_containers(data);

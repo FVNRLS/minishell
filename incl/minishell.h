@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/28 17:36:10 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:50:38 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,13 +125,11 @@ void	extract_cmd_and_path(t_data *data, t_token *token);
 void 	catch_exit_code(t_data *data);
 
 //PIPEX
-void	pipe_first_cmd(t_data *data, t_token *token);
-void	pipe_inter_cmd(t_data *data, t_token *token);
+void	pipe_transitory_cmd(t_data *data, t_token *token);
 void	pipe_last_cmd(t_data *data, t_token *token);
 void 	execve_cmd(t_data *data, t_token *token);
 void	exec_single_cmd(t_data *data, t_token *token);
-void	exec_first_cmd(t_data *data, t_token *token);
-void	exec_inter_cmd(t_data *data, t_token *token);
+void	exec_transitory_cmd(t_data *data, t_token *token);
 void	exec_last_cmd(t_data *data, t_token *token);
 
 //TODO: delete before submission!

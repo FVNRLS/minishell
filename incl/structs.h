@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 19:01:06 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/29 12:28:27 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_fd
 {
 	int 		in;
 	int 		out;
+	int 		std_in;
 	char 		**hdoc;
 	int 		hdoc_index;
 	bool		hdoc_used;
@@ -74,7 +75,7 @@ typedef struct s_exec
 typedef struct s_data
 {
 	t_builtins	*builtins;
-	int 		pid;
+	pid_t 		pid;
 	char 		**env;
 	char 		*input;
 	char		*sep;

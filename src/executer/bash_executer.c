@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:16 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/28 18:53:05 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/29 12:50:28 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,8 @@ void	exec_bash_cmd(t_data *data, t_token *token)
 		exec_without_pipe(data, token);
 	else
 	{
-		if (data->exec->cmd_num == 1)
-			pipe_first_cmd(data, token);
-		else if (data->exec->cmd_num < data->exec->last_cmd)
-			pipe_inter_cmd(data, token);
+		if (data->exec->cmd_num < data->exec->last_cmd)
+			pipe_transitory_cmd(data, token);
 		else if (data->exec->cmd_num == data->exec->last_cmd)
 			pipe_last_cmd(data, token);
 	}
