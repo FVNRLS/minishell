@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/28 15:35:47 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/29 13:22:32 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void	exec_cmd(t_data *data)
 		{
 			builtin = ft_get_builtin(data);
 			if (builtin >= 0 && tmp->next == NULL)
+			{
+				dup2(data->fd->std_in, STDIN_FILENO);
 				try_exec_builtin(data, builtin);
+			}
 			else
 				exec_bash_cmd(data, tmp);
 			data->exec->cmd_num++;
