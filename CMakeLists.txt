@@ -40,6 +40,7 @@ add_executable(minishell main.c
         src/tools/ft_isprint.c
         src/tools/ft_del_first_token.c
         src/tools/ft_get_num_cmds.c
+        src/tools/ft_isalpha.c
 
 
         #BUILTINS:

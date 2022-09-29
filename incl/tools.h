@@ -42,6 +42,7 @@ int		ft_haschar(char *s, char c);
 int		ft_isprint(int c);
 void	ft_del_first_token(t_data **data);
 int 	ft_get_num_cmds(t_data *data);
+int		ft_isalpha(int c);
 
 
 //for debuging

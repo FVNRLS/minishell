@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/28 19:40:27 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/29 10:35:48 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
+
+//TODO: please verify if ft_isalpha is ok !
 int	check_new(char **s)
 {
 	int	i;
@@ -22,14 +24,14 @@ int	check_new(char **s)
 	while (s[i])
 	{
 		j = 0;
-		if (!ft_isalphabet(s[i][j]))
+		if (!ft_isalpha(s[i][j]))
 			return (built_error(EXPORT_ERROR, s[i]));
 		while (s[i][j + 1])
 		{
 			j++;
 			if (s[i][j] == '=')
 				break ;
-			if (!ft_isalphabet(s[i][j]) && !ft_isdigit((int)s[i][j]))
+			if (!ft_isalpha(s[i][j]) && !ft_isdigit((int)s[i][j]))
 				return (built_error(EXPORT_ERROR, s[i]));
 		}
 		i++;

@@ -51,379 +51,385 @@ build cmake_object_order_depends_target_minishell: phony || CMakeFiles/minishell
 
 build CMakeFiles/minishell.dir/main.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/main.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/main.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir
 
 build CMakeFiles/minishell.dir/src/initializer/main_init.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/initializer/main_init.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/initializer/main_init.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/initializer
 
 build CMakeFiles/minishell.dir/src/initializer/envp_init.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/initializer/envp_init.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/initializer/envp_init.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/initializer
 
 build CMakeFiles/minishell.dir/src/initializer/builtins_init.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/initializer/builtins_init.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/initializer/builtins_init.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/initializer
 
 build CMakeFiles/minishell.dir/src/destructor.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/destructor.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/destructor.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src
 
 build CMakeFiles/minishell.dir/src/tools/ft_calloc.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_calloc.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_calloc.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_bzero.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_bzero.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_bzero.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_new_envp.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_new_envp.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_new_envp.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_new_token.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_new_token.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_new_token.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_add_envp_back.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_add_envp_back.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_add_envp_back.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_lstclear.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_lstclear.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_lstclear.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_lstsize.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_lstsize.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_lstsize.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_strdup.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_strdup.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_strdup.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_strlen.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_strlen.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_strlen.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_strcmp.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_strcmp.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_strcmp.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_join_char.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_join_char.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_join_char.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_strtrim.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_strtrim.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_strtrim.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_add_token_back.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_add_token_back.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_add_token_back.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_itoa.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_itoa.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_itoa.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_split.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_split.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_split.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_strjoin.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_strjoin.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_strjoin.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_cleansplit.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_cleansplit.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_cleansplit.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_get_builtin.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_get_builtin.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_get_builtin.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_strncmp.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_strncmp.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_strncmp.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_getenvp.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_getenvp.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_getenvp.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_isnumber.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_isnumber.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_isnumber.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_isdigit.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_isdigit.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_isdigit.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_splitlen.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_splitlen.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_splitlen.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_haschar.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_haschar.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_haschar.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_isprint.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_isprint.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_isprint.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_del_first_token.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_del_first_token.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_del_first_token.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/src/tools/ft_get_num_cmds.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_get_num_cmds.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_get_num_cmds.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
+  OBJECT_DIR = CMakeFiles/minishell.dir
+  OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
+
+build CMakeFiles/minishell.dir/src/tools/ft_isalpha.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/tools/ft_isalpha.c || cmake_object_order_depends_target_minishell
+  DEP_FILE = CMakeFiles/minishell.dir/src/tools/ft_isalpha.c.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/tools
 
 build CMakeFiles/minishell.dir/builtins/env.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/builtins/env.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/builtins/env.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/builtins
 
 build CMakeFiles/minishell.dir/src/history_tracker.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/history_tracker.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/history_tracker.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src
 
 build CMakeFiles/minishell.dir/src/lexer/lexer.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/lexer/lexer.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/lexer/lexer.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/lexer
 
 build CMakeFiles/minishell.dir/src/lexer/tokenizer.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/lexer/tokenizer.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/lexer/tokenizer.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/lexer
 
 build CMakeFiles/minishell.dir/src/lexer/single_quotes_handler.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/lexer/single_quotes_handler.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/lexer/single_quotes_handler.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/lexer
 
 build CMakeFiles/minishell.dir/src/lexer/redirections_handler.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/lexer/redirections_handler.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/lexer/redirections_handler.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/lexer
 
 build CMakeFiles/minishell.dir/src/lexer/double_quotes_handler.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/lexer/double_quotes_handler.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/lexer/double_quotes_handler.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/lexer
 
 build CMakeFiles/minishell.dir/src/lexer/words_handler.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/lexer/words_handler.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/lexer/words_handler.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/lexer
 
 build CMakeFiles/minishell.dir/src/lexer/expander/expansion_handler.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/lexer/expander/expansion_handler.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/lexer/expander/expansion_handler.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/lexer/expander
 
 build CMakeFiles/minishell.dir/src/lexer/expander/expansion_rules.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/lexer/expander/expansion_rules.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/lexer/expander/expansion_rules.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/lexer/expander
 
 build CMakeFiles/minishell.dir/src/parser/parser.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/parser/parser.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/parser/parser.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/parser
 
 build CMakeFiles/minishell.dir/src/parser/parsing_checker.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/parser/parsing_checker.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/parser/parsing_checker.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/parser
 
 build CMakeFiles/minishell.dir/src/parser/token_merger.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/parser/token_merger.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/parser/token_merger.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/parser
 
 build CMakeFiles/minishell.dir/src/parser/redirecter/redirecter.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/parser/redirecter/redirecter.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/parser/redirecter/redirecter.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/parser/redirecter
 
 build CMakeFiles/minishell.dir/src/parser/redirecter/fd_closer.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/parser/redirecter/fd_closer.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/parser/redirecter/fd_closer.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/parser/redirecter
 
 build CMakeFiles/minishell.dir/src/parser/redirecter/heredoc_creater.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/parser/redirecter/heredoc_creater.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/parser/redirecter/heredoc_creater.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/parser/redirecter
 
 build CMakeFiles/minishell.dir/src/parser/redirecter/fd_opener.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/parser/redirecter/fd_opener.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/parser/redirecter/fd_opener.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/parser/redirecter
 
 build CMakeFiles/minishell.dir/src/executer/executer.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/executer/executer.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/executer/executer.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/executer
 
 build CMakeFiles/minishell.dir/src/executer/bash_executer.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/executer/bash_executer.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/executer/bash_executer.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/executer
 
 build CMakeFiles/minishell.dir/src/executer/cmd_extractor.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/executer/cmd_extractor.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/executer/cmd_extractor.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/executer
 
 build CMakeFiles/minishell.dir/src/pipex/pipe_processor.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/pipex/pipe_processor.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/pipex/pipe_processor.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/pipex
 
 build CMakeFiles/minishell.dir/src/pipex/cmd_exec_redirecter.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/pipex/cmd_exec_redirecter.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/pipex/cmd_exec_redirecter.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/pipex
 
 build CMakeFiles/minishell.dir/builtins/bin_utils.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/builtins/bin_utils.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/builtins/bin_utils.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/builtins
 
 build CMakeFiles/minishell.dir/builtins/cd.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/builtins/cd.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/builtins/cd.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/builtins
 
 build CMakeFiles/minishell.dir/builtins/echo.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/builtins/echo.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/builtins/echo.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/builtins
 
 build CMakeFiles/minishell.dir/builtins/export.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/builtins/export.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/builtins/export.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/builtins
 
 build CMakeFiles/minishell.dir/builtins/mini_exit.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/builtins/mini_exit.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/builtins/mini_exit.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/builtins
 
 build CMakeFiles/minishell.dir/builtins/pwd.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/builtins/pwd.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/builtins/pwd.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/builtins
 
 build CMakeFiles/minishell.dir/builtins/unset.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/builtins/unset.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/builtins/unset.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/builtins
 
 build CMakeFiles/minishell.dir/src/signals/signals.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/signals/signals.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/signals/signals.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src/signals
 
 build CMakeFiles/minishell.dir/src/message_printer.c.o: C_COMPILER__minishell_Debug /Users/rmazurit/Documents/42_Projects/minishell/src/message_printer.c || cmake_object_order_depends_target_minishell
   DEP_FILE = CMakeFiles/minishell.dir/src/message_printer.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu99
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -std=gnu99
   OBJECT_DIR = CMakeFiles/minishell.dir
   OBJECT_FILE_DIR = CMakeFiles/minishell.dir/src
 
@@ -435,8 +441,8 @@ build CMakeFiles/minishell.dir/src/message_printer.c.o: C_COMPILER__minishell_De
 #############################################
 # Link the executable minishell
 
-build minishell: C_EXECUTABLE_LINKER__minishell_Debug CMakeFiles/minishell.dir/main.c.o CMakeFiles/minishell.dir/src/initializer/main_init.c.o CMakeFiles/minishell.dir/src/initializer/envp_init.c.o CMakeFiles/minishell.dir/src/initializer/builtins_init.c.o CMakeFiles/minishell.dir/src/destructor.c.o CMakeFiles/minishell.dir/src/tools/ft_calloc.c.o CMakeFiles/minishell.dir/src/tools/ft_bzero.c.o CMakeFiles/minishell.dir/src/tools/ft_new_envp.c.o CMakeFiles/minishell.dir/src/tools/ft_new_token.c.o CMakeFiles/minishell.dir/src/tools/ft_add_envp_back.c.o CMakeFiles/minishell.dir/src/tools/ft_lstclear.c.o CMakeFiles/minishell.dir/src/tools/ft_lstsize.c.o CMakeFiles/minishell.dir/src/tools/ft_strdup.c.o CMakeFiles/minishell.dir/src/tools/ft_strlen.c.o CMakeFiles/minishell.dir/src/tools/ft_strcmp.c.o CMakeFiles/minishell.dir/src/tools/ft_join_char.c.o CMakeFiles/minishell.dir/src/tools/ft_strtrim.c.o CMakeFiles/minishell.dir/src/tools/ft_add_token_back.c.o CMakeFiles/minishell.dir/src/tools/ft_itoa.c.o CMakeFiles/minishell.dir/src/tools/ft_split.c.o CMakeFiles/minishell.dir/src/tools/ft_strjoin.c.o CMakeFiles/minishell.dir/src/tools/ft_cleansplit.c.o CMakeFiles/minishell.dir/src/tools/ft_get_builtin.c.o CMakeFiles/minishell.dir/src/tools/ft_strncmp.c.o CMakeFiles/minishell.dir/src/tools/ft_getenvp.c.o CMakeFiles/minishell.dir/src/tools/ft_isnumber.c.o CMakeFiles/minishell.dir/src/tools/ft_isdigit.c.o CMakeFiles/minishell.dir/src/tools/ft_splitlen.c.o CMakeFiles/minishell.dir/src/tools/ft_haschar.c.o CMakeFiles/minishell.dir/src/tools/ft_isprint.c.o CMakeFiles/minishell.dir/src/tools/ft_del_first_token.c.o CMakeFiles/minishell.dir/src/tools/ft_get_num_cmds.c.o CMakeFiles/minishell.dir/builtins/env.c.o CMakeFiles/minishell.dir/src/history_tracker.c.o CMakeFiles/minishell.dir/src/lexer/lexer.c.o CMakeFiles/minishell.dir/src/lexer/tokenizer.c.o CMakeFiles/minishell.dir/src/lexer/single_quotes_handler.c.o CMakeFiles/minishell.dir/src/lexer/redirections_handler.c.o CMakeFiles/minishell.dir/src/lexer/double_quotes_handler.c.o CMakeFiles/minishell.dir/src/lexer/words_handler.c.o CMakeFiles/minishell.dir/src/lexer/expander/expansion_handler.c.o CMakeFiles/minishell.dir/src/lexer/expander/expansion_rules.c.o CMakeFiles/minishell.dir/src/parser/parser.c.o CMakeFiles/minishell.dir/src/parser/parsing_checker.c.o CMakeFiles/minishell.dir/src/parser/token_merger.c.o CMakeFiles/minishell.dir/src/parser/redirecter/redirecter.c.o CMakeFiles/minishell.dir/src/parser/redirecter/fd_closer.c.o CMakeFiles/minishell.dir/src/parser/redirecter/heredoc_creater.c.o CMakeFiles/minishell.dir/src/parser/redirecter/fd_opener.c.o CMakeFiles/minishell.dir/src/executer/executer.c.o CMakeFiles/minishell.dir/src/executer/bash_executer.c.o CMakeFiles/minishell.dir/src/executer/cmd_extractor.c.o CMakeFiles/minishell.dir/src/pipex/pipe_processor.c.o CMakeFiles/minishell.dir/src/pipex/cmd_exec_redirecter.c.o CMakeFiles/minishell.dir/builtins/bin_utils.c.o CMakeFiles/minishell.dir/builtins/cd.c.o CMakeFiles/minishell.dir/builtins/echo.c.o CMakeFiles/minishell.dir/builtins/export.c.o CMakeFiles/minishell.dir/builtins/mini_exit.c.o CMakeFiles/minishell.dir/builtins/pwd.c.o CMakeFiles/minishell.dir/builtins/unset.c.o CMakeFiles/minishell.dir/src/signals/signals.c.o CMakeFiles/minishell.dir/src/message_printer.c.o
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15
+build minishell: C_EXECUTABLE_LINKER__minishell_Debug CMakeFiles/minishell.dir/main.c.o CMakeFiles/minishell.dir/src/initializer/main_init.c.o CMakeFiles/minishell.dir/src/initializer/envp_init.c.o CMakeFiles/minishell.dir/src/initializer/builtins_init.c.o CMakeFiles/minishell.dir/src/destructor.c.o CMakeFiles/minishell.dir/src/tools/ft_calloc.c.o CMakeFiles/minishell.dir/src/tools/ft_bzero.c.o CMakeFiles/minishell.dir/src/tools/ft_new_envp.c.o CMakeFiles/minishell.dir/src/tools/ft_new_token.c.o CMakeFiles/minishell.dir/src/tools/ft_add_envp_back.c.o CMakeFiles/minishell.dir/src/tools/ft_lstclear.c.o CMakeFiles/minishell.dir/src/tools/ft_lstsize.c.o CMakeFiles/minishell.dir/src/tools/ft_strdup.c.o CMakeFiles/minishell.dir/src/tools/ft_strlen.c.o CMakeFiles/minishell.dir/src/tools/ft_strcmp.c.o CMakeFiles/minishell.dir/src/tools/ft_join_char.c.o CMakeFiles/minishell.dir/src/tools/ft_strtrim.c.o CMakeFiles/minishell.dir/src/tools/ft_add_token_back.c.o CMakeFiles/minishell.dir/src/tools/ft_itoa.c.o CMakeFiles/minishell.dir/src/tools/ft_split.c.o CMakeFiles/minishell.dir/src/tools/ft_strjoin.c.o CMakeFiles/minishell.dir/src/tools/ft_cleansplit.c.o CMakeFiles/minishell.dir/src/tools/ft_get_builtin.c.o CMakeFiles/minishell.dir/src/tools/ft_strncmp.c.o CMakeFiles/minishell.dir/src/tools/ft_getenvp.c.o CMakeFiles/minishell.dir/src/tools/ft_isnumber.c.o CMakeFiles/minishell.dir/src/tools/ft_isdigit.c.o CMakeFiles/minishell.dir/src/tools/ft_splitlen.c.o CMakeFiles/minishell.dir/src/tools/ft_haschar.c.o CMakeFiles/minishell.dir/src/tools/ft_isprint.c.o CMakeFiles/minishell.dir/src/tools/ft_del_first_token.c.o CMakeFiles/minishell.dir/src/tools/ft_get_num_cmds.c.o CMakeFiles/minishell.dir/src/tools/ft_isalpha.c.o CMakeFiles/minishell.dir/builtins/env.c.o CMakeFiles/minishell.dir/src/history_tracker.c.o CMakeFiles/minishell.dir/src/lexer/lexer.c.o CMakeFiles/minishell.dir/src/lexer/tokenizer.c.o CMakeFiles/minishell.dir/src/lexer/single_quotes_handler.c.o CMakeFiles/minishell.dir/src/lexer/redirections_handler.c.o CMakeFiles/minishell.dir/src/lexer/double_quotes_handler.c.o CMakeFiles/minishell.dir/src/lexer/words_handler.c.o CMakeFiles/minishell.dir/src/lexer/expander/expansion_handler.c.o CMakeFiles/minishell.dir/src/lexer/expander/expansion_rules.c.o CMakeFiles/minishell.dir/src/parser/parser.c.o CMakeFiles/minishell.dir/src/parser/parsing_checker.c.o CMakeFiles/minishell.dir/src/parser/token_merger.c.o CMakeFiles/minishell.dir/src/parser/redirecter/redirecter.c.o CMakeFiles/minishell.dir/src/parser/redirecter/fd_closer.c.o CMakeFiles/minishell.dir/src/parser/redirecter/heredoc_creater.c.o CMakeFiles/minishell.dir/src/parser/redirecter/fd_opener.c.o CMakeFiles/minishell.dir/src/executer/executer.c.o CMakeFiles/minishell.dir/src/executer/bash_executer.c.o CMakeFiles/minishell.dir/src/executer/cmd_extractor.c.o CMakeFiles/minishell.dir/src/pipex/pipe_processor.c.o CMakeFiles/minishell.dir/src/pipex/cmd_exec_redirecter.c.o CMakeFiles/minishell.dir/builtins/bin_utils.c.o CMakeFiles/minishell.dir/builtins/cd.c.o CMakeFiles/minishell.dir/builtins/echo.c.o CMakeFiles/minishell.dir/builtins/export.c.o CMakeFiles/minishell.dir/builtins/mini_exit.c.o CMakeFiles/minishell.dir/builtins/pwd.c.o CMakeFiles/minishell.dir/builtins/unset.c.o CMakeFiles/minishell.dir/src/signals/signals.c.o CMakeFiles/minishell.dir/src/message_printer.c.o
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk
   LINK_LIBRARIES = -ledit
   OBJECT_DIR = CMakeFiles/minishell.dir
   POST_BUILD = :
