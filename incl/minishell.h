@@ -116,7 +116,7 @@ void	close_unused_fd_in(t_data *data);
 void 	close_unused_fd_out(t_data *data);
 
 //SIGNALS
-int 	catch_signals(t_data *data);
+void  catch_signals(int sig_num);
 
 //EXECUTER
 void	execute_tokens(t_data *data);
