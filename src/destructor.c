@@ -20,6 +20,7 @@ void	free_cmd_and_path(t_data *data)
 	data->exec->path = NULL;
 }
 
+//TODO: avoid the flag
 void 	destroy_hdocs(t_data *data)
 {
 	int	i;

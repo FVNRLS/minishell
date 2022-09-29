@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:43:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/26 19:02:55 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:15:06 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 # define DOUBLE_QUOTE_MISSING		2
 # define REDIR_SYNTAX_ERROR			3
 # define PIPE_SYNTAX_ERROR			4
-
 # define EXIT_ERROR					5
 # define CMD_ERROR					6
 # define EXIT_ARG_ERROR				7
 # define INVALID_PATH				8
 # define EXPORT_ERROR				9
 # define CD_ARG_ERROR				10
+# define EXEC_ERROR					11
 
 void	print_error(int error);
 void	print_token_error(int error, t_token *token);

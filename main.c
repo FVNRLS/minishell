@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/29 13:10:28 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:08:02 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	check_leaks(void)
 
 int	main(int argc, char **argv, char **env)
 {
-	atexit(check_leaks);
 	t_data 	data;
 	(void) argc;
 	(void) argv;
@@ -34,7 +33,7 @@ int	main(int argc, char **argv, char **env)
 			parse_tokens(&data);
 			print_tokens(&data);
 			if (data.parse_error == false)
-				exec_cmd(&data);
+				execute_tokens(&data);
 		}
 		free_tokens(&data);
 //		check_leaks();

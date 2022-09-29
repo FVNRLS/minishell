@@ -6,11 +6,23 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/29 12:57:45 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:25:22 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
+
+//TODO: edit and check the global! also for WIFSIGNALED
+static void catch_exit_code(t_data *data)
+{
+	int	status;
+
+	waitpid(data->pid, &status, 0);
+	if (WIFEXITED(status))
+		g_exit_code = WEXITSTATUS(status);
+	else if (WIFSIGNALED(status))
+		g_exit_code = 127;
+}
 
 static int create_fork(t_data *data)
 {
@@ -51,20 +63,15 @@ static int create_pipe(t_data *data)
  	child process with status != 0
  	--> will be handled from parent process as signal to exit the program.
 */
-void	pipe_transitory_cmd(t_data *data, t_token *token)
+void	pipe_transitory_cmd(t_data *data)
 {
-	extract_cmd_and_path(data, token);
-	if (data->exec_error == true)
-		return ;
 	if (create_pipe(data) < 0)
 		return ;
 	if (create_fork(data) < 0)
 		return ;
 	if (data->pid == 0)
-		exec_transitory_cmd(data, token);
+		exec_transitory_cmd(data);
 	catch_exit_code(data);
-	free_cmd_and_path(data);
-
 	close(data->pipe[1]);
 	dup2(data->pipe[0], STDIN_FILENO);
 	close(data->pipe[0]);
@@ -86,18 +93,14 @@ void	pipe_transitory_cmd(t_data *data, t_token *token)
  	child process with status != 0
  	--> will be handled from parent process as signal to exit the program.
 */
-void	pipe_last_cmd(t_data *data, t_token *token)
+void	pipe_last_cmd(t_data *data)
 {
-	extract_cmd_and_path(data, token);
-	if (data->exec_error == true)
-		return ;
 	if (create_pipe(data) < 0)
 		return ;
 	if (create_fork(data) < 0)
 		return ;
 	if (data->pid == 0)
-		exec_last_cmd(data, token);
+		exec_last_cmd(data);
 	catch_exit_code(data);
-	free_cmd_and_path(data);
 	dup2(data->fd->std_in, STDIN_FILENO);
 }

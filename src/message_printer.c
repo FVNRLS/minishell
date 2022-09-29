@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/28 19:50:59 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:15:06 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int	built_error(int error, char *s)
 		printf("minishell: command: »%s«: not found\n", s);
 	else if (error == CD_ARG_ERROR)
 		printf("minishell: cd: %s: No such file or directory\n", s);
+	else if (error == EXEC_ERROR)
+		printf("minishell: %s: command not found\n", s);
 	return (1);
 }
 

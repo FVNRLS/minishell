@@ -6,23 +6,38 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/29 13:22:32 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:25:22 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-static void try_exec_builtin(t_data *data, int builtin)
+static void	exec_cmd(t_data *data, t_token *token)
 {
-	data->builtins->funcs[builtin](data);
-	ft_cleansplit(data->builtins->command);
-	data->builtins->command = NULL;
+	extract_cmd_and_path(data, token);
+	if (data->exec_error == true)
+		return ;
+	if (data->exec->cmd_num < data->exec->last_cmd)
+		pipe_transitory_cmd(data);
+	else if (data->exec->cmd_num == data->exec->last_cmd)
+		pipe_last_cmd(data);
+	if (data->builtins->command != NULL)
+	{
+		ft_cleansplit(data->builtins->command);
+		data->builtins->command = NULL;
+	}
+	free_cmd_and_path(data);
+	if (data->fd->in != STDIN_FILENO)
+		close(data->fd->in);
+	if (data->fd->out != STDOUT_FILENO)
+		close(data->fd->out);
+	data->fd->in = STDIN_FILENO;
+	data->fd->out = STDOUT_FILENO;
 }
 
-void	exec_cmd(t_data *data)
+void	execute_tokens(t_data *data)
 {
 	t_token	*tmp;
-	int		builtin;
 
 	init_exec(data);
 	data->exec->last_cmd = ft_get_num_cmds(data);
@@ -36,14 +51,7 @@ void	exec_cmd(t_data *data)
 			break ;
 		if (tmp->flag == T_WORD)
 		{
-			builtin = ft_get_builtin(data);
-			if (builtin >= 0 && tmp->next == NULL)
-			{
-				dup2(data->fd->std_in, STDIN_FILENO);
-				try_exec_builtin(data, builtin);
-			}
-			else
-				exec_bash_cmd(data, tmp);
+			exec_cmd(data, tmp);
 			data->exec->cmd_num++;
 		}
 		ft_del_first_token(&data);

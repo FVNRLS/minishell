@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/29 11:50:38 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:25:22 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,18 +119,14 @@ void 	close_unused_fd_out(t_data *data);
 int 	catch_signals(t_data *data);
 
 //EXECUTER
-void	exec_bash_cmd(t_data *data, t_token *token);
-void	exec_cmd(t_data *data);
+void	execute_tokens(t_data *data);
 void	extract_cmd_and_path(t_data *data, t_token *token);
-void 	catch_exit_code(t_data *data);
 
 //PIPEX
-void	pipe_transitory_cmd(t_data *data, t_token *token);
-void	pipe_last_cmd(t_data *data, t_token *token);
-void 	execve_cmd(t_data *data, t_token *token);
-void	exec_single_cmd(t_data *data, t_token *token);
-void	exec_transitory_cmd(t_data *data, t_token *token);
-void	exec_last_cmd(t_data *data, t_token *token);
+void	pipe_transitory_cmd(t_data *data);
+void	pipe_last_cmd(t_data *data);
+void	exec_transitory_cmd(t_data *data);
+void	exec_last_cmd(t_data *data);
 
 //TODO: delete before submission!
 void	print_tokens(t_data *data);
