@@ -26,7 +26,8 @@ int	main(int argc, char **argv, char **env)
 	while (data.exit_minishell == false)
 	{
 		track_history(&data);
-		catch_signals(&data);
+		signal(SIGINT, catch_signals);
+		signal(SIGQUIT, SIG_IGN);
 		lex_input(&data);
 		if (data.lex_error == false)
 		{
