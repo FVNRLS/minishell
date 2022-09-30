@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/30 19:15:19 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/30 19:54:48 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,9 @@ void	pipe_transitory_cmd(t_data *data)
 		close(data->pipe[0]);
 		return ;
 	}
-
 	builtin = ft_get_builtin(data);
 	if (builtin >= 0)
-	{
-		redirect_transitory_builtin(data);
-		dup2(data->pipe[0], STDIN_FILENO);
-		data->builtins->funcs[builtin](data);
-		close(data->pipe[1]);
-		close(data->pipe[0]);
-		dup2(data->fd->std_out, STDOUT_FILENO);
-	}
+		exec_transitory_builtin(data, builtin);
 	else if (data->parse_error == false)
 	{
 		if (create_fork(data) < 0)
@@ -126,10 +118,7 @@ void	pipe_last_cmd(t_data *data)
 
 	builtin = ft_get_builtin(data);
 	if (builtin >= 0)
-	{
-		redirect_last_builtin(data);
-		data->builtins->funcs[builtin](data);
-	}
+		exec_last_builtin(data, builtin);
 	else if (data->parse_error == false)
 	{
 		if (create_fork(data) < 0)
