@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/29 21:33:10 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/09/30 17:04:00 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC 			= 	cc
 
 RM 			= 	rm -f
 
-FLAGS 		= 	-Wall -Wextra #-Werror
+FLAGS 		= 	-Wall -Wextra -Werror
 
 SRC 		= 	main.c 								\
 				src/initializer/main_init.c			\
@@ -50,6 +50,7 @@ SRC 		= 	main.c 								\
                 src/parser/redirecter/fd_opener.c	\
 				src/executer/executer.c				\
 				src/executer/cmd_extractor.c 		\
+				src/executer/bash_executer.c 		\
 		        src/pipex/pipe_processor.c			\
 		        src/pipex/cmd_exec_redirecter.c		\
 				src/signals/signals.c				\
@@ -83,8 +84,6 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
         		src/tools/ft_del_first_token.c		\
 				src/tools/ft_get_num_cmds.c			\
 				src/tools/ft_isalpha.c				\
-
-
 
 OBJ 		= 	${SRC:.c=.o}
 TOOLS_OBJ 	=	${TOOLS_SRC:.c=.o}
