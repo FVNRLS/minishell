@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 17:10:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/30 10:26:04 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/30 17:08:29 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,24 @@ void catch_signals(int sig_num)
 		rl_replace_line("", 0);
 	}
 	
+}
+
+static void	catch_herd(int sig_num)
+{
+	write(1, ">\n", 2);
+	if (sig_num == 2)
+		exit(1);
+}
+
+void	ft_signals(int flag)
+{
+	if (flag == 0)
+	{
+		signal(SIGINT, catch_signals);
+		signal(SIGQUIT, SIG_IGN);
+	}
+	if (flag == 1)
+	{
+		signal(SIGINT, catch_herd);
+	}
 }
