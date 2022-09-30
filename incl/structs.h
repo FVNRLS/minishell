@@ -58,6 +58,7 @@ typedef struct s_fd
 	int 		in;
 	int 		out;
 	int 		std_in;
+	int 		std_out;
 	char 		**hdoc;
 	int 		hdoc_index;
 	bool		hdoc_used;

@@ -69,11 +69,9 @@ int	built_error(int error, char *s)
 		printf("minishell: exit: »%s«: numeric argument required\n", s);
 	else if (error == CMD_ERROR)
 		printf("minishell: command: »%s«: not found\n", s);
-	else if (error == CD_ARG_ERROR)
-		printf("minishell: cd: %s: No such file or directory\n", s);
 	else if (error == EXEC_ERROR)
 		printf("minishell: %s: command not found\n", s);
-	else if (error == READ_ERROR)
+	else if (error == PATH_ERROR)
 		printf("minishell: %s: No such file or directory\n", s);
 	return (1);
 }

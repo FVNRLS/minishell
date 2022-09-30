@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/30 13:21:03 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/30 19:17:15 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,14 @@ void	extract_cmd_and_path(t_data *data, t_token *token);
 //PIPEX
 void	pipe_transitory_cmd(t_data *data);
 void	pipe_last_cmd(t_data *data);
+void	redirect_transitory_builtin(t_data *data);
+void	redirect_last_builtin(t_data *data);
 void	exec_transitory_cmd(t_data *data);
 void	exec_last_cmd(t_data *data);
+void 	exec_bash_cmd(t_data *data);
+
+//SIGNALS
+void	ft_signals(int flag);
 
 //TODO: delete before submission!
 void	print_tokens(t_data *data);

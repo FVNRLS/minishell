@@ -19,7 +19,7 @@ void	check_fd_access(t_data *data, t_token *token)
 	file = token->content;
 	if (access(file, F_OK < 0) || access(file, R_OK) < 0)
 	{
-		built_error(READ_ERROR, file);
+		built_error(PATH_ERROR, file);
 		data->parse_error = true;
 	}
 }

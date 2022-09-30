@@ -42,7 +42,6 @@ add_executable(minishell main.c
         src/tools/ft_get_num_cmds.c
         src/tools/ft_isalpha.c
 
-
         #BUILTINS:
         builtins/env.c
 
@@ -87,8 +86,7 @@ add_executable(minishell main.c
         builtins/unset.c
 
         #SIGNALS
-        #src/signals/signals.c
-        /Users/rmazurit/.brew/opt/readline/lib/libreadline.a
+        #/src/signals/signals.c
 
         #MESSAGE PRINTER
         src/message_printer.c

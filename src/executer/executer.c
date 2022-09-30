@@ -6,32 +6,14 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/30 16:11:37 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/30 17:49:22 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-static bool single_exit_cmd(t_data *data)
-{
-	int	builtin;
-
-	builtin = ft_get_builtin(data);
-	if (builtin == 6)
-	{
-		data->builtins->funcs[builtin](data);
-		return (true);
-	}
-	return (false);
-}
-
 static void	exec_cmd(t_data *data, t_token *token)
 {
-	if (data->exec->last_cmd == 1)
-	{
-		if (single_exit_cmd(data) == true)
-			return ;
-	}
 	extract_cmd_and_path(data, token);
 	if (data->exec_error == true)
 		return ;

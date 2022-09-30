@@ -100,7 +100,8 @@ void	free_all_ressources(t_data *data)
 	free(data->redir);
 	data->redir = NULL;
 	free(data->fd);
-	close(data->fd->in);
+	close(data->fd->std_in);
+	close(data->fd->std_out);
 	free(data->exec);
 }
 

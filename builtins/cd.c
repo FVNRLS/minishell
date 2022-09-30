@@ -56,7 +56,7 @@ int	cd(t_data *data)
 	ret = chdir(data->builtins->command[1]);
 	if (ret != 0)
 	{
-		built_error(CD_ARG_ERROR, data->builtins->command[1]);
+		built_error(PATH_ERROR, data->builtins->command[1]);
 		return (EXIT_FAILURE);
 	}
 	change_pwds(data);

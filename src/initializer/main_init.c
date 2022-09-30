@@ -101,6 +101,12 @@ void	init_shell_env(t_data *data, char **envp)
 		free(data->fd);
 		exit(EXIT_FAILURE);
 	}
+	data->fd->std_out = dup(STDOUT_FILENO);
+	if (!data->fd->std_out)
+	{
+		free(data->fd);
+		exit(EXIT_FAILURE);
+	}
 	data->exec = malloc(sizeof(t_exec));
 	init_exec(data);
 	init_flags(data);

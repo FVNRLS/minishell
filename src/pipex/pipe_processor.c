@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/30 16:03:39 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/30 19:15:19 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ static int create_pipe(t_data *data)
 */
 void	pipe_transitory_cmd(t_data *data)
 {
+	int	builtin;
+
 	if (create_pipe(data) < 0)
 		return ;
 	if (data->exec->no_cmd == true)
@@ -75,14 +77,31 @@ void	pipe_transitory_cmd(t_data *data)
 		close(data->pipe[0]);
 		return ;
 	}
-	if (create_fork(data) < 0)
-		return ;
-	if (data->pid == 0)
-		exec_transitory_cmd(data);
-	catch_exit_code(data);
-	close(data->pipe[1]);
-	dup2(data->pipe[0], STDIN_FILENO);
-	close(data->pipe[0]);
+
+	builtin = ft_get_builtin(data);
+	if (builtin >= 0)
+	{
+		redirect_transitory_builtin(data);
+		dup2(data->pipe[0], STDIN_FILENO);
+		data->builtins->funcs[builtin](data);
+		close(data->pipe[1]);
+		close(data->pipe[0]);
+		dup2(data->fd->std_out, STDOUT_FILENO);
+	}
+	else if (data->parse_error == false)
+	{
+		if (create_fork(data) < 0)
+			return ;
+		if (data->pid == 0)
+		{
+			exec_transitory_cmd(data);
+			exec_bash_cmd(data);
+		}
+		catch_exit_code(data);
+		close(data->pipe[1]);
+		dup2(data->pipe[0], STDIN_FILENO);
+		close(data->pipe[0]);
+	}
 }
 
 /*
@@ -103,10 +122,25 @@ void	pipe_transitory_cmd(t_data *data)
 */
 void	pipe_last_cmd(t_data *data)
 {
-	if (create_fork(data) < 0)
-		return ;
-	if (data->pid == 0)
-		exec_last_cmd(data);
-	catch_exit_code(data);
+	int	builtin;
+
+	builtin = ft_get_builtin(data);
+	if (builtin >= 0)
+	{
+		redirect_last_builtin(data);
+		data->builtins->funcs[builtin](data);
+	}
+	else if (data->parse_error == false)
+	{
+		if (create_fork(data) < 0)
+			return ;
+		if (data->pid == 0)
+		{
+			exec_last_cmd(data);
+			exec_bash_cmd(data);
+		}
+		catch_exit_code(data);
+	}
 	dup2(data->fd->std_in, STDIN_FILENO);
+	dup2(data->fd->std_out, STDOUT_FILENO);
 }

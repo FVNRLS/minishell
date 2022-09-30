@@ -50,7 +50,6 @@ SRC 		= 	main.c 								\
                 src/parser/redirecter/fd_opener.c	\
 				src/executer/executer.c				\
 				src/executer/cmd_extractor.c 		\
-				src/executer/bash_executer.c 		\
 		        src/pipex/pipe_processor.c			\
 		        src/pipex/cmd_exec_redirecter.c		\
 				src/signals/signals.c				\
