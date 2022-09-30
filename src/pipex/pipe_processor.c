@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/29 19:25:22 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/30 14:49:20 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void catch_exit_code(t_data *data)
 		g_exit_code = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
 		g_exit_code = 127;
+
 }
 
 static int create_fork(t_data *data)
@@ -67,6 +68,13 @@ void	pipe_transitory_cmd(t_data *data)
 {
 	if (create_pipe(data) < 0)
 		return ;
+	if (data->exec->no_cmd == true)
+	{
+		close(data->pipe[1]);
+		dup2(data->pipe[0], STDIN_FILENO);
+		close(data->pipe[0]);
+		return ;
+	}
 	if (create_fork(data) < 0)
 		return ;
 	if (data->pid == 0)

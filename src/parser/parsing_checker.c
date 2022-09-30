@@ -6,20 +6,20 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:29:31 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/23 15:16:29 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/30 12:25:07 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-void	check_read_error(t_data *data, t_token *token)
+void	check_fd_access(t_data *data, t_token *token)
 {
 	char 	*file;
 
 	file = token->content;
-	if (data->fd->in < 0 || access(file, F_OK < 0) || access(file, R_OK) < 0)
+	if (access(file, F_OK < 0) || access(file, R_OK) < 0)
 	{
-		perror(file);
+		built_error(READ_ERROR, file);
 		data->parse_error = true;
 	}
 }
@@ -29,7 +29,7 @@ void	check_create_error(t_data *data, t_token *token)
 	char 	*file;
 
 	file = token->content;
-	if (data->fd->out < 0 || access(file, F_OK) || access(file, W_OK) < 0)
+	if (data->fd->out < 0 || access(file, F_OK) < 0 || access(file, W_OK) < 0)
 	{
 		perror(file);
 		data->parse_error = true;

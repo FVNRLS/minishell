@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/29 21:34:14 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/30 13:21:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <termios.h>
-#include <sys/ioctl.h>
+# include <sys/ioctl.h>
 
 # include "builtins.h"
 # include "errors.h"
@@ -51,7 +51,6 @@
 # define T_APPEND			4 // file >>
 # define T_HEREDOC			5 // << file
 # define T_PIPE				6 // |
-
 
 static int 	g_exit_code = 0;
 
@@ -104,13 +103,12 @@ void	merge_words(t_data *data);
 void	merge_redirections(t_data *data);
 bool	check_redir(t_data *data, int flag);
 bool 	check_redir_syntax_error(t_data *data, t_token *token);
-void	check_read_error(t_data *data, t_token *token);
+void	check_fd_access(t_data *data, t_token *token);
 void	check_create_error(t_data *data, t_token *token);
 void	resolve_redirections(t_data *data);
 void	parse_hdocs(t_data *data);
 void	redirect_in(t_data *data, t_token *token);
 void	redirect_from_hdoc(t_data *data);
-void	redirect_del_token(t_data *data, t_token *token);
 void	redirect_out(t_data *data, t_token *token);
 void	append(t_data *data, t_token *token);
 void	close_unused_fd_in(t_data *data);

@@ -31,7 +31,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 96,
+				"line" : 97,
 				"parent" : 0
 			}
 		]
@@ -120,7 +120,6 @@
 				58,
 				59,
 				60,
-				61,
 				62
 			]
 		}
@@ -220,8 +219,14 @@
 				58,
 				59,
 				60,
-				61,
 				62
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				61
 			]
 		}
 	],
@@ -595,9 +600,8 @@
 		},
 		{
 			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/signals/signals.c",
-			"sourceGroupIndex" : 0
+			"path" : "/Users/rmazurit/.brew/opt/readline/lib/libreadline.a",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,

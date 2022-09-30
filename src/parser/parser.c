@@ -23,6 +23,4 @@ void	parse_tokens(t_data *data)
 	merge_redirections(data);
 	merge_words(data);
 	parse_hdocs(data);
-	if (data->parse_error == true)
-		return ;
 }

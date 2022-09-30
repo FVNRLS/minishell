@@ -87,7 +87,8 @@ add_executable(minishell main.c
         builtins/unset.c
 
         #SIGNALS
-        src/signals/signals.c
+        #src/signals/signals.c
+        /Users/rmazurit/.brew/opt/readline/lib/libreadline.a
 
         #MESSAGE PRINTER
         src/message_printer.c

@@ -6,16 +6,14 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 12:19:28 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:05:36 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incl/minishell.h"
 
-void	redirect_del_token(t_data *data, t_token *token)
+static void redirect_token(t_data *data, t_token *token)
 {
-	if (data->tokens == token)
-		data->tokens = token->next;
 	if (token->flag == T_REDIRECT_IN)
 		redirect_in(data, token);
 	else if (token->flag == T_HEREDOC)
@@ -27,6 +25,14 @@ void	redirect_del_token(t_data *data, t_token *token)
 		redirect_out(data, token);
 	else if (token->flag == T_APPEND)
 		append(data, token);
+}
+
+static void	redirect_del_token(t_data *data, t_token *token)
+{
+	if (data->tokens == token)
+		data->tokens = token->next;
+	if (data->parse_error == false)
+		redirect_token(data, token);
 	free(token->content);
 	token->content = NULL;
 	free(token);
@@ -38,10 +44,12 @@ void	resolve_redirections(t_data *data)
 	t_token	*tmp;
 	t_token *del;
 	t_token *prev;
+	int 	words;
 
+	words = 0;
 	data->fd->hdoc_index = 0;
 	tmp = data->tokens;
-	if (!tmp)
+	if (!tmp || tmp->flag == T_PIPE)
 		return ;
 	prev = tmp;
 	while (tmp != NULL && tmp->flag != T_PIPE)
@@ -52,13 +60,14 @@ void	resolve_redirections(t_data *data)
 			prev->next = del->next;
 			tmp = del->next;
 			redirect_del_token(data, del);
-			if (data->parse_error == true)
-				return ;
 		}
 		else
 		{
 			prev = tmp;
 			tmp = tmp->next;
+			words++;
 		}
 	}
+	if (words == 0)
+		data->exec->no_cmd = true;
 }
