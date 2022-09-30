@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:42:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/30 13:30:30 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:54:42 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,5 @@ void	exec_last_cmd(t_data *data)
 		close(data->fd->out);
 	}
 	exec_builtin_or_bash(data);
+	close(data->fd->std_in);
 }

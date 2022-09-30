@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/30 10:40:08 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:13:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv, char **env)
 	init_shell_env(&data, env);
 	while (data.exit_minishell == false)
 	{
-		signal(SIGINT, catch_signals);
+//		signal(SIGINT, catch_signals);
 		signal(SIGQUIT, SIG_IGN);
 		track_history(&data);
 		lex_input(&data);
