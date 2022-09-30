@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bin_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:14:07 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/28 17:37:11 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/30 12:49:15 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*make_key(char *s, int *i)
 	key = NULL;
 	while (s[*i])
 	{
-		if (s[*i] == '=')
+		if (s[*i] == '=' || s[*i] == '+')
 			break ;
 		(*i)++;
 	}
@@ -28,7 +28,7 @@ char	*make_key(char *s, int *i)
 	*i = 0;
 	while (s[(*i)])
 	{
-		if (s[(*i)] == '=')
+		if (s[(*i)] == '='|| s[*i] == '+')
 			break ;
 		key[(*i)] = s[(*i)];
 		(*i)++;
@@ -44,7 +44,12 @@ void	true_env(t_data *data)
 	while (tmp)
 	{
 		if (tmp->key[0])
-			printf("declare -x %s=%s\n", tmp->key, tmp->val);
+		{
+			if (ft_strlen(tmp->val) != 0)
+				printf("declare -x %s=\"%s\"\n", tmp->key, tmp->val);
+			else
+				printf("declare -x %s\n", tmp->key);
+		}
 		tmp = tmp->next;
 	}
 }

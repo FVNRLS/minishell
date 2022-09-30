@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:28:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/28 17:33:31 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:00:01 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ int	check_exit_args(t_data *data)
 			return (0);
 		}
 		else if (!ft_isnumber(data->builtins->command[1], 0, 0))
-		{
-			built_error(EXIT_ARG_ERROR, data->builtins->command[1]);
-			return (1);
-		}
+			return (built_error(EXIT_ARG_ERROR, data->builtins->command[1]));
 	}
 	return (1);
 }

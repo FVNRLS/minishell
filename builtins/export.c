@@ -3,41 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/29 22:31:11 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/09/30 17:03:46 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-int	check_new(char **s)
+char	**dl_that(char **s, int i)
+{
+	char **new;
+	int	j;
+	int	k;
+
+	k = 0;
+	j = 0;
+	new = malloc(sizeof(char *) * (ft_splitlen(s)));
+	while (s[j])
+	{
+		if (j == i)
+			j++;
+		new[k] = ft_strdup(s[j]);
+		j++;
+		k++;
+	}
+	new[k] = NULL;
+	return (new);
+}
+
+static int	check_new(char **s)
 {
 	int	i;
 	int	j;
+	char **tmp;
 
 	j = 0;
 	i = 0;
 	while (s[i])
 	{
 		j = 0;
-		if (!ft_isalpha(s[i][j]))
-			return (built_error(EXPORT_ERROR, s[i]));
+		if (!ft_isalpha(s[i][j]) && s[i][j] != '_')
+		{
+			built_error(EXPORT_ERROR, s[i]);
+			tmp = dl_that(s, i);
+			check_new(tmp);
+			ft_cleansplit(tmp);
+			break ;
+		}	
 		while (s[i][j + 1])
 		{
 			j++;
-			if (s[i][j] == '=' || (s[i][j] == '+' && j < ft_strlen(s[i]) && s[i][j + 1] == '='))
+			if (s[i][j] == '=' || (s[i][j] == '+' \
+			&& j < (int)ft_strlen(s[i]) && s[i][j + 1] == '='))
 				break ;
-			if (!ft_isalpha(s[i][j]) && !ft_isdigit((int)s[i][j]))
+			if (!ft_isalpha(s[i][j]) && !ft_isdigit((int)s[i][j]) && s[i][j] != '_')
+			{
+				printf("here2\n");
 				return (built_error(EXPORT_ERROR, s[i]));
+			}
 		}
 		i++;
 	}
 	return (0);
 }
 
-int	check_string(t_data **data, int *i)
+static int	check_string(t_data **data, int *i)
 {
 	char	*s;
 
@@ -66,19 +98,28 @@ static char	*make_val(char *s, int i, int plus)
 			val = ft_strdup(s + i + 1);
 	}
 	if (val == NULL)
-	{
-		//printf("empty malloc\n");
 		val = ft_strdup("");
-	}
 	return (val);
 }
 
-/*
-Todoo:
--when plus flag == 1 && key gibts then strjoin oldval + newval;
--Die KEys trotzdem speichern die richtig sind, falls davor welche richtig waren!
-siehe zeile 141
-*/
+static void	old_key(t_envp *new, char *val, char *key, int plus)
+{
+	free(key);
+	if (ft_strlen(val) != 0)
+	{
+		if (plus)
+		{
+			new->val = ft_strjoin(new->val, val);
+			free(val);
+			return ;
+		}
+		free(new->val);
+		new->val = val;
+	}
+	else
+		free(val);
+}
+
 static void	make_envp(char *s, t_data **data, int plus)
 {
 	char 	*key;
@@ -94,16 +135,7 @@ static void	make_envp(char *s, t_data **data, int plus)
 	new = ft_getenvp(*data, key);
 	val = make_val(s, i, plus);
 	if (new != NULL)
-	{
-		free(key);
-		if (ft_strlen(val) != 0)
-		{
-			free(new->val);
-			new->val = val;
-		}
-		else
-			free(val);
-	}
+		old_key(new, val, key, plus);
 	else
 	{
 		new = ft_new_envp(key, val);
@@ -111,7 +143,7 @@ static void	make_envp(char *s, t_data **data, int plus)
 	}
 }
 
-void	key_export(t_data **data)
+static void	key_export(t_data **data)
 {
 	int	i;
 	int plus;
@@ -138,7 +170,7 @@ int	export(t_data *data)
 		true_env(data);
 	if (i == 0)
 		return (EXIT_FAILURE);
-	if (check_new(data->builtins->command))  // Die KEys trotzdem speichern die richtig sind, falls davor welche richtig waren!
+	if (check_new(data->builtins->command))
 		return (EXIT_FAILURE);
 	key_export(&data);
 	return (EXIT_SUCCESS);
