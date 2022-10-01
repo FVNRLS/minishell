@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/30 17:49:22 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/01 11:01:39 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ void	execute_tokens(t_data *data)
 		resolve_redirections(data);
 		merge_words(data);
 		if (!data->tokens)
+		{
+//			dup2(data->fd->std_in, STDIN_FILENO);
+//			dup2(data->fd->std_out, STDOUT_FILENO);
 			break ;
+		}
 		if (data->tokens->flag == T_WORD || data->exec->no_cmd == true)
 			exec_cmd(data, data->tokens);
 		if (data->tokens->flag == T_PIPE)

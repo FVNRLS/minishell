@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/30 19:54:48 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/01 11:04:15 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ void	pipe_last_cmd(t_data *data)
 {
 	int	builtin;
 
+	if (data->exec->no_cmd == true)
+		return ;
 	builtin = ft_get_builtin(data);
 	if (builtin >= 0)
 		exec_last_builtin(data, builtin);
