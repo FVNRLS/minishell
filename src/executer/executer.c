@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/01 11:01:39 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/01 12:07:49 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ static void	exec_cmd(t_data *data, t_token *token)
 		data->builtins->command = NULL;
 	}
 	free_cmd_and_path(data);
-	if (data->fd->in != STDIN_FILENO)
-		close(data->fd->in);
-	if (data->fd->out != STDOUT_FILENO)
-		close(data->fd->out);
 }
 
 void	execute_tokens(t_data *data)
@@ -48,15 +44,15 @@ void	execute_tokens(t_data *data)
 		merge_words(data);
 		if (!data->tokens)
 		{
-//			dup2(data->fd->std_in, STDIN_FILENO);
-//			dup2(data->fd->std_out, STDOUT_FILENO);
-			break ;
+			dup2(data->fd->std_in, STDIN_FILENO);
+			dup2(data->fd->std_out, STDOUT_FILENO);
 		}
-		if (data->tokens->flag == T_WORD || data->exec->no_cmd == true)
+		else if (data->tokens->flag == T_WORD || data->exec->no_cmd == true)
 			exec_cmd(data, data->tokens);
-		if (data->tokens->flag == T_PIPE)
+		else if (data->tokens->flag == T_PIPE)
 			data->exec->cmd_num++;
 		ft_del_first_token(&data);
+		close_fds_in_out(data);
 	}
 	destroy_hdocs(data);
 }

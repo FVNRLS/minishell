@@ -20,12 +20,11 @@ void	free_cmd_and_path(t_data *data)
 	data->exec->path = NULL;
 }
 
-//TODO: avoid the flag
 void 	destroy_hdocs(t_data *data)
 {
 	int	i;
 
-	if (data->fd->hdoc_used == false)
+	if (data->fd->hdoc == NULL)
 		return;
 	i = 0;
 	while (data->fd->hdoc[i] != NULL)

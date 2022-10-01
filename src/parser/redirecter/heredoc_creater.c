@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/23 15:08:31 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/01 11:47:57 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ void	parse_hdocs(t_data *data)
 		return;
 	else
 	{
-		data->fd->hdoc_used = true;
 		data->fd->hdoc = malloc(sizeof(char *) * (cnt + 1));
 		data->fd->hdoc[cnt] = NULL;
 	}
@@ -124,7 +123,10 @@ void	parse_hdocs(t_data *data)
 			create_hdoc(data);
 			read_to_hdoc(data, tmp);
 			if (data->parse_error == true)
+			{
+				destroy_hdocs(data);
 				return ;
+			}
 			close(data->fd->in);
 			data->fd->in = 0;
 			data->fd->hdoc_index++;

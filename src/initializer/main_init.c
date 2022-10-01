@@ -55,7 +55,6 @@ void	init_fd(t_data *data)
 	data->fd->in = STDIN_FILENO;
 	data->fd->out = STDOUT_FILENO;
 	data->fd->hdoc_index = 0;
-	data->fd->hdoc_used = false;
 }
 
 static void	init_separators(t_data *data)

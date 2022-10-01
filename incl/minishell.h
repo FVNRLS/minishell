@@ -113,6 +113,7 @@ void	redirect_out(t_data *data, t_token *token);
 void	append(t_data *data, t_token *token);
 void	close_unused_fd_in(t_data *data);
 void 	close_unused_fd_out(t_data *data);
+void 	close_fds_in_out(t_data *data);
 
 //SIGNALS
 void  catch_signals(int sig_num);

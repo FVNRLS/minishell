@@ -61,7 +61,6 @@ typedef struct s_fd
 	int 		std_out;
 	char 		**hdoc;
 	int 		hdoc_index;
-	bool		hdoc_used;
 }	t_fd;
 
 typedef struct s_exec
