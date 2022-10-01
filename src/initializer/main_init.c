@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/30 12:42:23 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/01 15:46:36 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,8 @@ static void	init_builtins(t_data *data)
 	data->builtins->command = NULL;
 }
 
-
-void	init_shell_env(t_data *data, char **envp)
+void 	dup_stdin_and_stdout(t_data *data)
 {
-	g_exit_code = 0;
-	data->pipe[0] = -1;
-	data->pipe[1] = -1;
-	data->fd = malloc(sizeof(t_fd));
-	if (!data->fd)
-		return;
 	init_fd(data);
 	data->fd->std_in = dup(STDIN_FILENO);
 	if (!data->fd->std_in)
@@ -106,6 +99,18 @@ void	init_shell_env(t_data *data, char **envp)
 		free(data->fd);
 		exit(EXIT_FAILURE);
 	}
+}
+
+void	init_shell_env(t_data *data, char **envp)
+{
+	g_exit_code = 0;
+	data->pipe[0] = -1;
+	data->pipe[1] = -1;
+	data->fd = malloc(sizeof(t_fd));
+	if (!data->fd)
+		return;
+	init_fd(data);
+	dup_stdin_and_stdout(data); //modified
 	data->exec = malloc(sizeof(t_exec));
 	init_exec(data);
 	init_flags(data);

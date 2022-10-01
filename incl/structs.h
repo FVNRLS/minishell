@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/30 15:05:36 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/01 15:46:36 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,5 @@ typedef struct s_data
 	bool		exec_error;
 	bool		exit_minishell;
 }		t_data;
-
-
-
 
 #endif
