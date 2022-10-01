@@ -24,8 +24,9 @@
 # define EXIT_ARG_ERROR				7
 # define INVALID_PATH				8
 # define EXPORT_ERROR				9
-# define EXEC_ERROR					10
-# define PATH_ERROR					11
+# define UNSET_ERROR				10
+# define EXEC_ERROR					11
+# define PATH_ERROR					12
 
 void	print_error(int error);
 void	print_token_error(int error, t_token *token);

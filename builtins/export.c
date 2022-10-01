@@ -165,6 +165,8 @@ int	export(t_data *data)
 {
 	int	i;
 
+	if (data->exec->last_cmd > 1)
+		return (EXIT_SUCCESS);
 	i = 0;
 	if (check_string(&data, &i))
 		true_env(data);

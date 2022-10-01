@@ -39,5 +39,5 @@ int	main(int argc, char **argv, char **env)
 //		check_leaks();
 	}
 	free_all_ressources(&data);
-	return (EXIT_SUCCESS);
+	return (g_exit_code);
 }

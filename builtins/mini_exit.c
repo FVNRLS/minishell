@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mini_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:28:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/30 16:00:01 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:23:16 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
-
 
 int	check_exit_args(t_data *data)
 {
@@ -40,10 +39,11 @@ int	check_exit_args(t_data *data)
 
 int	mini_exit(t_data *data)
 {
-	if (check_exit_args(data))
+	if (data->exec->last_cmd == 1)
 	{
-		write(2, "exit\n", 5);
+		write(1, "exit\n", 5);
 		data->exit_minishell = true;
 	}
+	check_exit_args(data);
 	return (EXIT_SUCCESS);
 }

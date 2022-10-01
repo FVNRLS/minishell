@@ -46,6 +46,8 @@ int	cd(t_data *data)
 	int		ret;
 	t_envp	*tmp;
 
+	if (data->exec->last_cmd > 1)
+		return (EXIT_SUCCESS);
 	tmp = NULL;
 	if (!data->builtins->command[1])
 	{
