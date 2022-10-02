@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:28:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/01 13:23:16 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/02 15:40:39 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,12 @@ int	check_exit_args(t_data *data)
 	return (1);
 }
 
-
 int	mini_exit(t_data *data)
 {
-	if (data->exec->last_cmd == 1)
+	if (check_exit_args(data))
 	{
-		write(1, "exit\n", 5);
+		write(2, "exit\n", 5);
 		data->exit_minishell = true;
 	}
-	check_exit_args(data);
 	return (EXIT_SUCCESS);
 }

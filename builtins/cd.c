@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:42:02 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/26 19:01:13 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/02 15:38:55 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	change_pwds(t_data *data)
 	t_envp	*old;
 	t_envp	*pwd;
 	char	*old_path;
-	char 	*pwd_path;
+	char	*pwd_path;
 
 	old_path = NULL;
 	pwd_path = NULL;
@@ -28,26 +28,16 @@ void	change_pwds(t_data *data)
 	old_path = ft_strdup(pwd->val);
 	free(old->val);
 	old->val = old_path;
-
 	pwd_path = getcwd(pwd_path, 0);
 	free(pwd->val);
 	pwd->val = pwd_path;
 }
-
-/*
-char *dl_equal(char *s) //need later to get right key cause the have an equal
-{
-	return (NULL);
-}
-*/
 
 int	cd(t_data *data)
 {
 	int		ret;
 	t_envp	*tmp;
 
-	if (data->exec->last_cmd > 1)
-		return (EXIT_SUCCESS);
 	tmp = NULL;
 	if (!data->builtins->command[1])
 	{
@@ -58,7 +48,7 @@ int	cd(t_data *data)
 	ret = chdir(data->builtins->command[1]);
 	if (ret != 0)
 	{
-		built_error(PATH_ERROR, data->builtins->command[1]);
+		built_error(CD_ARG_ERROR, data->builtins->command[1]);
 		return (EXIT_FAILURE);
 	}
 	change_pwds(data);

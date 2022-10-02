@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/01 14:01:55 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/02 15:37:14 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-void	dl_node(t_data **data, t_envp *node)
+static void	dl_node(t_data **data, t_envp *node)
 {
 	t_envp	*tmp;
 
@@ -36,19 +36,15 @@ int	unset(t_data *data)
 	t_envp	*tmp;
 	int		i;
 
-	if (data->exec->last_cmd > 1)
-		return (EXIT_SUCCESS);
 	i = 1;
 	tmp = NULL;
 	if (!data->builtins->command[i])
-		return (EXIT_FAILURE);
+		return (EXIT_SUCCESS);
 	while (data->builtins->command[i])
 	{
 		tmp = ft_getenvp(data, data->builtins->command[i]);
 		if (tmp != NULL)
 			dl_node(&data, tmp);
-		else
-			built_error(UNSET_ERROR, data->builtins->command[i]);
 		i++;
 	}
 	return (EXIT_SUCCESS);
