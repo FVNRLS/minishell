@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+         #
+#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/09/30 17:04:00 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/10/02 15:34:07 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC 			= 	cc
 
 RM 			= 	rm -f
 
-FLAGS 		= 	-Wall -Wextra -Werror
+FLAGS 		= 	-Wall -Wextra #-Werror
 
 SRC 		= 	main.c 								\
 				src/initializer/main_init.c			\
@@ -25,10 +25,10 @@ SRC 		= 	main.c 								\
 				src/destructor.c					\
 				builtins/env.c						\
 				builtins/cd.c						\
-				builtins/bin_utils.c				\
 				builtins/echo.c						\
 				builtins/mini_exit.c				\
 				builtins/export.c					\
+				builtins/export_utils.c				\
 				builtins/pwd.c						\
 				builtins/unset.c					\
 				src/history_tracker.c				\
@@ -50,6 +50,7 @@ SRC 		= 	main.c 								\
                 src/parser/redirecter/fd_opener.c	\
 				src/executer/executer.c				\
 				src/executer/cmd_extractor.c 		\
+				src/executer/bash_executer.c 		\
 		        src/pipex/pipe_processor.c			\
 		        src/pipex/cmd_exec_redirecter.c		\
 				src/signals/signals.c				\
