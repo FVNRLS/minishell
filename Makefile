@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/10/02 15:34:07 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/10/02 15:49:41 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,6 @@ SRC 		= 	main.c 								\
                 src/parser/redirecter/fd_opener.c	\
 				src/executer/executer.c				\
 				src/executer/cmd_extractor.c 		\
-				src/executer/bash_executer.c 		\
 		        src/pipex/pipe_processor.c			\
 		        src/pipex/cmd_exec_redirecter.c		\
 				src/signals/signals.c				\

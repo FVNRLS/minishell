@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:42:02 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/02 15:38:55 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/02 15:48:49 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	cd(t_data *data)
 	ret = chdir(data->builtins->command[1]);
 	if (ret != 0)
 	{
-		built_error(CD_ARG_ERROR, data->builtins->command[1]);
+		built_error(PATH_ERROR, data->builtins->command[1]);
 		return (EXIT_FAILURE);
 	}
 	change_pwds(data);
