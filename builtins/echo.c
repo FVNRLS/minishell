@@ -3,18 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:27:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/26 14:40:14 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/02 19:08:10 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-/*
-	norminette...
-*/
+static int	its_nflag(char *s, int *flag)
+{
+	int	i;
+
+	i = 0;
+	if (!s || !s[i])
+		return (0);
+	while (s[i])
+	{
+		if (s[i] != 'n' && s[i] != ' ' && i != 0)
+			return (0);
+		i++;
+		if (s[i] == '\0' || s[i] == ' ')
+		{
+			*flag = i + 1;
+			break ;
+		}
+	}
+	return (1);
+}
+
 int	echo_pos_helper(int i, char *s, int *flag)
 {
 	while (s[i] && !ft_isprint(s[i]))
@@ -23,11 +41,8 @@ int	echo_pos_helper(int i, char *s, int *flag)
 		if (s[i] && s[i] == '-')
 		{
 			i++;
-			if (s[i] && s[i] == 'n' && (!s[i + 1] || !ft_isprint(s[i + 1])))
-			{
-				*flag = 1;
-				return (i + 2);
-			}
+			if (its_nflag(s + i, flag))
+				return (i + *flag);
 			break ;
 		}
 	}
