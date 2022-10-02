@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:42:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/26 00:25:36 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/02 15:33:36 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,52 +18,46 @@
 # include <unistd.h>
 # include <sys/types.h>
 
-//utils
-char	*make_key(char *s, int *i);
+//export_utils.c /5
+void	check_keys(char **s);
 void	true_env(t_data *data);
+int		check_string(t_data **data, int *i);
+char	*make_key(char *s, int *i);
 
 /*
-print data.envp.key & data.envp.key till envp->next == NULL
-if cmd:
-env | echo n 
-cmd env will be ignored atm
-*/
-int	env(t_data *data);
-
-/*
-data->envp->val = start path? or updated? 
-or cd() should update (data.val//data.val.next) 
-or an other fnct should do?
-export & unset env ?
-ARGS = ".."  & any path "Names"
-if error occurs return 1
-*/
-int cd(t_data *data);
-
-/*
-print the pathname of current working directory
-if error occurs return 1
-*/
-int pwd(void);
-
-/*
-flag echo -n dont work atm
-*/
-int	echo(t_data *data);
-
-/*
-not finished yet
+export.c
+-----------------------------------
+export create a new key + optional a value
+key=val
+-----------------------------------
+just export will print the whole envp's
 */
 int	export(t_data *data);
 
 /*
-exit minishell should be fine
-pls test exit against bugs
+prints all Envp which has a value
+*/
+int	env(t_data *data);
+
+/*
+moving through the tree via cd "pathname"
+*/
+int cd(t_data *data);
+
+/*
+prints current working directory
+*/
+int pwd(void);
+
+int	echo(t_data *data);
+
+/*
+exit
 */
 int	mini_exit(t_data *data);
 
 /*
-not finished yet
+deletes envp entrys
 */
 int	unset(t_data *data);
 
