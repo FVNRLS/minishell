@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_creater.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/01 11:47:57 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:05:34 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void read_from_stdin(t_data *data, t_token *token)
 	lim_found = false;
 	while (lim_found == false)
 	{
+		ft_signals(1);
 		input = readline("> ");
 		if (!input)
 			break ;
