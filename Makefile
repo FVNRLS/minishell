@@ -6,7 +6,7 @@
 #    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/10/02 15:49:41 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/10/03 23:01:41 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
         		src/tools/ft_del_first_token.c		\
 				src/tools/ft_get_num_cmds.c			\
 				src/tools/ft_isalpha.c				\
+				src/tools/ft_atoi.c					\
 
 OBJ 		= 	${SRC:.c=.o}
 TOOLS_OBJ 	=	${TOOLS_SRC:.c=.o}

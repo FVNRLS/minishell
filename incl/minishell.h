@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/01 13:04:44 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:22:39 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,6 @@ void	close_unused_fd_in(t_data *data);
 void 	close_unused_fd_out(t_data *data);
 void 	close_fds_in_out(t_data *data);
 
-//SIGNALS
-void  catch_signals(int sig_num);
-
 //EXECUTER
 void	execute_tokens(t_data *data);
 void	extract_cmd_and_path(t_data *data, t_token *token);
@@ -132,7 +129,7 @@ void	exec_last_cmd(t_data *data);
 void 	exec_bash_cmd(t_data *data);
 
 //SIGNALS
-void	ft_signals(int flag);
+int	ft_signals(int flag, t_data *data);
 
 //TODO: delete before submission!
 void	print_tokens(t_data *data);

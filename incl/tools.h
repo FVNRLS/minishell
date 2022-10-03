@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:31:55 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/28 17:46:59 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:01:58 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		ft_isprint(int c);
 void	ft_del_first_token(t_data **data);
 int 	ft_get_num_cmds(t_data *data);
 int		ft_isalpha(int c);
+int		ft_atoi(const char *str);
 
 
 //for debuging

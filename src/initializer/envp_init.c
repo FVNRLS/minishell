@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   envp_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 11:53:00 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/07 18:32:17 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:05:10 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@ static void	get_envp(t_data *data, char *str, char **key, char **val)
 	}
 }
 
+static void	get_pid(t_data *data)
+{
+	t_envp 	*tmp;
+
+	tmp = ft_new_envp(ft_strdup("?_PID"), ft_itoa((int)getpid()));
+	ft_add_envp_back(&data->envp, tmp);
+}
+
 void	init_envp(t_data *data, char **env)
 {
 	t_envp 	*tmp;
@@ -87,6 +95,7 @@ void	init_envp(t_data *data, char **env)
 
 	tmp = NULL;
 	i= 0;
+	get_pid(data);
 	while (env[i] != NULL)
 	{
 		get_envp(data, env[i], &key, &val);

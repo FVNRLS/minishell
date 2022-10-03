@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/03 15:05:02 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/04 00:08:19 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv, char **env)
 	init_shell_env(&data, env);
 	while (data.exit_minishell == false)
 	{
-		ft_signals(0);
+		ft_signals(0, &data);
 		track_history(&data);
 		lex_input(&data);
 		if (data.lex_error == false)

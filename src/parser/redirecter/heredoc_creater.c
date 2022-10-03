@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/03 15:05:34 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:22:06 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void read_from_stdin(t_data *data, t_token *token)
 	lim_found = false;
 	while (lim_found == false)
 	{
-		ft_signals(1);
+		ft_signals(1, data);
 		input = readline("> ");
 		if (!input)
 			break ;
