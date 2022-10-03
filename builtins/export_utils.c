@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:12:51 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/02 15:40:27 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/03 14:58:16 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	check_keys(char **s)
 
 	j = 0;
 	i = 0;
-	while (s[i])
+	while (s[i] && i < ft_splitlen(s))
 	{
 		j = 0;
 		if (!ft_isalpha(s[i][j]) && s[i][j] != '_')
-			built_error(EXPORT_ERROR, s[i++]);
-		while (s[i] && s[i][j + 1])
+			built_error(EXPORT_ERROR, s[i]);
+		while (s[i] != NULL && s[i][j + 1])
 		{
 			j++;
 			if (s[i][j] == '=' || (s[i][j] == '+' \
