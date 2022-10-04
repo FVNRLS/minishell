@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 17:10:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/04 00:06:38 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:24:51 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static void	ctrl_c(int sig_num)
 	rl_replace_line("", 0);
 }
 
-static int	catch_herd(int sig_num)
+// we can share values between pid's here
+static int	catch_herd(int sig_num) 
 {
 	static int save;
 
@@ -63,6 +64,7 @@ int	ft_signals(int flag, t_data *data)
 		return (signal(SIGINT, ctrl_c));
 	if (flag == 1)
 	{
+		
 		signal(SIGINT, catch_herd);
 		if (catch_herd(99) == 42)
 		{
