@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:12:51 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/04 13:39:32 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/04 14:38:25 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	check_string(t_data **data, int *i)
 	char	*s;
 
 	s = (*data)->tokens->content;
-	if (ft_strlen(s) == 6)
+	if (ft_strlen(s) == 6 || !(*data)->builtins->command[1])
 		return (EXIT_FAILURE);
 	while (ft_isprint(s[*i]))
 		(*i)++;

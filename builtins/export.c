@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/04 13:58:32 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/04 14:42:20 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,14 @@ static void	key_export(t_data **data)
 	}
 }
 
-/*
-TODOO:
-need to recognize flags like -x or -a anyway but a single '-' is okay
-*/
 int	export(t_data *data)
 {
 	int	i;
 
 	i = 0;
+	if (data->builtins->command[1] \
+	&& flag_check(data->builtins->command[1], 2))
+		return (EXIT_FAILURE);
 	if (check_string(&data, &i))
 		true_env(data);
 	if (i == 0)

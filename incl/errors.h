@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:43:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/29 19:15:06 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/04 14:31:44 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@
 # define EXIT_ARG_ERROR				7
 # define INVALID_PATH				8
 # define EXPORT_ERROR				9
-# define UNSET_ERROR				10
-# define EXEC_ERROR					11
-# define PATH_ERROR					12
+# define EXPORT_FLAG				10
+# define UNSET_FLAG					11
+# define UNSET_ERROR				12
+# define EXEC_ERROR					13
+# define PATH_ERROR					14
 
 void	print_error(int error);
 void	print_token_error(int error, t_token *token);
