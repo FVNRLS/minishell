@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:12:51 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/03 14:58:16 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:39:32 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static int	true_key(char *s)
 		if ((s[i] == '=' && i != 0) || (s[i] == '+' \
 		&& s[i + 1] && s[i + 1] == '=' && i != 0))
 			return (1);
-		else if (!ft_isalpha(s[i]) && !ft_isdigit(s[i]) && i != 0)
+		else if (!ft_isalpha(s[i]) && !ft_isdigit(s[i]) && s[i] != '_' && i != 0)
 			return (0);
 		i++;
 	}
