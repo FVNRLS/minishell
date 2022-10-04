@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/04 14:43:55 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/04 14:44:36 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv, char **env)
 		if (data.lex_error == false)
 		{
 			parse_tokens(&data);
-			print_tokens(&data);
+			//print_tokens(&data);
 			if (data.parse_error == false)
 				execute_tokens(&data);
 		}
