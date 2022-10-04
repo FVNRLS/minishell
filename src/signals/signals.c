@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 17:10:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/04 13:24:51 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:15:28 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	ctrl_c(int sig_num)
 	struct termios att;
 	struct termios saved;
 
+	(void)sig_num;
 	tcgetattr(STDIN_FILENO, &saved);
 	tcsetattr(STDIN_FILENO, TCSANOW, &saved);
 	tcgetattr(STDIN_FILENO, &att);
@@ -61,7 +62,10 @@ int	ft_signals(int flag, t_data *data)
 	tmp = ft_getenvp(data, "?_PID");
 	signal(SIGUSR1, handler);
 	if (flag == 0)
-		return (signal(SIGINT, ctrl_c));
+	{
+		signal(SIGINT, ctrl_c);
+		return (0);
+	}
 	if (flag == 1)
 	{
 		

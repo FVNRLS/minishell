@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/04 15:02:38 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:08:25 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,24 +73,6 @@ static void	make_envp(char *s, t_data **data, int plus)
 	}
 }
 
-bool	check_plus(char *s)
-{
-	int	i;
-	int plus;
-
-	plus = 0;
-	i = 0;
-	while (s[i + 1])
-	{
-		if (s[i] == '+' && s[i + 1] == '=')
-			return (true);
-		if (s[i] == '=')
-			break ;
-		i++;
-	}
-	return (false);
-}
-
 static void	key_export(t_data **data)
 {
 	int	i;
@@ -101,7 +83,7 @@ static void	key_export(t_data **data)
 	while ((*data)->builtins->command[i])
 	{
 		if (ft_haschar((*data)->builtins->command[i], '+') && \
-		check_plus((*data)->builtins->command[i]))
+		ft_check_plus((*data)->builtins->command[i]))
 			plus = 1;
 		make_envp((*data)->builtins->command[i], data, plus);
 		i++;
