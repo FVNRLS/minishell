@@ -6,11 +6,35 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/01 12:36:01 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/05 19:58:30 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
+
+void	extract_cmd_and_path(t_data *data, t_token *token)
+{
+
+	if (token->content[0] == '.' || token->content[0] == SLASH)
+	{
+		data->exec->cmd = extract_cmd_from_path(token);
+		if (!data->exec->cmd)
+		{
+			data->exec_error = true;
+			return ;
+		}
+		data->exec->path = ft_strdup(token->content);
+		if (!data->exec->path)
+			data->exec_error = true;
+	}
+	else
+	{
+		data->exec->cmd = get_cmd(data, token);
+		if (data->exec_error == true)
+			return ;
+		data->exec->path = get_cmd_path(data);
+	}
+}
 
 static void	exec_cmd(t_data *data, t_token *token)
 {

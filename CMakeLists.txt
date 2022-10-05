@@ -41,6 +41,8 @@ add_executable(minishell main.c
         src/tools/ft_del_first_token.c
         src/tools/ft_get_num_cmds.c
         src/tools/ft_isalpha.c
+        src/tools/ft_check_plus.c
+
 
         #BUILTINS:
         builtins/env.c
@@ -76,11 +78,11 @@ add_executable(minishell main.c
         src/pipex/cmd_exec_redirecter.c
 
         #BUILTINS
-        builtins/bin_utils.c
         builtins/cd.c
         builtins/echo.c
         builtins/env.c
         builtins/export.c
+        builtins/export_utils.c
         builtins/mini_exit.c
         builtins/pwd.c
         builtins/unset.c

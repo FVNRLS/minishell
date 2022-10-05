@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 17:22:41 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/14 17:25:42 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:05:58 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	expand_parameter(t_data *data, t_lex *lex)
 	while (is_sep == false && lex->c != '\0')
 	{
 		is_sep = check_sep(data, lex->c);
-		if (is_sep == true)
+		if (is_sep == true || lex->c == SLASH)
 			break ;
 		lex->buf = ft_join_char(lex->buf, lex->c);
 		lex->i++;

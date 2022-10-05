@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 15:16:26 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:09:09 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,8 @@ static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 	next_char = data->input[lex->i + 1];
 	if (lex->expansion == true)
 	{
-		if (lex->double_quote_mode == true)
-			token->join = true;
-		if (lex->c == SINGLE_QUOTE || lex->c == DOUBLE_QUOTE || lex->c == DOLLAR)
+		if (lex->c == SINGLE_QUOTE || lex->c == DOUBLE_QUOTE || lex->c == DOLLAR
+			|| lex->c == SLASH)
 		{
 			if (lex->double_quote_mode == true)
 			{

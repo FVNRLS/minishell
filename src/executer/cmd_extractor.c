@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:34:00 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/24 13:24:54 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/05 19:58:13 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static char	**get_valid_paths(t_data *data)
 /*
 	Gets a full path to the given command (binary or executable).
 */
-static char	*get_cmd_path(t_data *data)
+char	*get_cmd_path(t_data *data)
 {
 	char	*cmd;
 	char 	**valid_paths;
@@ -102,7 +102,7 @@ static char	*get_cmd_path(t_data *data)
 	return (cmd_path);
 }
 
-static char	**get_cmd(t_data *data, t_token *token)
+char	**get_cmd(t_data *data, t_token *token)
 {
 	char **cmd;
 
@@ -116,12 +116,30 @@ static char	**get_cmd(t_data *data, t_token *token)
 	return (cmd);
 }
 
-void	extract_cmd_and_path(t_data *data, t_token *token)
-{
-	data->exec->cmd = get_cmd(data, token);
-	if (data->exec_error == true)
-		return ;
-	data->exec->path = get_cmd_path(data);
-	if (data->exec_error == true)
-		return ;
-}
+ char	**extract_cmd_from_path(t_token *token)
+ {
+	 char	**cmd;
+	 char 	*last;
+
+	 cmd = ft_split(token->content, SLASH);
+	 if (!cmd)
+	 {
+		 perror(NULL);
+		 return (NULL);
+	 }
+	 last = ft_strdup(cmd[ft_splitlen(cmd) - 1]);
+	 if (!last)
+	 {
+		 perror(NULL);
+		 return (NULL);
+	 }
+	 ft_cleansplit(cmd);
+	 cmd = ft_split(last, SPACE);
+	 if (!cmd)
+	 {
+		 perror(NULL);
+		 return (NULL);
+	 }
+	 free(last);
+	 return (cmd);
+ }

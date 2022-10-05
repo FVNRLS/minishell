@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/04 15:09:21 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/05 19:31:50 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define REDIRECT_IN		'<'
 # define REDIRECT_OUT		'>'
 # define PIPE				'|'
+# define SLASH				'/'
 
 //TOKEN FLAGS:
 # define T_WORD				1 // also commands: eg. echo, @, .
@@ -116,6 +117,9 @@ void 	close_unused_fd_out(t_data *data);
 void 	close_fds_in_out(t_data *data);
 
 //EXECUTER
+char	*get_cmd_path(t_data *data);
+char	**get_cmd(t_data *data, t_token *token);
+char	**extract_cmd_from_path(t_token *token);
 void	execute_tokens(t_data *data);
 void	extract_cmd_and_path(t_data *data, t_token *token);
 
@@ -129,7 +133,7 @@ void	exec_last_cmd(t_data *data);
 void 	exec_bash_cmd(t_data *data);
 
 //SIGNALS
-int	ft_signals(int flag, t_data *data);
+int		ft_signals(int flag, t_data *data);
 
 //TODO: delete before submission!
 void	print_tokens(t_data *data);
