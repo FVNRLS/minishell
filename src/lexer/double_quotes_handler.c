@@ -12,18 +12,8 @@
 
 #include "../../incl/minishell.h"
 
-void	handle_double_quotes(t_data *data, t_lex *lex)
+static void expand_double_quotes(t_data *data, t_lex *lex)
 {
-	bool	quote_not_closed;
-	bool	redirect_found;
-
-	lex->double_quote_mode = true;
-	quote_not_closed = check_open_quotes(data, lex);
-	if (quote_not_closed)
-	{
-		stop_lexing(data, lex);
-		return ;
-	}
 	lex->flag = T_WORD;
 	lex->i++;
 	while (data->input[lex->i] != DOUBLE_QUOTE)
@@ -38,6 +28,21 @@ void	handle_double_quotes(t_data *data, t_lex *lex)
 		}
 	}
 	lex->i++;
+}
+
+void	handle_double_quotes(t_data *data, t_lex *lex)
+{
+	bool	quote_not_closed;
+	bool	redirect_found;
+
+	lex->double_quote_mode = true;
+	quote_not_closed = check_open_quotes(data, lex);
+	if (quote_not_closed)
+	{
+		stop_lexing(data, lex);
+		return ;
+	}
+	expand_double_quotes(data, lex);
 	lex->c = data->input[lex->i];
 	redirect_found = find_redirections(lex);
 	if (lex->c == SPACE || redirect_found == true || lex->c == '\0')

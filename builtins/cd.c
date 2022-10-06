@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:42:02 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/02 15:48:49 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:13:54 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	cd(t_data *data)
 	if (ret != 0)
 	{
 		built_error(PATH_ERROR, data->builtins->command[1]);
-		return (EXIT_FAILURE);
+		return (CMD_NOT_FOUND);
 	}
 	change_pwds(data);
 	return (EXIT_SUCCESS);

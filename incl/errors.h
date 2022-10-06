@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:43:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/04 14:31:44 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:10:07 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@
 # define EXEC_ERROR					13
 # define PATH_ERROR					14
 # define PERMISSION_ERROR			15
+
+# define CANT_EXEC_CMD				126
+# define CMD_NOT_FOUND				127
+# define INVALID_EXIT_ARG			128
+# define TERMINATED_BY_CTRL_C		130
 
 void	print_error(int error);
 void	print_token_error(int error, t_token *token);

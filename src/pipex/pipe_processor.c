@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/06 14:42:26 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:55:26 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void catch_exit_code(t_data *data)
 		g_exit_code = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
 		g_exit_code = 127;
-
 }
 
 static int create_fork(t_data *data)
