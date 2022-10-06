@@ -34,8 +34,6 @@ void	lex_input(t_data *data)
 	if (!data->input)
 		exit_with_free(data);
 	create_tokens(data, &lex);
-	if (data->lex_error == true)
-		return;
 	free(data->input);
 	data->input = NULL;
 }

@@ -107,3 +107,10 @@
 47	127	1665061169000000000	minishell	119621cc940a1218
 2	68	1665061487000000000	CMakeFiles/minishell.dir/src/executer/executer.c.o	6a5e167e03730a1a
 68	154	1665061487000000000	minishell	119621cc940a1218
+2	76	1665063722000000000	CMakeFiles/minishell.dir/main.c.o	f8b39df7ce17921b
+2	83	1665063722000000000	CMakeFiles/minishell.dir/src/lexer/lexer.c.o	a4775fa3a448c589
+3	106	1665063722000000000	CMakeFiles/minishell.dir/src/parser/redirecter/heredoc_creater.c.o	68df25beabe51f1f
+107	184	1665063723000000000	minishell	119621cc940a1218
+2	57	1665064080000000000	CMakeFiles/minishell.dir/src/lexer/single_quotes_handler.c.o	a860cca5124352f9
+2	62	1665064080000000000	CMakeFiles/minishell.dir/src/lexer/double_quotes_handler.c.o	b669e52253869e6c
+62	140	1665064080000000000	minishell	119621cc940a1218

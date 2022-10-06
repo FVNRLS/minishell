@@ -20,7 +20,10 @@ void	handle_double_quotes(t_data *data, t_lex *lex)
 	lex->double_quote_mode = true;
 	quote_not_closed = check_open_quotes(data, lex);
 	if (quote_not_closed)
+	{
 		stop_lexing(data, lex);
+		return ;
+	}
 	lex->flag = T_WORD;
 	lex->i++;
 	while (data->input[lex->i] != DOUBLE_QUOTE)
