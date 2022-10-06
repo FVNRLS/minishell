@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_printer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/04 14:34:28 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/06 11:58:28 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int	built_error(int error, char *s)
 		printf("minishell: %s: No such file or directory\n", s);
 	else if (error == UNSET_ERROR)
 		printf("minishell: unset: `%s': not a valid identifier\n", s);
+	else if (error == PERMISSION_ERROR)
+		printf("minishell: %s: Permission denied\n", s);
 	else if (error == UNSET_FLAG)
 	{
 		printf("minishell: unset: %s: invalid option\n", s);

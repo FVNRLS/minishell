@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:42:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/01 11:02:43 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/06 13:17:34 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	exec_last_builtin(t_data *data, int builtin)
 	data->builtins->funcs[builtin](data);
 }
 
-void	exec_transitory_cmd(t_data *data)
+void	redirect_transitory_cmd(t_data *data)
 {
 	close(data->pipe[0]);
 	if (data->fd->in != STDIN_FILENO)
@@ -101,7 +101,7 @@ void	exec_transitory_cmd(t_data *data)
 	close(data->pipe[1]);
 }
 
-void	exec_last_cmd(t_data *data)
+void	redirect_last_cmd(t_data *data)
 {
 	if (data->fd->in != STDIN_FILENO)
 	{

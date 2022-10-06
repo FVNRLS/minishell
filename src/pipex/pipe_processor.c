@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/01 11:04:15 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/06 14:42:26 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	pipe_transitory_cmd(t_data *data)
 
 	if (create_pipe(data) < 0)
 		return ;
-	if (data->exec->no_cmd == true)
+	if (data->exec->no_cmd == true || data->parse_error == true)
 	{
 		close(data->pipe[1]);
 		dup2(data->pipe[0], STDIN_FILENO);
@@ -80,13 +80,13 @@ void	pipe_transitory_cmd(t_data *data)
 	builtin = ft_get_builtin(data);
 	if (builtin >= 0)
 		exec_transitory_builtin(data, builtin);
-	else if (data->parse_error == false)
+	else
 	{
 		if (create_fork(data) < 0)
 			return ;
 		if (data->pid == 0)
 		{
-			exec_transitory_cmd(data);
+			redirect_transitory_cmd(data);
 			exec_bash_cmd(data);
 		}
 		catch_exit_code(data);
@@ -116,18 +116,18 @@ void	pipe_last_cmd(t_data *data)
 {
 	int	builtin;
 
-	if (data->exec->no_cmd == true)
+	if (data->exec->no_cmd == true || data->parse_error == true)
 		return ;
 	builtin = ft_get_builtin(data);
 	if (builtin >= 0)
 		exec_last_builtin(data, builtin);
-	else if (data->parse_error == false)
+	else
 	{
 		if (create_fork(data) < 0)
 			return ;
 		if (data->pid == 0)
 		{
-			exec_last_cmd(data);
+			redirect_last_cmd(data);
 			exec_bash_cmd(data);
 		}
 		catch_exit_code(data);

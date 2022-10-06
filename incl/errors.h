@@ -29,6 +29,7 @@
 # define UNSET_ERROR				12
 # define EXEC_ERROR					13
 # define PATH_ERROR					14
+# define PERMISSION_ERROR			15
 
 void	print_error(int error);
 void	print_token_error(int error, t_token *token);

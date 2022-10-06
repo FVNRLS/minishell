@@ -60,7 +60,7 @@ static void read_from_stdin(t_data *data, t_token *token)
 	lim_found = false;
 	while (lim_found == false)
 	{
-		ft_signals(1, data);
+//		ft_signals(1, data);
 		input = readline("> ");
 		if (!input)
 			break ;

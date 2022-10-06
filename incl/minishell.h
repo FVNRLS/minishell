@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/05 19:31:50 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/06 13:17:34 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ void	merge_words(t_data *data);
 void	merge_redirections(t_data *data);
 bool	check_redir(t_data *data, int flag);
 bool 	check_redir_syntax_error(t_data *data, t_token *token);
-void	check_fd_access(t_data *data, t_token *token);
-void	check_create_error(t_data *data, t_token *token);
+void	check_fd_open_error(t_data *data, t_token *token);
+void	check_fd_create_error(t_data *data, t_token *token);
 void	resolve_redirections(t_data *data);
 void	parse_hdocs(t_data *data);
 void	redirect_in(t_data *data, t_token *token);
@@ -121,15 +121,14 @@ char	*get_cmd_path(t_data *data);
 char	**get_cmd(t_data *data, t_token *token);
 char	**extract_cmd_from_path(t_token *token);
 void	execute_tokens(t_data *data);
-void	extract_cmd_and_path(t_data *data, t_token *token);
 
 //PIPEX
 void	pipe_transitory_cmd(t_data *data);
 void	pipe_last_cmd(t_data *data);
 void	exec_transitory_builtin(t_data *data, int builtin);
 void	exec_last_builtin(t_data *data, int builtin);
-void	exec_transitory_cmd(t_data *data);
-void	exec_last_cmd(t_data *data);
+void	redirect_transitory_cmd(t_data *data);
+void	redirect_last_cmd(t_data *data);
 void 	exec_bash_cmd(t_data *data);
 
 //SIGNALS
