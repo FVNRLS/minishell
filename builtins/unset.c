@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/04 14:40:58 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/07 21:12:48 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,17 @@ static void	dl_node(t_data **data, t_envp *node)
 	t_envp	*tmp;
 
 	tmp = (*data)->envp;
-	while (tmp)
+	if (ft_strcmp(tmp->key, node->key) == 0)
 	{
-		if (tmp->next && tmp->next->key == node->key)
+		(*data)->envp = tmp->next;
+		free(node->val);
+		free(node->key);
+		free(node);
+		return ;
+	}
+	while (tmp->next)
+	{
+		if ((ft_strcmp(tmp->next->key, node->key) == 0))
 		{
 			tmp->next = tmp->next->next;
 			free(node->key);

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/01 15:46:36 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:45:49 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 # define NUM_BUILTINS		7
 # define NUM_REDIRECTIONS	4
-# define RIGHTS				0644
 
 typedef struct s_token //linked tokens
 {
@@ -32,6 +31,7 @@ typedef struct s_envp
 {
 	char 			*key; //eg. name of the variable
 	char 			*val; //eg. path or value of the variable
+	bool			equal;
 	struct s_envp	*next;
 }		t_envp;
 

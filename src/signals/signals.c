@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 17:10:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/05 17:10:32 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/07 20:25:45 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ static void	ctrl_c(int sig_num)
 	rl_replace_line("", 0);
 }
 
+static void catch_backslash(int sig_num)
+{
+	(void)sig_num;
+	ioctl(STDIN_FILENO, TIOCSTI, "");
+	rl_on_new_line();
+	rl_replace_line("", 0);
+}
+
 // we can share values between pid's here
 static int	catch_herd(int sig_num) 
 {
@@ -47,29 +55,19 @@ static int	catch_herd(int sig_num)
 	return (-1);
 }
 
-static void	handler(int sig)
+void	ft_signals(int flag)
 {
-	(void)sig;
-
-	//printf("handler got the message:%i\n", sig);
-	return ;
-}
-
-int	ft_signals(int flag, t_data *data)
-{
-	signal(SIGUSR1, handler);
-	if (flag == 0)
+	if (flag == MAIN_PROCESS)
 	{
-		signal(SIGINT, ctrl_c);
-		return (0);
+		signal(SIGINT, &ctrl_c);
+		signal(SIGQUIT, (void *)catch_backslash);
 	}
-	if (flag == 1)
+	else if (flag == CHILD_PROCESS)
 	{
-		
-		signal(SIGINT, catch_herd);
+		signal(SIGINT, &ctrl_c);
+		signal(SIGQUIT, &catch_backslash);
+		signal(SIGINT, (void *)catch_herd); //TODO: check if void *
 		if (catch_herd(99) == 42)
-			exit(1);
-		return (2);
+			exit(TERMINATED_BY_CTRL_C);
 	}
-	return (0);
 }

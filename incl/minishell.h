@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/06 13:17:34 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:59:19 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@
 # define T_APPEND			4 // file >>
 # define T_HEREDOC			5 // << file
 # define T_PIPE				6 // |
+
+# define CHILD_PROCESS		0
+# define MAIN_PROCESS		1
+# define RIGHTS				0644
 
 int		g_exit_code;
 
@@ -132,7 +136,7 @@ void	redirect_last_cmd(t_data *data);
 void 	exec_bash_cmd(t_data *data);
 
 //SIGNALS
-int		ft_signals(int flag, t_data *data);
+void	ft_signals(int flag);
 
 //TODO: delete before submission!
 void	print_tokens(t_data *data);

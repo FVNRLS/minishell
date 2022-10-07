@@ -96,6 +96,7 @@ void	init_envp(t_data *data, char **env)
 			free_envp(data);
 			exit(EXIT_FAILURE);
 		}
+		tmp->equal = true;
 		ft_add_envp_back(&data->envp, tmp);
 		i++;
 	}

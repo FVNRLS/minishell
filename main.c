@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/07 18:26:50 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/07 20:33:11 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	main(int argc, char **argv, char **env)
 	init_shell_env(&data, env);
 	while (data.exit_minishell == false)
 	{
-		ft_signals(0, &data);
+		ft_signals(MAIN_PROCESS);
 		track_history(&data);
 		lex_input(&data);
-		print_tokens(&data);
+//		print_tokens(&data);
 		if (data.lex_error == false)
 		{
 			parse_tokens(&data);
