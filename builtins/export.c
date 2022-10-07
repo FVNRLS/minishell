@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/04 15:08:25 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:02:56 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,14 @@ static void	make_envp(char *s, t_data **data, int plus)
 	new = ft_getenvp(*data, key);
 	val = make_val(s, i, plus);
 	if (new != NULL)
+	{
+		new->equal = ft_haschar(s, '=');
 		old_key(new, val, key, plus);
+	}
 	else
 	{
 		new = ft_new_envp(key, val);
+		new->equal = ft_haschar(s, '=');
 		ft_add_envp_back(&list, new);
 	}
 }

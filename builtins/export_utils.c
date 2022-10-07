@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:12:51 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/04 15:02:16 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/07 17:33:04 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	true_env(t_data *data)
 		{
 			if (ft_strlen(tmp->val) != 0)
 				printf("1declare -x %s=\"%s\"\n", tmp->key, tmp->val);
-			else
+			else if (tmp->equal == false)
+				printf("declare -x %s\n", tmp->key);
+			else if (tmp->equal == true)
 				printf("declare -x %s=\"\"\n", tmp->key);
 		}
 		tmp = tmp->next;
