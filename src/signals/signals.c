@@ -57,9 +57,6 @@ static void	handler(int sig)
 
 int	ft_signals(int flag, t_data *data)
 {
-	t_envp	*tmp;
-
-	tmp = ft_getenvp(data, "?_PID");
 	signal(SIGUSR1, handler);
 	if (flag == 0)
 	{
@@ -71,10 +68,7 @@ int	ft_signals(int flag, t_data *data)
 		
 		signal(SIGINT, catch_herd);
 		if (catch_herd(99) == 42)
-		{
-			kill(ft_atoi(tmp->val), SIGUSR1);
 			exit(1);
-		}
 		return (2);
 	}
 	return (0);

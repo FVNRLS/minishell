@@ -22,7 +22,7 @@ int	pwd(void)
 	if (!path)
 	{
 		perror(NULL);
-		return (1);
+		return (EXEC_ERROR);
 	}
 	printf("path = %s\n", path);
 	free(path);

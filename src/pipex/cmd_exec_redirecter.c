@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:42:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/06 13:17:34 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:02:07 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void exec_bash_cmd(t_data *data)
 	if (execve(data->exec->path, data->exec->cmd, data->env) < 0)
 	{
 		built_error(EXEC_ERROR, data->exec->cmd[0]);
-		exit(EXIT_FAILURE);
+		exit(EXEC_ERROR);
 	}
 	exit(EXIT_SUCCESS);
 }
@@ -46,7 +46,7 @@ void	exec_transitory_builtin(t_data *data, int builtin)
 	else
 		dup2(data->pipe[1], STDOUT_FILENO);
 	dup2(data->pipe[0], STDIN_FILENO);
-	data->builtins->funcs[builtin](data);
+	g_exit_code = data->builtins->funcs[builtin](data);
 	close(data->pipe[1]);
 	close(data->pipe[0]);
 	dup2(data->fd->std_out, STDOUT_FILENO);
@@ -72,7 +72,7 @@ void	exec_last_builtin(t_data *data, int builtin)
 		}
 		close(data->fd->out);
 	}
-	data->builtins->funcs[builtin](data);
+	g_exit_code = data->builtins->funcs[builtin](data);
 }
 
 void	redirect_transitory_cmd(t_data *data)

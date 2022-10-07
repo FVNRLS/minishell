@@ -42,6 +42,7 @@ add_executable(minishell main.c
         src/tools/ft_get_num_cmds.c
         src/tools/ft_isalpha.c
         src/tools/ft_check_plus.c
+        src/tools/ft_atoi.c
 
 
         #BUILTINS:

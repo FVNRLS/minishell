@@ -78,14 +78,6 @@ static void	get_envp(t_data *data, char *str, char **key, char **val)
 	}
 }
 
-static void	get_pid(t_data *data)
-{
-	t_envp 	*tmp;
-
-	tmp = ft_new_envp(ft_strdup("?_PID"), ft_itoa((int)getpid()));
-	ft_add_envp_back(&data->envp, tmp);
-}
-
 void	init_envp(t_data *data, char **env)
 {
 	t_envp 	*tmp;
@@ -95,7 +87,6 @@ void	init_envp(t_data *data, char **env)
 
 	tmp = NULL;
 	i= 0;
-	get_pid(data);
 	while (env[i] != NULL)
 	{
 		get_envp(data, env[i], &key, &val);

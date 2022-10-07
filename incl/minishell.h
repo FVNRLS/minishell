@@ -53,7 +53,7 @@
 # define T_HEREDOC			5 // << file
 # define T_PIPE				6 // |
 
-static int 	g_exit_code = 0;
+int		g_exit_code;
 
 //INITIALIZER:
 void	init_shell_env(t_data *data, char **envp);

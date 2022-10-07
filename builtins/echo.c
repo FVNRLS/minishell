@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:27:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/06 17:10:07 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:30:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,5 @@ int	echo(t_data *data)
 		printf("%s", (data->tokens->content + i));
 	if (!flag)
 		printf("\n");
-	return (EXIT_SUCCESS);
+	return (g_exit_code);
 }

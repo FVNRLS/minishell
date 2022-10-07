@@ -27,11 +27,10 @@
 # define EXPORT_FLAG				10
 # define UNSET_FLAG					11
 # define UNSET_ERROR				12
-# define EXEC_ERROR					13
-# define PATH_ERROR					14
-# define PERMISSION_ERROR			15
+# define PATH_ERROR					13
+# define PERMISSION_ERROR			14
 
-# define CANT_EXEC_CMD				126
+# define EXEC_ERROR					126
 # define CMD_NOT_FOUND				127
 # define INVALID_EXIT_ARG			128
 # define TERMINATED_BY_CTRL_C		130

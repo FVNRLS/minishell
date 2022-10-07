@@ -6,16 +6,11 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/06 17:37:36 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:26:50 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./incl/minishell.h"
-
-void	check_leaks(void)
-{
-	system("leaks minishell");
-}
 
 int	main(int argc, char **argv, char **env)
 {
@@ -36,7 +31,6 @@ int	main(int argc, char **argv, char **env)
 				execute_tokens(&data);
 		}
 		free_tokens(&data);
-//		check_leaks();
 	}
 	free_all_ressources(&data);
 	return (g_exit_code);
