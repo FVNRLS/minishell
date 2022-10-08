@@ -39,7 +39,6 @@ static void catch_backslash(int sig_num)
 	rl_replace_line("", 0);
 }
 
-// we can share values between pid's here
 static int	catch_herd(int sig_num) 
 {
 	static int save;
