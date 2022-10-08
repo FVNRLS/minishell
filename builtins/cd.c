@@ -42,7 +42,7 @@ static int	pwd_switch(t_data *data, char *s)
 	tmp = ft_getenvp(data, "OLDPWD");
 	if (ft_strlen(tmp->val) == 0)
 	{
-		print_error(OLDPWD);
+		print_error(OLDPWD_ERROR);
 		return (0);
 	}
 	else

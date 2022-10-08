@@ -23,12 +23,11 @@
 # define EXIT_ARG_ERROR				6
 # define INVALID_PATH				7
 # define EXPORT_ERROR				8
-# define EXPORT_FLAG				9
-# define UNSET_FLAG					10
-# define UNSET_ERROR				11
-# define PATH_ERROR					12
-# define PERMISSION_ERROR			13
-# define EXEC_ERROR					14
+# define OLDPWD_ERROR				9
+# define UNSET_ERROR				10
+# define PATH_ERROR					11
+# define PERMISSION_ERROR			12
+# define EXEC_ERROR					13
 
 # define CMD_NOT_FOUND				127
 # define INVALID_EXIT_ARG			128
