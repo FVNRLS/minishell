@@ -6,12 +6,11 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 15:07:45 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 18:42:15 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 19:28:50 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
-
 
 void	track_history(t_data *data)
 {

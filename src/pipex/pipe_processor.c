@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 16:43:56 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:45:36 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void	pipe_last_cmd(t_data *data)
 		exec_last_builtin(data, builtin);
 	else
 	{
+		signal(SIGINT, SIG_IGN);
 		if (create_fork(data) < 0)
 			return ;
 		if (data->pid == 0)

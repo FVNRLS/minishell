@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/06 11:58:28 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 18:53:31 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	print_error(int error)
 		printf("minishell: exit: too many arguments\n");
 	else if (error == INVALID_PATH)
 		printf("minishell: Invalid file or directory:");
+	else if (error == OLDPWD_ERROR)
+		printf("minishell: cd: OLDPWD not set\n");
 }
 
 void	print_token_error(int error, t_token *token)
