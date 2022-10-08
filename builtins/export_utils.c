@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:12:51 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/07 17:33:04 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:16:12 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,42 +22,13 @@ void	true_env(t_data *data)
 		if (tmp->key[0])
 		{
 			if (ft_strlen(tmp->val) != 0)
-				printf("1declare -x %s=\"%s\"\n", tmp->key, tmp->val);
+				printf("declare -x %s=\"%s\"\n", tmp->key, tmp->val);
 			else if (tmp->equal == false)
 				printf("declare -x %s\n", tmp->key);
 			else if (tmp->equal == true)
 				printf("declare -x %s=\"\"\n", tmp->key);
 		}
 		tmp = tmp->next;
-	}
-}
-
-void	check_keys(char **s)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (s[i] && i < ft_splitlen(s))
-	{
-		j = 0;
-		if (!ft_isalpha(s[i][j]) && s[i][j] != '_')
-			built_error(EXPORT_ERROR, s[i]);
-		while (s[i] != NULL && s[i][j + 1])
-		{
-			j++;
-			if (s[i][j] == '=' || (s[i][j] == '+' \
-			&& j < (int)ft_strlen(s[i]) && s[i][j + 1] == '='))
-				break ;
-			if (!ft_isalpha(s[i][j]) && !ft_isdigit((int)s[i][j]) \
-			&& s[i][j] != '_')
-			{
-				built_error(EXPORT_ERROR, s[i]);
-				break ;
-			}
-		}
-		i++;
 	}
 }
 
@@ -90,7 +61,8 @@ static int	true_key(char *s)
 		if ((s[i] == '=' && i != 0) || (s[i] == '+' \
 		&& s[i + 1] && s[i + 1] == '=' && i != 0))
 			return (1);
-		else if (!ft_isalpha(s[i]) && !ft_isdigit(s[i]) && s[i] != '_' && i != 0)
+		else if (!ft_isalpha(s[i]) && !ft_isdigit(s[i]) \
+		&& s[i] != '_' && i != 0)
 			return (0);
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:28:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/07 18:09:18 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:18:11 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_exit_args(t_data *data)
 
 int	mini_exit(t_data *data)
 {
-	int ret;
+	int	ret;
 
 	ret = check_exit_args(data);
 	if (ret != EXIT_ERROR)

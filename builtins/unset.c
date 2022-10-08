@@ -3,37 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/07 21:12:48 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:02:00 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
-
-bool	flag_check(char *s, int mode)
-{
-	int	i;
-	char tmp[2];
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == '-' && s[i + 1] && ft_isprint(s[i + 1]))
-		{
-			tmp[0] = s[i];
-			tmp[1] = s[i + 1];
-			if (mode == 1)
-				built_error(UNSET_FLAG, tmp);
-			else
-				built_error(EXPORT_FLAG, tmp);
-			return (true);
-		}
-		i++;
-	}
-	return (false);
-}
 
 static void	dl_node(t_data **data, t_envp *node)
 {
@@ -62,18 +39,71 @@ static void	dl_node(t_data **data, t_envp *node)
 	}
 }
 
+static void	check_keys_help(char **s, int *i, int *j, int mode)
+{
+	while (s[(*i)] != NULL && s[(*i)][(*j)] && s[(*i)][(*j) + 1])
+	{
+		(*j)++;
+		if (s[*i][*j] == '=' || (s[*i][*j] == '+' \
+		&& *j < (int)ft_strlen(s[*i]) && s[*i][(*j) + 1] == '='))
+			break ;
+		if (!ft_isalpha(s[*i][*j]) && !ft_isdigit((int)s[*i][*j]) \
+		&& s[*i][*j] != '_')
+		{
+			built_error(mode, s[*i]);
+			break ;
+		}
+	}
+}
+
+void	check_keys(char **s, int mode)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (s[i] && i < ft_splitlen(s))
+	{
+		j = 0;
+		if (!ft_isalpha(s[i][j]) && s[i][j] != '_')
+			built_error(mode, s[i]);
+		else
+			check_keys_help(s, &i, &j, mode);
+		i++;
+	}
+}
+
+static int	check_unset(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (!ft_isalpha(s[i]) && s[i] != '_')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	unset(t_data *data)
 {
 	t_envp	*tmp;
 	int		i;
 
 	i = 1;
-	tmp = NULL;
-	if (!data->builtins->command[i] || flag_check(data->builtins->command[i], 1))
+	if (!data->builtins->command[i])
 		return (EXIT_SUCCESS);
+	check_keys(data->builtins->command, UNSET_ERROR);
 	while (data->builtins->command[i])
 	{
-		tmp = ft_getenvp(data, data->builtins->command[i]);
+		tmp = NULL;
+		if (check_unset(data->builtins->command[i]))
+			built_error(UNSET_ERROR, data->builtins->command[i]);
+		else
+			tmp = ft_getenvp(data, data->builtins->command[i]);
 		if (tmp != NULL)
 			dl_node(&data, tmp);
 		i++;

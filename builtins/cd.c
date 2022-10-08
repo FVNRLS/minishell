@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:42:02 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/06 17:13:54 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:50:12 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-void	change_pwds(t_data *data)
+static void	change_pwds(t_data *data)
 {
 	t_envp	*old;
 	t_envp	*pwd;
@@ -33,19 +33,67 @@ void	change_pwds(t_data *data)
 	pwd->val = pwd_path;
 }
 
+static int	pwd_switch(t_data *data, char *s)
+{
+	t_envp	*tmp;
+
+	if (s[1] != '\0')
+		return (-1);
+	tmp = ft_getenvp(data, "OLDPWD");
+	if (ft_strlen(tmp->val) == 0)
+	{
+		print_error(OLDPWD);
+		return (0);
+	}
+	else
+		chdir(tmp->val);
+	return (0);
+}
+
+static int	home_path(char **s, t_data *data)
+{
+	char	*path;
+	char	*ret;
+	t_envp	*tmp;
+	int		j;
+	int		res;
+
+	if (s[1][0] == '-')
+		return (pwd_switch(data, s[1]));
+	res = 0;
+	j = 1;
+	path = malloc(sizeof(char) * (ft_strlen(s[1] + 1)));
+	tmp = ft_getenvp(data, "HOME");
+	while (s[1][j])
+	{
+		path[j - 1] = s[1][j];
+		j++;
+	}
+	path[j - 1] = '\0';
+	ret = ft_strjoin(ft_strdup(tmp->val), path);
+	free(path);
+	res = chdir(ret);
+	free(ret);
+	return (res);
+}
+
 int	cd(t_data *data)
 {
 	int		ret;
 	t_envp	*tmp;
 
 	tmp = NULL;
+	ret = 0;
 	if (!data->builtins->command[1])
 	{
 		tmp = ft_getenvp(data, "HOME");
 		ret = chdir(tmp->val);
-		return (ret);
 	}
-	ret = chdir(data->builtins->command[1]);
+	else if (data->builtins->command[1][0] == '~' || \
+	data->builtins->command[1][0] == '-')
+		ret = home_path(data->builtins->command, data);
+	else
+		ret = chdir(data->builtins->command[1]);
 	if (ret != 0)
 	{
 		built_error(PATH_ERROR, data->builtins->command[1]);

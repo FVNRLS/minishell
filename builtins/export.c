@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/07 18:02:56 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/08 14:38:00 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,11 @@ int	export(t_data *data)
 	int	i;
 
 	i = 0;
-	if (data->builtins->command[1] \
-	&& flag_check(data->builtins->command[1], 2))
-		return (EXIT_FAILURE);
 	if (check_string(&data, &i))
 		true_env(data);
 	if (i == 0)
 		return (EXIT_FAILURE);
-	check_keys(data->builtins->command);
+	check_keys(data->builtins->command, EXPORT_ERROR);
 	key_export(&data);
 	return (EXIT_SUCCESS);
 }
