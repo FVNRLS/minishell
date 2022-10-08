@@ -77,15 +77,5 @@ int	built_error(int error, char *s)
 		printf("minishell: unset: `%s': not a valid identifier\n", s);
 	else if (error == PERMISSION_ERROR)
 		printf("minishell: %s: Permission denied\n", s);
-	else if (error == UNSET_FLAG)
-	{
-		printf("minishell: unset: %s: invalid option\n", s);
-		printf("unset: usage: unset [-f] [-v] [-n] [name ...]\n");
-	}
-	else if (error == EXPORT_FLAG)
-	{
-		printf("minishell: export: %s: invalid option\n", s);
-		printf("export: usage: export [-f] [-v] [-n] [name ...]\n");
-	}
 	return (1);
 }
