@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_tracker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 15:07:45 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/06 14:35:08 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 17:07:45 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,7 @@
 void	track_history(t_data *data)
 {
 	data->input = readline("minishell % ");
+	if (data->input == NULL)
+		printf("exit\n");
 	add_history(data->input);
 }
