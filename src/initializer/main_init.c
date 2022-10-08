@@ -6,11 +6,29 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 10:40:04 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:15:14 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
+
+static void reset_old_pwd(t_data *data)
+{
+	t_envp	*tmp;
+
+	tmp = data->envp;
+	while (tmp != NULL)
+	{
+		if (ft_strcmp(tmp->key, "OLDPWD") == 0)
+			break ;
+		tmp = tmp->next;
+	}
+	if (tmp != NULL && ft_strcmp(tmp->key, "OLDPWD") == 0)
+	{
+		free(tmp->val);
+		tmp->val = ft_strdup("");
+	}
+}
 
 static void	init_flags(t_data *data)
 {
@@ -44,4 +62,5 @@ void	init_shell_env(t_data *data, char **envp)
 	init_data_containers(data);
 	data->env = envp;
 	init_envp(data, envp);
+	reset_old_pwd(data);
 }

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 13:43:45 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:46:51 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ void	execute_tokens(t_data *data)
 		ft_del_first_token(&data);
 		close_fds_in_out(data);
 	}
+	catch_exit_code(data);
 	destroy_hdocs(data);
 }

@@ -6,14 +6,14 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 11:07:40 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 15:46:51 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
 //TODO: edit and check the global! also for WIFSIGNALED
-static void catch_exit_code(t_data *data)
+void catch_exit_code(t_data *data)
 {
 	int	status;
 
@@ -88,7 +88,6 @@ void	pipe_transitory_cmd(t_data *data)
 			redirect_transitory_cmd(data);
 			exec_bash_cmd(data);
 		}
-		catch_exit_code(data);
 		close(data->pipe[1]);
 		dup2(data->pipe[0], STDIN_FILENO);
 		close(data->pipe[0]);
@@ -129,7 +128,6 @@ void	pipe_last_cmd(t_data *data)
 			redirect_last_cmd(data);
 			exec_bash_cmd(data);
 		}
-		catch_exit_code(data);
 	}
 	dup2(data->fd->std_in, STDIN_FILENO);
 	dup2(data->fd->std_out, STDOUT_FILENO);
