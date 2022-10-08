@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 11:19:34 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 12:40:28 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,6 @@ static void	extract_cmd_and_path(t_data *data, t_token *token)
 static void	exec_cmd(t_data *data, t_token *token)
 {
 	extract_cmd_and_path(data, token);
-	if (data->exec_error == true)
-	{
-		built_error(EXEC_ERROR, data->exec->cmd[0]);
-		g_exit_code = CMD_NOT_FOUND;
-		free_cmd_and_path(data);
-		return ;
-	}
 	if (data->exec->cmd_num < data->exec->last_cmd)
 		pipe_transitory_cmd(data);
 	else if (data->exec->cmd_num == data->exec->last_cmd)

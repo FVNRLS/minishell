@@ -95,6 +95,7 @@ char	*get_cmd_path(t_data *data)
 	valid_paths = get_valid_paths(data);
 	if (!valid_paths)
 	{
+		perror(NULL);
 		data->exec_error = true;
 		return (NULL);
 	}

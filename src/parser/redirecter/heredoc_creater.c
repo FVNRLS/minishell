@@ -6,29 +6,11 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/07 18:59:19 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 12:56:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incl/minishell.h"
-
-static int count_hdoc_files(t_data *data)
-{
-	t_token	*tmp;
-	int 	i;
-
-	tmp = data->tokens;
-	if (!tmp)
-		return (0);
-	i = 0;
-	while (tmp != NULL)
-	{
-		if (tmp->flag == T_HEREDOC)
-			i++;
-		tmp = tmp->next;
-	}
-	return (i);
-}
 
 static void	create_hdoc(t_data *data)
 {
@@ -102,20 +84,10 @@ static void	read_to_hdoc(t_data *data, t_token *token)
 		}
 	}
 }
-
 void	parse_hdocs(t_data *data)
 {
 	t_token	*tmp;
-	int 	cnt;
 
-	cnt = count_hdoc_files(data);
-	if (cnt == 0)
-		return;
-	else
-	{
-		data->fd->hdoc = malloc(sizeof(char *) * (cnt + 1));
-		data->fd->hdoc[cnt] = NULL;
-	}
 	tmp = data->tokens;
 	while (tmp != NULL)
 	{
@@ -126,6 +98,7 @@ void	parse_hdocs(t_data *data)
 			if (data->parse_error == true)
 			{
 				destroy_hdocs(data);
+				g_exit_code = PIPE_SYNTAX_ERROR;
 				return ;
 			}
 			close(data->fd->in);

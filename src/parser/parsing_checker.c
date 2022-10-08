@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:29:31 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/06 12:10:52 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 12:52:00 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	check_multiple_pipes(t_data *data)
 			{
 				print_token_error(PIPE_SYNTAX_ERROR, tmp);
 				data->parse_error = true;
+				g_exit_code = PIPE_SYNTAX_ERROR;
 				return ;
 			}
 		}
@@ -74,6 +75,7 @@ bool 	check_redir_syntax_error(t_data *data, t_token *token)
 	if (token->next == NULL || token->next->flag != T_WORD)
 	{
 		print_token_error(REDIR_SYNTAX_ERROR, token);
+		g_exit_code = PIPE_SYNTAX_ERROR;
 		data->parse_error = true;
 		return (true);
 	}

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:42:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 11:22:28 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 12:40:28 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,18 @@
 //TODO: refactor built error name
 void exec_bash_cmd(t_data *data)
 {
-	if (execve(data->exec->path, data->exec->cmd, data->env) < 0)
+	if (data->exec_error == true)
 	{
-		perror(NULL);
-		exit(EXEC_ERROR);
+		built_error(EXEC_ERROR, data->exec->cmd[0]);
+		exit(CMD_NOT_FOUND);
+	}
+	else
+	{
+		if (execve(data->exec->path, data->exec->cmd, data->env) < 0)
+		{
+			perror(NULL);
+			exit(EXEC_ERROR);
+		}
 	}
 	exit(EXIT_SUCCESS);
 }
