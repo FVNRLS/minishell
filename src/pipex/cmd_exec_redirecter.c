@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:42:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 12:40:28 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:48:04 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	exec_transitory_builtin(t_data *data, int builtin)
 	}
 	else
 		dup2(data->pipe[1], STDOUT_FILENO);
-	dup2(data->pipe[0], STDIN_FILENO);
 	g_exit_code = data->builtins->funcs[builtin](data);
+	dup2(data->pipe[0], STDIN_FILENO);
 	close(data->pipe[1]);
 	close(data->pipe[0]);
 	dup2(data->fd->std_out, STDOUT_FILENO);

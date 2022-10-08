@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 17:10:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/07 20:25:45 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:58:39 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ static void catch_backslash(int sig_num)
 	rl_replace_line("", 0);
 }
 
-// we can share values between pid's here
-static int	catch_herd(int sig_num) 
+static int	catch_herd(int sig_num)
 {
 	static int save;
 
