@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:34:00 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 11:16:52 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 13:43:45 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,30 +118,27 @@ char	**get_cmd(t_data *data, t_token *token)
 	return (cmd);
 }
 
- char	**extract_cmd_from_path(t_token *token)
- {
-	 char	**cmd;
-	 char 	*last;
+char	**extract_cmd_from_path(t_data *data, t_token *token)
+{
+	 char	**input;
+	 char 	**path;
+	 char 	*cmd;
 
-	 cmd = ft_split(token->content, SLASH);
-	 if (!cmd)
-	 {
-		 perror(NULL);
-		 return (NULL);
-	 }
-	 last = ft_strdup(cmd[ft_splitlen(cmd) - 1]);
-	 if (!last)
-	 {
-		 perror(NULL);
-		 return (NULL);
-	 }
-	 ft_cleansplit(cmd);
-	 cmd = ft_split(last, SPACE);
-	 if (!cmd)
-	 {
-		 perror(NULL);
-		 return (NULL);
-	 }
-	 free(last);
-	 return (cmd);
- }
+	input = ft_split(token->content, SPACE);
+	if (!input)
+		return (NULL);
+	path = ft_split(input[0], SLASH);
+	if (!path)
+		return (NULL);
+	data->exec->path = ft_strdup(input[0]);
+	if (!data->exec->path)
+		return (NULL);
+	cmd = ft_strdup(path[ft_splitlen(path) - 1]);
+	if (!cmd)
+		return (NULL);
+	ft_cleansplit(path);
+	path = NULL;
+	free(input[0]);
+	input[0] = cmd;
+	return (input);
+}

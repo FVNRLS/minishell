@@ -25,7 +25,7 @@ void exec_bash_cmd(t_data *data)
 		if (execve(data->exec->path, data->exec->cmd, data->env) < 0)
 		{
 			perror(NULL);
-			exit(EXEC_ERROR);
+			exit(CMD_NOT_FOUND);
 		}
 	}
 	exit(EXIT_SUCCESS);

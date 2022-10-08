@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 10:35:52 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 10:40:04 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void 	close_fds_in_out(t_data *data);
 //EXECUTER
 char	*get_cmd_path(t_data *data);
 char	**get_cmd(t_data *data, t_token *token);
-char	**extract_cmd_from_path(t_token *token);
+char	**extract_cmd_from_path(t_data *data, t_token *token);
 void	execute_tokens(t_data *data);
 
 //PIPEX

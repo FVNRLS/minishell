@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 12:40:28 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 13:43:45 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,12 @@ static void	extract_cmd_and_path(t_data *data, t_token *token)
 		return ;
 	if (token->content[0] == '.' || token->content[0] == SLASH)
 	{
-		data->exec->cmd = extract_cmd_from_path(token);
-		if (!data->exec->cmd)
+		data->exec->cmd = extract_cmd_from_path(data, token);
+		if (!data->exec->cmd || !data->exec->path)
 		{
 			data->exec_error = true;
 			return ;
 		}
-		data->exec->path = ft_strdup(token->content);
-		if (!data->exec->path)
-			data->exec_error = true;
 	}
 	else
 	{
