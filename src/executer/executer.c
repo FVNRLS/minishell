@@ -82,7 +82,6 @@ void	execute_tokens(t_data *data)
 			exec_cmd(data, data->tokens);
 			data->exec->cmd_num++;
 		}
-//		else if (data->tokens->flag == T_PIPE)
 		ft_del_first_token(&data);
 		close_fds_in_out(data);
 	}

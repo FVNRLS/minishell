@@ -22,6 +22,8 @@ SRC 		= 	main.c 								\
 				src/initializer/main_init.c			\
 				src/initializer/envp_init.c			\
 				src/initializer/builtins_init.c		\
+				src/initializer/fd_init.c 			\
+				src/initializer/data_containers_init.c \
 				src/destructor.c					\
 				builtins/env.c						\
 				builtins/cd.c						\

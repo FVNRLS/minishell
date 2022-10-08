@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/01 15:46:36 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 10:40:04 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,85 +20,12 @@ static void	init_flags(t_data *data)
 	data->exec_error = false;
 }
 
-static void	init_containers(t_data *data)
-{
-	data->input = NULL;
-	data->redir = NULL;
-	data->sep = NULL;
-	data->envp = NULL;
-	data->tokens = NULL;
-}
-
-static void init_redirections(t_data *data)
-{
-	data->redir = malloc(sizeof(int) * 4);
-	if (!data->redir)
-		exit(EXIT_FAILURE);
-	data->redir[0] = T_REDIRECT_IN;
-	data->redir[1] = T_REDIRECT_OUT;
-	data->redir[2] = T_HEREDOC;
-	data->redir[3] = T_APPEND;
-
-}
-
 void	init_exec(t_data *data)
 {
 	data->exec->cmd = NULL;
 	data->exec->path = NULL;
 	data->exec->cmd_num = 1;
 	data->exec->last_cmd = 0;
-}
-
-void	init_fd(t_data *data)
-{
-	data->fd->hdoc = NULL;
-	data->fd->in = STDIN_FILENO;
-	data->fd->out = STDOUT_FILENO;
-	data->fd->hdoc_index = 0;
-}
-
-static void	init_separators(t_data *data)
-{
-	data->sep = malloc(sizeof(char) * 8);
-	if (!data->sep)
-	{
-		free(data->redir);
-		data->redir = NULL;
-		exit(EXIT_FAILURE);
-	}
-	data->sep[0] = SPACE;
-	data->sep[1] = SINGLE_QUOTE;
-	data->sep[2] = DOUBLE_QUOTE;
-	data->sep[3] = REDIRECT_IN;
-	data->sep[4] = REDIRECT_OUT;
-	data->sep[5] = PIPE;
-	data->sep[6] = DOLLAR;
-	data->sep[7] = '\0';
-}
-
-//init builtin names and connect them to the builtin functions
-static void	init_builtins(t_data *data)
-{
-	init_builtin_names(data);
-	init_builtin_functions(data);
-	data->builtins->command = NULL;
-}
-
-void 	dup_stdin_and_stdout(t_data *data)
-{
-	init_fd(data);
-	data->fd->std_in = dup(STDIN_FILENO);
-	if (!data->fd->std_in)
-	{
-		free(data->fd);
-		exit(EXIT_FAILURE);
-	}
-	data->fd->std_out = dup(STDOUT_FILENO);
-	if (!data->fd->std_out)
-	{
-		free(data->fd);
-		exit(EXIT_FAILURE);
-	}
 }
 
 void	init_shell_env(t_data *data, char **envp)
@@ -110,14 +37,11 @@ void	init_shell_env(t_data *data, char **envp)
 	if (!data->fd)
 		return;
 	init_fd(data);
-	dup_stdin_and_stdout(data); //modified
+	dup_stdin_and_stdout(data);
 	data->exec = malloc(sizeof(t_exec));
 	init_exec(data);
 	init_flags(data);
-	init_containers(data);
-	init_redirections(data);
-	init_separators(data);
+	init_data_containers(data);
 	data->env = envp;
 	init_envp(data, envp);
-	init_builtins(data);
 }

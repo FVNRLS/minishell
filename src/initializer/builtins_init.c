@@ -48,7 +48,6 @@ void	init_builtin_names(t_data *data)
 	}
 }
 
-//TODO: INiT LATER when Julian is finished with the builtins!
 //call like this: data->builtins->funcs[5](data);
 void	init_builtin_functions(t_data *data)
 {

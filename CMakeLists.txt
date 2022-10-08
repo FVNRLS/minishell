@@ -11,6 +11,8 @@ add_executable(minishell main.c
         src/initializer/envp_init.c
         src/initializer/builtins_init.c
         src/destructor.c
+        src/initializer/fd_init.c
+        src/initializer/data_containers_init.c
 
         #TOOLS:
         src/tools/ft_calloc.c
@@ -93,7 +95,7 @@ add_executable(minishell main.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-        )
+       )
 
 target_link_libraries(minishell edit)
 

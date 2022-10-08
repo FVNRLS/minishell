@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/07 18:59:19 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 10:35:52 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	init_builtin_names(t_data *data);
 void	init_builtin_functions(t_data *data);
 void 	init_fd(t_data *data);
 void	init_exec(t_data *data);
+void	init_data_containers(t_data *data);
+void 	dup_stdin_and_stdout(t_data *data);
 
 
 //DESTRUCTOR:

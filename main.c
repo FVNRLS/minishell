@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/07 20:33:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 10:29:08 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	main(int argc, char **argv, char **env)
 {
-	t_data 	data;
+	t_data	data;
+
 	(void) argc;
 	(void) argv;
 	init_shell_env(&data, env);
