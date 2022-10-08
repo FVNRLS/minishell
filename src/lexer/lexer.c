@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 18:32:05 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/28 15:28:58 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 11:56:02 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,6 @@ void	lex_input(t_data *data)
 	create_tokens(data, &lex);
 	free(data->input);
 	data->input = NULL;
+	if (data->lex_error == true)
+		g_exit_code = EXIT_FAILURE;
 }

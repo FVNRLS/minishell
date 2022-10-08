@@ -25,6 +25,8 @@ static void redirect_token(t_data *data, t_token *token)
 		redirect_out(data, token);
 	else if (token->flag == T_APPEND)
 		append(data, token);
+	if (data->parse_error == true)
+		g_exit_code = EXIT_FAILURE;
 }
 
 static void	redirect_del_token(t_data *data, t_token *token)

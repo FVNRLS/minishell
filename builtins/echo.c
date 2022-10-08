@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:27:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/07 18:30:03 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 11:46:20 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,23 @@ int	echo_pos(char *s, int *flag)
 	return (tmp);
 }
 
+static int check_exit_code_request(t_data *data)
+{
+	char	**args;
+
+	args = ft_split(data->tokens->content, SPACE);
+	if (!args)
+		return (EXIT_FAILURE);
+	if (args[1] != NULL)
+	{
+		if (ft_strcmp(args[1], "$?") != 0)
+			g_exit_code = EXIT_SUCCESS;
+	}
+	ft_cleansplit(args);
+	args = NULL;
+	return (g_exit_code);
+}
+
 int	echo(t_data *data)
 {
 	int		i;
@@ -84,5 +101,6 @@ int	echo(t_data *data)
 		printf("%s", (data->tokens->content + i));
 	if (!flag)
 		printf("\n");
+	g_exit_code = check_exit_code_request(data);
 	return (g_exit_code);
 }

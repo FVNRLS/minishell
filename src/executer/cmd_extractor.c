@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:34:00 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/05 19:58:13 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 11:16:52 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static char	**get_valid_paths(t_data *data)
 	if (!path)
 		path = ft_strdup("./");
 	valid_paths = ft_split(path, ':');
+	if (!valid_paths)
+		return (NULL);
 	if (ft_strcmp(path, "./") == 0)
 	{
 		free(path);
@@ -93,7 +95,6 @@ char	*get_cmd_path(t_data *data)
 	valid_paths = get_valid_paths(data);
 	if (!valid_paths)
 	{
-		perror(NULL);
 		data->exec_error = true;
 		return (NULL);
 	}

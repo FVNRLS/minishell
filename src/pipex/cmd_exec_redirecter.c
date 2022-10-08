@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:42:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/07 18:02:07 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/08 11:22:28 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void exec_bash_cmd(t_data *data)
 {
 	if (execve(data->exec->path, data->exec->cmd, data->env) < 0)
 	{
-		built_error(EXEC_ERROR, data->exec->cmd[0]);
+		perror(NULL);
 		exit(EXEC_ERROR);
 	}
 	exit(EXIT_SUCCESS);
