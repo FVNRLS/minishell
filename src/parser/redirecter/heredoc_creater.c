@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 14:50:25 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 17:52:56 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	read_from_stdin(t_data *data, t_token *token)
 	lim_found = false;
 	while (lim_found == false)
 	{
-//		ft_signals(CHILD_PROCESS);
+		ft_signals(CHILD_PROCESS);
 		input = readline("> ");
 		if (!input)
 			break ;
