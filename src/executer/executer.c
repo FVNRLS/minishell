@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 14:57:10 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 19:43:54 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	execute_tokens(t_data *data)
 {
 	init_exec(data);
 	data->exec->last_cmd = ft_get_num_cmds(data);
+	data->fd->hdoc_index = 0;
 	while (data->tokens != NULL)
 	{
 		reset_params(data);

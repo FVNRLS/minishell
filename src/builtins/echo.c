@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:27:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/09 18:14:20 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/09 18:23:38 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int	echo(t_data *data)
 
 	flag = 0;
 	i = echo_pos(data->tokens->content, &flag);
-	printf("%s\n", data->tokens->content);
 	while (data->tokens->content[i + 1] && data->tokens->content[i] == '-' \
 	&& data->tokens->content[i + 1] == 'n')
 		i += echo_pos(data->tokens->content + i, &flag);

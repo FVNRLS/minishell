@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:42:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 19:52:46 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 19:55:24 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@ void	exec_bash_cmd(t_data *data)
 {
 	if (data->exec_error == true)
 	{
-		exec_error(EXEC_ERROR, data->exec->cmd[0]);
+		dup2(data->fd->std_in, STDIN_FILENO);
+		dup2(data->fd->std_out, STDOUT_FILENO);
+		exec_error(CMD_NOT_FOUND, data->exec->cmd[0]);
 		exit(CMD_NOT_FOUND);
 	}
 	else
 	{
 		if (execve(data->exec->path, data->exec->cmd, data->env) < 0)
 		{
+			dup2(data->fd->std_in, STDIN_FILENO);
+			dup2(data->fd->std_out, STDOUT_FILENO);
 			perror(NULL);
 			exit(CMD_NOT_FOUND);
 		}

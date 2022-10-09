@@ -83,7 +83,8 @@ int	cd(t_data *data)
 	t_envp	*tmp;
 
 	tmp = NULL;
-	ret = 0;
+	if (data->exec->cmd != 0)
+		return (EXIT_FAILURE);
 	if (!data->builtins->command[1])
 	{
 		tmp = ft_getenvp(data, "HOME");

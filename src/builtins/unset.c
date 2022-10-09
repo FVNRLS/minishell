@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/09 10:28:02 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 19:14:13 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	dl_node(t_data **data, t_envp *node)
 	}
 }
 
-static void	check_keys_help(char **s, int *i, int *j, int mode)
+static void	check_keys_help(char **s, int *i, int *j)
 {
 	while (s[(*i)] != NULL && s[(*i)][(*j)] && s[(*i)][(*j) + 1])
 	{
@@ -49,10 +49,7 @@ static void	check_keys_help(char **s, int *i, int *j, int mode)
 			break ;
 		if (!ft_isalpha(s[*i][*j]) && !ft_isdigit((int)s[*i][*j]) \
 		&& s[*i][*j] != '_')
-		{
-			exec_error(mode, s[*i]);
 			break ;
-		}
 	}
 }
 
@@ -69,7 +66,7 @@ void	check_keys(char **s, int mode)
 		if (!ft_isalpha(s[i][j]) && s[i][j] != '_')
 			exec_error(mode, s[i]);
 		else
-			check_keys_help(s, &i, &j, mode);
+			check_keys_help(s, &i, &j);
 		i++;
 	}
 }
@@ -79,9 +76,11 @@ static int	check_unset(char *s)
 	int	i;
 
 	i = 0;
+	if (!ft_isalpha(s[0]) && s[0] != '_')
+		return (1);
 	while (s[i])
 	{
-		if (!ft_isalpha(s[i]) && s[i] != '_')
+		if (!ft_isalpha(s[i]) && !ft_isdigit(s[i]) && s[i] != '_')
 			return (1);
 		i++;
 	}
@@ -96,7 +95,7 @@ int	unset(t_data *data)
 	i = 1;
 	if (!data->builtins->command[i])
 		return (EXIT_FAILURE);
-	check_keys(data->builtins->command, UNSET_ERROR);
+//	check_keys(data->builtins->command, UNSET_ERROR); //del error print
 	while (data->builtins->command[i])
 	{
 		tmp = NULL;

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:43:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 15:11:09 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 16:27:57 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define UNSET_ERROR				10
 # define PATH_ERROR					11
 # define PERMISSION_ERROR			12
-# define EXEC_ERROR					13
 
 # define CMD_NOT_FOUND				127
 # define INVALID_EXIT_ARG			255
