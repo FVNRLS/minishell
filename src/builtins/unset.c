@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/09 19:14:13 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 20:11:58 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ static int	check_unset(char *s)
 {
 	int	i;
 
+	if (!s)
+		return (1);
 	i = 0;
 	if (!ft_isalpha(s[0]) && s[0] != '_')
 		return (1);
@@ -95,7 +97,6 @@ int	unset(t_data *data)
 	i = 1;
 	if (!data->builtins->command[i])
 		return (EXIT_FAILURE);
-//	check_keys(data->builtins->command, UNSET_ERROR); //del error print
 	while (data->builtins->command[i])
 	{
 		tmp = NULL;
