@@ -42,7 +42,7 @@ static void	read_from_stdin(t_data *data, t_token *token)
 	lim_found = false;
 	while (lim_found == false)
 	{
-		ft_signals(CHILD_PROCESS);
+//		ft_signals(CHILD_PROCESS);
 		input = readline("> ");
 		if (!input)
 			break ;

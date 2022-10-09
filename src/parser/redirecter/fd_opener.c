@@ -38,10 +38,8 @@ void	redirect_in(t_data *data, t_token *token)
 	close_unused_fd_in(data);
 	if (data->parse_error == true)
 		return ;
-	check_fd_open_error(data, token);
-	if (data->parse_error == true)
-		return ;
 	data->fd->in = open(token->content, O_RDONLY);
+	check_fd_open_error(data, token);
 }
 
 void	redirect_out(t_data *data, t_token *token)

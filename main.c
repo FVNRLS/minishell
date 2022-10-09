@@ -25,7 +25,7 @@ int	main(int argc, char **argv, char **env)
 	init_shell_env(&data, env);
 	while (data.exit_minishell == false)
 	{
-		ft_signals(MAIN_PROCESS);
+//		ft_signals(MAIN_PROCESS);
 		track_history(&data);
 		lex_input(&data);
 //		print_tokens(&data);
