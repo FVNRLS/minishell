@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 10:31:03 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 15:50:27 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	print_token_error(int error, t_token *token)
 int	exec_error(int error, char *s)
 {
 	if (error == EXPORT_ERROR)
-		printf("minishell: export: %s: invalid key\n", s);
+		printf("minishell: export: `%s': not a valid identifier\n", s);
 	else if (error == EXIT_ARG_ERROR)
 		printf("minishell: exit: %s: numeric argument required\n", s);
 	else if (error == CMD_ERROR)

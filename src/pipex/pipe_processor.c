@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 14:17:24 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 16:26:15 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static int	create_pipe(t_data *data)
 */
 void	pipe_transitory_cmd(t_data *data)
 {
+	int	builtin;
+
 	if (create_pipe(data) < 0)
 		return ;
 	if (data->exec->no_cmd == true || data->parse_error == true)
@@ -71,8 +73,9 @@ void	pipe_transitory_cmd(t_data *data)
 		close(data->pipe[0]);
 		return ;
 	}
-	if (ft_get_builtin(data) >= 0)
-		exec_transitory_builtin(data, ft_get_builtin(data));
+	builtin = ft_get_builtin(data);
+	if (builtin >= 0)
+		exec_transitory_builtin(data, builtin);
 	else
 	{
 		if (create_fork(data) < 0)
