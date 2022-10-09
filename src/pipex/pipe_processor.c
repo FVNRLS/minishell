@@ -6,14 +6,13 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 16:45:36 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 14:15:20 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-//TODO: edit and check the global! also for WIFSIGNALED
-void catch_exit_code(t_data *data)
+void	catch_exit_code(t_data *data)
 {
 	int	status;
 
@@ -22,7 +21,7 @@ void catch_exit_code(t_data *data)
 		g_exit_code = WEXITSTATUS(status);
 }
 
-static int create_fork(t_data *data)
+static int	create_fork(t_data *data)
 {
 	data->pid = fork();
 	if (data->pid < 0)
@@ -34,7 +33,7 @@ static int create_fork(t_data *data)
 	return (0);
 }
 
-static int create_pipe(t_data *data)
+static int	create_pipe(t_data *data)
 {
 	if (pipe(data->pipe) < 0)
 	{
@@ -63,8 +62,6 @@ static int create_pipe(t_data *data)
 */
 void	pipe_transitory_cmd(t_data *data)
 {
-	int	builtin;
-
 	if (create_pipe(data) < 0)
 		return ;
 	if (data->exec->no_cmd == true || data->parse_error == true)
@@ -74,9 +71,8 @@ void	pipe_transitory_cmd(t_data *data)
 		close(data->pipe[0]);
 		return ;
 	}
-	builtin = ft_get_builtin(data);
-	if (builtin >= 0)
-		exec_transitory_builtin(data, builtin);
+	if (ft_get_builtin(data) >= 0)
+		exec_transitory_builtin(data, ft_get_builtin(data));
 	else
 	{
 		if (create_fork(data) < 0)

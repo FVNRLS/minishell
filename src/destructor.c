@@ -3,29 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   destructor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:40:53 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/03 23:08:43 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/09 11:45:16 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
-void	free_cmd_and_path(t_data *data)
-{
-	ft_cleansplit(data->exec->cmd);
-	data->exec->cmd = NULL;
-	free(data->exec->path);
-	data->exec->path = NULL;
-}
-
-void 	destroy_hdocs(t_data *data)
+void	destroy_hdocs(t_data *data)
 {
 	int	i;
 
 	if (data->fd->hdoc == NULL)
-		return;
+		return ;
 	i = 0;
 	while (data->fd->hdoc[i] != NULL)
 	{
@@ -40,7 +32,7 @@ void 	destroy_hdocs(t_data *data)
 
 void	free_tokens(t_data *data)
 {
-	t_token *del;
+	t_token	*del;
 
 	del = NULL;
 	if (!data->tokens)
@@ -102,10 +94,4 @@ void	free_all_ressources(t_data *data)
 	close(data->fd->std_in);
 	close(data->fd->std_out);
 	free(data->exec);
-}
-
-void	exit_with_free(t_data *data)
-{
-	free_all_ressources(data);
-	exit(EXIT_FAILURE);
 }

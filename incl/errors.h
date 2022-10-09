@@ -36,6 +36,6 @@
 
 void	print_error(int error);
 void	print_token_error(int error, t_token *token);
-int 	built_error(int error, char *s);
+int 	exec_error(int error, char *s);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 13:02:09 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 10:56:12 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	create_hdoc(t_data *data)
 {
-	char 	*path;
-	char 	*index;
-	char 	*hdoc;
+	char	*path;
+	char	*index;
+	char	*hdoc;
 
 	path = ft_strdup("/tmp/");
 	index = ft_itoa(data->fd->hdoc_index);
@@ -34,7 +34,7 @@ static void	create_hdoc(t_data *data)
 	hdoc = NULL;
 }
 
-static void read_from_stdin(t_data *data, t_token *token)
+static void	read_from_stdin(t_data *data, t_token *token)
 {
 	char	*input;
 	bool	lim_found;
@@ -54,7 +54,6 @@ static void read_from_stdin(t_data *data, t_token *token)
 			if (write(data->fd->in, input, ft_strlen(input)) < 0)
 			{
 				perror(token->content);
-				data->parse_error = true;
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -84,6 +83,7 @@ static void	read_to_hdoc(t_data *data, t_token *token)
 		}
 	}
 }
+
 void	parse_hdocs(t_data *data)
 {
 	t_token	*tmp;

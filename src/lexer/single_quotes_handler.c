@@ -14,7 +14,7 @@
 
 bool	check_open_quotes(t_data *data, t_lex *lex)
 {
-	int 	i;
+	int	i;
 
 	i = lex->i + 1;
 	if (lex->c == SINGLE_QUOTE)
@@ -38,7 +38,7 @@ bool	check_open_quotes(t_data *data, t_lex *lex)
 	return (true);
 }
 
-void 	stop_lexing(t_data *data, t_lex *lex)
+void	stop_lexing(t_data *data, t_lex *lex)
 {
 	data->lex_error = true;
 	free(lex->buf);

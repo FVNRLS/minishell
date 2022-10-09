@@ -73,7 +73,7 @@ void	expand_last_return(t_data *data, t_lex *lex)
 	}
 }
 
-void handle_multiple_dollars(t_data *data, t_lex *lex)
+void	handle_multiple_dollars(t_data *data, t_lex *lex)
 {
 	bool	is_sep;
 

@@ -12,10 +12,10 @@
 
 #include "../../incl/minishell.h"
 
-int ft_get_num_cmds(t_data *data)
+int	ft_get_num_cmds(t_data *data)
 {
 	t_token	*tmp;
-	int 	i;
+	int		i;
 
 	tmp = data->tokens;
 	i = 1;

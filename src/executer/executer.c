@@ -6,11 +6,19 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 19:59:50 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 11:45:16 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
+
+void	free_cmd_and_path(t_data *data)
+{
+	ft_cleansplit(data->exec->cmd);
+	data->exec->cmd = NULL;
+	free(data->exec->path);
+	data->exec->path = NULL;
+}
 
 static void	extract_cmd_and_path(t_data *data, t_token *token)
 {
@@ -51,7 +59,7 @@ static void	exec_cmd(t_data *data, t_token *token)
 	free_cmd_and_path(data);
 }
 
-static void reset_params(t_data *data)
+static void	reset_params(t_data *data)
 {
 	data->parse_error = false;
 	data->exec_error = false;
@@ -68,7 +76,10 @@ void	execute_tokens(t_data *data)
 	{
 		reset_params(data);
 		resolve_redirections(data);
-		merge_words(data);
+		if (!data->tokens || data->tokens->flag != T_WORD)
+			data->exec->no_cmd = true;
+		else
+			merge_words(data);
 		if (!data->tokens)
 		{
 			dup2(data->fd->std_in, STDIN_FILENO);

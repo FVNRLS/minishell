@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/minishell.h"
+#include "../../incl/minishell.h"
 
 void	true_env(t_data *data)
 {

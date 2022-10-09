@@ -48,7 +48,7 @@ add_executable(minishell main.c
 
 
         #BUILTINS:
-        builtins/env.c
+        src/builtins/env.c
 
         #HISTORY
         src/history_tracker.c
@@ -81,21 +81,21 @@ add_executable(minishell main.c
         src/pipex/cmd_exec_redirecter.c
 
         #BUILTINS
-        builtins/cd.c
-        builtins/echo.c
-        builtins/env.c
-        builtins/export.c
-        builtins/export_utils.c
-        builtins/mini_exit.c
-        builtins/pwd.c
-        builtins/unset.c
+        src/builtins/cd.c
+        src/builtins/echo.c
+        src/builtins/env.c
+        src/builtins/export.c
+        src/builtins/export_utils.c
+        src/builtins/mini_exit.c
+        src/builtins/pwd.c
+        src/builtins/unset.c
 
         #SIGNALS
         #/src/signals/signals.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-        )
+        src/tools/ft_free_all_ressources.c)
 
 target_link_libraries(minishell edit)
 

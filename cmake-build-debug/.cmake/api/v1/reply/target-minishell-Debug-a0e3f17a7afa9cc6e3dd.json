@@ -124,7 +124,8 @@
 				62,
 				63,
 				64,
-				65
+				65,
+				66
 			]
 		}
 	],
@@ -227,7 +228,8 @@
 				62,
 				63,
 				64,
-				65
+				65,
+				66
 			]
 		}
 	],
@@ -458,7 +460,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "builtins/env.c",
+			"path" : "src/builtins/env.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -584,49 +586,55 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "builtins/cd.c",
+			"path" : "src/builtins/cd.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "builtins/echo.c",
+			"path" : "src/builtins/echo.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "builtins/export.c",
+			"path" : "src/builtins/export.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "builtins/export_utils.c",
+			"path" : "src/builtins/export_utils.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "builtins/mini_exit.c",
+			"path" : "src/builtins/mini_exit.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "builtins/pwd.c",
+			"path" : "src/builtins/pwd.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "builtins/unset.c",
+			"path" : "src/builtins/unset.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/message_printer.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/tools/ft_free_all_ressources.c",
 			"sourceGroupIndex" : 0
 		}
 	],

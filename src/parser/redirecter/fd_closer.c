@@ -12,7 +12,7 @@
 
 #include "../../../incl/minishell.h"
 
-void 	close_fds_in_out(t_data *data)
+void	close_fds_in_out(t_data *data)
 {
 	if (data->fd->in != STDIN_FILENO)
 		close(data->fd->in);
@@ -20,7 +20,7 @@ void 	close_fds_in_out(t_data *data)
 		close(data->fd->out);
 }
 
-void 	close_unused_fd_out(t_data *data)
+void	close_unused_fd_out(t_data *data)
 {
 	if (data->fd->out == STDOUT_FILENO)
 		return ;

@@ -6,13 +6,13 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:54:52 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/13 16:41:41 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 10:46:41 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-static void lex_pipe(t_lex *lex)
+static void	lex_pipe(t_lex *lex)
 {
 	if (lex->c == '|')
 	{
@@ -22,7 +22,7 @@ static void lex_pipe(t_lex *lex)
 	}
 }
 
-static void lex_redirect_out(t_data *data, t_lex *lex)
+static void	lex_redirect_out(t_data *data, t_lex *lex)
 {
 	if (lex->c == '>')
 	{
@@ -39,7 +39,7 @@ static void lex_redirect_out(t_data *data, t_lex *lex)
 	}
 }
 
-static void lex_redirect_in(t_data *data, t_lex *lex)
+static void	lex_redirect_in(t_data *data, t_lex *lex)
 {
 	if (lex->c == '<')
 	{
@@ -60,7 +60,7 @@ void	handle_redirections(t_data *data, t_lex *lex)
 {
 	if (lex->c == '<')
 		lex_redirect_in(data, lex);
-	else if ( lex->c == '>')
+	else if (lex->c == '>')
 		lex_redirect_out(data, lex);
 	else
 		lex_pipe(lex);

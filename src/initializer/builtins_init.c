@@ -14,7 +14,7 @@
 
 static bool	check_names_malloc(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < NUM_BUILTINS)

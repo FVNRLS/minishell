@@ -14,7 +14,7 @@
 
 void	refactor_join_flags(t_data *data)
 {
-	t_token *tmp;
+	t_token	*tmp;
 
 	tmp = data->tokens;
 	while (tmp->next != NULL)

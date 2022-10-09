@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:34:00 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 13:43:45 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 10:39:09 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static char	**get_valid_paths(t_data *data)
 {
 	t_envp	*envp;
 	char	*path;
-	char 	**valid_paths;
+	char	**valid_paths;
 
 	envp = data->envp;
 	path = NULL;
@@ -65,7 +65,7 @@ static char	**get_valid_paths(t_data *data)
 		if (ft_strcmp("PATH", envp->key) == 0)
 		{
 			path = envp->val;
-			break;
+			break ;
 		}
 		envp = envp->next;
 	}
@@ -75,10 +75,7 @@ static char	**get_valid_paths(t_data *data)
 	if (!valid_paths)
 		return (NULL);
 	if (ft_strcmp(path, "./") == 0)
-	{
 		free(path);
-		path = NULL;
-	}
 	return (valid_paths);
 }
 
@@ -88,7 +85,7 @@ static char	**get_valid_paths(t_data *data)
 char	*get_cmd_path(t_data *data)
 {
 	char	*cmd;
-	char 	**valid_paths;
+	char	**valid_paths;
 	char	*cmd_path;
 
 	cmd = data->exec->cmd[0];
@@ -106,7 +103,7 @@ char	*get_cmd_path(t_data *data)
 
 char	**get_cmd(t_data *data, t_token *token)
 {
-	char **cmd;
+	char	**cmd;
 
 	cmd = ft_split(token->content, SPACE);
 	if (!cmd)
@@ -120,9 +117,9 @@ char	**get_cmd(t_data *data, t_token *token)
 
 char	**extract_cmd_from_path(t_data *data, t_token *token)
 {
-	 char	**input;
-	 char 	**path;
-	 char 	*cmd;
+	char	**input;
+	char	**path;
+	char	*cmd;
 
 	input = ft_split(token->content, SPACE);
 	if (!input)

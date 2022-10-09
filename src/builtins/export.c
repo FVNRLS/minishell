@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/minishell.h"
+#include "../../incl/minishell.h"
 
 static char	*make_val(char *s, int i, int plus)
 {

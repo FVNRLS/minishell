@@ -20,7 +20,7 @@ void	init_fd(t_data *data)
 	data->fd->hdoc_index = 0;
 }
 
-void 	dup_stdin_and_stdout(t_data *data)
+void	dup_stdin_and_stdout(t_data *data)
 {
 	init_fd(data);
 	data->fd->std_in = dup(STDIN_FILENO);

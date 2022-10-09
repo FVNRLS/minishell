@@ -75,7 +75,6 @@ void	free_tokens(t_data *data);
 void	free_envp(t_data *data);
 void	free_builtins(t_data *data);
 void	free_all_ressources(t_data *data);
-void	exit_with_free(t_data *data);
 void 	destroy_hdocs(t_data *data);
 void	free_cmd_and_path(t_data *data);
 

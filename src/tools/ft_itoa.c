@@ -16,7 +16,7 @@
 received as an argument. Negative numbers must be handled.
 Returns the string representing the integer. NULL if the allocation fails. */
 
-static size_t ft_count_size(int n)
+static size_t	ft_count_size(int n)
 {
 	int	size;
 

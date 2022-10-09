@@ -12,10 +12,10 @@
 
 #include "../../incl/minishell.h"
 
-static int count_hdoc_files(t_data *data)
+static int	count_hdoc_files(t_data *data)
 {
 	t_token	*tmp;
-	int 	i;
+	int		i;
 
 	tmp = data->tokens;
 	if (!tmp)
@@ -46,7 +46,7 @@ void	parse_tokens(t_data *data)
 	merge_words(data);
 	cnt = count_hdoc_files(data);
 	if (cnt == 0)
-		return;
+		return ;
 	else
 	{
 		data->fd->hdoc = malloc(sizeof(char *) * (cnt + 1));

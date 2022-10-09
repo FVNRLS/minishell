@@ -17,7 +17,7 @@ return NULL if find is a "new Var"
 */
 t_envp	*ft_getenvp(t_data *data, char *find)
 {
-	t_envp *tmp;
+	t_envp	*tmp;
 
 	tmp = data->envp;
 	if (!tmp)

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:29:31 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 12:52:00 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 10:26:22 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 void	check_fd_open_error(t_data *data, t_token *token)
 {
-	char 	*file;
+	char	*file;
 
 	file = token->content;
 	if (access(file, F_OK < 0))
 	{
-		built_error(PATH_ERROR, file);
+		exec_error(PATH_ERROR, file);
 		data->parse_error = true;
 	}
 	else if (access(file, R_OK) < 0)
 	{
-		built_error(PERMISSION_ERROR, file);
+		exec_error(PERMISSION_ERROR, file);
 		data->parse_error = true;
 	}
 }
 
 void	check_fd_create_error(t_data *data, t_token *token)
 {
-	char 	*file;
+	char	*file;
 
 	file = token->content;
 	if (data->fd->out < 0 || access(file, F_OK) < 0 || access(file, W_OK) < 0)
 	{
-		built_error(PERMISSION_ERROR, file);
+		exec_error(PERMISSION_ERROR, file);
 		data->parse_error = true;
 	}
 }
@@ -70,7 +70,7 @@ void	check_multiple_pipes(t_data *data)
 	}
 }
 
-bool 	check_redir_syntax_error(t_data *data, t_token *token)
+bool	check_redir_syntax_error(t_data *data, t_token *token)
 {
 	if (token->next == NULL || token->next->flag != T_WORD)
 	{
@@ -84,7 +84,7 @@ bool 	check_redir_syntax_error(t_data *data, t_token *token)
 
 bool	check_redir(t_data *data, int flag)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < NUM_REDIRECTIONS)

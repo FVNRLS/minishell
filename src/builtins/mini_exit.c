@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mini_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:28:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/08 15:18:11 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/09 10:26:49 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/minishell.h"
+#include "../../incl/minishell.h"
 
 int	check_exit_args(t_data *data)
 {
@@ -30,7 +30,7 @@ int	check_exit_args(t_data *data)
 		}
 		else if (!ft_isnumber(data->builtins->command[1], 0, 0))
 		{
-			built_error(EXIT_ARG_ERROR, data->builtins->command[1]);
+			exec_error(EXIT_ARG_ERROR, data->builtins->command[1]);
 			return (INVALID_EXIT_ARG);
 		}
 	}

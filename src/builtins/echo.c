@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/minishell.h"
+#include "../../incl/minishell.h"
 
 static int	its_nflag(char *s, int *flag)
 {

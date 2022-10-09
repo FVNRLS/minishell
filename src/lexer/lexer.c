@@ -31,8 +31,6 @@ void	lex_input(t_data *data)
 	init_lex(&lex);
 	data->lex_error = false;
 	data->input = ft_strtrim(data->input, SPACE);
-	if (!data->input)
-		exit_with_free(data);
 	create_tokens(data, &lex);
 	free(data->input);
 	data->input = NULL;

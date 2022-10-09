@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/08 16:02:00 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/09 10:28:02 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/minishell.h"
+#include "../../incl/minishell.h"
 
 static void	dl_node(t_data **data, t_envp *node)
 {
@@ -50,7 +50,7 @@ static void	check_keys_help(char **s, int *i, int *j, int mode)
 		if (!ft_isalpha(s[*i][*j]) && !ft_isdigit((int)s[*i][*j]) \
 		&& s[*i][*j] != '_')
 		{
-			built_error(mode, s[*i]);
+			exec_error(mode, s[*i]);
 			break ;
 		}
 	}
@@ -67,7 +67,7 @@ void	check_keys(char **s, int mode)
 	{
 		j = 0;
 		if (!ft_isalpha(s[i][j]) && s[i][j] != '_')
-			built_error(mode, s[i]);
+			exec_error(mode, s[i]);
 		else
 			check_keys_help(s, &i, &j, mode);
 		i++;
@@ -95,13 +95,13 @@ int	unset(t_data *data)
 
 	i = 1;
 	if (!data->builtins->command[i])
-		return (EXIT_SUCCESS);
+		return (EXIT_FAILURE);
 	check_keys(data->builtins->command, UNSET_ERROR);
 	while (data->builtins->command[i])
 	{
 		tmp = NULL;
 		if (check_unset(data->builtins->command[i]))
-			built_error(UNSET_ERROR, data->builtins->command[i]);
+			exec_error(UNSET_ERROR, data->builtins->command[i]);
 		else
 			tmp = ft_getenvp(data, data->builtins->command[i]);
 		if (tmp != NULL)

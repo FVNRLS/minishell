@@ -12,12 +12,11 @@
 
 #include "../../incl/minishell.h"
 
-//TODO: refactor built error name
-void exec_bash_cmd(t_data *data)
+void	exec_bash_cmd(t_data *data)
 {
 	if (data->exec_error == true)
 	{
-		built_error(EXEC_ERROR, data->exec->cmd[0]);
+		exec_error(EXEC_ERROR, data->exec->cmd[0]);
 		exit(CMD_NOT_FOUND);
 	}
 	else

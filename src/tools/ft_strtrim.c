@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:38:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/09 19:37:27 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 11:33:22 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,8 @@ char	*ft_strtrim(char *str, char delim)
 		return (NULL);
 	i = 0;
 	while (start < end)
-	{
-		trim[i] = str[start];
-		i++;
-		start++;
-	}
+		trim[i++] = str[start++];
 	trim[i] = '\0';
 	free(str);
-	str = NULL;
 	return (trim);
 }

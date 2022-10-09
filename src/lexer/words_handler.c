@@ -14,7 +14,7 @@
 
 void	handle_words(t_data *data, t_lex *lex)
 {
-	bool redirect_found;
+	bool	redirect_found;
 
 	lex->buf = ft_join_char(lex->buf, lex->c);
 	lex->flag = T_WORD;

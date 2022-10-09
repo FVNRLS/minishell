@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:29:57 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/06 12:08:43 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 10:26:31 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	redirect_from_hdoc(t_data *data)
 {
-	char *hdoc;
+	char	*hdoc;
 
 	hdoc = data->fd->hdoc[data->fd->hdoc_index];
 	close_unused_fd_in(data);
@@ -23,12 +23,12 @@ void	redirect_from_hdoc(t_data *data)
 	data->fd->in = open(hdoc, O_RDONLY);
 	if (access(hdoc, F_OK < 0))
 	{
-		built_error(PATH_ERROR, hdoc);
+		exec_error(PATH_ERROR, hdoc);
 		data->parse_error = true;
 	}
 	else if (access(hdoc, R_OK) < 0)
 	{
-		built_error(PERMISSION_ERROR, hdoc);
+		exec_error(PERMISSION_ERROR, hdoc);
 		data->parse_error = true;
 	}
 }

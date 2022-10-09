@@ -6,13 +6,13 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/30 15:05:36 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 11:03:33 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incl/minishell.h"
 
-static void redirect_token(t_data *data, t_token *token)
+static void	redirect_token(t_data *data, t_token *token)
 {
 	if (token->flag == T_REDIRECT_IN)
 		redirect_in(data, token);
@@ -44,12 +44,9 @@ static void	redirect_del_token(t_data *data, t_token *token)
 void	resolve_redirections(t_data *data)
 {
 	t_token	*tmp;
-	t_token *del;
-	t_token *prev;
-	int 	words;
+	t_token	*del;
+	t_token	*prev;
 
-	words = 0;
-	data->fd->hdoc_index = 0;
 	tmp = data->tokens;
 	if (!tmp || tmp->flag == T_PIPE)
 		return ;
@@ -67,9 +64,6 @@ void	resolve_redirections(t_data *data)
 		{
 			prev = tmp;
 			tmp = tmp->next;
-			words++;
 		}
 	}
-	if (words == 0)
-		data->exec->no_cmd = true;
 }

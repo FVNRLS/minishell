@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 17:07:45 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/02 15:38:37 by jjesberg         ###   ########.fr       */
+/*   Created: 2022/09/07 17:41:46 by rmazurit          #+#    #+#             */
+/*   Updated: 2022/09/26 16:15:45 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/minishell.h"
+#include "../../incl/minishell.h"
 
-//TODO: error handling... no error funtion error
-int	pwd(void)
+int	env(t_data *data)
 {
-	char	*path;
+	t_envp	*tmp;
 
-	path = NULL;
-	path = getcwd(path, 0);
-	if (!path)
+	tmp = data->envp;
+	while (tmp != NULL)
 	{
-		perror(NULL);
-		return (EXEC_ERROR);
+		if (tmp->key[0] && tmp->val[0])
+		{
+			printf("%s=%s\n", tmp->key, tmp->val);
+		}
+		tmp = tmp->next;
 	}
-	printf("path = %s\n", path);
-	free(path);
 	return (EXIT_SUCCESS);
 }

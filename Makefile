@@ -16,7 +16,7 @@ CC 			= 	cc
 
 RM 			= 	rm -f
 
-FLAGS 		= 	-Wall -Wextra #-Werror
+FLAGS 		= 	-Wall -Wextra -Werror
 
 SRC 		= 	main.c 								\
 				src/initializer/main_init.c			\
@@ -25,14 +25,14 @@ SRC 		= 	main.c 								\
 				src/initializer/fd_init.c 			\
 				src/initializer/data_containers_init.c \
 				src/destructor.c					\
-				builtins/env.c						\
-				builtins/cd.c						\
-				builtins/echo.c						\
-				builtins/mini_exit.c				\
-				builtins/export.c					\
-				builtins/export_utils.c				\
-				builtins/pwd.c						\
-				builtins/unset.c					\
+				src/builtins/env.c					\
+				src/builtins/cd.c					\
+				src/builtins/echo.c					\
+				src/builtins/mini_exit.c			\
+				src/builtins/export.c				\
+				src/builtins/export_utils.c			\
+				src/builtins/pwd.c					\
+				src/builtins/unset.c				\
 				src/history_tracker.c				\
 				src/lexer/lexer.c					\
 				src/lexer/tokenizer.c				\

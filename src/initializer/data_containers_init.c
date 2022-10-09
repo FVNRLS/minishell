@@ -39,7 +39,7 @@ static void	init_separators(t_data *data)
 	data->sep[7] = '\0';
 }
 
-static void init_redirections(t_data *data)
+static void	init_redirections(t_data *data)
 {
 	data->redir = malloc(sizeof(int) * 4);
 	if (!data->redir)

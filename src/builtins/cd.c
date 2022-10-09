@@ -6,11 +6,11 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:42:02 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/08 18:52:24 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 10:26:44 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/minishell.h"
+#include "../../incl/minishell.h"
 
 static void	change_pwds(t_data *data)
 {
@@ -96,7 +96,7 @@ int	cd(t_data *data)
 		ret = chdir(data->builtins->command[1]);
 	if (ret != 0)
 	{
-		built_error(PATH_ERROR, data->builtins->command[1]);
+		exec_error(PATH_ERROR, data->builtins->command[1]);
 		return (CMD_NOT_FOUND);
 	}
 	change_pwds(data);

@@ -12,7 +12,7 @@
 
 #include "../../incl/minishell.h"
 
-static void expand_double_quotes(t_data *data, t_lex *lex)
+static void	expand_double_quotes(t_data *data, t_lex *lex)
 {
 	lex->flag = T_WORD;
 	lex->i++;

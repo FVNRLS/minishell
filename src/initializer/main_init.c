@@ -12,7 +12,7 @@
 
 #include "../../incl/minishell.h"
 
-static void reset_old_pwd(t_data *data)
+static void	reset_old_pwd(t_data *data)
 {
 	t_envp	*tmp;
 
@@ -53,7 +53,7 @@ void	init_shell_env(t_data *data, char **envp)
 	data->pipe[1] = -1;
 	data->fd = malloc(sizeof(t_fd));
 	if (!data->fd)
-		return;
+		return ;
 	init_fd(data);
 	dup_stdin_and_stdout(data);
 	data->exec = malloc(sizeof(t_exec));

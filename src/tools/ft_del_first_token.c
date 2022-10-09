@@ -18,7 +18,7 @@ data.token = next
 */
 void	ft_del_first_token(t_data **data)
 {
-	t_token *tmp;
+	t_token	*tmp;
 
 	tmp = (*data)->tokens;
 	if (!tmp)

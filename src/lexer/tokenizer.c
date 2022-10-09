@@ -14,7 +14,7 @@
 
 bool	check_sep(t_data *data, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (data->sep[i] != '\0')
@@ -57,7 +57,7 @@ static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 void	add_token(t_data *data, t_lex *lex)
 {
 	t_token	*tmp;
-	char 	*content;
+	char	*content;
 
 	if (!lex->buf)
 		return ;
