@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="minishell"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/amenra/Documents/42_Projects/minishell/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="minishell">
+				<Option output="/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/minishell" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/amenra/Documents/42_Projects/minishell/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 minishell"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="minishell/fast">
+				<Option output="/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/minishell" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/amenra/Documents/42_Projects/minishell/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 minishell/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/amenra/Documents/42_Projects/minishell/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/amenra/Documents/42_Projects/minishell/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/amenra/Documents/42_Projects/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/main.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/builtins/cd.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/builtins/echo.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/builtins/env.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/builtins/export.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/builtins/export_utils.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/builtins/mini_exit.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/builtins/pwd.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/builtins/unset.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/destructor.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/executer/cmd_extractor.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/executer/executer.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/history_tracker.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/initializer/builtins_init.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/initializer/data_containers_init.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/initializer/envp_init.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/initializer/fd_init.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/initializer/main_init.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/lexer/double_quotes_handler.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/lexer/expander/expansion_handler.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/lexer/expander/expansion_rules.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/lexer/lexer.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/lexer/redirections_handler.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/lexer/single_quotes_handler.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/lexer/tokenizer.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/lexer/words_handler.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/message_printer.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/parser/parser.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/parser/parsing_checker.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/parser/redirecter/fd_closer.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/parser/redirecter/fd_opener.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/parser/redirecter/heredoc_creater.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/parser/redirecter/redirecter.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/parser/token_merger.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/pipex/cmd_exec_redirecter.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/pipex/pipe_processor.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_add_envp_back.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_add_token_back.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_atoi.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_bzero.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_calloc.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_check_plus.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_cleansplit.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_del_first_token.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_get_builtin.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_get_num_cmds.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_getenvp.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_haschar.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_isalpha.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_isdigit.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_isnumber.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_isprint.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_itoa.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_join_char.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_lstclear.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_lstsize.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_new_envp.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_new_token.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_split.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_splitlen.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_strcmp.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_strdup.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_strjoin.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_strlen.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_strncmp.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/src/tools/ft_strtrim.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/home/amenra/Documents/42_Projects/minishell/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
