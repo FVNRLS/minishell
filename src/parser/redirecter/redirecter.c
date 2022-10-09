@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 11:03:33 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 15:25:09 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ static void	redirect_del_token(t_data *data, t_token *token)
 	token = NULL;
 }
 
+static void	set_no_cmd_flag(t_data *data)
+{
+	if (data->exec->words == 0)
+		data->exec->no_cmd = true;
+}
+
 void	resolve_redirections(t_data *data)
 {
 	t_token	*tmp;
@@ -64,6 +70,8 @@ void	resolve_redirections(t_data *data)
 		{
 			prev = tmp;
 			tmp = tmp->next;
+			data->exec->words++;
 		}
 	}
+	set_no_cmd_flag(data);
 }

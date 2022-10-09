@@ -95,7 +95,7 @@ add_executable(minishell main.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-        src/tools/ft_free_all_ressources.c)
+        )
 
 target_link_libraries(minishell edit)
 

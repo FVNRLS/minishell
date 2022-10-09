@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:42:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/04 14:30:29 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/09 15:09:13 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int		env(t_data *data);
 /*
 moving through the tree via cd "pathname"
 */
-int 	cd(t_data *data);
+int		cd(t_data *data);
 
 /*
 prints current working directory
 */
-int 	pwd(void);
+int		pwd(void);
 
 int		echo(t_data *data);
 

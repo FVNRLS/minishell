@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:31:55 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/04 15:07:07 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/09 15:22:30 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
-
 #ifndef TOOLS_H
 # define TOOLS_H
+
+# include "structs.h"
 
 //NODES:
 void	ft_bzero(void *s, size_t n);
@@ -41,13 +41,12 @@ int		ft_splitlen(char **s);
 int		ft_haschar(char *s, char c);
 int		ft_isprint(int c);
 void	ft_del_first_token(t_data **data);
-int 	ft_get_num_cmds(t_data *data);
+int		ft_get_num_cmds(t_data *data);
 int		ft_isalpha(int c);
 int		ft_atoi(const char *str);
 bool	ft_check_plus(char *s);
 
-
-//for debuging
+//FOR DEBUGGING PURPOSES
 int		print_list(t_token *data);
 
 #endif

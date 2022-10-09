@@ -6,14 +6,14 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:43:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 16:23:51 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 15:11:02 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
-
 #ifndef ERRORS_H
 # define ERRORS_H
+
+# include "structs.h"
 
 # define SINGLE_QUOTE_MISSING		1
 # define DOUBLE_QUOTE_MISSING		2
@@ -36,6 +36,6 @@
 
 void	print_error(int error);
 void	print_token_error(int error, t_token *token);
-int 	exec_error(int error, char *s);
+int		exec_error(int error, char *s);
 
 #endif

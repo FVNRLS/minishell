@@ -6,20 +6,19 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/07 18:45:49 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 15:21:37 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdbool.h>
-
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+# include <stdbool.h>
+
 # define NUM_BUILTINS		7
 # define NUM_REDIRECTIONS	4
 
-typedef struct s_token //linked tokens
+typedef struct s_token
 {
 	char			*content;
 	int				flag;
@@ -29,62 +28,63 @@ typedef struct s_token //linked tokens
 
 typedef struct s_envp
 {
-	char 			*key; //eg. name of the variable
-	char 			*val; //eg. path or value of the variable
+	char			*key;
+	char			*val;
 	bool			equal;
 	struct s_envp	*next;
 }		t_envp;
 
 typedef struct s_builtins
 {
-	char		*names[NUM_BUILTINS]; //strcmp the tokens with reserved words and if match - call the builtins on the sam index
-	int 		(*funcs[NUM_BUILTINS])(void *); // builtin functions
+	char		*names[NUM_BUILTINS];
+	int			(*funcs[NUM_BUILTINS])(void *);
 	char		**command;
 }		t_builtins;
 
 typedef struct s_lex
 {
-	int 		i;
-	char 		c;
-	char 		*buf;
-	int 		flag;
-	bool		single_quote_mode;
-	bool		double_quote_mode;
-	bool		expansion;
+	int		i;
+	char	c;
+	char	*buf;
+	int		flag;
+	bool	single_quote_mode;
+	bool	double_quote_mode;
+	bool	expansion;
 }		t_lex;
 
 typedef struct s_fd
 {
-	int 		in;
-	int 		out;
-	int 		std_in;
-	int 		std_out;
-	char 		**hdoc;
-	int 		hdoc_index;
-}	t_fd;
+	int		in;
+	int		out;
+	int		std_in;
+	int		std_out;
+	char	**hdoc;
+	int		hdoc_index;
+}		t_fd;
 
 typedef struct s_exec
 {
 	char	**cmd;
 	char	*path;
-	int 	cmd_num;
+	int		cmd_num;
 	int		last_cmd;
+	int		words;
 	bool	no_cmd;
 }		t_exec;
 
 typedef struct s_data
 {
 	t_builtins	*builtins;
-	pid_t 		pid;
-	char 		**env;
-	char 		*input;
+	pid_t		pid;
+	char		**env;
+	char		*input;
 	char		*sep;
-	int 		*redir;
-	int 		pipe[2];
-	t_fd 		*fd;
-	t_envp		*envp; // linked list - contains all environments
-	t_token		*tokens; //linked list with tokens
-	t_exec 		*exec;
+	int			*redir;
+	int			pipe[2];
+	t_fd		*fd;
+	t_envp		*envp;
+	t_token		*tokens;
+	t_exec		*exec;
 	bool		lex_error;
 	bool		parse_error;
 	bool		exec_error;

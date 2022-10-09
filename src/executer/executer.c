@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 11:45:16 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/09 14:57:10 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static void	reset_params(t_data *data)
 {
 	data->parse_error = false;
 	data->exec_error = false;
+	data->exec->words = 0;
 	data->exec->no_cmd = false;
 	data->fd->in = STDIN_FILENO;
 	data->fd->out = STDOUT_FILENO;
@@ -76,10 +77,7 @@ void	execute_tokens(t_data *data)
 	{
 		reset_params(data);
 		resolve_redirections(data);
-		if (!data->tokens || data->tokens->flag != T_WORD)
-			data->exec->no_cmd = true;
-		else
-			merge_words(data);
+		merge_words(data);
 		if (!data->tokens)
 		{
 			dup2(data->fd->std_in, STDIN_FILENO);
