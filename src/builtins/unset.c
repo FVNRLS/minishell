@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/09 20:11:58 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/10 12:40:53 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-static void	dl_node(t_data **data, t_envp *node)
+void	ft_dl_node(t_data **data, t_envp *node)
 {
 	t_envp	*tmp;
 
@@ -39,7 +39,10 @@ static void	dl_node(t_data **data, t_envp *node)
 	}
 }
 
-static void	check_keys_help(char **s, int *i, int *j)
+/*
+check rest of string
+*/
+static void	check_keys_help(char **s, int *i, int *j, int mode)
 {
 	while (s[(*i)] != NULL && s[(*i)][(*j)] && s[(*i)][(*j) + 1])
 	{
@@ -49,10 +52,17 @@ static void	check_keys_help(char **s, int *i, int *j)
 			break ;
 		if (!ft_isalpha(s[*i][*j]) && !ft_isdigit((int)s[*i][*j]) \
 		&& s[*i][*j] != '_')
+		{
+			exec_error(mode, s[*i]);
 			break ;
+		}
 	}
 }
 
+/*
+export && unset can use this with mode
+check first char
+*/
 void	check_keys(char **s, int mode)
 {
 	int	i;
@@ -66,7 +76,7 @@ void	check_keys(char **s, int mode)
 		if (!ft_isalpha(s[i][j]) && s[i][j] != '_')
 			exec_error(mode, s[i]);
 		else
-			check_keys_help(s, &i, &j);
+			check_keys_help(s, &i, &j, mode);
 		i++;
 	}
 }
@@ -105,7 +115,7 @@ int	unset(t_data *data)
 		else
 			tmp = ft_getenvp(data, data->builtins->command[i]);
 		if (tmp != NULL)
-			dl_node(&data, tmp);
+			ft_dl_node(&data, tmp);
 		i++;
 	}
 	return (EXIT_SUCCESS);
