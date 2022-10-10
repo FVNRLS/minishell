@@ -3,79 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:42:02 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/09 10:26:44 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/10 20:55:09 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-static void	change_pwds(t_data *data)
+int cd_home(t_data *data)
 {
-	t_envp	*old;
-	t_envp	*pwd;
-	char	*old_path;
-	char	*pwd_path;
-
-	old_path = NULL;
-	pwd_path = NULL;
-	pwd = ft_getenvp(data, "PWD");
-	old = ft_getenvp(data, "OLDPWD");
-	if (!pwd || !old)
-		return ;
-	old_path = ft_strdup(pwd->val);
-	free(old->val);
-	old->val = old_path;
-	pwd_path = getcwd(pwd_path, 0);
-	free(pwd->val);
-	pwd->val = pwd_path;
+    int     ret;
+    t_envp  *tmp;
+    
+    tmp = ft_getenvp(data, "HOME");
+    if (!tmp || ft_strlen(tmp->val) == 0)
+    {	
+        exec_error(EMPTY_KEY_ERROR, "HOME");
+        return (EXIT_FAILURE);
+    }
+    ret = chdir(tmp->val);
+    change_pwds(data);   
+	return (ret);
 }
 
-static int	pwd_switch(t_data *data, char *s)
+int	cd_minus(t_data *data)
 {
-	t_envp	*tmp;
-
-	if (s[1] != '\0')
-		return (-1);
-	tmp = ft_getenvp(data, "OLDPWD");
-	if (ft_strlen(tmp->val) == 0)
-	{
-		print_error(OLDPWD_ERROR);
-		return (0);
-	}
-	else
-		chdir(tmp->val);
-	return (0);
+	int     ret;
+	
+	ret = home_path(data->builtins->command, data);
+	if (ret == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	ret = change_pwds(data);
+	return (ret);
 }
 
-static int	home_path(char **s, t_data *data)
+int	cd_tilde(t_data *data)
 {
-	char	*path;
-	char	*ret;
-	t_envp	*tmp;
-	int		j;
-	int		res;
+	int     ret;
 
-	if (s[1][0] == '-')
-		return (pwd_switch(data, s[1]));
-	res = 0;
-	j = 1;
-	path = malloc(sizeof(char) * (ft_strlen(s[1] + 1)));
-	tmp = ft_getenvp(data, "HOME");
-	while (s[1][j])
-	{
-		path[j - 1] = s[1][j];
-		j++;
-	}
-	path[j - 1] = '\0';
-	ret = ft_strjoin(ft_strdup(tmp->val), path);
-	free(path);
-	res = chdir(ret);
-	free(ret);
-	return (res);
+	ret = home_path(data->builtins->command, data);
+	if (ret == 0)
+		ret = change_pwds(data);
+	return (ret);
 }
+
+int	cd_path(t_data *data)
+{
+	int     ret;
+	
+	ret = chdir(data->builtins->command[1]);
+	if (ret == 0)
+		ret = change_pwds(data);
+	return (ret);
+}
+
 
 int	cd(t_data *data)
 {
@@ -83,23 +66,23 @@ int	cd(t_data *data)
 	t_envp	*tmp;
 
 	tmp = NULL;
-	if (data->exec->cmd != 0)
+	if (data->tokens->next != NULL)
 		return (EXIT_FAILURE);
 	if (!data->builtins->command[1])
+		ret =  cd_home(data);
+	else if (data->builtins->command[1][0] == '-')
+		return(cd_minus(data));
+	else if (data->builtins->command[1][0] == '~')
 	{
-		tmp = ft_getenvp(data, "HOME");
-		ret = chdir(tmp->val);
+		ret = cd_tilde(data);
+	    // printf("%d\n", ret);
 	}
-	else if (data->builtins->command[1][0] == '~' || \
-	data->builtins->command[1][0] == '-')
-		ret = home_path(data->builtins->command, data);
 	else
-		ret = chdir(data->builtins->command[1]);
+		ret = cd_path(data);
 	if (ret != 0)
 	{
 		exec_error(PATH_ERROR, data->builtins->command[1]);
 		return (CMD_NOT_FOUND);
 	}
-	change_pwds(data);
-	return (EXIT_SUCCESS);
+	return (ret);
 }
