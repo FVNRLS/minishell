@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:29:31 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/10 12:26:34 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/10 12:29:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	check_fd_open_error(t_data *data, t_token *token)
 			exec_error(PATH_ERROR, file);
 		else if (access(file, R_OK) < 0)
 			exec_error(PERMISSION_ERROR, file);
+		data->parse_error = true;
 	}
-	data->parse_error = true;
 }
 
 void	check_fd_create_error(t_data *data, t_token *token)
@@ -38,8 +38,8 @@ void	check_fd_create_error(t_data *data, t_token *token)
 			exec_error(PATH_ERROR, file);
 		else if (access(file, W_OK) < 0)
 			exec_error(PERMISSION_ERROR, file);
+		data->parse_error = true;
 	}
-	data->parse_error = true;
 }
 
 void	check_multiple_pipes(t_data *data)
