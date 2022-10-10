@@ -17,7 +17,6 @@ void	check_fd_open_error(t_data *data, t_token *token)
 	char	*file;
 
 	file = token->content;
-
 	if (data->fd->in < 0 || access(file, F_OK < 0) || access(file, R_OK) < 0)
 	{
 		exec_error(PATH_ERROR, file);

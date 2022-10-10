@@ -68,9 +68,7 @@ void	pipe_transitory_cmd(t_data *data)
 		return ;
 	if (data->exec->no_cmd == true || data->parse_error == true)
 	{
-		close(data->pipe[1]);
-		dup2(data->pipe[0], STDIN_FILENO);
-		close(data->pipe[0]);
+		redirect_stdin_to_pipe(data);
 		return ;
 	}
 	builtin = ft_get_builtin(data);
@@ -85,9 +83,7 @@ void	pipe_transitory_cmd(t_data *data)
 			redirect_transitory_cmd(data);
 			exec_bash_cmd(data);
 		}
-		close(data->pipe[1]);
-		dup2(data->pipe[0], STDIN_FILENO);
-		close(data->pipe[0]);
+		redirect_stdin_to_pipe(data);
 	}
 }
 

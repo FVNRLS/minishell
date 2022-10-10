@@ -12,6 +12,13 @@
 
 #include "../../../incl/minishell.h"
 
+void	redirect_stdin_to_pipe(t_data *data)
+{
+	close(data->pipe[1]);
+	dup2(data->pipe[0], STDIN_FILENO);
+	close(data->pipe[0]);
+}
+
 static void	redirect_token(t_data *data, t_token *token)
 {
 	if (token->flag == T_REDIRECT_IN)

@@ -134,6 +134,7 @@ void	exec_transitory_builtin(t_data *data, int builtin);
 void	exec_last_builtin(t_data *data, int builtin);
 void	redirect_transitory_cmd(t_data *data);
 void	redirect_last_cmd(t_data *data);
+void	redirect_stdin_to_pipe(t_data *data);
 void	exec_bash_cmd(t_data *data);
 
 //SIGNALS
