@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/10 13:27:01 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/10 15:46:38 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ static void	redirect_token(t_data *data, t_token *token)
 
 static void	redirect_del_token(t_data *data, t_token *token)
 {
-	if (data->tokens == token)
-		data->tokens = token->next;
 	if (data->parse_error == false)
 		redirect_token(data, token);
 	free(token->content);
@@ -48,42 +46,47 @@ static void	redirect_del_token(t_data *data, t_token *token)
 	token = NULL;
 }
 
-static void	set_no_cmd_flag(t_data *data)
+static void	resolve_redir_after_cmd(t_data *data)
 {
-	if (data->exec->words == 0)
-		data->exec->no_cmd = true;
+	t_token	*prev;
+	t_token	*tmp;
+
+	prev = data->tokens;
+	tmp = data->tokens->next;
+	while (tmp != NULL && tmp->flag != T_PIPE)
+	{
+		if (check_redir(data, tmp->flag) == true)
+		{
+			prev->next = tmp->next;
+			redirect_del_token(data, tmp);
+			tmp = prev->next;
+		}
+		else
+		{
+			prev = prev->next;
+			tmp = tmp->next;
+		}
+	}
 }
 
 void	resolve_redirections(t_data *data)
 {
 	t_token	*tmp;
-	t_token	*del;
-	t_token	*prev;
 
 	tmp = data->tokens;
 	if (!tmp || tmp->flag == T_PIPE)
 		return ;
-	prev = tmp;
-	while (tmp != NULL && tmp->flag != T_PIPE)
+	while (tmp && check_redir(data, tmp->flag) == true)
 	{
-		del = tmp;
-		if (check_redir(data, del->flag) == true)
-		{
-			prev->next = del->next;
-			tmp = del->next;
-			redirect_del_token(data, del);
-		}
-		else
-		{
-			prev = tmp;
-			tmp = tmp->next;
-			data->exec->words++;
-		}
+		data->tokens = tmp->next;
+		redirect_del_token(data, tmp);
+		tmp = data->tokens;
 	}
-	if (data->tokens == NULL)
+	if (tmp == NULL || tmp->flag == T_PIPE)
 	{
-		printf("------------------------\n");
-		system("leaks minishell");
+		data->exec->no_cmd = true;
+		return ;
 	}
-	set_no_cmd_flag(data);
+	resolve_redir_after_cmd(data);
 }
+
