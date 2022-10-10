@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 15:25:09 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/10 13:27:01 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ void	resolve_redirections(t_data *data)
 			tmp = tmp->next;
 			data->exec->words++;
 		}
+	}
+	if (data->tokens == NULL)
+	{
+		printf("------------------------\n");
+		system("leaks minishell");
 	}
 	set_no_cmd_flag(data);
 }

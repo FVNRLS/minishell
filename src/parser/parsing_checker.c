@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:29:31 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/10 12:29:03 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/10 12:53:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	check_fd_open_error(t_data *data, t_token *token)
 	char	*file;
 
 	file = token->content;
-	if (data->fd->in < 0)
+	if (!file || data->fd->in < 0)
 	{
 		if (access(file, F_OK < 0))
 			exec_error(PATH_ERROR, file);
@@ -32,7 +32,7 @@ void	check_fd_create_error(t_data *data, t_token *token)
 	char	*file;
 
 	file = token->content;
-	if (data->fd->out < 0)
+	if (!file || data->fd->out < 0)
 	{
 		if (access(file, F_OK) < 0)
 			exec_error(PATH_ERROR, file);

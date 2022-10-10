@@ -45,8 +45,6 @@ void	redirect_in(t_data *data, t_token *token)
 void	redirect_out(t_data *data, t_token *token)
 {
 	close_unused_fd_out(data);
-	if (data->parse_error == true)
-		return ;
 	data->fd->out = open(token->content, O_CREAT | O_RDWR | O_TRUNC, RIGHTS);
 	check_fd_create_error(data, token);
 }
@@ -54,8 +52,6 @@ void	redirect_out(t_data *data, t_token *token)
 void	append(t_data *data, t_token *token)
 {
 	close_unused_fd_out(data);
-	if (data->parse_error == true)
-		return ;
 	data->fd->out = open(token->content, O_CREAT | O_RDWR | O_APPEND, RIGHTS);
 	check_fd_create_error(data, token);
 }

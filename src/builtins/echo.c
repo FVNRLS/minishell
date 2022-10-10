@@ -78,7 +78,7 @@ static int	check_exit_code_request(t_data *data)
 
 	args = ft_split(data->tokens->content, SPACE);
 	if (!args)
-		return (EXIT_FAILURE);
+		return (EXIT_SUCCESS);
 	if (args[1] != NULL)
 	{
 		if (ft_strcmp(args[1], "$?") != 0)

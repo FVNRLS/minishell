@@ -25,10 +25,7 @@ void	close_unused_fd_out(t_data *data)
 	if (data->fd->out == STDOUT_FILENO)
 		return ;
 	else if (close(data->fd->out) < 0)
-	{
 		perror(NULL);
-		data->parse_error = true;
-	}
 }
 
 void	close_unused_fd_in(t_data *data)
@@ -36,8 +33,5 @@ void	close_unused_fd_in(t_data *data)
 	if (data->fd->in == STDIN_FILENO)
 		return ;
 	else if (close(data->fd->in) < 0)
-	{
 		perror(NULL);
-		data->parse_error = true;
-	}
 }
