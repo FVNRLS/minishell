@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:57:50 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 20:28:56 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/10 11:54:11 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,52 @@ void	stop_lexing(t_data *data, t_lex *lex)
 
 static void	handle_quotes_content(t_data *data, t_lex *lex)
 {
+	bool	redirect_found;
+
 	while (data->input[lex->i] != SINGLE_QUOTE && data->input[lex->i] != '\0')
 	{
 		lex->c = data->input[lex->i];
 		lex->buf = ft_join_char(lex->buf, lex->c);
 		lex->i++;
 	}
+	lex->i++;
+	lex->c = data->input[lex->i];
+	redirect_found = find_redirections(lex);
+	if (lex->c == SPACE || redirect_found == true || lex->c == '\0')
+		add_token(data, lex);
 }
 
-//TODO: handle edge case!
+static void	handle_empty_quotes(t_data *data, t_lex *lex)
+{
+	t_token	*tmp;
+	char	*content;
+
+	tmp = data->tokens;
+	if (!tmp)
+		return ;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	if (tmp->join == false)
+	{
+		lex->i++;
+		lex->c = data->input[lex->i];
+		lex->buf = ft_join_char(lex->buf, SPACE);
+		content = ft_strdup(lex->buf);
+		if (!content)
+			return ;
+		tmp = ft_new_token(content, lex->flag);
+		tmp->join = true;
+		ft_add_token_back(&data->tokens, tmp);
+		free(lex->buf);
+		lex->buf = NULL;
+	}
+	lex->i++;
+	lex->c = data->input[lex->i];
+}
 
 void	handle_single_quotes(t_data *data, t_lex *lex)
 {
 	bool	quote_not_closed;
-	bool	redirect_found;
 
 	lex->single_quote_mode = true;
 	quote_not_closed = check_open_quotes(data, lex);
@@ -75,18 +107,9 @@ void	handle_single_quotes(t_data *data, t_lex *lex)
 	}
 	lex->flag = T_WORD;
 	lex->i++;
-	if (data->input[lex->i + 1]== SINGLE_QUOTE)
-	{
-		lex->buf = ft_join_char(lex->buf, SPACE);
-		lex->single_quote_mode = false;
-		return ;
-	}
+	if (data->input[lex->i] == SINGLE_QUOTE)
+		handle_empty_quotes(data, lex);
 	else
 		handle_quotes_content(data, lex);
-	lex->i++;
-	lex->c = data->input[lex->i];
-	redirect_found = find_redirections(lex);
-	if (lex->c == SPACE || redirect_found == true || lex->c == '\0')
-		add_token(data, lex);
 	lex->single_quote_mode = false;
 }

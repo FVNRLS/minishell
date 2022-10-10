@@ -28,7 +28,6 @@ int	main(int argc, char **argv, char **env)
 		ft_signals(MAIN_PROCESS);
 		track_history(&data);
 		lex_input(&data);
-//		print_tokens(&data);
 		if (data.lex_error == false)
 		{
 			parse_tokens(&data);

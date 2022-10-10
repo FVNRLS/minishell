@@ -91,7 +91,7 @@ add_executable(minishell main.c
         src/builtins/unset.c
 
         #SIGNALS
-        #/src/signals/signals.c
+        src/signals/signals.c
 
         #MESSAGE PRINTER
         src/message_printer.c
