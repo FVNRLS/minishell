@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 13:22:15 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:11:47 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	catch_exit_code(t_data *data)
 {
 	int	status;
 
-	status = 0;
+	status = g_exit_code;
 	waitpid(data->pid, &status, 0);
 	if (WIFEXITED(status))
 		g_exit_code = WEXITSTATUS(status);

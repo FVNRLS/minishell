@@ -6,15 +6,16 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:28:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/11 11:13:00 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 16:43:12 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-int	check_exit_args(t_data *data)
+int	check_exit_args(t_data *data, bool *arg_equal_one)
 {
-	int		i;
+	int	i;
+	int num;
 
 	i = 0;
 	while (data->builtins->command[i])
@@ -22,7 +23,11 @@ int	check_exit_args(t_data *data)
 	if (i > 1)
 	{
 		if (ft_isnumber(data->builtins->command[1], 0, 0) && i == 2)
-			return (ft_atoi(data->builtins->command[1]) % 256);
+		{
+			num = ft_atoi(data->builtins->command[1]);
+			*arg_equal_one = true;
+			return (num % 256);
+		}
 		else if (ft_isnumber(data->builtins->command[1], 0, 0) && i > 2)
 		{
 			print_error(EXIT_ERROR);
@@ -30,6 +35,7 @@ int	check_exit_args(t_data *data)
 		}
 		else if (!ft_isnumber(data->builtins->command[1], 0, 0))
 		{
+			*arg_equal_one = true;
 			exec_error(EXIT_ARG_ERROR, data->builtins->command[1]);
 			return (INVALID_EXIT_ARG);
 		}
@@ -39,10 +45,12 @@ int	check_exit_args(t_data *data)
 
 int	mini_exit(t_data *data)
 {
-	int	ret;
+	int		ret;
+	bool	arg_equal_one;
 
-	ret = check_exit_args(data);
-	if (ret != EXIT_FAILURE)
+	arg_equal_one = false;
+	ret = check_exit_args(data, &arg_equal_one);
+	if (arg_equal_one == true)
 	{
 		write(2, "exit\n", 5);
 		data->exit_minishell = true;

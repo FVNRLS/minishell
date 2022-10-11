@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 13:59:17 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 16:17:08 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,5 @@ int	main(int argc, char **argv, char **env)
 		free_tokens(&data);
 	}
 	free_all_ressources(&data);
-//	system("leaks minishell");
 	return (g_exit_code);
 }

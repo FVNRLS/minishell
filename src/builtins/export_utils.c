@@ -16,6 +16,7 @@ void	true_env(t_data *data)
 {
 	t_envp	*tmp;
 
+	printf("hallo!\n");
 	tmp = data->envp;
 	while (tmp)
 	{
