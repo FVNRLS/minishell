@@ -89,4 +89,3 @@ void	resolve_redirections(t_data *data)
 	}
 	resolve_redir_after_cmd(data);
 }
-

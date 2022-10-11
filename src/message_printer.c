@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 15:50:27 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:38:54 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,7 @@ int	exec_error(int error, char *s)
 		printf("minishell: unset: `%s': not a valid identifier\n", s);
 	else if (error == PERMISSION_ERROR)
 		printf("minishell: %s: Permission denied\n", s);
+	else if (error == EMPTY_KEY_ERROR)
+		printf("minishell: cd: %s not set\n", s);
 	return (1);
 }
