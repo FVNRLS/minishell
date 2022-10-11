@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:57:50 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/10 11:54:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:10:41 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,34 +66,6 @@ static void	handle_quotes_content(t_data *data, t_lex *lex)
 		add_token(data, lex);
 }
 
-static void	handle_empty_quotes(t_data *data, t_lex *lex)
-{
-	t_token	*tmp;
-	char	*content;
-
-	tmp = data->tokens;
-	if (!tmp)
-		return ;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	if (tmp->join == false)
-	{
-		lex->i++;
-		lex->c = data->input[lex->i];
-		lex->buf = ft_join_char(lex->buf, SPACE);
-		content = ft_strdup(lex->buf);
-		if (!content)
-			return ;
-		tmp = ft_new_token(content, lex->flag);
-		tmp->join = true;
-		ft_add_token_back(&data->tokens, tmp);
-		free(lex->buf);
-		lex->buf = NULL;
-	}
-	lex->i++;
-	lex->c = data->input[lex->i];
-}
-
 void	handle_single_quotes(t_data *data, t_lex *lex)
 {
 	bool	quote_not_closed;
@@ -107,9 +79,6 @@ void	handle_single_quotes(t_data *data, t_lex *lex)
 	}
 	lex->flag = T_WORD;
 	lex->i++;
-	if (data->input[lex->i] == SINGLE_QUOTE)
-		handle_empty_quotes(data, lex);
-	else
-		handle_quotes_content(data, lex);
+	handle_quotes_content(data, lex);
 	lex->single_quote_mode = false;
 }

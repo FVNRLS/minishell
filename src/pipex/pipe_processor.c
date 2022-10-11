@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 17:11:47 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:47:10 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ void	pipe_last_cmd(t_data *data)
 	{
 		dup2(data->fd->std_in, STDIN_FILENO);
 		dup2(data->fd->std_out, STDOUT_FILENO);
+		if (data->parse_error == true)
+			g_exit_code = EXIT_FAILURE;
 		return ;
 	}
 	builtin = ft_get_builtin(data);
