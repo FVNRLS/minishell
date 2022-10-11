@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:39:22 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/11 12:52:42 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 15:46:06 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int	join_tilde_with_path(t_data *data, char **s)
 	int		j;
 
 	j = 1;
-	path = malloc(sizeof(char) * (ft_strlen(s[1] + 1)));
+	path = malloc(sizeof(char) * (ft_strlen(s[1])));
 	if (!path)
 		return (EXIT_FAILURE);
 	while (s[1][j])
@@ -76,10 +76,9 @@ static int	join_tilde_with_path(t_data *data, char **s)
 		j++;
 	}
 	path[j - 1] = '\0';
-	ret = ft_strjoin(ft_strdup(data->builtins->home), path);
+	ret = ft_join_tilde(data->builtins->home, path, j);
 	if (!ret)
 		return (EXIT_FAILURE);
-	free(path);
 	res = chdir(ret);
 	free(ret);
 	return (res);

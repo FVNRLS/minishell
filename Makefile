@@ -16,7 +16,7 @@ CC 			= 	cc
 
 RM 			= 	rm -f
 
-FLAGS 		= 	-Wall -Wextra -Werror
+FLAGS 		= 	-Wall -Wextra -Werror -g
 
 SRC 		= 	main.c 								\
 				src/initializer/main_init.c			\
@@ -89,6 +89,7 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_get_num_cmds.c			\
 				src/tools/ft_isalpha.c				\
 				src/tools/ft_check_plus.c			\
+				src/tools/ft_join_tilde.c			\
 
 OBJ 		= 	${SRC:.c=.o}
 TOOLS_OBJ 	=	${TOOLS_SRC:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 14:37:17 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/09/26 17:24:30 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:23:55 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 
 int	ft_get_builtin(t_data *data)
 {
+	int ret;
+
+	ret = 0;
 	data->builtins->command = ft_split(data->tokens->content, ' ');
 	if (ft_strcmp(data->builtins->command[0], data->builtins->names[0]) == 0)
-		return (0);
+		ret = 0;
 	if (ft_strcmp(data->builtins->command[0], data->builtins->names[1]) == 0)
-		return (1);
+		ret = 1;
 	if (ft_strcmp(data->builtins->command[0], data->builtins->names[2]) == 0)
-		return (2);
+		ret = 2;
 	if (ft_strcmp(data->builtins->command[0], data->builtins->names[3]) == 0)
-		return (3);
+		ret = 3;
 	if (ft_strcmp(data->builtins->command[0], data->builtins->names[4]) == 0)
-		return (4);
+		ret = 4;
 	if (ft_strcmp(data->builtins->command[0], data->builtins->names[5]) == 0)
-		return (5);
+		ret = 5;
 	if (ft_strcmp(data->builtins->command[0], data->builtins->names[6]) == 0)
-		return (6);
-	ft_cleansplit(data->builtins->command);
-	data->builtins->command = NULL;
-	return (-1);
+		ret = 6;
+	return (ret);
 }

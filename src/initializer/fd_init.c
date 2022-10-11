@@ -22,7 +22,6 @@ void	init_fd(t_data *data)
 
 void	dup_stdin_and_stdout(t_data *data)
 {
-	init_fd(data);
 	data->fd->std_in = dup(STDIN_FILENO);
 	if (!data->fd->std_in)
 	{

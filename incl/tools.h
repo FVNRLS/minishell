@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:31:55 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 15:22:30 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:50:23 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int		ft_get_num_cmds(t_data *data);
 int		ft_isalpha(int c);
 int		ft_atoi(const char *str);
 bool	ft_check_plus(char *s);
+char	*ft_join_tilde(char *buf, char *tmp, int flag);
 
 //FOR DEBUGGING PURPOSES
 int		print_list(t_token *data);

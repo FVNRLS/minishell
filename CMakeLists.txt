@@ -45,6 +45,7 @@ add_executable(minishell main.c
         src/tools/ft_isalpha.c
         src/tools/ft_check_plus.c
         src/tools/ft_atoi.c
+        src/tools/ft_join_tilde.c
 
         #HISTORY
         src/history_tracker.c
@@ -93,7 +94,7 @@ add_executable(minishell main.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-       )
+        )
 
 target_link_libraries(minishell edit)
 

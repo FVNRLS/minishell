@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:40:53 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 11:45:16 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:08:39 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,8 @@ void	free_tokens(t_data *data)
 	t_token	*del;
 
 	del = NULL;
-	if (!data->tokens)
+	if (data->tokens != NULL)
 		return ;
-	del = NULL;
 	while (data->tokens != NULL)
 	{
 		del = data->tokens;
@@ -55,7 +54,7 @@ void	free_builtins(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < NUM_BUILTINS)
+	while (i < NUM_BUILTINS && data->builtins->names[i] != NULL)
 	{
 		free(data->builtins->names[i]);
 		data->builtins->names[i] = NULL;
@@ -83,16 +82,15 @@ void	free_envp(t_data *data)
 
 void	free_all_ressources(t_data *data)
 {
+	free(data->builtins->home);
 	free_builtins(data);
 	free_envp(data);
 	free_tokens(data);
+
 	free(data->sep);
-	data->sep = NULL;
 	free(data->redir);
-	data->redir = NULL;
-	free(data->fd);
 	close(data->fd->std_in);
 	close(data->fd->std_out);
+	free(data->fd);
 	free(data->exec);
-	free(data->builtins->home);
 }

@@ -93,4 +93,6 @@ void	execute_tokens(t_data *data)
 	}
 	catch_exit_code(data);
 	destroy_hdocs(data);
+	ft_cleansplit(data->builtins->command);
+	data->builtins->command = NULL;
 }

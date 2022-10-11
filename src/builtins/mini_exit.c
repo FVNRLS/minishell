@@ -42,7 +42,7 @@ int	mini_exit(t_data *data)
 	int	ret;
 
 	ret = check_exit_args(data);
-	if (ret == INVALID_EXIT_ARG)
+	if (ret != EXIT_FAILURE)
 	{
 		write(2, "exit\n", 5);
 		data->exit_minishell = true;

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 16:15:14 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 13:20:29 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	init_exec(t_data *data)
 	data->exec->path = NULL;
 	data->exec->cmd_num = 1;
 	data->exec->last_cmd = 0;
+	data->pid = 0;
 }
 
 void	init_shell_env(t_data *data, char **envp)
