@@ -84,7 +84,7 @@ void	execute_tokens(t_data *data)
 			dup2(data->fd->std_out, STDOUT_FILENO);
 			if (data->parse_error == true)
 				g_exit_code = EXIT_FAILURE;
-			else
+			else if (g_exit_code != TERMINATED_BY_CTRL_C)
 				g_exit_code = EXIT_SUCCESS;
 		}
 		else if (data->exec->no_cmd == true || data->tokens->flag == T_WORD)

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:34:04 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 13:20:29 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 22:18:33 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	init_exec(t_data *data)
 
 void	init_shell_env(t_data *data, char **envp)
 {
-	data->stop_sig_hdoc = 0;
 	g_exit_code = 0;
 	data->pipe[0] = -1;
 	data->pipe[1] = -1;

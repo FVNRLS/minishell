@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 22:23:30 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 22:48:09 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static void	read_to_hdoc(t_data *data, t_token *token)
 {
 	int	status;
 
+	status = 0;
 	data->pid = fork();
 	if (data->pid < 0)
 		perror(NULL);
@@ -75,12 +76,9 @@ static void	read_to_hdoc(t_data *data, t_token *token)
 	waitpid(data->pid, &status, 0);
 	if (WIFEXITED(status))
 	{
-		status = WEXITSTATUS(status);
-		if (status != 0)
-		{
+		g_exit_code = WEXITSTATUS(status);
+		if (g_exit_code == EXIT_FAILURE)
 			data->parse_error = true;
-			g_exit_code = EXIT_FAILURE;
-		}
 	}
 }
 
