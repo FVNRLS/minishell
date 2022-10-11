@@ -86,13 +86,14 @@ add_executable(minishell main.c
         src/builtins/pwd.c
         src/builtins/unset.c
         src/builtins/cd_utils.c
+        src/builtins/change_pwd_utils.c
 
         #SIGNALS
         src/signals/signals.c
 
         #MESSAGE PRINTER
         src/message_printer.c
-        )
+       )
 
 target_link_libraries(minishell edit)
 

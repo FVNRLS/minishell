@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/10/04 15:09:36 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/10/11 11:29:28 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ SRC 		= 	main.c 								\
 				src/destructor.c					\
 				src/builtins/env.c					\
 				src/builtins/cd.c					\
+				src/builtins/cd_utils.c				\
+				src/builtins/change_pwd_utils.c		\
 				src/builtins/echo.c					\
 				src/builtins/mini_exit.c			\
 				src/builtins/export.c				\
