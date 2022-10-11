@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 17:07:54 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 20:36:25 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,10 @@ void	execute_tokens(t_data *data)
 		{
 			dup2(data->fd->std_in, STDIN_FILENO);
 			dup2(data->fd->std_out, STDOUT_FILENO);
+			if (data->parse_error == true)
+				g_exit_code = EXIT_FAILURE;
+			else
+				g_exit_code = EXIT_SUCCESS;
 		}
 		else if (data->exec->no_cmd == true || data->tokens->flag == T_WORD)
 		{

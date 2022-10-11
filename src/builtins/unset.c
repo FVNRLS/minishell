@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/10 12:40:53 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/11 20:09:16 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ static void	check_keys_help(char **s, int *i, int *j, int mode)
 export && unset can use this with mode
 check first char
 */
-int	check_keys(char **s, int mode)
+int check_keys(char **s, int mode)
 {
-	int	i;
-	int	j;
-	int ret;
+	int    i;
+	int    j;
+	int		ret;
 
 	j = 0;
 	i = 0;
@@ -75,7 +75,7 @@ int	check_keys(char **s, int mode)
 	while (s[i] && i < ft_splitlen(s))
 	{
 		j = 0;
-		if (!ft_isalpha(s[i][j]) && s[i][j] != '_')
+		if (!ft_isalpha(s[i][j]) &&s[i][j] != '_')
 			ret += exec_error(mode, s[i]);
 		else
 			check_keys_help(s, &i, &j, mode);
@@ -106,20 +106,29 @@ int	unset(t_data *data)
 {
 	t_envp	*tmp;
 	int		i;
+	int 	ret;
+	int 	errors;
 
+	errors = 0;
 	i = 1;
 	if (!data->builtins->command[i])
 		return (EXIT_FAILURE);
 	while (data->builtins->command[i])
 	{
 		tmp = NULL;
-		if (check_unset(data->builtins->command[i]))
+		ret = check_unset(data->builtins->command[i]);
+		if (ret == EXIT_FAILURE)
+		{
+			errors++;
 			exec_error(UNSET_ERROR, data->builtins->command[i]);
+		}
 		else
 			tmp = ft_getenvp(data, data->builtins->command[i]);
 		if (tmp != NULL)
 			ft_dl_node(&data, tmp);
 		i++;
 	}
+	if (errors > 0)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

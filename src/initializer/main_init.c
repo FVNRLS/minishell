@@ -49,6 +49,7 @@ void	init_exec(t_data *data)
 
 void	init_shell_env(t_data *data, char **envp)
 {
+	data->stop_sig_hdoc = 0;
 	g_exit_code = 0;
 	data->pipe[0] = -1;
 	data->pipe[1] = -1;
