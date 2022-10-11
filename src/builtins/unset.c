@@ -63,22 +63,25 @@ static void	check_keys_help(char **s, int *i, int *j, int mode)
 export && unset can use this with mode
 check first char
 */
-void	check_keys(char **s, int mode)
+int	check_keys(char **s, int mode)
 {
 	int	i;
 	int	j;
+	int ret;
 
 	j = 0;
 	i = 0;
+	ret = 0;
 	while (s[i] && i < ft_splitlen(s))
 	{
 		j = 0;
 		if (!ft_isalpha(s[i][j]) && s[i][j] != '_')
-			exec_error(mode, s[i]);
+			ret += exec_error(mode, s[i]);
 		else
 			check_keys_help(s, &i, &j, mode);
 		i++;
 	}
+	return (ret);
 }
 
 static int	check_unset(char *s)

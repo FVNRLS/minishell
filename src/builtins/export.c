@@ -98,13 +98,16 @@ static void	key_export(t_data **data)
 int	export(t_data *data)
 {
 	int	i;
+	int ret;
 
 	i = 0;
 	if (check_string(&data, &i))
 		true_env(data);
 	if (i == 0)
 		return (EXIT_FAILURE);
-	check_keys(data->builtins->command, EXPORT_ERROR);
+	ret = check_keys(data->builtins->command, EXPORT_ERROR);
 	key_export(&data);
+	if (ret != 0)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

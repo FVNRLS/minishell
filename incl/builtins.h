@@ -19,7 +19,7 @@
 # include <sys/types.h>
 
 //export_utils.c /5
-void	check_keys(char **s, int mode);
+int		check_keys(char **s, int mode);
 void	true_env(t_data *data);
 int		check_string(t_data **data, int *i);
 char	*make_key(char *s, int *i);
