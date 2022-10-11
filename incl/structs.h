@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:53:01 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 15:21:37 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 10:29:23 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_builtins
 	char		*names[NUM_BUILTINS];
 	int			(*funcs[NUM_BUILTINS])(void *);
 	char		**command;
-	char 		*home;
+	char		*home;
 }		t_builtins;
 
 typedef struct s_lex

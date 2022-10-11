@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:24:58 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 12:57:50 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 13:05:44 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	set_pwd(t_data *data, char **pwd_path, t_envp **pwd)
 		if ((*pwd)->val != NULL)
 			free((*pwd)->val);
 		(*pwd)->val = ft_strdup(*pwd_path);
+		if (!(*pwd)->val)
+			return (EXIT_FAILURE);
 	}
 	else
 	{
@@ -27,6 +29,7 @@ static int	set_pwd(t_data *data, char **pwd_path, t_envp **pwd)
 			return (EXIT_FAILURE);
 		ft_add_envp_back(&data->envp, *pwd);
 	}
+	return (EXIT_SUCCESS);
 }
 
 static int	set_oldpwd(t_data *data, t_envp **pwd, t_envp **old)
@@ -36,6 +39,8 @@ static int	set_oldpwd(t_data *data, t_envp **pwd, t_envp **old)
 		if ((*old)->val != NULL)
 			free((*old)->val);
 		(*old)->val = ft_strdup((*pwd)->val);
+		if (!(*old)->val)
+			return (EXIT_FAILURE);
 	}
 	else
 	{
@@ -44,13 +49,17 @@ static int	set_oldpwd(t_data *data, t_envp **pwd, t_envp **old)
 			return (EXIT_FAILURE);
 		ft_add_envp_back(&data->envp, *old);
 	}
+	return (EXIT_SUCCESS);
 }
 
 int	fillempty(t_data *data, char **pwd_path, t_envp **pwd, t_envp **old)
 {
+	int	ret;
+
+	ret = EXIT_SUCCESS;
 	if (!(*pwd) || ft_strlen((*pwd)->val) == 0)
-		set_pwd(data, pwd_path, pwd);
+		ret = set_pwd(data, pwd_path, pwd);
 	if (!(*old) || ft_strlen((*old)->val) == 0)
-		set_oldpwd(data, pwd, old);
-	return (EXIT_SUCCESS);
+		ret = set_oldpwd(data, pwd, old);
+	return (ret);
 }
