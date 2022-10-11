@@ -98,7 +98,7 @@ static void	key_export(t_data **data)
 int	export(t_data *data)
 {
 	int	i;
-	int ret;
+	int	ret;
 
 	i = 0;
 	if (check_string(&data, &i))

@@ -76,6 +76,7 @@ add_executable(minishell main.c
         #PIPEX
         src/pipex/pipe_processor.c
         src/pipex/cmd_exec_redirecter.c
+        src/pipex/fd_dupper.c
 
         #BUILTINS
         src/builtins/cd.c

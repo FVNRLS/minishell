@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 21:47:09 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 21:50:26 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,7 @@ void	pipe_last_cmd(t_data *data)
 
 	if (data->exec->no_cmd == true || data->parse_error == true)
 	{
-		dup2(data->fd->std_in, STDIN_FILENO);
-		dup2(data->fd->std_out, STDOUT_FILENO);
+		reset_stdin_stdout(data);
 		if (data->parse_error == true)
 			g_exit_code = EXIT_FAILURE;
 		return ;
@@ -130,6 +129,5 @@ void	pipe_last_cmd(t_data *data)
 			exec_bash_cmd(data);
 		}
 	}
-	dup2(data->fd->std_in, STDIN_FILENO);
-	dup2(data->fd->std_out, STDOUT_FILENO);
+	reset_stdin_stdout(data);
 }

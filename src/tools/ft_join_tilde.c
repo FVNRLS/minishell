@@ -6,17 +6,17 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:44:19 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 15:37:10 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 22:59:38 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-static char *join_tmp_to_buf(char *buf, char *tmp)
+static char	*join_tmp_to_buf(char *buf, char *tmp)
 {
 	int		i;
 	int		j;
-	char 	*join;
+	char	*join;
 
 	join = malloc(sizeof(char) * ((ft_strlen(buf) + ft_strlen(tmp)) + 1));
 	if (!join)
@@ -32,11 +32,7 @@ static char *join_tmp_to_buf(char *buf, char *tmp)
 	}
 	j = 0;
 	while (tmp[j] != '\0')
-	{
-		join[i] = tmp[j];
-		i++;
-		j++;
-	}
+		join[i++] = tmp[j++];
 	join[i] = '\0';
 	free(tmp);
 	return (join);

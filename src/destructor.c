@@ -86,7 +86,6 @@ void	free_all_ressources(t_data *data)
 	free_builtins(data);
 	free_envp(data);
 	free_tokens(data);
-
 	free(data->sep);
 	free(data->redir);
 	close(data->fd->std_in);

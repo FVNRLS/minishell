@@ -56,6 +56,7 @@ SRC 		= 	main.c 								\
 				src/executer/cmd_extractor.c 		\
 		        src/pipex/pipe_processor.c			\
 		        src/pipex/cmd_exec_redirecter.c		\
+		        src/pipex/fd_dupper.c				\
 				src/signals/signals.c				\
 
 TOOLS_SRC	=	src/tools/ft_calloc.c				\

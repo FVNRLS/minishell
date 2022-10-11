@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 22:15:07 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 23:06:50 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ void	redirect_transitory_cmd(t_data *data);
 void	redirect_last_cmd(t_data *data);
 void	redirect_stdin_to_pipe(t_data *data);
 void	exec_bash_cmd(t_data *data);
+void	reset_stdin_stdout(t_data *data);
+void	set_global_exit_code(t_data *data);
 
 //SIGNALS
 void	ft_signals(int flag);

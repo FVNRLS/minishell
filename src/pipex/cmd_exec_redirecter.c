@@ -16,8 +16,7 @@ void	exec_bash_cmd(t_data *data)
 {
 	if (data->exec_error == true)
 	{
-		dup2(data->fd->std_in, STDIN_FILENO);
-		dup2(data->fd->std_out, STDOUT_FILENO);
+		reset_stdin_stdout(data);
 		exec_error(CMD_NOT_FOUND, data->exec->cmd[0]);
 		exit(CMD_NOT_FOUND);
 	}
@@ -25,8 +24,7 @@ void	exec_bash_cmd(t_data *data)
 	{
 		if (execve(data->exec->path, data->exec->cmd, data->env) < 0)
 		{
-			dup2(data->fd->std_in, STDIN_FILENO);
-			dup2(data->fd->std_out, STDOUT_FILENO);
+			reset_stdin_stdout(data);
 			perror(NULL);
 			exit(CMD_NOT_FOUND);
 		}
