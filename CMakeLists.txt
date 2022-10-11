@@ -46,10 +46,6 @@ add_executable(minishell main.c
         src/tools/ft_check_plus.c
         src/tools/ft_atoi.c
 
-
-        #BUILTINS:
-        src/builtins/env.c
-
         #HISTORY
         src/history_tracker.c
 
@@ -89,6 +85,7 @@ add_executable(minishell main.c
         src/builtins/mini_exit.c
         src/builtins/pwd.c
         src/builtins/unset.c
+        src/builtins/cd_utils.c
 
         #SIGNALS
         src/signals/signals.c

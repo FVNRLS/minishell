@@ -94,4 +94,5 @@ void	free_all_ressources(t_data *data)
 	close(data->fd->std_in);
 	close(data->fd->std_out);
 	free(data->exec);
+	free(data->builtins->home);
 }

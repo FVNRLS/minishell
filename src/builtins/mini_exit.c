@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:28:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/09 10:26:49 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:13:00 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_exit_args(t_data *data)
 		else if (ft_isnumber(data->builtins->command[1], 0, 0) && i > 2)
 		{
 			print_error(EXIT_ERROR);
-			return (EXIT_ERROR);
+			return (EXIT_FAILURE);
 		}
 		else if (!ft_isnumber(data->builtins->command[1], 0, 0))
 		{
@@ -42,7 +42,7 @@ int	mini_exit(t_data *data)
 	int	ret;
 
 	ret = check_exit_args(data);
-	if (ret != EXIT_ERROR)
+	if (ret == INVALID_EXIT_ARG)
 	{
 		write(2, "exit\n", 5);
 		data->exit_minishell = true;

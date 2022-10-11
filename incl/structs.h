@@ -39,6 +39,7 @@ typedef struct s_builtins
 	char		*names[NUM_BUILTINS];
 	int			(*funcs[NUM_BUILTINS])(void *);
 	char		**command;
+	char 		*home;
 }		t_builtins;
 
 typedef struct s_lex
@@ -68,7 +69,6 @@ typedef struct s_exec
 	char	*path;
 	int		cmd_num;
 	int		last_cmd;
-	int		words;
 	bool	no_cmd;
 }		t_exec;
 

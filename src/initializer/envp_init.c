@@ -95,6 +95,8 @@ void	init_envp(t_data *data, char **env)
 			free_envp(data);
 			exit(EXIT_FAILURE);
 		}
+		if (ft_strcmp(tmp->key, "HOME") == 0)
+			data->builtins->home = ft_strdup(tmp->val);
 		tmp->equal = true;
 		ft_add_envp_back(&data->envp, tmp);
 		i++;

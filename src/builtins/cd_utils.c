@@ -28,7 +28,6 @@ static int	fillempty(t_data *data, char **pwd_path, t_envp **pwd, t_envp **old)
                 return (EXIT_FAILURE);
             ft_add_envp_back(&data->envp, *pwd);
         }
-        
     }
     if (!(*old) || ft_strlen((*old)->val) == 0)
     {

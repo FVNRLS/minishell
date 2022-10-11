@@ -27,6 +27,7 @@
 # define UNSET_ERROR				10
 # define PATH_ERROR					11
 # define PERMISSION_ERROR			12
+# define EMPTY_KEY_ERROR			13
 
 # define CMD_NOT_FOUND				127
 # define INVALID_EXIT_ARG			255

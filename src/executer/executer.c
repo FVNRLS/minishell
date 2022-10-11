@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/10 15:30:15 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 10:29:35 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static void	reset_params(t_data *data)
 {
 	data->parse_error = false;
 	data->exec_error = false;
-	data->exec->words = 0;
 	data->exec->no_cmd = false;
 	data->fd->in = STDIN_FILENO;
 	data->fd->out = STDOUT_FILENO;

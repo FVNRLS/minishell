@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:42:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 15:09:13 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/11 10:18:44 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int		env(t_data *data);
 moving through the tree via cd "pathname"
 */
 int		cd(t_data *data);
+int		change_pwds(t_data *data);
+int		home_path(char **s, t_data *data);
 
 /*
 prints current working directory
