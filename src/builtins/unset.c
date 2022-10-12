@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/11 23:21:14 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:07:42 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_dl_node(t_data **data, t_envp *node)
 /*
 check rest of string
 */
-static void	check_keys_help(char **s, int *i, int *j, int mode)
+static int	check_keys_help(char **s, int *i, int *j, int mode)
 {
 	while (s[(*i)] != NULL && s[(*i)][(*j)] && s[(*i)][(*j) + 1])
 	{
@@ -54,9 +54,10 @@ static void	check_keys_help(char **s, int *i, int *j, int mode)
 		&& s[*i][*j] != '_')
 		{
 			exec_error(mode, s[*i]);
-			break ;
+			return (EXIT_FAILURE);
 		}
 	}
+	return (EXIT_SUCCESS);
 }
 
 /*
@@ -78,7 +79,7 @@ int	check_keys(char **s, int mode)
 		if (!ft_isalpha(s[i][j]) && s[i][j] != '_')
 			ret += exec_error(mode, s[i]);
 		else
-			check_keys_help(s, &i, &j, mode);
+			ret += check_keys_help(s, &i, &j, mode);
 		i++;
 	}
 	return (ret);
