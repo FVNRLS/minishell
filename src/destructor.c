@@ -35,7 +35,7 @@ void	free_tokens(t_data *data)
 	t_token	*del;
 
 	del = NULL;
-	if (data->tokens != NULL)
+	if (data->tokens == NULL)
 		return ;
 	while (data->tokens != NULL)
 	{

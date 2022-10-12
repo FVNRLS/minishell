@@ -65,6 +65,7 @@ void	check_multiple_pipes(t_data *data)
 	}
 	if (tmp->flag == T_PIPE)
 	{
+		g_exit_code = PIPE_SYNTAX_ERROR;
 		print_token_error(PIPE_SYNTAX_ERROR, tmp);
 		data->parse_error = true;
 		return ;
