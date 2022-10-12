@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:29:31 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 18:45:20 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/12 10:38:55 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,9 @@ void	check_multiple_pipes(t_data *data)
 	}
 	if (tmp->flag == T_PIPE)
 	{
-		g_exit_code = PIPE_SYNTAX_ERROR;
 		print_token_error(PIPE_SYNTAX_ERROR, tmp);
+		g_exit_code = PIPE_SYNTAX_ERROR;
 		data->parse_error = true;
-		return ;
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:27:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/11 14:35:06 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/12 11:19:45 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,9 @@ int	echo(t_data *data)
 
 	flag = 0;
 	i = echo_pos(data->tokens->content, &flag);
-	if (data->tokens->content[i - 1] == '\0')
-	{
-		printf("\n");
-		return (g_exit_code);
-	}
 	while (data->tokens->content[i + 1] && data->tokens->content[i] == '-' \
-	&& data->tokens->content[i + 1] == 'n')
+	&& data->tokens->content[i + 1] == 'n' \
+	&& check_n(data->tokens->content + i))
 		i += echo_pos(data->tokens->content + i, &flag);
 	if (i && data->tokens->content \
 	&& i < (int)ft_strlen(data->tokens->content))

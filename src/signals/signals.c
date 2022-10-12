@@ -28,7 +28,7 @@ static void	ctrl_c(int sig_num)
 	tcsetattr(STDIN_FILENO, 0, &att);
 	ioctl(STDIN_FILENO, TIOCSTI, "\n");
 	rl_on_new_line();
-//	rl_replace_line("", 0);
+	rl_replace_line("", 0);
 }
 
 static void	catch_backslash(int sig_num)
@@ -36,7 +36,7 @@ static void	catch_backslash(int sig_num)
 	(void)sig_num;
 	ioctl(STDIN_FILENO, TIOCSTI, "");
 	rl_on_new_line();
-//	rl_replace_line("", 0);
+	rl_replace_line("", 0);
 }
 
 static int	catch_herd(int sig_num)

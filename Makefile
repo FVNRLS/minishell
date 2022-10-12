@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/10/11 11:29:28 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/10/12 11:08:35 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ CC 			= 	cc
 
 RM 			= 	rm -f
 
-FLAGS 		= 	-Wall -Wextra -Werror -g
+FLAGS 		= 	-Wall -Wextra -Werror
 
-SRC 		= 	main.c 								\
+SRC 		= 	src/main.c 							\
 				src/initializer/main_init.c			\
 				src/initializer/envp_init.c			\
 				src/initializer/builtins_init.c		\
@@ -35,6 +35,7 @@ SRC 		= 	main.c 								\
 				src/builtins/export_utils.c			\
 				src/builtins/pwd.c					\
 				src/builtins/unset.c				\
+				src/builtins/echo_utils.c			\
 				src/history_tracker.c				\
 				src/lexer/lexer.c					\
 				src/lexer/tokenizer.c				\
