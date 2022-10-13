@@ -13,7 +13,7 @@
 #include "../../incl/minishell.h"
 
 /* 
-	Executes a non-builtin comand with execve function and returns the
+	Executes a non-builtin command with execve function and returns the
 	appropriate exit code.
 	Resets stdin and stdout back to initial values and prints error message
 	in case of parse_error or execution error.

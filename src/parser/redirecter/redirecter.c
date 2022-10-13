@@ -77,7 +77,7 @@ static void	resolve_redir_after_cmd(t_data *data)
 	checks if a current token is a redirection and resolves it by
 	assigning the fd number of standard input and output to fd->in and fd->out.
 	There can be only one stdin and stdout in the end. 
-	Otherwise all previous unused (opened) fd's will be closed.
+	Otherwise, all previous unused (opened) fd's will be closed.
 	The function is always called for each command separately (between pipes).
 	If there was no T_WORD token until the next pipe, the data->exec->no_cmd 
 	is set to true.

@@ -14,7 +14,7 @@
 
 /*
 	Checks if all builtins were successfully malloced.
-	If not - returns false, wchich causes immediate exit of the program.
+	If not - returns false, which causes immediate exit of the program.
 */
 static bool	check_names_malloc(t_data *data)
 {
@@ -31,7 +31,7 @@ static bool	check_names_malloc(t_data *data)
 }
 
 /*
-	Saves the builtins in array, in order to access and exec. them on the 
+	Saves the builtins in array, in order to access and executes them on the
 	appropriate index.
 */
 void	init_builtin_names(t_data *data)

@@ -87,7 +87,7 @@ static void	reset_params(t_data *data)
 }
 
 /*
-	Algorithm for executing comandos, separated with pipes.
+	Algorithm for executing commands, separated with pipes.
 
 	Given are at the beginning tokens with already merged 
 	redirections and words in between.

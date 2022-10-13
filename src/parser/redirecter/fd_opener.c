@@ -13,8 +13,8 @@
 #include "../../../incl/minishell.h"
 
 /* 	
-	closes previous opened, unsused fd_in and opens a heredoc file in read mode.
-	if there is permisision or file error occured - the parse_error flag
+	closes previous opened, unused fd_in and opens a heredoc file in read mode.
+	if there is permission or file error occurred - the parse_error flag
 	is set to true. 	
 */
 void	redirect_from_hdoc(t_data *data)
@@ -39,8 +39,8 @@ void	redirect_from_hdoc(t_data *data)
 }
 
 /* 	
-	closes previous opened, unsused fd_in and opens a file in read mode.
-	if there is permisision or file error occured - the parse_error flag
+	closes previous opened, unused fd_in and opens a file in read mode.
+	if there is permission or file error occurred - the parse_error flag
 	is set to true. 	
 */
 void	redirect_in(t_data *data, t_token *token)
@@ -53,9 +53,9 @@ void	redirect_in(t_data *data, t_token *token)
 }
 
 /* 
-	closes previous opened, unsused fd_out.
+	closes previous opened, unused fd_out.
 	opens a file in overwrite mode or creates a new file.
-	if there is permisision or file error occured - the parse_error flag
+	if there is permission or file error occurred - the parse_error flag
 	is set to true. 	
 */
 void	redirect_out(t_data *data, t_token *token)
@@ -66,9 +66,9 @@ void	redirect_out(t_data *data, t_token *token)
 }
 
 /* 	
-	closes previous opened, unsused fd_out.
+	closes previous opened, unused fd_out.
 	opens a file in append mode or creates a new file if there is no such file.
-	if there is permisision or file error occured - the parse_error flag
+	if there is permission or file error occurred - the parse_error flag
 	is set to true. 	
 */
 void	append(t_data *data, t_token *token)

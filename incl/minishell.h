@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 23:06:50 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:42:12 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 
 # define CHILD_PROCESS		0
 # define MAIN_PROCESS		1
+# define HDOC				2
 # define RIGHTS				0644
 
 int		g_exit_code;

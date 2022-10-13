@@ -6,12 +6,16 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:49:28 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 10:44:59 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 19:30:24 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incl/minishell.h"
 
+/*
+	Decides based on the current character how to expand the dollar sign.
+ 	Expands the input into a token and adds it to the token list.
+*/
 void	handle_expandable_parameter(t_data *data, t_lex *lex)
 {
 	bool	is_sep;
@@ -37,6 +41,7 @@ void	handle_expandable_parameter(t_data *data, t_lex *lex)
 	lex->expansion = false;
 }
 
+/* Handles different expansion cases if dollar sign has occurred */
 void	handle_expansion(t_data *data, t_lex *lex)
 {
 	lex->expansion = true;

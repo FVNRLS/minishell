@@ -13,9 +13,9 @@
 #include "../../incl/minishell.h"
 
 /*
-	Iterates the characters in the input and searches for a single/double qoute,
+	Iterates the characters in the input and searches for a single/double quote,
 	based on the current character lex->c. 
-	If there is no appropriate qoute, returns true,
+	If there is no appropriate quote, returns true,
 	which causes the lexer to stop and the input not to come to execution.
 */
 bool	check_open_quotes(t_data *data, t_lex *lex)
@@ -78,7 +78,8 @@ static void	handle_quotes_content(t_data *data, t_lex *lex)
 	Checks if the single quotes are closed. If not - stops the lexing process 
 	and sets the lex_error flag to true, which results in the input not being 
 	interpreted or executed further. 
-	Then evaluates the content between the quotes and creates a word token from it.
+	Then evaluates the content between the quotes and creates a
+ 	word token from it.
 */
 void	handle_single_quotes(t_data *data, t_lex *lex)
 {

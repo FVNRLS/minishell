@@ -12,6 +12,13 @@
 
 #include "../../../incl/minishell.h"
 
+/*
+ * Here happens the real expansion of the content:
+ *
+ * Compares the expandable content the DOLLAR sign with the envp. linked list.
+ * If envp. with such key exist, the value of the appropriate envp->key becomes
+ * is added to the buffer and becomes a token.
+ * */
 void	try_expansion(t_data *data, t_lex *lex)
 {
 	t_envp	*tmp;
@@ -32,6 +39,7 @@ void	try_expansion(t_data *data, t_lex *lex)
 	lex->buf = NULL;
 }
 
+/* Expands all expandable content after the DOLLAR sign */
 void	expand_parameter(t_data *data, t_lex *lex)
 {
 	bool	is_sep;
@@ -50,6 +58,7 @@ void	expand_parameter(t_data *data, t_lex *lex)
 		try_expansion(data, lex);
 }
 
+/* Expands return of the last pipe process, based on the global g_exit_code. */
 void	expand_last_return(t_data *data, t_lex *lex)
 {
 	char	*exit_code;
@@ -73,6 +82,11 @@ void	expand_last_return(t_data *data, t_lex *lex)
 	}
 }
 
+/*
+ * In case of multiple DOLLAR signs in a row and SPACE sign
+ * creates a token with many DOLLAR sign in content.
+ * NO expansion of multiple return values is supported!
+ * */
 void	handle_multiple_dollars(t_data *data, t_lex *lex)
 {
 	bool	is_sep;
@@ -96,6 +110,10 @@ void	handle_multiple_dollars(t_data *data, t_lex *lex)
 	}
 }
 
+/*
+ * In case of only one DOLLAR and SPACE sign - creates a token with dollar
+ * sign in content.
+ * */
 void	handle_one_dollar(t_data *data, t_lex *lex)
 {
 	bool	is_sep;

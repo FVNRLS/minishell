@@ -14,7 +14,7 @@
 
 /* 
 	Opens (creates) a file in overwrite mode or creates a new file.
-	If there is permisision or file error occured - the parse_error flag
+	If there is permission or file error occurred - the parse_error flag
 	is set to true.
 	The hdoc file is then saved in the appropriate array index.
 */
@@ -41,7 +41,7 @@ static void	create_hdoc(t_data *data)
 }
 
 /*
-	Promts user input and writes the content into particular
+	Prompts user input and writes the content into particular
 	heredoc file until the stop command comes (limiter). 
 	Then exits the child process with appropriate exit code.
 	In case of ctrl-c signal the code is 130.
@@ -54,7 +54,7 @@ static void	read_from_stdin(t_data *data, t_token *token)
 	lim_found = false;
 	while (lim_found == false)
 	{
-		ft_signals(CHILD_PROCESS);
+		ft_signals(HDOC);
 		input = readline("> ");
 		if (!input)
 			break ;
@@ -76,7 +76,7 @@ static void	read_from_stdin(t_data *data, t_token *token)
 }
 
 /* 
-	forks an child process to read input to every heredoc file in the array 
+	forks a child process to read input to every heredoc file in the array
 	returns the global exit code, also in case of termination of heredoc 
 	read process. The termination in case of hdoc happens with ctrl-c signal.
 */

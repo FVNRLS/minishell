@@ -47,7 +47,7 @@ void	init_exec(t_data *data)
 	data->pid = 0;
 }
 
-/* 	Initilizes the shell environment with all data, flags, containers 
+/* 	Initializes the shell environment with all data, flags, containers
 	and linked lists in order to start minishell. 
  */
 void	init_shell_env(t_data *data, char **envp)

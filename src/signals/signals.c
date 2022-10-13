@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 17:10:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 22:30:09 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 19:02:48 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,6 @@ static void	ctrl_c(int sig_num)
 	rl_replace_line("", 0);
 }
 
-static void	catch_backslash(int sig_num)
-{
-	(void)sig_num;
-	ioctl(STDIN_FILENO, TIOCSTI, "");
-	rl_on_new_line();
-	rl_replace_line("", 0);
-}
-
 static int	catch_herd(int sig_num)
 {
 	static int	save;
@@ -54,17 +46,36 @@ static int	catch_herd(int sig_num)
 	return (-1);
 }
 
+/*
+	Handles signals depending on the process running.
+
+ 	1) For main process:
+ 		--> ctrl-c signal is silenced and prints a newline.
+ 		--> ctrl-backslash shouldn't do anything
+ 	2) For child process:
+ 		--> all signals return to initial values.
+ 		--> ctrl-c should terminate the program on child process.
+ 		--> ctrl-backslash should cause SIGQUIT and terminate the program.
+	3) For heredoc:
+ 		--> ctrl-c should terminate the opened child process with input prompt.
+ 		--> ctrl-backslash shouldn't do anything
+*/
 void	ft_signals(int flag)
 {
 	if (flag == MAIN_PROCESS)
 	{
 		signal(SIGINT, &ctrl_c);
-		signal(SIGQUIT, (void *)catch_backslash);
+		signal(SIGQUIT, SIG_IGN);
 	}
 	else if (flag == CHILD_PROCESS)
 	{
+		signal(SIGQUIT, SIG_DFL);
+		signal(SIGINT, SIG_DFL);
+	}
+	else if (flag == HDOC)
+	{
+		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, &ctrl_c);
-		signal(SIGQUIT, &catch_backslash);
 		signal(SIGINT, (void *)catch_herd);
 		if (catch_herd(99) == 42)
 			exit(TERMINATED_BY_CTRL_C);

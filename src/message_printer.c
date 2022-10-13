@@ -12,7 +12,7 @@
 
 #include "../incl/minishell.h"
 
-/* addidtional helper function to visualize the tokens linked list */
+/* additional helper function to visualize the tokens linked list */
 void	print_tokens(t_data *data)
 {
 	t_token	*tmp;

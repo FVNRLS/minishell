@@ -115,7 +115,7 @@ char	**get_cmd(t_data *data, t_token *token)
 }
 
 /*
-	1) Gets a command from splitted input
+	1) Gets a command from split input
 	2) Tries to find the executable path for the command, based on the PATH envp.
 	If no cmd or appropriate path is set in the end, 
 	sets  exec_error flag to true and returns.

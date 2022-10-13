@@ -17,13 +17,13 @@
 	
 	Structure:
 	First initialization.
-		Running minishell as while loop with repetative procedure:
+		Running minishell as while loop with repetitive procedure:
 			1) Catch signals
 			2) Prompt and save user input. Add the input to the history.
 			3) Lexical analysis of the input + splitting into tokens.
 			4) Parse the created tokens list.
 			5) Execute tokens commands with redirections and pipes
-	In the all allocated files, linked lists and araays are freed.
+	In the all allocated files, linked lists and arrays are freed.
 
 */
 int	main(int argc, char **argv, char **env)

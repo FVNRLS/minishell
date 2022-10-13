@@ -45,7 +45,7 @@ void	check_fd_create_error(t_data *data, t_token *token)
 }
 
 /* 	
-	Parser part: checks if there is pipe synthax error. 
+	Parser part: checks if there is pipe syntax error.
 	E.g. single or multiple pipes without a word after it.
 	like: | or: ||||
 */
@@ -79,7 +79,7 @@ void	check_multiple_pipes(t_data *data)
 }
 
 /* 	
-	Lexer part: checks if there is redir. synthax error. 
+	Lexer part: checks if there is redirection syntax error.
 	E.g. single redirection without a word after it.
 	like: < 
 */

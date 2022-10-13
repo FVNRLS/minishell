@@ -21,7 +21,7 @@ void	init_fd(t_data *data)
 }
 
 /* 	Saves the standard input and output into fd->std_in and fd->std_out
-	in order not to loose the initial STDIN_FILENO and STDOUT_FILENO after
+	in order not to lose the initial STDIN_FILENO and STDOUT_FILENO after
 	many redirections and piping during the execution of many commands.
 */
 void	dup_stdin_and_stdout(t_data *data)

@@ -32,7 +32,7 @@ static int	count_hdoc_files(t_data *data)
 }
 
 /* 
-	Check for parsing errors and merge all tokens with true joinable flag 
+	Check for parsing errors and merge all tokens with true join-able flag
 	Heredoc files has higher priority over the execution.
 	--> creates and reads content into all hdocs files from hdoc-tokens.
 	In case of parse_error the commands will not be executed at all.

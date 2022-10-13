@@ -30,7 +30,7 @@ void	refactor_join_flags(t_data *data)
 
 /* 	
 	iterates all tokens and merges the current token with the next if it's
-	join flag is set to true. The content of joinable token is merged with
+	join flag is set to true. The content of join-able token is merged with
 	content of the next token.
 */
 void	merge_joinable_tokens(t_data *data)

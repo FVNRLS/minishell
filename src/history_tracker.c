@@ -14,7 +14,7 @@
 
 /* 
 	Prompts a new user input and saves it to the data->input.
-	In case of ctrl-d keyhook there is no input --> program exits!
+	In case of ctrl-d key-hook there is no input --> program exits!
 */
 void	track_history(t_data *data)
 {

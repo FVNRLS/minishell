@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_processor.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/13 13:50:54 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:52:53 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static int	create_pipe(t_data *data)
 
 	Closes unused pipe end before passing and used - after passing.
   	Closes the duplicated fd after using.
-	Executes the command with execve() on child or builin on parent process.
+	Executes the command with execve() on child or builtin on parent process.
 	If the command fails - prints the appropriate error message and exits the
- 	child process with exic code.
+ 	child process with appropriate exit code.
  	--> will be handled from parent process as signal to exit the program.
 */
 void	pipe_transitory_cmd(t_data *data)
@@ -79,6 +79,7 @@ void	pipe_transitory_cmd(t_data *data)
 			return ;
 		if (data->pid == 0)
 		{
+			ft_signals(CHILD_PROCESS);
 			redirect_transitory_cmd(data);
 			exec_bash_cmd(data);
 		}
@@ -94,7 +95,7 @@ void	pipe_transitory_cmd(t_data *data)
 
  	Exec.:
 	Takes the output from the last command and passes it as output to outfile.
-	Executes the command with execve() on child or builin on parent process.
+	Executes the command with execve() on child or builtin on parent process.
 
 	Closes the duplicated fd after using.
 	Ignores all signals during the execution with signal(SIGINT, SIG_IGN);
@@ -119,11 +120,11 @@ void	pipe_last_cmd(t_data *data)
 		exec_last_builtin(data, builtin);
 	else
 	{
-		signal(SIGINT, SIG_IGN);
 		if (create_fork(data) < 0)
 			return ;
 		if (data->pid == 0)
 		{
+			ft_signals(CHILD_PROCESS);
 			redirect_last_cmd(data);
 			exec_bash_cmd(data);
 		}
