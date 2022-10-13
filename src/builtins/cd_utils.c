@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:39:22 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/11 15:46:06 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:25:12 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-//cd - will change pwd val && OLDPDW dont change even when its empty
-//cd .. will change pwd val && OLDPWD too
+/*
+cd - will change pwd val && OLDPDW dont change even when its empty
+cd .. will change pwd val && OLDPWD too
+*/
 int	change_pwds(t_data *data)
 {
 	t_envp	*old;
@@ -42,6 +44,9 @@ int	change_pwds(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+/*
+switch OLDPWD with PWD if OLD exist
+*/
 static int	pwd_switch(t_data *data, const char *s)
 {
 	t_envp	*tmp;
@@ -59,6 +64,10 @@ static int	pwd_switch(t_data *data, const char *s)
 	return (EXIT_SUCCESS);
 }
 
+/*
+cd ~  = HOME PATH
+cd ~/PATH 
+*/
 static int	join_tilde_with_path(t_data *data, char **s)
 {
 	int		res;
@@ -84,6 +93,11 @@ static int	join_tilde_with_path(t_data *data, char **s)
 	return (res);
 }
 
+/*
+cd ~  = HOME PATH
+cd ~/PATH
+cd - = HOME val if Home exist
+*/
 int	home_path(char **s, t_data *data)
 {
 	int	ret;
