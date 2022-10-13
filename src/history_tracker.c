@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_tracker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 15:07:45 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/13 13:30:23 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:51:04 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void	track_history(t_data *data)
 		free_all_ressources(data);
 		exit(g_exit_code);
 	}
-	add_history(data->input);
+	if (ft_strlen(data->input) != 0)
+		add_history(data->input);
 }
