@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/05 18:09:09 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:59:57 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/* Checks if the current character is a separator. Returns true if yes */
 bool	check_sep(t_data *data, char c)
 {
 	int	i;
@@ -26,6 +27,9 @@ bool	check_sep(t_data *data, char c)
 	return (false);
 }
 
+/* 	Decides by setting join flag whether the next token should be merged
+	with the current or not.
+*/
 static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 {
 	char	next_char;
@@ -54,6 +58,7 @@ static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 	}
 }
 
+/* Adds a new token node to the linked list of tokens */
 void	add_token(t_data *data, t_lex *lex)
 {
 	t_token	*tmp;
@@ -72,6 +77,12 @@ void	add_token(t_data *data, t_lex *lex)
 	lex->buf = NULL;
 }
 
+/* 
+	Iterates the input to the end and creates tokens 
+	separated by SPACE characters.
+	Decide on the current character how to create the token 
+	and which flags to assign to it.
+*/
 void	create_tokens(t_data *data, t_lex *lex)
 {
 	bool	redirect_found;

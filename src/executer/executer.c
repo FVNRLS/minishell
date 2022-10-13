@@ -6,7 +6,7 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/12 10:32:51 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:05:29 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@ void	free_cmd_and_path(t_data *data)
 	data->exec->path = NULL;
 }
 
+/*
+	Extracts the cmd and path based on the following cases:
+	
+	1) Absolute or relative path is given:
+		extracts the path from the given input, searches 
+	for the appropriate cmd in PATH env and saves it as exec->cmd.
+	
+	2) Only the command name is given:
+		searches for the appropriate cmd in PATH env and saves it as cmd. 
+		Then also adds the found path to exec->path.
+*/
 static void	extract_cmd_and_path(t_data *data, t_token *token)
 {
 	if (data->exec->no_cmd == true)
@@ -44,6 +55,10 @@ static void	extract_cmd_and_path(t_data *data, t_token *token)
 	}
 }
 
+/*
+	Extracts the cmd and path and executes the given token (cmd).
+	Redirects the cmd input/output based on the cmd number.
+*/
 static void	exec_cmd(t_data *data, t_token *token)
 {
 	extract_cmd_and_path(data, token);
@@ -61,6 +76,7 @@ static void	exec_cmd(t_data *data, t_token *token)
 	data->builtins->command = NULL;
 }
 
+/* reset parameters to initial values. */
 static void	reset_params(t_data *data)
 {
 	data->parse_error = false;
@@ -70,6 +86,18 @@ static void	reset_params(t_data *data)
 	data->fd->out = STDOUT_FILENO;
 }
 
+/*
+	Algorithm for executing comandos, separated with pipes.
+
+	Given are at the beginning tokens with already merged 
+	redirections and words in between.
+	First the redirections are resolved. As a result we get 
+	the final input fd_in and output fd_out.
+	After that all words are merged into one command.
+	The command is executed and redirected until the next pipe 
+	over the desired input/output.
+	At the end the allocated heredoc-files are deleted and freed.
+*/
 void	execute_tokens(t_data *data)
 {
 	init_exec(data);

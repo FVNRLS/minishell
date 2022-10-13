@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   envp_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 11:53:00 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 10:29:23 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:32:31 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static char	*get_key(const char *str)
 	return (key);
 }
 
+/* Gets key and the corresponding value for particular envp */
 static void	get_envp(t_data *data, char *str, char **key, char **val)
 {
 	*key = get_key(str);
@@ -77,6 +78,11 @@ static void	get_envp(t_data *data, char *str, char **key, char **val)
 	}
 }
 
+/*
+	Creates a linked list from the given env (see main.c).
+	Each envp has a key and the corresponding value and can be modified
+	via export and unset builtins.
+*/
 void	init_envp(t_data *data, char **env)
 {
 	t_envp	*tmp;

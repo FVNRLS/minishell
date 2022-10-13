@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 18:49:07 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/16 11:47:02 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:17:54 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/*
+	Checks if all builtins were successfully malloced.
+	If not - returns false, wchich causes immediate exit of the program.
+*/
 static bool	check_names_malloc(t_data *data)
 {
 	int	i;
@@ -26,6 +30,10 @@ static bool	check_names_malloc(t_data *data)
 	return (true);
 }
 
+/*
+	Saves the builtins in array, in order to access and exec. them on the 
+	appropriate index.
+*/
 void	init_builtin_names(t_data *data)
 {
 	bool	all_names_malloced;
@@ -48,7 +56,7 @@ void	init_builtin_names(t_data *data)
 	}
 }
 
-//call like this: data->builtins->funcs[5](data);
+/* call like this: data->builtins->funcs[5](data); */
 void	init_builtin_functions(t_data *data)
 {
 	data->builtins->funcs[0] = (void *)&echo;

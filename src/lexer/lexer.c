@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 18:32:05 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/10 13:37:18 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:35:07 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	init_lex(t_lex *lex)
 	lex->double_quote_mode = false;
 }
 
-// lexical analyzer program. creates tokens list
+/* 	Analyzes the basic lexical part of the input and creates a linked list of 
+	tokens with associated tokens-flags and join-flags.  */
 void	lex_input(t_data *data)
 {
 	t_lex	lex;

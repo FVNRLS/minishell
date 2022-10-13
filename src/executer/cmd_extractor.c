@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_extractor.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:34:00 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 10:39:09 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:11:32 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ static char	*assign_path(char **paths, char *cmd)
 }
 
 /*
-	Finds and returns all paths of the env var. 'PATH', separated by
+	Finds and returns all paths of the envp var. 'PATH', separated by
  	the delimiter ':';
  	Iterates through all available env vars and compares the env key.
- 	If env. list contains var. PATH - returns its value.
- 	If no env with 'PATH' specified, set the path to CWD.
+ 	If envp. list contains var. PATH - returns its value.
+ 	If no envp with 'PATH' specified, set the path to CWD.
 */
 static char	**get_valid_paths(t_data *data)
 {
@@ -99,6 +99,7 @@ char	*get_cmd_path(t_data *data)
 	return (cmd_path);
 }
 
+/* splits the input in 2D array, where the first item is a command. */
 char	**get_cmd(t_data *data, t_token *token)
 {
 	char	**cmd;
@@ -113,6 +114,12 @@ char	**get_cmd(t_data *data, t_token *token)
 	return (cmd);
 }
 
+/*
+	1) Gets a command from splitted input
+	2) Tries to find the executable path for the command, based on the PATH envp.
+	If no cmd or appropriate path is set in the end, 
+	sets  exec_error flag to true and returns.
+*/
 char	**extract_cmd_from_path(t_data *data, t_token *token)
 {
 	char	**input;

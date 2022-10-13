@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   token_merger.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:14:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/15 13:56:26 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:04:35 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/* 	Checks the join flag and sets it to 0 if there is redirection with flag 1
+	and not a word token after it.
+*/
 void	refactor_join_flags(t_data *data)
 {
 	t_token	*tmp;
@@ -25,6 +28,11 @@ void	refactor_join_flags(t_data *data)
 	}
 }
 
+/* 	
+	iterates all tokens and merges the current token with the next if it's
+	join flag is set to true. The content of joinable token is merged with
+	content of the next token.
+*/
 void	merge_joinable_tokens(t_data *data)
 {
 	t_token	*tmp;
@@ -54,6 +62,10 @@ void	merge_joinable_tokens(t_data *data)
 	tmp->join = 0;
 }
 
+/* 	
+	merge a redirection with the next word token. The word token content becomes
+	content of the redirection token.
+*/
 void	merge_redirections(t_data *data)
 {
 	t_token	*tmp;
@@ -82,6 +94,7 @@ void	merge_redirections(t_data *data)
 	}
 }
 
+/* merges all word tokens next to each other into a bigger word token */
 void	merge_words(t_data *data)
 {
 	t_token	*tmp;

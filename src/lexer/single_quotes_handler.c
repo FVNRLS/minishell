@@ -6,12 +6,18 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:57:50 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/12 08:51:35 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:49:39 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/*
+	Iterates the characters in the input and searches for a single/double qoute,
+	based on the current character lex->c. 
+	If there is no appropriate qoute, returns true,
+	which causes the lexer to stop and the input not to come to execution.
+*/
 bool	check_open_quotes(t_data *data, t_lex *lex)
 {
 	int	i;
@@ -49,6 +55,8 @@ void	stop_lexing(t_data *data, t_lex *lex)
 		print_error(DOUBLE_QUOTE_MISSING);
 }
 
+/* 	Copies the characters between quotes to the buffer 
+	and adds token to the token list. */
 static void	handle_quotes_content(t_data *data, t_lex *lex)
 {
 	bool	redirect_found;
@@ -66,6 +74,12 @@ static void	handle_quotes_content(t_data *data, t_lex *lex)
 		add_token(data, lex);
 }
 
+/*
+	Checks if the single quotes are closed. If not - stops the lexing process 
+	and sets the lex_error flag to true, which results in the input not being 
+	interpreted or executed further. 
+	Then evaluates the content between the quotes and creates a word token from it.
+*/
 void	handle_single_quotes(t_data *data, t_lex *lex)
 {
 	bool	quote_not_closed;

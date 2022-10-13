@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   redirecter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:54:23 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 21:12:31 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:27:07 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incl/minishell.h"
 
+/* closes unused pipes and redirects the command input in to the next pipe */
 void	redirect_stdin_to_pipe(t_data *data)
 {
 	close(data->pipe[1]);
@@ -19,6 +20,7 @@ void	redirect_stdin_to_pipe(t_data *data)
 	close(data->pipe[0]);
 }
 
+/* decides how to redirct a token based on token flag */
 static void	redirect_token(t_data *data, t_token *token)
 {
 	if (token->flag == T_REDIRECT_IN)
@@ -36,6 +38,7 @@ static void	redirect_token(t_data *data, t_token *token)
 		g_exit_code = EXIT_FAILURE;
 }
 
+/* applies redirection rules on the token and deletes it from the tokens list */
 static void	redirect_del_token(t_data *data, t_token *token)
 {
 	if (data->parse_error == false)
@@ -46,6 +49,7 @@ static void	redirect_del_token(t_data *data, t_token *token)
 	token = NULL;
 }
 
+/* helper funciton for the redirection process */
 static void	resolve_redir_after_cmd(t_data *data)
 {
 	t_token	*prev;
@@ -69,6 +73,15 @@ static void	resolve_redir_after_cmd(t_data *data)
 	}
 }
 
+/* 	
+	checks if a current token is a redirection and resolves it by
+	assigning the fd number of standard input and output to fd->in and fd->out.
+	There can be only one stdin and stdout in the end. 
+	Otherwise all previous unused (opened) fd's will be closed.
+	The function is always called for each command separately (between pipes).
+	If there was no T_WORD token until the next pipe, the data->exec->no_cmd 
+	is set to true.
+*/
 void	resolve_redirections(t_data *data)
 {
 	t_token	*tmp;

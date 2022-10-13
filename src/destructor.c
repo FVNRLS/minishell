@@ -6,7 +6,7 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:40:53 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/12 10:27:00 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:28:10 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	free_envp(t_data *data)
 	data->envp = NULL;
 }
 
+/* frees all initialized arrays, data and linked lists */
 void	free_all_ressources(t_data *data)
 {
 	free(data->builtins->home);

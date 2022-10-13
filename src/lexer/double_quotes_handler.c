@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   double_quotes_handler.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 18:55:19 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/25 14:51:59 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:53:41 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/* 	Expands the given arguments if needed and/or copies the characters between
+	quotes to the buffer. Then creates a token and adds it to the token list. 
+*/
 static void	expand_double_quotes(t_data *data, t_lex *lex)
 {
 	lex->flag = T_WORD;
@@ -30,6 +33,13 @@ static void	expand_double_quotes(t_data *data, t_lex *lex)
 	lex->i++;
 }
 
+/*
+	Checks if the double quotes are closed. If not - stops the lexing process 
+	and sets the lex_error flag to true, which results in the input not being 
+	interpreted or executed further. 
+	Then evaluates the content between the quotes, expands the expandable
+	arguments if needed and creates a word token from it.
+*/
 void	handle_double_quotes(t_data *data, t_lex *lex)
 {
 	bool	quote_not_closed;

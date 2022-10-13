@@ -6,12 +6,13 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/13 13:13:00 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/13 14:02:50 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
+/* addidtional helper function to visualize the tokens linked list */
 void	print_tokens(t_data *data)
 {
 	t_token	*tmp;
@@ -32,6 +33,7 @@ void	print_tokens(t_data *data)
 	printf("-------------------------------------------------------------\n\n");
 }
 
+/* Custom error printer for special cases */
 void	print_error(int error)
 {
 	if (error == SINGLE_QUOTE_MISSING)
@@ -48,6 +50,7 @@ void	print_error(int error)
 		printf("minishell: env: too many arguments\n");
 }
 
+/* Custom error printer in case of lex or parse error */
 void	print_token_error(int error, t_token *token)
 {
 	char	*redir;
@@ -64,6 +67,7 @@ void	print_token_error(int error, t_token *token)
 	redir = NULL;
 }
 
+/* Imitated Bash error printer for several error cases */
 int	exec_error(int error, char *s)
 {
 	if (error == EXPORT_ERROR)

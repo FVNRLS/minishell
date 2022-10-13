@@ -6,12 +6,26 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/12 09:36:05 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:57:14 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/minishell.h"
 
+/*
+	Imitated Bash without support of special characters (eg. ';' '\', wildcards)
+	
+	Structure:
+	First initialization.
+		Running minishell as while loop with repetative procedure:
+			1) Catch signals
+			2) Prompt and save user input. Add the input to the history.
+			3) Lexical analysis of the input + splitting into tokens.
+			4) Parse the created tokens list.
+			5) Execute tokens commands with redirections and pipes
+	In the all allocated files, linked lists and araays are freed.
+
+*/
 int	main(int argc, char **argv, char **env)
 {
 	t_data	data;

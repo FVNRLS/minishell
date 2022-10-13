@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_handler.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:54:52 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 10:46:41 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:37:29 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/* Assignment of pipe flag. */
 static void	lex_pipe(t_lex *lex)
 {
 	if (lex->c == '|')
@@ -22,6 +23,7 @@ static void	lex_pipe(t_lex *lex)
 	}
 }
 
+/* Assignment of redirect out and append flags. */
 static void	lex_redirect_out(t_data *data, t_lex *lex)
 {
 	if (lex->c == '>')
@@ -39,6 +41,7 @@ static void	lex_redirect_out(t_data *data, t_lex *lex)
 	}
 }
 
+/* Assignment of redirect in and heredoc flags. */
 static void	lex_redirect_in(t_data *data, t_lex *lex)
 {
 	if (lex->c == '<')
@@ -56,6 +59,9 @@ static void	lex_redirect_in(t_data *data, t_lex *lex)
 	}
 }
 
+/* 	Decides which flag to assign to the redirection token 
+	based on the current character. 
+*/
 void	handle_redirections(t_data *data, t_lex *lex)
 {
 	if (lex->c == '<')

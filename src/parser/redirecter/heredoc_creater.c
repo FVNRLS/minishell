@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_creater.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 22:48:09 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:19:25 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incl/minishell.h"
 
+/* 
+	Opens (creates) a file in overwrite mode or creates a new file.
+	If there is permisision or file error occured - the parse_error flag
+	is set to true.
+	The hdoc file is then saved in the appropriate array index.
+*/
 static void	create_hdoc(t_data *data)
 {
 	char	*path;
@@ -34,6 +40,12 @@ static void	create_hdoc(t_data *data)
 	hdoc = NULL;
 }
 
+/*
+	Promts user input and writes the content into particular
+	heredoc file until the stop command comes (limiter). 
+	Then exits the child process with appropriate exit code.
+	In case of ctrl-c signal the code is 130.
+*/
 static void	read_from_stdin(t_data *data, t_token *token)
 {
 	char	*input;
@@ -63,6 +75,11 @@ static void	read_from_stdin(t_data *data, t_token *token)
 	exit(EXIT_SUCCESS);
 }
 
+/* 
+	forks an child process to read input to every heredoc file in the array 
+	returns the global exit code, also in case of termination of heredoc 
+	read process. The termination in case of hdoc happens with ctrl-c signal.
+*/
 static void	read_to_hdoc(t_data *data, t_token *token)
 {
 	int	status;
@@ -82,6 +99,7 @@ static void	read_to_hdoc(t_data *data, t_token *token)
 	}
 }
 
+/* Creates array of heredoc files and reads input to them. */
 void	parse_hdocs(t_data *data)
 {
 	t_token	*tmp;

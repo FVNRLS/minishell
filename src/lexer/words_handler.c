@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   words_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:31:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/12 19:31:39 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:01:28 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/* Creates a word (later command) token and sets the token flag to T_WORD */
 void	handle_words(t_data *data, t_lex *lex)
 {
 	bool	redirect_found;

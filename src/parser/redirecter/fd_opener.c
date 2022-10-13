@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   fd_opener.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:29:57 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 18:43:41 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:18:29 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incl/minishell.h"
 
+/* 	
+	closes previous opened, unsused fd_in and opens a heredoc file in read mode.
+	if there is permisision or file error occured - the parse_error flag
+	is set to true. 	
+*/
 void	redirect_from_hdoc(t_data *data)
 {
 	char	*hdoc;
@@ -33,6 +38,11 @@ void	redirect_from_hdoc(t_data *data)
 	}
 }
 
+/* 	
+	closes previous opened, unsused fd_in and opens a file in read mode.
+	if there is permisision or file error occured - the parse_error flag
+	is set to true. 	
+*/
 void	redirect_in(t_data *data, t_token *token)
 {
 	close_unused_fd_in(data);
@@ -42,6 +52,12 @@ void	redirect_in(t_data *data, t_token *token)
 	check_fd_open_error(data, token);
 }
 
+/* 
+	closes previous opened, unsused fd_out.
+	opens a file in overwrite mode or creates a new file.
+	if there is permisision or file error occured - the parse_error flag
+	is set to true. 	
+*/
 void	redirect_out(t_data *data, t_token *token)
 {
 	close_unused_fd_out(data);
@@ -49,6 +65,12 @@ void	redirect_out(t_data *data, t_token *token)
 	check_fd_create_error(data, token);
 }
 
+/* 	
+	closes previous opened, unsused fd_out.
+	opens a file in append mode or creates a new file if there is no such file.
+	if there is permisision or file error occured - the parse_error flag
+	is set to true. 	
+*/
 void	append(t_data *data, t_token *token)
 {
 	close_unused_fd_out(data);

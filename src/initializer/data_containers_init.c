@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_containers_init.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:35:54 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/08 10:36:12 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:20:51 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ static void	init_redirections(t_data *data)
 	data->redir[3] = T_APPEND;
 }
 
+/*
+	Mallocs and Initializes all data containers (arrays):
+	* redirections
+	* separators
+	* builtins with functions
+*/
 void	init_data_containers(t_data *data)
 {
 	data->input = NULL;

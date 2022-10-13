@@ -6,12 +6,18 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:42:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/12 10:03:34 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:40:37 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/* 
+	Executes a non-builtin comand with execve function and returns the
+	appropriate exit code.
+	Resets stdin and stdout back to initial values and prints error message
+	in case of parse_error or execution error.
+*/
 void	exec_bash_cmd(t_data *data)
 {
 	if (data->exec_error == true)
@@ -32,6 +38,10 @@ void	exec_bash_cmd(t_data *data)
 	exit(EXIT_SUCCESS);
 }
 
+/* 
+	Executes builtins between pipes (all except the last one).
+	Closes unused pipes and redirects the standard input into the next pipe.
+*/
 void	exec_transitory_builtin(t_data *data, int builtin)
 {
 	if (data->fd->in != STDIN_FILENO)
@@ -61,6 +71,11 @@ void	exec_transitory_builtin(t_data *data, int builtin)
 	dup2(data->fd->std_out, STDOUT_FILENO);
 }
 
+/* 
+	Executes the last builtin.
+	Closes unused pipes and redirects the standard input/output 
+	in to the saved std_in and std_out.
+*/
 void	exec_last_builtin(t_data *data, int builtin)
 {
 	if (data->fd->in != STDIN_FILENO)
@@ -84,6 +99,10 @@ void	exec_last_builtin(t_data *data, int builtin)
 	g_exit_code = data->builtins->funcs[builtin](data);
 }
 
+/* 
+	Redirects non-builtin command between pipes (all except the last one).
+	Closes unused pipes and redirects the standard input into the next pipe.
+*/
 void	redirect_transitory_cmd(t_data *data)
 {
 	close(data->pipe[0]);
@@ -110,6 +129,7 @@ void	redirect_transitory_cmd(t_data *data)
 	close(data->pipe[1]);
 }
 
+/* Redirects the last non-builtin command. */
 void	redirect_last_cmd(t_data *data)
 {
 	if (data->fd->in != STDIN_FILENO)

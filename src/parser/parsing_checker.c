@@ -6,12 +6,13 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:29:31 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/12 10:38:55 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:47:51 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/* Checks with access function if a file was opened in read mode. */
 void	check_fd_open_error(t_data *data, t_token *token)
 {
 	char	*file;
@@ -27,6 +28,7 @@ void	check_fd_open_error(t_data *data, t_token *token)
 	}
 }
 
+/* Checks with access function if a file was created / opened in write mode */
 void	check_fd_create_error(t_data *data, t_token *token)
 {
 	char	*file;
@@ -42,6 +44,11 @@ void	check_fd_create_error(t_data *data, t_token *token)
 	}
 }
 
+/* 	
+	Parser part: checks if there is pipe synthax error. 
+	E.g. single or multiple pipes without a word after it.
+	like: | or: ||||
+*/
 void	check_multiple_pipes(t_data *data)
 {
 	t_token	*tmp;
@@ -71,6 +78,11 @@ void	check_multiple_pipes(t_data *data)
 	}
 }
 
+/* 	
+	Lexer part: checks if there is redir. synthax error. 
+	E.g. single redirection without a word after it.
+	like: < 
+*/
 bool	check_redir_syntax_error(t_data *data, t_token *token)
 {
 	if (token->next == NULL || token->next->flag != T_WORD)
@@ -83,6 +95,7 @@ bool	check_redir_syntax_error(t_data *data, t_token *token)
 	return (false);
 }
 
+/* checks if the current token is a redirection */
 bool	check_redir(t_data *data, int flag)
 {
 	int	i;

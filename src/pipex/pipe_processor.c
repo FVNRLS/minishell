@@ -6,7 +6,7 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/12 10:37:45 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:50:54 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,16 @@ static int	create_pipe(t_data *data)
 
 /*
 	Takes the output of the previous command and transfers it to next command.
-	Basic behaviour is the same as in pipe_infile().
 
  	Exec.:
-	<Child process>
 	Takes the output from the previous command via the last end of the pipe and
  	passes it to the next end of the pipe.
 
 	Closes unused pipe end before passing and used - after passing.
   	Closes the duplicated fd after using.
-	Executes the command with execve().
+	Executes the command with execve() on child or builin on parent process.
 	If the command fails - prints the appropriate error message and exits the
- 	child process with status != 0
+ 	child process with exic code.
  	--> will be handled from parent process as signal to exit the program.
 */
 void	pipe_transitory_cmd(t_data *data)
@@ -95,13 +93,14 @@ void	pipe_transitory_cmd(t_data *data)
  	to outfile with dup2().
 
  	Exec.:
- 	<Child process>
 	Takes the output from the last command and passes it as output to outfile.
-	Executes the command with execve().
+	Executes the command with execve() on child or builin on parent process.
 
 	Closes the duplicated fd after using.
+	Ignores all signals during the execution with signal(SIGINT, SIG_IGN);
+	
 	If the command fails - prints the appropriate error message and exits the
- 	child process with status != 0
+ 	child process with appropriate exit code.
  	--> will be handled from parent process as signal to exit the program.
 */
 void	pipe_last_cmd(t_data *data)

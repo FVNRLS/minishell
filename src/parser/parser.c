@@ -6,12 +6,13 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 11:20:38 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/12 09:37:07 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:42:15 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/* counts number of heredoc tokens in order to create an array of hdoc files */
 static int	count_hdoc_files(t_data *data)
 {
 	t_token	*tmp;
@@ -30,6 +31,12 @@ static int	count_hdoc_files(t_data *data)
 	return (i);
 }
 
+/* 
+	Check for parsing errors and merge all tokens with true joinable flag 
+	Heredoc files has higher priority over the execution.
+	--> creates and reads content into all hdocs files from hdoc-tokens.
+	In case of parse_error the commands will not be executed at all.
+*/
 void	parse_tokens(t_data *data)
 {
 	int	cnt;
