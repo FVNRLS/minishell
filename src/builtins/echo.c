@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:27:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/13 11:16:18 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:34:34 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ static int	echo_helper(t_data *data, int i, int flag)
 	return (g_exit_code);
 }
 
+/*
+echo without args will just print a new lline
+echo -n = without new line
+echo text will print the text include a new line
+*/
 int	echo(t_data *data)
 {
 	int		i;
