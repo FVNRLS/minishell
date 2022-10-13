@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:27:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/12 11:19:45 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:16:18 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-static int	its_nflag(char *s, int *flag)
+int	its_nflag(char *s, int *flag)
 {
 	int	i;
 
@@ -72,20 +72,26 @@ int	echo_pos(char *s, int *flag)
 	return (tmp);
 }
 
-static int	check_exit_code_request(t_data *data)
+static int	echo_helper(t_data *data, int i, int flag)
 {
-	char	**args;
-
-	args = ft_split(data->tokens->content, SPACE);
-	if (!args)
-		return (EXIT_FAILURE);
-	if (args[1] != NULL)
+	while (data->tokens->content[i + 1] && data->tokens->content[i] == '-' \
+	&& data->tokens->content[i + 1] == 'n' \
+	&& check_n(data->tokens->content + i))
 	{
-		if (ft_strcmp(args[1], "$?") != 0)
-			g_exit_code = EXIT_SUCCESS;
+		i += echo_pos(data->tokens->content + i, &flag);
+		if ((int)ft_strlen(data->tokens->content) <= i)
+		{
+			if (flag == 1)
+				printf("\n");
+			return (g_exit_code);
+		}
 	}
-	ft_cleansplit(args);
-	args = NULL;
+	if (i && data->tokens->content \
+	&& i < (int)ft_strlen(data->tokens->content))
+		printf("%s", (data->tokens->content + i));
+	if (!flag)
+		printf("\n");
+	g_exit_code = check_exit_code_request(data);
 	return (g_exit_code);
 }
 
@@ -95,16 +101,19 @@ int	echo(t_data *data)
 	int		flag;
 
 	flag = 0;
-	i = echo_pos(data->tokens->content, &flag);
-	while (data->tokens->content[i + 1] && data->tokens->content[i] == '-' \
-	&& data->tokens->content[i + 1] == 'n' \
-	&& check_n(data->tokens->content + i))
-		i += echo_pos(data->tokens->content + i, &flag);
-	if (i && data->tokens->content \
-	&& i < (int)ft_strlen(data->tokens->content))
-		printf("%s", (data->tokens->content + i));
-	if (!flag)
+	if (ft_strlen(data->tokens->content) == 4)
+	{
 		printf("\n");
+		return (g_exit_code);
+	}
+	i = echo_pos(data->tokens->content, &flag);
+	if ((int)ft_strlen(data->tokens->content) <= i)
+	{
+		if (flag == 1)
+			printf("\n");
+		return (g_exit_code);
+	}
+	echo_helper(data, i, flag);
 	g_exit_code = check_exit_code_request(data);
 	return (g_exit_code);
 }
