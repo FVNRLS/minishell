@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_printer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:06:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 11:38:54 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:13:00 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	print_error(int error)
 		printf("minishell: Invalid file or directory:");
 	else if (error == OLDPWD_ERROR)
 		printf("minishell: cd: OLDPWD not set\n");
+	else if (error == ENV_ERROR)
+		printf("minishell: env: too many arguments\n");
 }
 
 void	print_token_error(int error, t_token *token)
