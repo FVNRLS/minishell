@@ -135,7 +135,6 @@ Edge cases:
     - [x]  export TEST=123 | cat -e | cat -e
     - [x]  unset TEST | cat -e
     - [x]  whereis ls | cat -e | cat -e > test
-    - [x]  echo test | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | ls -la | grep "."
 
 - **unset**
     - [x]  unset
