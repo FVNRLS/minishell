@@ -6,12 +6,16 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:42:02 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/13 13:05:06 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:31:25 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/*
+cd
+change directory to Home Path of USER
+*/
 int	cd_home(t_data *data)
 {
 	int		ret;
@@ -28,6 +32,11 @@ int	cd_home(t_data *data)
 	return (ret);
 }
 
+/*
+cd
+change directory to Home Path of USER
+if it exists in env
+*/
 int	cd_minus(t_data *data)
 {
 	int	ret;
@@ -40,6 +49,14 @@ int	cd_minus(t_data *data)
 	return (ret);
 }
 
+/*
+cd ~
+change directory to Home Path of USER
+env list does not mather
+
+cd ~/PATH/PATH2
+go to directory if it exists
+*/
 int	cd_tilde(t_data *data)
 {
 	int	ret;
@@ -50,6 +67,10 @@ int	cd_tilde(t_data *data)
 	return (ret);
 }
 
+/*
+cd /PATH/PATH2
+go to directory if it exists
+*/
 int	cd_path(t_data *data)
 {
 	int	ret;
@@ -60,6 +81,22 @@ int	cd_path(t_data *data)
 	return (ret);
 }
 
+/*
+cd
+change directory to Home Path of USER
+if it exists in env
+
+cd /PATH/PATH2
+go to directory if it exists
+----------------------------
+cd ~
+change directory to Home Path of USER
+env list does not mather
+
+cd ~/PATH/PATH2
+go to directory if it exists
+-----------------------------
+*/
 int	cd(t_data *data)
 {
 	int		ret;
