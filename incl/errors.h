@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:43:03 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/09 16:27:57 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:12:34 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define PATH_ERROR					11
 # define PERMISSION_ERROR			12
 # define EMPTY_KEY_ERROR			13
+# define ENV_ERROR			        14
 
 # define CMD_NOT_FOUND				127
 # define INVALID_EXIT_ARG			255
