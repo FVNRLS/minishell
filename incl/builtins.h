@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:42:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/12 11:14:22 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/13 11:22:37 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		pwd(void);
 
 int		echo(t_data *data);
 int		check_n(char *s);
+int		check_exit_code_request(t_data *data);
 
 /*
 exit
