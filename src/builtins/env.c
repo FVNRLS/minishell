@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:41:46 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/09/26 16:15:45 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:13:48 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int	env(t_data *data)
 {
 	t_envp	*tmp;
 
+	if (data->builtins->command[1])
+	{
+		print_error(ENV_ERROR);
+		return (CMD_NOT_FOUND);
+	}
 	tmp = data->envp;
 	while (tmp != NULL)
 	{
