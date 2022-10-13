@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/13 12:58:30 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:55:49 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,14 @@ static void	key_export(t_data **data)
 	}
 }
 
+/*
+export without args will print the whole ENVP list 
+
+exports a new Key and optional its value 
+or change an value of an old Key
+
+its saved in ENVP list then
+*/
 int	export(t_data *data)
 {
 	int	i;

@@ -6,17 +6,19 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 15:12:51 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/08 15:16:12 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:50:32 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/*
+prints ENVP list completly
+*/
 void	true_env(t_data *data)
 {
 	t_envp	*tmp;
 
-	printf("hallo!\n");
 	tmp = data->envp;
 	while (tmp)
 	{

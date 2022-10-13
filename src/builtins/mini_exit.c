@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:28:23 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/11 18:02:41 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:56:30 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int	check_exit_args(t_data *data, bool *arg_equal_one)
 	return (EXIT_SUCCESS);
 }
 
+/*
+exit minishell
+*/
 int	mini_exit(t_data *data)
 {
 	int		ret;

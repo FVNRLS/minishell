@@ -6,12 +6,15 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:41:46 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/13 13:13:48 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:48:35 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
+/*
+prints all ENVP which has a value
+*/
 int	env(t_data *data)
 {
 	t_envp	*tmp;

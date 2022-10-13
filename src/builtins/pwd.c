@@ -6,13 +6,12 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:07:45 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/10 18:44:04 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:56:51 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-//TODO: error handling... no error funtion error
 int	pwd(void)
 {
 	char	*path;
