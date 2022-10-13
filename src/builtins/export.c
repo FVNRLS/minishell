@@ -6,7 +6,7 @@
 /*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/08 14:38:00 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:58:30 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,17 @@ static char	*make_val(char *s, int i, int plus)
 
 static void	old_key(t_envp *new, char *val, char *key, int plus)
 {
+	if (new->equal == 0)
+		return ;
 	free(key);
-	if (ft_strlen(val) != 0)
+	if (plus)
 	{
-		if (plus)
-		{
-			new->val = ft_strjoin(new->val, val);
-			free(val);
-			return ;
-		}
-		free(new->val);
-		new->val = val;
-	}
-	else
+		new->val = ft_strjoin(new->val, val);
 		free(val);
+		return ;
+	}
+	free(new->val);
+	new->val = val;
 }
 
 static void	make_envp(char *s, t_data **data, int plus)
