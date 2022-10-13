@@ -6,7 +6,7 @@
 #    By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/10/12 11:08:35 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/10/13 13:18:13 by jjesberg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,7 +104,6 @@ INCREADL 	=	-lreadline -L /Users/$(USER)/.brew/opt/readline/lib
 
 $(NAME): $(OBJ) $(TOOLS_OBJ)
 	${CC} ${FLAGS} ${OBJ} ${TOOLS_OBJ} ${INCREADL} -o ${NAME}
-	rm -rf ./builtins/*.o
 
 all: $(NAME)
 
