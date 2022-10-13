@@ -179,6 +179,7 @@ Edge cases:
 	- [x]  echo """"""""$USER""""""""
 	- [x]  echo "'$USER'"
 
+<br>
 
 - **Expansions and redirections to test:**
 
