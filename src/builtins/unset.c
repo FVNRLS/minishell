@@ -6,7 +6,7 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/12 11:03:57 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/13 10:43:23 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	unset(t_data *data)
 	errors = 0;
 	i = 1;
 	if (!data->builtins->command[i])
-		return (EXIT_FAILURE);
+		return (EXIT_SUCCESS);
 	while (data->builtins->command[i])
 	{
 		tmp = NULL;
