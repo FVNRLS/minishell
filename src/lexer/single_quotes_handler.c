@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   single_quotes_handler.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:57:50 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/13 11:49:39 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/14 19:26:52 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,24 @@ void	stop_lexing(t_data *data, t_lex *lex)
 		print_error(DOUBLE_QUOTE_MISSING);
 }
 
+static void handle_empty_quotes(t_data *data, t_lex *lex)
+{
+	lex->buf = ft_join_char(lex->buf, '\0');
+	add_token(data, lex);
+	lex->i++;
+}
+
 /* 	Copies the characters between quotes to the buffer 
 	and adds token to the token list. */
 static void	handle_quotes_content(t_data *data, t_lex *lex)
 {
 	bool	redirect_found;
 
-	while (data->input[lex->i] != SINGLE_QUOTE && data->input[lex->i] != '\0')
+	while (lex->c != SINGLE_QUOTE)
 	{
-		lex->c = data->input[lex->i];
 		lex->buf = ft_join_char(lex->buf, lex->c);
 		lex->i++;
+		lex->c = data->input[lex->i];
 	}
 	lex->i++;
 	lex->c = data->input[lex->i];
@@ -94,6 +101,10 @@ void	handle_single_quotes(t_data *data, t_lex *lex)
 	}
 	lex->flag = T_WORD;
 	lex->i++;
-	handle_quotes_content(data, lex);
+	lex->c = data->input[lex->i];
+	if (data->input[lex->i] == SINGLE_QUOTE)
+		handle_empty_quotes(data, lex);
+	else
+		handle_quotes_content(data, lex);
 	lex->single_quote_mode = false;
 }
