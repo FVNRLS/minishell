@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 17:10:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/13 19:02:48 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/14 10:03:37 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	catch_herd(int sig_num)
 }
 
 /*
-	Handles signals depending on the process running.
+	Handles signal depending on the process running.
 
  	1) For main process:
  		--> ctrl-c signal is silenced and prints a newline.
