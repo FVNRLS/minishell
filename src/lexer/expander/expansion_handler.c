@@ -91,7 +91,8 @@ void	expand_parameter(t_data *data, t_lex *lex)
 
 	if (lex->double_quote_mode == true)
 	{
-		while (lex->c != DOLLAR && lex->c != DOUBLE_QUOTE && lex->c != SINGLE_QUOTE && lex->c != SLASH)
+		while (lex->c != DOLLAR && lex->c != DOUBLE_QUOTE && lex->c != SINGLE_QUOTE
+			&& lex->c != SLASH && lex->c != SPACE)
 		{
 			quote_buf = ft_join_char(quote_buf, lex->c);
 			lex->i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/13 11:59:57 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:49:28 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,19 @@ bool	check_sep(t_data *data, char c)
 static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 {
 	char	next_char;
+	bool	redirect_found;
+	t_token	*tmp;
 
+	redirect_found = find_redirections(lex); //TODO: test this more!!!
 	token->join = false;
-	if (data->input[lex->i] == '\0')
+	tmp = data->tokens;
+	if (data->input[lex->i] == '\0' || redirect_found == true)
+	{
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->join = false;
 		return ;
+	}
 	next_char = data->input[lex->i + 1];
 	if (lex->expansion == true)
 	{

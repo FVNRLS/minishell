@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 18:57:50 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/14 19:35:39 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:06:57 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,23 @@ void	stop_lexing(t_data *data, t_lex *lex)
 
 static void handle_empty_single_quotes(t_data *data, t_lex *lex)
 {
+	t_token	*tmp;
+	char	*content;
+	bool	redirect_found;
+
 	lex->buf = ft_join_char(lex->buf, '\0');
-	add_token(data, lex);
 	lex->i++;
+	lex->c = data->input[lex->i];
+	content = ft_strdup(lex->buf);
+	if (!content)
+		return ;
+	tmp = ft_new_token(content, lex->flag);
+	redirect_found = find_redirections(lex);
+	if (lex->c != SPACE && redirect_found == false && lex->c != '\0')
+		tmp->join = true;
+	ft_add_token_back(&data->tokens, tmp);
+	free(lex->buf);
+	lex->buf = NULL;
 }
 
 /* 	Copies the characters between quotes to the buffer 

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 18:55:19 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/14 19:48:18 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:10:20 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,23 @@
 
 static void handle_empty_double_quotes(t_data *data, t_lex *lex)
 {
+	t_token	*tmp;
+	char	*content;
+	bool	redirect_found;
+
 	lex->buf = ft_join_char(lex->buf, '\0');
-	add_token(data, lex);
 	lex->i++;
+	lex->c = data->input[lex->i];
+	content = ft_strdup(lex->buf);
+	if (!content)
+		return ;
+	tmp = ft_new_token(content, lex->flag);
+	redirect_found = find_redirections(lex);
+	if (lex->c != SPACE && redirect_found == false && lex->c != '\0')
+		tmp->join = true;
+	ft_add_token_back(&data->tokens, tmp);
+	free(lex->buf);
+	lex->buf = NULL;
 }
 
 /* 	Expands the given arguments if needed and/or copies the characters between
@@ -42,7 +56,6 @@ static void	expand_double_quotes(t_data *data, t_lex *lex)
 	redirect_found = find_redirections(lex);
 	if (lex->c == SPACE || redirect_found == true || lex->c == '\0')
 		add_token(data, lex);
-	lex->i++;
 }
 
 /*
