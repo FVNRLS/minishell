@@ -76,3 +76,16 @@
 3	135	1665824792000000000	CMakeFiles/minishell.dir/src/lexer/expander/expansion_handler.c.o	3b0e7d43807ccb0d
 3	139	1665824792000000000	CMakeFiles/minishell.dir/src/lexer/tokenizer.c.o	e6357308b8527785
 139	451	1665824793000000000	minishell	7bd57f8c135b70ae
+2	316	1665827651000000000	CMakeFiles/minishell.dir/src/signals/signals.c.o	7bd75edca938fdec
+2	316	1665827651000000000	CMakeFiles/minishell.dir/src/main.c.o	19fd6f541fcd3d6f
+316	642	1665827651000000000	minishell	7bd57f8c135b70ae
+2	55	1665827686000000000	CMakeFiles/minishell.dir/src/main.c.o	19fd6f541fcd3d6f
+55	129	1665827686000000000	minishell	7bd57f8c135b70ae
+1	50	1665827713000000000	CMakeFiles/minishell.dir/src/main.c.o	19fd6f541fcd3d6f
+50	129	1665827713000000000	minishell	7bd57f8c135b70ae
+2	126	1665829416000000000	CMakeFiles/minishell.dir/src/lexer/tokenizer.c.o	e6357308b8527785
+126	445	1665829416000000000	minishell	7bd57f8c135b70ae
+2	117	1665829632000000000	CMakeFiles/minishell.dir/src/lexer/tokenizer.c.o	e6357308b8527785
+117	324	1665829633000000000	minishell	7bd57f8c135b70ae
+2	56	1665829757000000000	CMakeFiles/minishell.dir/src/lexer/tokenizer.c.o	e6357308b8527785
+56	134	1665829757000000000	minishell	7bd57f8c135b70ae

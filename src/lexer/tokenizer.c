@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/14 20:49:28 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 12:27:12 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,14 @@ static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 	tmp = data->tokens;
 	if (data->input[lex->i] == '\0' || redirect_found == true)
 	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->join = false;
-		return ;
+		if (tmp != NULL)
+		{
+			while (tmp->next != NULL)
+				tmp = tmp->next;
+			if (tmp->flag == T_WORD)
+				tmp->join = false;
+			return ;
+		}
 	}
 	if (lex->expansion == true)
 		set_exp_join_flag(data, lex, token);

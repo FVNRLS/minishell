@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:35:33 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/14 19:52:15 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 11:54:46 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,10 @@ int	main(int argc, char **argv, char **env)
 		lex_input(&data);
 		if (data.lex_error == false)
 		{
-			print_tokens(&data);
+//			print_tokens(&data);
 			parse_tokens(&data);
-			printf("\n%s\n", data.tokens->content);
-//			if (data.parse_error == false)
-//				execute_tokens(&data);
+			if (data.parse_error == false)
+				execute_tokens(&data);
 		}
 		free_tokens(&data);
 	}
