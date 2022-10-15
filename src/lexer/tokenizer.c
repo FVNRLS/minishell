@@ -27,12 +27,33 @@ bool	check_sep(t_data *data, char c)
 	return (false);
 }
 
+static void set_exp_join_flag(t_data *data, t_lex *lex, t_token *token)
+{
+	char	next_char;
+
+	next_char = data->input[lex->i + 1];
+	if (lex->c == SINGLE_QUOTE || lex->c == DOUBLE_QUOTE || lex->c == DOLLAR
+		|| lex->c == SLASH)
+	{
+		if (lex->double_quote_mode == true)
+		{
+			if (next_char == SPACE || next_char == REDIRECT_OUT
+				|| next_char == REDIRECT_IN || next_char == PIPE
+				|| next_char == '\0')
+				return ;
+			else
+				token->join = true;
+		}
+		else
+			token->join = true;
+	}
+}
+
 /* 	Decides by setting join flag whether the next token should be merged
 	with the current or not.
 */
 static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 {
-	char	next_char;
 	bool	redirect_found;
 	t_token	*tmp;
 
@@ -46,25 +67,8 @@ static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 		tmp->join = false;
 		return ;
 	}
-	next_char = data->input[lex->i + 1];
 	if (lex->expansion == true)
-	{
-		if (lex->c == SINGLE_QUOTE || lex->c == DOUBLE_QUOTE || lex->c == DOLLAR
-			|| lex->c == SLASH)
-		{
-			if (lex->double_quote_mode == true)
-			{
-				if (next_char == SPACE || next_char == REDIRECT_OUT
-					|| next_char == REDIRECT_IN || next_char == PIPE
-					|| next_char == '\0')
-					return ;
-				else
-					token->join = true;
-			}
-			else
-				token->join = true;
-		}
-	}
+		set_exp_join_flag(data, lex, token);
 }
 
 /* Adds a new token node to the linked list of tokens */

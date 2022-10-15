@@ -6,35 +6,11 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:49:28 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/14 16:02:08 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 11:03:02 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incl/minishell.h"
-
-/* Expands return of the last pipe process, based on the global g_exit_code. */
-void	expand_last_return(t_data *data, t_lex *lex)
-{
-	char	*exit_code;
-	bool	is_sep;
-
-	exit_code = ft_itoa(g_exit_code);
-	lex->buf = ft_strjoin(lex->buf, exit_code);
-	free(exit_code);
-	exit_code = NULL;
-	lex->i++;
-	lex->c = data->input[lex->i];
-	is_sep = check_sep(data, lex->c);
-	while (is_sep == false && lex->c != '\0')
-	{
-		is_sep = check_sep(data, lex->c);
-		if (is_sep == true)
-			break ;
-		lex->buf = ft_join_char(lex->buf, lex->c);
-		lex->i++;
-		lex->c = data->input[lex->i];
-	}
-}
 
 /*
  * Here happens the real expansion of the content:
@@ -43,7 +19,7 @@ void	expand_last_return(t_data *data, t_lex *lex)
  * If envp. with such key exist, the value of the appropriate envp->key becomes
  * is added to the buffer and becomes a token.
  * */
-void	try_expansion(t_data *data, t_lex *lex)
+static void	try_expansion(t_data *data, t_lex *lex)
 {
 	t_envp	*tmp;
 
@@ -63,20 +39,31 @@ void	try_expansion(t_data *data, t_lex *lex)
 	lex->buf = NULL;
 }
 
-
-void	try_double_quote_expansion(t_data *data, t_lex *lex, char *quote_buf)
+static void	try_double_quote_exp(t_data *data, t_lex *lex, char *quote_buf)
 {
 	t_envp	*tmp;
-
 	tmp = data->envp;
-	while (tmp != NULL)
+
+	while (lex->c != DOLLAR && lex->c != DOUBLE_QUOTE
+		   && lex->c != SINGLE_QUOTE && lex->c != SLASH && lex->c != SPACE)
 	{
-		if (ft_strcmp(quote_buf, tmp->key) == 0)
+		quote_buf = ft_join_char(quote_buf, lex->c);
+		lex->i++;
+		lex->c = data->input[lex->i];
+	}
+	if (quote_buf != NULL)
+	{
+		while (tmp != NULL)
 		{
-			lex->buf = ft_strjoin(lex->buf, tmp->val);
-			return ;
+			if (ft_strcmp(quote_buf, tmp->key) == 0)
+			{
+				lex->buf = ft_strjoin(lex->buf, tmp->val);
+				return ;
+			}
+			tmp = tmp->next;
 		}
-		tmp = tmp->next;
+		free(quote_buf);
+		quote_buf = NULL;
 	}
 }
 
@@ -90,21 +77,7 @@ void	expand_parameter(t_data *data, t_lex *lex)
 	is_sep = check_sep(data, lex->c);
 
 	if (lex->double_quote_mode == true)
-	{
-		while (lex->c != DOLLAR && lex->c != DOUBLE_QUOTE && lex->c != SINGLE_QUOTE
-			&& lex->c != SLASH && lex->c != SPACE)
-		{
-			quote_buf = ft_join_char(quote_buf, lex->c);
-			lex->i++;
-			lex->c = data->input[lex->i];
-		}
-		if (quote_buf != NULL)
-		{
-			try_double_quote_expansion(data, lex, quote_buf);
-			free(quote_buf);
-			quote_buf = NULL;
-		}
-	}
+		try_double_quote_exp(data, lex, quote_buf);
 	else
 	{
 		while (is_sep == false && lex->c != '\0')
@@ -125,7 +98,7 @@ void	expand_parameter(t_data *data, t_lex *lex)
 	Decides based on the current character how to expand the dollar sign.
  	Expands the input into a token and adds it to the token list.
 */
-void	handle_expandable_parameter(t_data *data, t_lex *lex)
+static void	handle_expandable_parameter(t_data *data, t_lex *lex)
 {
 	bool	is_sep;
 

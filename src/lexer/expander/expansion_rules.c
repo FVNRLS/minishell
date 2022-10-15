@@ -12,6 +12,30 @@
 
 #include "../../../incl/minishell.h"
 
+/* Expands return of the last pipe process, based on the global g_exit_code. */
+void	expand_last_return(t_data *data, t_lex *lex)
+{
+	char	*exit_code;
+	bool	is_sep;
+
+	exit_code = ft_itoa(g_exit_code);
+	lex->buf = ft_strjoin(lex->buf, exit_code);
+	free(exit_code);
+	exit_code = NULL;
+	lex->i++;
+	lex->c = data->input[lex->i];
+	is_sep = check_sep(data, lex->c);
+	while (is_sep == false && lex->c != '\0')
+	{
+		is_sep = check_sep(data, lex->c);
+		if (is_sep == true)
+			break ;
+		lex->buf = ft_join_char(lex->buf, lex->c);
+		lex->i++;
+		lex->c = data->input[lex->i];
+	}
+}
+
 /*
  * In case of multiple DOLLAR signs in a row and SPACE sign
  * creates a token with many DOLLAR sign in content.
