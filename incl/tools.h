@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:31:55 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/11 14:50:23 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 21:56:27 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int		ft_atoi(const char *str);
 bool	ft_check_plus(char *s);
 char	*ft_join_tilde(char *buf, char *tmp, int flag);
 int		ft_count_word_tokens(t_data *data);
-
 
 //FOR DEBUGGING PURPOSES
 int		print_list(t_token *data);
