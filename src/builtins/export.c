@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/13 13:55:49 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/15 21:45:52 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ static char	*make_val(char *s, int i, int plus)
 static void	old_key(t_envp *new, char *val, char *key, int plus)
 {
 	if (new->equal == 0)
+	{
+		free(key);
+		free(val);
 		return ;
+	}
 	free(key);
 	if (plus)
 	{
@@ -80,13 +84,13 @@ static void	key_export(t_data **data)
 	int	plus;
 
 	plus = 0;
-	i = 0;
-	while ((*data)->builtins->command[i])
+	i = 1;
+	while ((*data)->exec->cmd[i])
 	{
-		if (ft_haschar((*data)->builtins->command[i], '+') && \
-		ft_check_plus((*data)->builtins->command[i]))
+		if (ft_haschar((*data)->exec->cmd[i], '+') && \
+		ft_check_plus((*data)->exec->cmd[i]))
 			plus = 1;
-		make_envp((*data)->builtins->command[i], data, plus);
+		make_envp((*data)->exec->cmd[i], data, plus);
 		i++;
 		plus = 0;
 	}
@@ -106,11 +110,9 @@ int	export(t_data *data)
 	int	ret;
 
 	i = 0;
-	if (check_string(&data, &i))
+	if (!data->exec->cmd[1])
 		true_env(data);
-	if (i == 0)
-		return (EXIT_FAILURE);
-	ret = check_keys(data->builtins->command, EXPORT_ERROR);
+	ret = check_keys(data->exec->cmd, EXPORT_ERROR);
 	key_export(&data);
 	if (ret != 0)
 		return (EXIT_FAILURE);

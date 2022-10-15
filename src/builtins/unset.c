@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:21:26 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/13 10:43:23 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 21:38:49 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,14 @@ int	check_keys(char **s, int mode)
 {
 	int	i;
 	int	j;
+	int	len;
 	int	ret;
 
+	len = ft_splitlen(s);
 	j = 0;
-	i = 0;
+	i = 1;
 	ret = 0;
-	while (s[i] && i < ft_splitlen(s))
+	while (s[i] && i < len)
 	{
 		j = 0;
 		if (!ft_isalpha(s[i][j]) && s[i][j] != '_')
@@ -111,18 +113,18 @@ int	unset(t_data *data)
 
 	errors = 0;
 	i = 1;
-	if (!data->builtins->command[i])
+	if (!data->exec->cmd[1])
 		return (EXIT_SUCCESS);
-	while (data->builtins->command[i])
+	while (data->exec->cmd[i])
 	{
 		tmp = NULL;
-		if (check_unset(data->builtins->command[i]) == EXIT_FAILURE)
+		if (check_unset(data->exec->cmd[i]) == EXIT_FAILURE)
 		{
 			errors++;
-			exec_error(UNSET_ERROR, data->builtins->command[i]);
+			exec_error(UNSET_ERROR, data->exec->cmd[i]);
 		}
 		else
-			tmp = ft_getenvp(data, data->builtins->command[i]);
+			tmp = ft_getenvp(data, data->exec->cmd[i]);
 		if (tmp != NULL)
 			ft_dl_node(&data, tmp);
 		i++;
