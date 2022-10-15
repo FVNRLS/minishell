@@ -3,122 +3,96 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:27:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/13 13:34:34 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/15 17:16:33 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
 
-int	its_nflag(char *s, int *flag)
+static int	check_exit_code_request(t_data *data)
 {
-	int	i;
+	char	**args;
 
-	i = 0;
-	if (!s || !s[i])
-		return (0);
-	while (s[i])
+	args = ft_split(data->tokens->content, SPACE);
+	if (!args)
+		return (EXIT_FAILURE);
+	if (args[1] != NULL)
 	{
-		if (s[i] != 'n' && s[i] != ' ' && i != 0)
-			return (0);
-		i++;
-		if (s[i] == '\0' || s[i] == ' ')
-		{
-			*flag = i + 1;
-			break ;
-		}
+		if (ft_strcmp(args[1], "$?") != 0)
+			g_exit_code = EXIT_SUCCESS;
 	}
-	return (1);
-}
-
-int	echo_pos_helper(int i, char *s, int *flag)
-{
-	while (s[i] && !ft_isprint(s[i]))
-	{
-		i++;
-		if (s[i] && s[i] == '-')
-		{
-			i++;
-			if (its_nflag(s + i, flag))
-				return (i + *flag);
-			break ;
-		}
-	}
-	return (0);
-}
-
-/*
-	get start pos for echo string
-*/
-int	echo_pos(char *s, int *flag)
-{
-	int	tmp;
-	int	i;
-
-	i = 0;
-	while (s[i] && !ft_isprint(s[i]))
-		i++;
-	while (s[i])
-	{
-		if (!ft_isprint(s[i]))
-			break ;
-		i++;
-	}
-	tmp = echo_pos_helper(i, s, flag);
-	if (tmp == 0)
-		tmp = i + 1;
-	return (tmp);
-}
-
-static int	echo_helper(t_data *data, int i, int flag)
-{
-	while (data->tokens->content[i + 1] && data->tokens->content[i] == '-' \
-	&& data->tokens->content[i + 1] == 'n' \
-	&& check_n(data->tokens->content + i))
-	{
-		i += echo_pos(data->tokens->content + i, &flag);
-		if ((int)ft_strlen(data->tokens->content) <= i)
-		{
-			if (flag == 1)
-				printf("\n");
-			return (g_exit_code);
-		}
-	}
-	if (i && data->tokens->content \
-	&& i < (int)ft_strlen(data->tokens->content))
-		printf("%s", (data->tokens->content + i));
-	if (!flag)
-		printf("\n");
-	g_exit_code = check_exit_code_request(data);
+	ft_cleansplit(args);
+	args = NULL;
 	return (g_exit_code);
 }
 
+
+static bool is_flag(t_token *token)
+{
+	int	i;
+
+	i = 0;
+	if (token->content[i] == '-')
+	{
+		i++;
+		while (token->content[i] != '\0')
+		{
+			if (token->content[i] != 'n')
+				return (false);
+			i++;
+		}
+		if (token->content[0] == '-' && ft_strlen(token->content) == 1)
+			return (false);
+		else
+			return (true);
+	}
+	return (false);
+}
+
 /*
-echo without args will just print a new lline
+echo without args will just print a new line
 echo -n = without new line
 echo text will print the text include a new line
 */
 int	echo(t_data *data)
 {
 	int		i;
-	int		flag;
+	int 	words;
+	int 	flag;
+	bool	check_flag;
+	t_token *tmp;
 
 	flag = 0;
-	if (ft_strlen(data->tokens->content) == 4)
+	check_flag = false;
+	words = ft_count_word_tokens(data);
+	if (words == 1)
 	{
 		printf("\n");
-		return (g_exit_code);
+		return (EXIT_SUCCESS);
 	}
-	i = echo_pos(data->tokens->content, &flag);
-	if ((int)ft_strlen(data->tokens->content) <= i)
+	i = 1;
+	tmp = data->tokens->next;
+	while (i < words)
 	{
-		if (flag == 1)
-			printf("\n");
-		return (g_exit_code);
+		if (is_flag(tmp) == true && check_flag != true)
+		{
+			flag = 1;
+		}
+		else
+		{
+			printf("%s", tmp->content);
+			if (i < words - 1)
+				printf(" ");
+			check_flag = true;
+		}
+		i++;
+		tmp = tmp->next;
 	}
-	echo_helper(data, i, flag);
+	if (flag == 0)
+		printf("\n");
 	g_exit_code = check_exit_code_request(data);
 	return (g_exit_code);
 }

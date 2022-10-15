@@ -6,7 +6,7 @@
 #    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/10/15 13:28:23 by rmazurit         ###   ########.fr        #
+#    Updated: 2022/10/15 14:54:28 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,6 @@ SRC 		= 	src/main.c 							\
 				src/builtins/export_utils.c			\
 				src/builtins/pwd.c					\
 				src/builtins/unset.c				\
-				src/builtins/echo_utils.c			\
 				src/history_tracker.c				\
 				src/lexer/lexer.c					\
 				src/lexer/tokenizer.c				\

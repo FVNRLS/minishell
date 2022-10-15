@@ -83,7 +83,6 @@ add_executable(minishell src/main.c
         #BUILTINS
         src/builtins/cd.c
         src/builtins/echo.c
-        src/builtins/echo_utils.c
         src/builtins/env.c
         src/builtins/export.c
         src/builtins/export_utils.c

@@ -53,8 +53,6 @@ prints current working directory
 int		pwd(void);
 
 int		echo(t_data *data);
-int		check_n(char *s);
-int		check_exit_code_request(t_data *data);
 
 /*
 exit
@@ -65,6 +63,5 @@ int		mini_exit(t_data *data);
 deletes envp entrys
 */
 int		unset(t_data *data);
-bool	flag_check(char *s, int mode);
 
 #endif

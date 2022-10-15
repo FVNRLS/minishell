@@ -6,11 +6,13 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 14:37:17 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/11 14:28:54 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 16:08:15 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
+
+//TODO: delete split!!!
 
 int	ft_get_builtin(t_data *data)
 {
