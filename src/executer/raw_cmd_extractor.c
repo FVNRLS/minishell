@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_extractor.c                                    :+:      :+:    :+:   */
+/*   raw_cmd_extractor.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:34:00 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/13 11:11:32 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:39:47 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,43 @@ char	*get_cmd_path(t_data *data)
 	return (cmd_path);
 }
 
+char	**create_cmd(t_data *data, char **cmd, int words)
+{
+	int 	i;
+	t_token	*tmp;
+
+	tmp = data->tokens;
+	i = 0;
+	while (i < words)
+	{
+		cmd[i] = ft_strdup(tmp->content);
+		if (!cmd[i])
+			return (NULL);
+		tmp = tmp->next;
+		i++;
+	}
+	cmd[words] = NULL;
+	return (cmd);
+}
+
 /* splits the input in 2D array, where the first item is a command. */
-char	**get_cmd(t_data *data, t_token *token)
+char	**get_cmd(t_data *data)
 {
 	char	**cmd;
+	int 	words;
 
-	cmd = ft_split(token->content, SPACE);
+	words = ft_count_word_tokens(data);
+	if (words == 0)
+		return (NULL);
+	cmd = malloc(sizeof(char *) * (words + 1));
 	if (!cmd)
 	{
 		perror(NULL);
 		data->exec_error = true;
 		return (NULL);
 	}
+	cmd = create_cmd(data, cmd, words);
+
+
 	return (cmd);
 }

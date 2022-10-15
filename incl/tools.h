@@ -46,6 +46,8 @@ int		ft_isalpha(int c);
 int		ft_atoi(const char *str);
 bool	ft_check_plus(char *s);
 char	*ft_join_tilde(char *buf, char *tmp, int flag);
+int		ft_count_word_tokens(t_data *data);
+
 
 //FOR DEBUGGING PURPOSES
 int		print_list(t_token *data);

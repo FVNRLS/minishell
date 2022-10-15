@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/15 13:37:11 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:40:01 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	extract_cmd_and_path(t_data *data, t_token *token)
 	}
 	else
 	{
-		data->exec->cmd = get_cmd(data, token);
+		data->exec->cmd = get_cmd(data);
 		if (data->exec_error == true)
 			return ;
 		data->exec->path = get_cmd_path(data);

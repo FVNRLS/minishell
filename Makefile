@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+         #
+#    By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 15:37:00 by rmazurit          #+#    #+#              #
-#    Updated: 2022/10/13 14:05:57 by jjesberg         ###   ########.fr        #
+#    Updated: 2022/10/15 13:28:23 by rmazurit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +93,7 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_isalpha.c				\
 				src/tools/ft_check_plus.c			\
 				src/tools/ft_join_tilde.c			\
+				src/tools/ft_count_word_tokens.c	\
 
 OBJ 		= 	${SRC:.c=.o}
 TOOLS_OBJ 	=	${TOOLS_SRC:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/15 11:03:02 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 14:02:32 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	close_fds_in_out(t_data *data);
 
 //EXECUTER
 char	*get_cmd_path(t_data *data);
-char	**get_cmd(t_data *data, t_token *token);
+char	**get_cmd(t_data *data);
 char	**extract_cmd_from_path(t_data *data);
 void	execute_tokens(t_data *data);
 void	catch_exit_code(t_data *data);

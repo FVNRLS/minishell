@@ -105,7 +105,10 @@ void	delete_words(t_data *data)
 	while (tmp != NULL && tmp->flag != T_PIPE)
 	{
 		tmp = tmp->next;
+		free(data->tokens->content);
+		data->tokens->content = NULL;
 		free(data->tokens);
+		data->tokens = NULL;
 		data->tokens = tmp;
 	}
 }
