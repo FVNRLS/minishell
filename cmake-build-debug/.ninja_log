@@ -159,3 +159,11 @@
 101	588	1665850216000000000	minishell	92f87e639b7c4c8b
 2	77	1665850619000000000	CMakeFiles/minishell.dir/src/builtins/mini_exit.c.o	9d41e794b0eb0eb1
 77	381	1665850620000000000	minishell	92f87e639b7c4c8b
+2	62	1665853012000000000	CMakeFiles/minishell.dir/src/tools/ft_get_builtin.c.o	1c6c00a828f01dd8
+62	135	1665853012000000000	minishell	92f87e639b7c4c8b
+5	112	1665853143000000000	CMakeFiles/minishell.dir/src/tools/ft_get_builtin.c.o	1c6c00a828f01dd8
+112	398	1665853143000000000	minishell	92f87e639b7c4c8b
+2	64	1665853266000000000	CMakeFiles/minishell.dir/src/pipex/cmd_exec_redirecter.c.o	96376eff9f0020f0
+64	136	1665853266000000000	minishell	92f87e639b7c4c8b
+2	57	1665853297000000000	CMakeFiles/minishell.dir/src/pipex/cmd_exec_redirecter.c.o	96376eff9f0020f0
+57	149	1665853297000000000	minishell	92f87e639b7c4c8b
