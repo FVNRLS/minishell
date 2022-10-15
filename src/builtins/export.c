@@ -6,7 +6,7 @@
 /*   By: jjesberg <jjesberg@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:29:55 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/15 21:45:52 by jjesberg         ###   ########.fr       */
+/*   Updated: 2022/10/15 21:57:50 by jjesberg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,8 @@ its saved in ENVP list then
 */
 int	export(t_data *data)
 {
-	int	i;
 	int	ret;
 
-	i = 0;
 	if (!data->exec->cmd[1])
 		true_env(data);
 	ret = check_keys(data->exec->cmd, EXPORT_ERROR);
