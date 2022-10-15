@@ -17,21 +17,21 @@ int	check_exit_args(t_data *data, bool *arg_equal_one)
 	int	i;
 
 	i = 0;
-	while (data->builtins->command[i])
+	while (data->exec->cmd[i])
 		i++;
 	if (i > 1)
 	{
-		if (ft_isnumber(data->builtins->command[1], 0, 0) && i == 2)
-			return (ft_atoi(data->builtins->command[1]) % 256);
-		else if (ft_isnumber(data->builtins->command[1], 0, 0) && i > 2)
+		if (ft_isnumber(data->exec->cmd[1], 0, 0) && i == 2)
+			return (ft_atoi(data->exec->cmd[1]) % 256);
+		else if (ft_isnumber(data->exec->cmd[1], 0, 0) && i > 2)
 		{
 			*arg_equal_one = false;
 			print_error(EXIT_ERROR);
 			return (EXIT_FAILURE);
 		}
-		else if (!ft_isnumber(data->builtins->command[1], 0, 0))
+		else if (!ft_isnumber(data->exec->cmd[1], 0, 0))
 		{
-			exec_error(EXIT_ARG_ERROR, data->builtins->command[1]);
+			exec_error(EXIT_ARG_ERROR, data->exec->cmd[1]);
 			return (INVALID_EXIT_ARG);
 		}
 	}

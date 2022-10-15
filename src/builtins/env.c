@@ -19,7 +19,7 @@ int	env(t_data *data)
 {
 	t_envp	*tmp;
 
-	if (data->builtins->command[1])
+	if (data->exec->cmd[1])
 	{
 		print_error(ENV_ERROR);
 		return (CMD_NOT_FOUND);
