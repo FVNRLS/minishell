@@ -31,7 +31,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 101,
+				"line" : 102,
 				"parent" : 0
 			}
 		]
@@ -130,7 +130,8 @@
 				68,
 				69,
 				70,
-				71
+				71,
+				72
 			]
 		}
 	],
@@ -239,7 +240,8 @@
 				68,
 				69,
 				70,
-				71
+				71,
+				72
 			]
 		}
 	],
@@ -572,7 +574,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/executer/cmd_extractor.c",
+			"path" : "src/executer/raw_cmd_extractor.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/executer/rel_abs_path_cmd_extractor.c",
 			"sourceGroupIndex" : 0
 		},
 		{

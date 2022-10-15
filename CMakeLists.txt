@@ -70,7 +70,8 @@ add_executable(minishell src/main.c
         src/parser/redirecter/fd_opener.c
 
         #EXECUTER
-        src/executer/cmd_extractor.c
+        src/executer/raw_cmd_extractor.c
+        src/executer/rel_abs_path_cmd_extractor.c
         src/executer/executer.c
 
         #PIPEX

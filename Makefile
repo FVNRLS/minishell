@@ -54,7 +54,8 @@ SRC 		= 	src/main.c 							\
                 src/parser/redirecter/heredoc_creater.c	\
                 src/parser/redirecter/fd_opener.c	\
 				src/executer/executer.c				\
-				src/executer/cmd_extractor.c 		\
+				src/executer/raw_cmd_extractor.c	\
+                src/executer/rel_abs_path_cmd_extractor.c \
 		        src/pipex/pipe_processor.c			\
 		        src/pipex/cmd_exec_redirecter.c		\
 		        src/pipex/fd_dupper.c				\

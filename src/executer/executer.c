@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/15 12:40:03 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 13:37:11 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	free_cmd_and_path(t_data *data)
 */
 static void	extract_cmd_and_path(t_data *data, t_token *token)
 {
-	if (data->exec->no_cmd == true)
+	if (data->exec->no_cmd == true || !data->tokens->content)
 		return ;
 	if (token->content[0] == '.' || token->content[0] == SLASH)
 	{
-		data->exec->cmd = extract_cmd_from_path(data, token);
+		data->exec->cmd = extract_cmd_from_path(data);
 		if (!data->exec->cmd || !data->exec->path)
 		{
 			data->exec_error = true;
@@ -107,7 +107,7 @@ void	execute_tokens(t_data *data)
 	{
 		reset_params(data);
 		resolve_redirections(data);
-//		print_tokens(data);
+		print_tokens(data);
 		if (!data->tokens)
 		{
 			reset_stdin_stdout(data);

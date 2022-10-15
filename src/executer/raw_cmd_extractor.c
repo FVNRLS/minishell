@@ -113,34 +113,3 @@ char	**get_cmd(t_data *data, t_token *token)
 	}
 	return (cmd);
 }
-
-/*
-	1) Gets a command from split input
-	2) Tries to find the executable path for the command, based on the PATH envp.
-	If no cmd or appropriate path is set in the end, 
-	sets  exec_error flag to true and returns.
-*/
-char	**extract_cmd_from_path(t_data *data, t_token *token)
-{
-	char	**input;
-	char	**path;
-	char	*cmd;
-
-	input = ft_split(token->content, SPACE);
-	if (!input)
-		return (NULL);
-	path = ft_split(input[0], SLASH);
-	if (!path)
-		return (NULL);
-	data->exec->path = ft_strdup(input[0]);
-	if (!data->exec->path)
-		return (NULL);
-	cmd = ft_strdup(path[ft_splitlen(path) - 1]);
-	if (!cmd)
-		return (NULL);
-	ft_cleansplit(path);
-	path = NULL;
-	free(input[0]);
-	input[0] = cmd;
-	return (input);
-}
