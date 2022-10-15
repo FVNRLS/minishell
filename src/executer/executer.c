@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/13 11:05:29 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 12:40:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	execute_tokens(t_data *data)
 	{
 		reset_params(data);
 		resolve_redirections(data);
-		merge_words(data);
+//		print_tokens(data);
 		if (!data->tokens)
 		{
 			reset_stdin_stdout(data);
@@ -118,6 +118,7 @@ void	execute_tokens(t_data *data)
 			exec_cmd(data, data->tokens);
 			data->exec->cmd_num++;
 		}
+		delete_words(data);
 		ft_del_first_token(&data);
 		close_fds_in_out(data);
 	}

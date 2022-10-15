@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_merger.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:14:25 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/13 13:04:35 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 12:33:46 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,29 +95,17 @@ void	merge_redirections(t_data *data)
 }
 
 /* merges all word tokens next to each other into a bigger word token */
-void	merge_words(t_data *data)
+void	delete_words(t_data *data)
 {
 	t_token	*tmp;
-	t_token	*del;
 
 	tmp = data->tokens;
 	if (!tmp)
 		return ;
-	del = NULL;
-	while (tmp->next != NULL)
+	while (tmp != NULL && tmp->flag != T_PIPE)
 	{
-		del = tmp->next;
-		if (tmp->flag == T_WORD && del->flag == T_WORD)
-		{
-			tmp->content = ft_join_char(tmp->content, SPACE);
-			tmp->content = ft_strjoin(tmp->content, del->content);
-			tmp->next = del->next;
-			free(del->content);
-			del->content = NULL;
-			free(del);
-			del = NULL;
-		}
-		else
-			tmp = tmp->next;
+		tmp = tmp->next;
+		free(data->tokens);
+		data->tokens = tmp;
 	}
 }

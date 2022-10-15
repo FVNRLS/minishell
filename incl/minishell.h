@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:52:40 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/13 18:42:12 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 11:03:02 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	parse_tokens(t_data *data);
 void	check_multiple_pipes(t_data *data);
 void	refactor_join_flags(t_data *data);
 void	merge_joinable_tokens(t_data *data);
-void	merge_words(t_data *data);
+void	delete_words(t_data *data);
 void	merge_redirections(t_data *data);
 bool	check_redir(t_data *data, int flag);
 bool	check_redir_syntax_error(t_data *data, t_token *token);
