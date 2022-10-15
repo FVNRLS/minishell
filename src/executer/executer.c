@@ -107,7 +107,6 @@ void	execute_tokens(t_data *data)
 	{
 		reset_params(data);
 		resolve_redirections(data);
-//		print_tokens(data);
 		if (!data->tokens)
 		{
 			reset_stdin_stdout(data);

@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:49:28 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/15 11:03:02 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 19:31:16 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static void	try_expansion(t_data *data, t_lex *lex)
 static void	try_double_quote_exp(t_data *data, t_lex *lex, char *quote_buf)
 {
 	t_envp	*tmp;
-	tmp = data->envp;
 
+	tmp = data->envp;
 	while (lex->c != DOLLAR && lex->c != DOUBLE_QUOTE
-		   && lex->c != SINGLE_QUOTE && lex->c != SLASH && lex->c != SPACE)
+		&& lex->c != SINGLE_QUOTE && lex->c != SLASH && lex->c != SPACE)
 	{
 		quote_buf = ft_join_char(quote_buf, lex->c);
 		lex->i++;
@@ -71,11 +71,10 @@ static void	try_double_quote_exp(t_data *data, t_lex *lex, char *quote_buf)
 void	expand_parameter(t_data *data, t_lex *lex)
 {
 	bool	is_sep;
-	char 	*quote_buf;
+	char	*quote_buf;
 
 	quote_buf = NULL;
 	is_sep = check_sep(data, lex->c);
-
 	if (lex->double_quote_mode == true)
 		try_double_quote_exp(data, lex, quote_buf);
 	else

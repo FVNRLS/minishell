@@ -50,7 +50,6 @@ void	parse_tokens(t_data *data)
 	merge_redirections(data);
 	if (data->parse_error == true)
 		return ;
-//	merge_words(data);
 	cnt = count_hdoc_files(data);
 	if (cnt == 0)
 		return ;

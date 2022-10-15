@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:34:00 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/15 15:35:45 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:39:47 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	**add_cmd_and_path(t_data *data, char **cmd, int words)
 {
-	int 	i;
+	int		i;
 	t_token	*tmp;
 	char	**path;
 
@@ -50,7 +50,7 @@ static char	**add_cmd_and_path(t_data *data, char **cmd, int words)
 char	**extract_cmd_from_path(t_data *data)
 {
 	char	**cmd;
-	int 	words;
+	int		words;
 
 	words = ft_count_word_tokens(data);
 	if (words == 0)

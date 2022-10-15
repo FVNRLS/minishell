@@ -12,7 +12,7 @@
 
 #include "../../incl/minishell.h"
 
-static void handle_empty_double_quotes(t_data *data, t_lex *lex)
+static void	handle_empty_double_quotes(t_data *data, t_lex *lex)
 {
 	t_token	*tmp;
 	char	*content;

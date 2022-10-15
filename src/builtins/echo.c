@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:27:03 by jjesberg          #+#    #+#             */
-/*   Updated: 2022/10/15 17:16:33 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/15 19:40:59 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ static int	check_exit_code_request(t_data *data)
 	return (g_exit_code);
 }
 
-
-static bool is_flag(t_token *token)
+static bool	is_flag(t_token *token)
 {
 	int	i;
 
@@ -52,35 +51,21 @@ static bool is_flag(t_token *token)
 	return (false);
 }
 
-/*
-echo without args will just print a new line
-echo -n = without new line
-echo text will print the text include a new line
-*/
-int	echo(t_data *data)
+void	print_args(t_data *data, int words)
 {
 	int		i;
-	int 	words;
-	int 	flag;
+	int		flag;
 	bool	check_flag;
-	t_token *tmp;
+	t_token	*tmp;
 
+	i = 1;
 	flag = 0;
 	check_flag = false;
-	words = ft_count_word_tokens(data);
-	if (words == 1)
-	{
-		printf("\n");
-		return (EXIT_SUCCESS);
-	}
-	i = 1;
 	tmp = data->tokens->next;
 	while (i < words)
 	{
 		if (is_flag(tmp) == true && check_flag != true)
-		{
 			flag = 1;
-		}
 		else
 		{
 			printf("%s", tmp->content);
@@ -93,6 +78,24 @@ int	echo(t_data *data)
 	}
 	if (flag == 0)
 		printf("\n");
+}
+
+/*
+echo without args will just print a new line
+echo -n = without new line
+echo text will print the text include a new line
+*/
+int	echo(t_data *data)
+{
+	int	words;
+
+	words = ft_count_word_tokens(data);
+	if (words == 1)
+	{
+		printf("\n");
+		return (EXIT_SUCCESS);
+	}
+	print_args(data, words);
 	g_exit_code = check_exit_code_request(data);
 	return (g_exit_code);
 }

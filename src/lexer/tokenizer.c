@@ -27,7 +27,7 @@ bool	check_sep(t_data *data, char c)
 	return (false);
 }
 
-static void set_exp_join_flag(t_data *data, t_lex *lex, t_token *token)
+static void	set_exp_join_flag(t_data *data, t_lex *lex, t_token *token)
 {
 	char	next_char;
 
@@ -57,7 +57,7 @@ static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 	bool	redirect_found;
 	t_token	*tmp;
 
-	redirect_found = find_redirections(lex); //TODO: test this more!!!
+	redirect_found = find_redirections(lex);
 	token->join = false;
 	tmp = data->tokens;
 	if (data->input[lex->i] == '\0' || redirect_found == true)

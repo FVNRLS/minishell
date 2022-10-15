@@ -55,7 +55,7 @@ void	stop_lexing(t_data *data, t_lex *lex)
 		print_error(DOUBLE_QUOTE_MISSING);
 }
 
-static void handle_empty_single_quotes(t_data *data, t_lex *lex)
+static void	handle_empty_single_quotes(t_data *data, t_lex *lex)
 {
 	t_token	*tmp;
 	char	*content;
