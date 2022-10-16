@@ -3,7 +3,6 @@ project(minishell C)
 
 set(CMAKE_C_STANDARD 99)
 
-
 add_executable(minishell src/main.c
 
         #INITIALIZER/DESTRUCTOR:
@@ -100,4 +99,3 @@ add_executable(minishell src/main.c
         )
 
 target_link_libraries(minishell edit)
-
