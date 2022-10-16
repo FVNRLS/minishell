@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 17:10:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/16 18:01:47 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/16 21:34:14 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
-
-
 
 /*
 Control C = New prompt
@@ -30,6 +28,14 @@ static void	ctrl_c(int sig_num)
 	tcsetattr(STDIN_FILENO, 0, &att);
 	ioctl(STDIN_FILENO, TIOCSTI, "\n");
 	rl_on_new_line();
+	rl_replace_line("", 0);
+}
+
+static void	catch_ctrlc(int sig)
+{
+	(void)sig;
+	signal(SIGINT, SIG_DFL);
+	ioctl(STDOUT_FILENO, TIOCSTI, "\n");
 	rl_replace_line("", 0);
 }
 
@@ -72,7 +78,7 @@ void	ft_signals(int flag)
 	else if (flag == CHILD_PROCESS)
 	{
 		signal(SIGQUIT, SIG_DFL);
-		signal(SIGINT, SIG_DFL);
+		signal(SIGINT, &catch_ctrlc);
 	}
 	else if (flag == HDOC)
 	{
