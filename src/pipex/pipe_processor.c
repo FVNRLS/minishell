@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/15 16:10:30 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/16 18:03:03 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	catch_exit_code(t_data *data)
 
 static int	create_fork(t_data *data)
 {
+	signal(SIGINT, SIG_IGN);
 	data->pid = fork();
 	if (data->pid < 0)
 	{

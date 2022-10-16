@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:49:28 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/16 11:38:50 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/16 15:24:01 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	try_double_quote_exp(t_data *data, t_lex *lex, char *quote_buf)
 			if (ft_strcmp(quote_buf, tmp->key) == 0)
 			{
 				lex->buf = ft_strjoin(lex->buf, tmp->val);
-				return ;
+				break ;
 			}
 			tmp = tmp->next;
 		}

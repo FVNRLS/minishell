@@ -6,11 +6,13 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 17:10:29 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/16 10:35:26 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/16 18:01:47 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incl/minishell.h"
+
+
 
 /*
 Control C = New prompt
@@ -18,11 +20,11 @@ Control C = New prompt
 static void	ctrl_c(int sig_num)
 {
 	struct termios	att;
-	struct termios	saved;
+	struct termios	term;
 
 	(void)sig_num;
-	tcgetattr(STDIN_FILENO, &saved);
-	tcsetattr(STDIN_FILENO, TCSANOW, &saved);
+	tcgetattr(STDIN_FILENO, &term);
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	tcgetattr(STDIN_FILENO, &att);
 	att.c_lflag &= ~ECHOCTL;
 	tcsetattr(STDIN_FILENO, 0, &att);

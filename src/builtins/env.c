@@ -27,7 +27,7 @@ int	env(t_data *data)
 	tmp = data->envp;
 	while (tmp != NULL)
 	{
-		if (tmp->key[0] && tmp->val[0])
+		if (tmp->key[0] && tmp->equal == 1)
 		{
 			printf("%s=%s\n", tmp->key, tmp->val);
 		}
