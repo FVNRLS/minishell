@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:46:39 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/15 12:27:12 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/16 11:32:06 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,14 @@ static void	set_exp_join_flag(t_data *data, t_lex *lex, t_token *token)
 */
 static void	set_join_flag(t_data *data, t_lex *lex, t_token *token)
 {
-	bool	redirect_found;
-	t_token	*tmp;
-
-	redirect_found = find_redirections(lex);
 	token->join = false;
-	tmp = data->tokens;
-	if (data->input[lex->i] == '\0' || redirect_found == true)
-	{
-		if (tmp != NULL)
-		{
-			while (tmp->next != NULL)
-				tmp = tmp->next;
-			if (tmp->flag == T_WORD)
-				tmp->join = false;
-			return ;
-		}
-	}
 	if (lex->expansion == true)
 		set_exp_join_flag(data, lex, token);
+	else
+	{
+		if (data->input[lex->i] == SLASH)
+			token->join = true;
+	}
 }
 
 /* Adds a new token node to the linked list of tokens */

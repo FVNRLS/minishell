@@ -31,7 +31,7 @@ void	exec_bash_cmd(t_data *data)
 		if (execve(data->exec->path, data->exec->cmd, data->env) < 0)
 		{
 			reset_stdin_stdout(data);
-			perror(NULL);
+			exec_error(CMD_NOT_FOUND, data->exec->cmd[0]);
 			exit(CMD_NOT_FOUND);
 		}
 	}
