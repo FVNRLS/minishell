@@ -35,18 +35,29 @@ __This minishell is able to interpret the following elements:__
 
 
 18. [x] In interactive mode:
-    18. [x] ctrl-C displays a new prompt on a new line.
-    19. [x] ctrl-D exits the shell.
-    20. [x] ctrl-\ does nothing.
+
+	ctrl-C displays a new prompt on a new line.
+
+    ctrl-D exits the shell.
+
+    ctrl-\ does nothing.
+
 
 21. [x] builtins:
-    22. [x] echo with option -n
-    23. [x] cd with only a relative or absolute path
-    24. [x] pwd with no options
-    25. [x] export with no options
-    26. [x] unset with no options
-    27. [x] env with no options or arguments
-    28. [x] exit with no options
+    echo with option -n 
+
+	cd with only a relative or absolute path
+
+    pwd with no options
+
+    export with no options
+
+    unset with no options
+
+    env with no options or arguments
+
+    exit with no options
+
 
 
 <br>
