@@ -35,21 +35,6 @@ void	true_env(t_data *data)
 	}
 }
 
-int	check_string(t_data **data, int *i)
-{
-	char	*s;
-
-	s = (*data)->tokens->content;
-	if (ft_strlen(s) == 6 || !(*data)->builtins->command[1])
-		return (EXIT_FAILURE);
-	while (ft_isprint(s[*i]))
-		(*i)++;
-	(*i)++;
-	ft_cleansplit((*data)->builtins->command);
-	(*data)->builtins->command = ft_split(s + (*i), ' ');
-	return (EXIT_SUCCESS);
-}
-
 static int	true_key(char *s)
 {
 	int	i;

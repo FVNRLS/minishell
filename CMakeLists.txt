@@ -32,7 +32,6 @@ add_executable(minishell src/main.c
         src/tools/ft_strjoin.c
         src/tools/ft_cleansplit.c
         src/tools/ft_get_builtin.c
-        src/tools/ft_strncmp.c
         src/tools/ft_getenvp.c
         src/tools/ft_isnumber.c
         src/tools/ft_isdigit.c

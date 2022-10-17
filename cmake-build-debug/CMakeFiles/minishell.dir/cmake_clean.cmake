@@ -141,8 +141,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell.dir/src/tools/ft_strjoin.c.o.d"
   "CMakeFiles/minishell.dir/src/tools/ft_strlen.c.o"
   "CMakeFiles/minishell.dir/src/tools/ft_strlen.c.o.d"
-  "CMakeFiles/minishell.dir/src/tools/ft_strncmp.c.o"
-  "CMakeFiles/minishell.dir/src/tools/ft_strncmp.c.o.d"
   "CMakeFiles/minishell.dir/src/tools/ft_strtrim.c.o"
   "CMakeFiles/minishell.dir/src/tools/ft_strtrim.c.o.d"
   "minishell"

@@ -17,7 +17,6 @@ static void	init_builtins(t_data *data)
 {
 	init_builtin_names(data);
 	init_builtin_functions(data);
-	data->builtins->command = NULL;
 }
 
 static void	init_separators(t_data *data)

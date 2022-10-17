@@ -12,11 +12,8 @@
 
 #include "../../incl/minishell.h"
 
-//TODO: delete split!!!
-
 int	ft_get_builtin(t_data *data)
 {
-	data->builtins->command = ft_split(data->tokens->content, ' ');
 	if (ft_strcmp(data->exec->cmd[0], data->builtins->names[0]) == 0)
 		return (0);
 	if (ft_strcmp(data->exec->cmd[0], data->builtins->names[1]) == 0)

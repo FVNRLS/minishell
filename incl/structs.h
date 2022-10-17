@@ -38,7 +38,6 @@ typedef struct s_builtins
 {
 	char		*names[NUM_BUILTINS];
 	int			(*funcs[NUM_BUILTINS])(void *);
-	char		**command;
 	char		*home;
 }		t_builtins;
 

@@ -77,9 +77,7 @@ static char	**get_valid_paths(t_data *data)
 	return (valid_paths);
 }
 
-/*
-	Gets a full path to the given command (binary or executable).
-*/
+/* Gets a full path to the given command (binary or executable). */
 char	*get_cmd_path(t_data *data)
 {
 	char	*cmd;
@@ -99,6 +97,7 @@ char	*get_cmd_path(t_data *data)
 	return (cmd_path);
 }
 
+/* Fills the 2D array with T_WORD tokens until pipe / end */
 char	**create_cmd(t_data *data, char **cmd, int words)
 {
 	int		i;
@@ -118,7 +117,10 @@ char	**create_cmd(t_data *data, char **cmd, int words)
 	return (cmd);
 }
 
-/* splits the input in 2D array, where the first item is a command. */
+/*
+	Creates an 2D array, where the first item is a command and all another items
+	are arguments and fills it with T_WORD tokens.
+*/
 char	**get_cmd(t_data *data)
 {
 	char	**cmd;

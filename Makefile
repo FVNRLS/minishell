@@ -81,7 +81,6 @@ TOOLS_SRC	=	src/tools/ft_calloc.c				\
 				src/tools/ft_get_builtin.c			\
 				src/tools/ft_cleansplit.c			\
 				src/tools/ft_print_list.c			\
-				src/tools/ft_strncmp.c				\
 				src/tools/ft_splitlen.c				\
 				src/tools/ft_isnumber.c				\
 				src/tools/ft_isdigit.c				\

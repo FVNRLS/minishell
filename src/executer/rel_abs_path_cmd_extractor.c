@@ -42,10 +42,11 @@ static char	**add_cmd_and_path(t_data *data, char **cmd, int words)
 }
 
 /*
-	1) Gets a command from split input
-	2) Tries to find the executable path for the command, based on the PATH envp.
+	1) Extracts the command name from the provided path and builds an 2D array
+ 		of T_WORD tokens until pipe / end .
+	2) Adds the provided path to data->exec->path
 	If no cmd or appropriate path is set in the end,
-	sets  exec_error flag to true and returns.
+	sets exec_error flag to true and returns.
 */
 char	**extract_cmd_from_path(t_data *data)
 {

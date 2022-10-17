@@ -33,7 +33,6 @@ char	*ft_strjoin(char *buf, char *tmp);
 char	**ft_split(char const *s, char c);
 void	ft_cleansplit(char **split);
 int		ft_get_builtin(t_data *data);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
 t_envp	*ft_getenvp(t_data *data, char *find);
 int		ft_isnumber(char *s, long long sum, int i);
 int		ft_isdigit(int c);

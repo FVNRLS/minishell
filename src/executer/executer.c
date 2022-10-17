@@ -6,7 +6,7 @@
 /*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 12:47:27 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/10/15 15:48:24 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/10/17 11:40:51 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ void	free_cmd_and_path(t_data *data)
 	Extracts the cmd and path based on the following cases:
 	
 	1) Absolute or relative path is given:
-		extracts the path from the given input, searches 
-	for the appropriate cmd in PATH env and saves it as exec->cmd.
+		extracts the path from the given input.
+		searches for the appropriate cmd in PATH env and saves it as exec->cmd.
 	
 	2) Only the command name is given:
-		searches for the appropriate cmd in PATH env and saves it as cmd. 
+		searches for the appropriate cmd in PATH env and saves it as cmd with
+		another arguments (next word tokens).
 		Then also adds the found path to exec->path.
 */
 static void	extract_cmd_and_path(t_data *data, t_token *token)
@@ -66,14 +67,7 @@ static void	exec_cmd(t_data *data, t_token *token)
 		pipe_transitory_cmd(data);
 	else if (data->exec->cmd_num == data->exec->last_cmd)
 		pipe_last_cmd(data);
-	if (data->builtins->command != NULL)
-	{
-		ft_cleansplit(data->builtins->command);
-		data->builtins->command = NULL;
-	}
 	free_cmd_and_path(data);
-	ft_cleansplit(data->builtins->command);
-	data->builtins->command = NULL;
 }
 
 /* reset parameters to initial values. */
@@ -90,12 +84,13 @@ static void	reset_params(t_data *data)
 	Algorithm for executing commands, separated with pipes.
 
 	Given are at the beginning tokens with already merged 
-	redirections and words in between.
-	First the redirections are resolved. As a result we get 
+	redirections.
+	First the redirections are resolved. As a result we get
 	the final input fd_in and output fd_out.
-	After that all words are merged into one command.
+	After that a command is built from all word tokens until the pipe/end.
 	The command is executed and redirected until the next pipe 
 	over the desired input/output.
+ 	All word tokens are immediately deleted after execution.
 	At the end the allocated heredoc-files are deleted and freed.
 */
 void	execute_tokens(t_data *data)
