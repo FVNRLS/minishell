@@ -281,201 +281,201 @@ Install with:
 <details>
  <summary> expansions and redirections </summary>
 
-	```c
-	echo '$PWD hallo | cat -e'
-	```
-	
-	```c
-	echo $"PWD$PATHaa"
-	```
-	
-	```c
-	echo '$"PWD$PATHaa"'
-	```
-	
-	```c
-	echo $PWD'echo'$ 123 $$$
-	```
-	
-	```c
-	echo $PWD'echo1231$$$$$$'$ 123 $$$
-	```
-	
-	```c
-	echo $PWD'$?'
-	```
-	
-	```c
-	echo $PWD $? $? $HOME$? $'12345'
-	```
-	
-	```c
-	echo **joinable_content_$PWD$PWD$PWD$**
-	```
-	
-	```c
-	echo '**joinable_content_'$PWD$PWD$PWD$**
-	```
-	
-	```c
-	echo "hello$"
-	```
-	
-	```c
-	echo "hello$$$"$PWD""$PWD
-	```
-	
-	```c
-	echo $HOME$? $'test'
-	```
-	
-	```c
-	echo $HOME$?$? $'test'
-	```
-	
-	```c
-	echo $PWD $pwd $CWD $$$ '@@"$PWD"'
-	```
-	
-	```c
-	echo $PWD'$?'"$???"
-	```
-	
-	```c
-	echo $PWD"$" $PWD$ $HOME"$"$HOME$
-	```
-	
-	```c
-	echo "$PWD" > out
-	```
-	
-	```c
-	echo $PWD $pwd $CWD $$$ '@@"$PWD"'"''"  $HOME   "''"
-	```
-	
-	```c
-	echo $PWD $pwd $CWD $$$ '@@"$PWD"'"''" aaa$HOMEaaa "''”
-	```
-	
-	```c
-	echo > merge_text dont_merge!
-	```
-	
-	```c
-	echo test > test | grep
-	```
-	
-	```c
-	>t1>t2>t3
-	```
-	
-	```c
-	< hello < hello2
-	```
-	
-	```c
-	<< 1 << 2 hello > t1 > t2 world | t3 >> shouldnt >> t4 open
-	```
-	
-	```c
-	< infile1 cat > out
-	```
-	
-	```c
-	< infile1 cat > out | < infile1 cat > out2
-	```
-	
-	```c
-	ls | ls -l | cat infile1
-	```
-	
-	```c
-	< infile1 cat | ls
-	```
-	
-	```c
-	< infile1 ls > out | < infile2 cat > out2 | echo "$PWD" > out3
-	```
-	
-	```c
-	< infile1 ls > out | < infile2 cat > out2 | echo $PWD > out3
-	```
-	
-	```c
-	echo "$PWD" > out1 | < infile1 cat > out2 | < out2 ls -l > out3
-	```
-	
-	```c
-	< infile1 ls > out -l
-	```
-	
-	```c
-	cat infile1 | cat
-	```
-	
-	```c
-	cat infile1 > out | cat | cat | ls > out2 | cat nofile | < infile2 cat > out3
-	```
-	
-	```c
-	cat infile1 > out | cat | cat | ls > out2 | cat nofile | < infile2 cat > out3 | echo SHOULD_PRINT
-	```
-	
-	```c
-	cat infile1 > out | echo SHOULD_PRINT
-	```
-	
-	```c
-	cat infile1 | echo bla
-	```
-	
-	```c
-	**echo bla > out | grep ls**
-	```
-	
-	```c
-	ls -la | cat > out | < infile | cat
-	```
-	
-	```c
-	**< infile | cat | < in**
-	```
-	
-	```c
-	**< infile cat > badfd**
-	```
-	
-	```c
-	cat badfd | /bin/ls | cat | cat > out1 | << stop cat > out2
-	```
-	
-	```c
-	<in cmd "str1 str2 str3" | cmd2 -arg | cmd3 >out >out2cmd "str1 str2 str3" >out | cmd2 -arg | cmd3 >out2 >out3
-	```
-	
-	```c
-	cmd "str1 str2 str3" >out | cmd2 -arg str | cmd3 str >out2 >out3
-	```
-	
-	```c
-	< in1 < in2
-	```
-	
-	```c
-	< in1 cat < in2
-	```
-	
-	```c
-	< Makefile > outfile > out
-	```
-	
-	```c
-	cat /dev/urandom | head -1 > out
-	```
-	
-	```c
-	echo $PWD"$" $PWD$ $HOME"$"$HOME$ '//( . )( . )\\'
-	```
+```c
+echo '$PWD hallo | cat -e'
+```
+
+```c
+echo $"PWD$PATHaa"
+```
+
+```c
+echo '$"PWD$PATHaa"'
+```
+
+```c
+echo $PWD'echo'$ 123 $$$
+```
+
+```c
+echo $PWD'echo1231$$$$$$'$ 123 $$$
+```
+
+```c
+echo $PWD'$?'
+```
+
+```c
+echo $PWD $? $? $HOME$? $'12345'
+```
+
+```c
+echo **joinable_content_$PWD$PWD$PWD$**
+```
+
+```c
+echo '**joinable_content_'$PWD$PWD$PWD$**
+```
+
+```c
+echo "hello$"
+```
+
+```c
+echo "hello$$$"$PWD""$PWD
+```
+
+```c
+echo $HOME$? $'test'
+```
+
+```c
+echo $HOME$?$? $'test'
+```
+
+```c
+echo $PWD $pwd $CWD $$$ '@@"$PWD"'
+```
+
+```c
+echo $PWD'$?'"$???"
+```
+
+```c
+echo $PWD"$" $PWD$ $HOME"$"$HOME$
+```
+
+```c
+echo "$PWD" > out
+```
+
+```c
+echo $PWD $pwd $CWD $$$ '@@"$PWD"'"''"  $HOME   "''"
+```
+
+```c
+echo $PWD $pwd $CWD $$$ '@@"$PWD"'"''" aaa$HOMEaaa "''”
+```
+
+```c
+echo > merge_text dont_merge!
+```
+
+```c
+echo test > test | grep
+```
+
+```c
+>t1>t2>t3
+```
+
+```c
+< hello < hello2
+```
+
+```c
+<< 1 << 2 hello > t1 > t2 world | t3 >> shouldnt >> t4 open
+```
+
+```c
+< infile1 cat > out
+```
+
+```c
+< infile1 cat > out | < infile1 cat > out2
+```
+
+```c
+ls | ls -l | cat infile1
+```
+
+```c
+< infile1 cat | ls
+```
+
+```c
+< infile1 ls > out | < infile2 cat > out2 | echo "$PWD" > out3
+```
+
+```c
+< infile1 ls > out | < infile2 cat > out2 | echo $PWD > out3
+```
+
+```c
+echo "$PWD" > out1 | < infile1 cat > out2 | < out2 ls -l > out3
+```
+
+```c
+< infile1 ls > out -l
+```
+
+```c
+cat infile1 | cat
+```
+
+```c
+cat infile1 > out | cat | cat | ls > out2 | cat nofile | < infile2 cat > out3
+```
+
+```c
+cat infile1 > out | cat | cat | ls > out2 | cat nofile | < infile2 cat > out3 | echo SHOULD_PRINT
+```
+
+```c
+cat infile1 > out | echo SHOULD_PRINT
+```
+
+```c
+cat infile1 | echo bla
+```
+
+```c
+**echo bla > out | grep ls**
+```
+
+```c
+ls -la | cat > out | < infile | cat
+```
+
+```c
+**< infile | cat | < in**
+```
+
+```c
+**< infile cat > badfd**
+```
+
+```c
+cat badfd | /bin/ls | cat | cat > out1 | << stop cat > out2
+```
+
+```c
+<in cmd "str1 str2 str3" | cmd2 -arg | cmd3 >out >out2cmd "str1 str2 str3" >out | cmd2 -arg | cmd3 >out2 >out3
+```
+
+```c
+cmd "str1 str2 str3" >out | cmd2 -arg str | cmd3 str >out2 >out3
+```
+
+```c
+< in1 < in2
+```
+
+```c
+< in1 cat < in2
+```
+
+```c
+< Makefile > outfile > out
+```
+
+```c
+cat /dev/urandom | head -1 > out
+```
+
+```c
+echo $PWD"$" $PWD$ $HOME"$"$HOME$ '//( . )( . )\\'
+```
 
 </details>
 
