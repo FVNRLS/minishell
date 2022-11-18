@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   double_quotes_handler.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 18:55:19 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/14 20:10:20 by rmazurit         ###   ########.fr       */

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   words_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:31:39 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/13 12:01:28 by rmazurit         ###   ########.fr       */

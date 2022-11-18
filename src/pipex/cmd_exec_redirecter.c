@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec_redirecter.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:42:29 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/13 13:40:37 by rmazurit         ###   ########.fr       */

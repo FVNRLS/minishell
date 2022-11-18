@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   fd_dupper.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 23:04:47 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/13 13:42:24 by rmazurit         ###   ########.fr       */

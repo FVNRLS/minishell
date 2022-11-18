@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_count_word_tokens.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:34:00 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/15 14:13:23 by rmazurit         ###   ########.fr       */

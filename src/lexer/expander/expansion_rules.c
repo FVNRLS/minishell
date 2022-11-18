@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_rules.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 17:22:41 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/14 15:13:44 by rmazurit         ###   ########.fr       */

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   history_tracker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjesberg <j.jesberger@heilbronn.de>        +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 15:07:45 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/13 16:51:04 by jjesberg         ###   ########.fr       */

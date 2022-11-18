@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   fd_opener.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:29:57 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/13 13:18:29 by rmazurit         ###   ########.fr       */

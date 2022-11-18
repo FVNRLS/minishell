@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_creater.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 12:38:03 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/16 17:08:12 by rmazurit         ###   ########.fr       */

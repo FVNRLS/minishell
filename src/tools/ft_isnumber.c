@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isnumber.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 19:05:32 by jjesberg          #+#    #+#             */
 /*   Updated: 2022/10/09 11:24:57 by rmazurit         ###   ########.fr       */

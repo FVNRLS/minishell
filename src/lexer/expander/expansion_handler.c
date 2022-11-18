@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_handler.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:49:28 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/16 15:24:01 by rmazurit         ###   ########.fr       */

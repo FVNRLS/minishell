@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_processor.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:30:37 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/16 18:03:03 by rmazurit         ###   ########.fr       */

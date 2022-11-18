@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   data_containers_init.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:35:54 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/13 11:20:51 by rmazurit         ###   ########.fr       */

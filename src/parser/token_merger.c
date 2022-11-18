@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   token_merger.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:14:25 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/15 12:33:46 by rmazurit         ###   ########.fr       */

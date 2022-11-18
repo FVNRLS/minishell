@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 18:49:07 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/13 11:17:54 by rmazurit         ###   ########.fr       */

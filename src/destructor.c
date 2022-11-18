@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   destructor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:40:53 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/17 11:58:56 by rmazurit         ###   ########.fr       */

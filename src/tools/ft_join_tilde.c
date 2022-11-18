@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_join_tilde.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmazurit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rmazurit <rmazurit@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:44:19 by rmazurit          #+#    #+#             */
 /*   Updated: 2022/10/11 22:59:38 by rmazurit         ###   ########.fr       */
